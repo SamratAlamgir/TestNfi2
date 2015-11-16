@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NFI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RootDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D://NFI Data/</Value>
+    </Setting>
+    <Setting Name="ApplicationDir1" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App1/</Value>
+    </Setting>
+    <Setting Name="ApplicationDataFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App1Data.json</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
