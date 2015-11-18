@@ -58,5 +58,14 @@ namespace NFI.Properties {
                 return ((string)(this["ZipDir"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Attachment/")]
+        public string AttachmentDir {
+            get {
+                return ((string)(this["AttachmentDir"]));
+            }
+        }
     }
 }
