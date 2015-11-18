@@ -12,7 +12,7 @@ namespace NFI.Helper
     {
         public static void Save<T>(T obj,ApplicationType appType)
         {
-            var collection = GetCollection<T>(appType);
+            var collection = GetCollections<T>(appType);
             collection.Add(obj);
 
 
@@ -23,7 +23,7 @@ namespace NFI.Helper
             }
         }
 
-        public static List<T> GetCollection<T>(ApplicationType appType)
+        public static List<T> GetCollections<T>(ApplicationType appType)
         {
             var collection = new List<T>();
            

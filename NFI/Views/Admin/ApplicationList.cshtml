@@ -2,15 +2,30 @@
 
 <html>
 <head>
-    <script src="~/Scripts/Admin/admin.js"></script>
+    @section scripts
+    {
+        <script src="~/Scripts/Admin/admin.js"></script>
+    }
 
     <title> Application List </title>
-    
+
 </head>
 <body>
-<div>
-    <h2> Hello From Admin Panel </h2>
-</div>
-    
+    <div>
+        <h2> Application List </h2>
+        <table id="example" class="display" width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Sex</th>
+                    <th>Company</th>
+                    <th>FilePath</th>
+                </tr>
+            </thead>
+           
+        </table>
+    </div>
+
 </body>
 </html>
