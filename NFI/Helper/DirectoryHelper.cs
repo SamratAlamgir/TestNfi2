@@ -24,12 +24,20 @@ namespace NFI.Helper
                 dirPath = Settings.Default.ApplicationDir1;
             }
 
-            return dirPath;
+            return Path.Combine(GetRootDirectory(), dirPath);
         }
+
 
         public static string GetApplicationDataFilePath(ApplicationType appType)
         {
             var filePath = Path.Combine(GetApplicationDirPath(appType), Settings.Default.ApplicationDataFile);
+
+            return filePath;
+        }
+
+        public static string GetApplicationAttachmentDirPath(ApplicationType appType)
+        {
+            var filePath = Path.Combine(GetApplicationDirPath(appType), Settings.Default.AttachmentDir);
 
             return filePath;
         }

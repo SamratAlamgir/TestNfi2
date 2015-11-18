@@ -14,5 +14,8 @@
     <Setting Name="ZipDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Archive/</Value>
     </Setting>
+    <Setting Name="AttachmentDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Attachment/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

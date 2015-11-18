@@ -10,12 +10,11 @@ namespace NFI.Helper
 {
     public static class JsonHelper
     {
-        public static void Save<T>(T obj)
+        public static void Save<T>(T obj,ApplicationType appType)
         {
-            var collection = GetCollection<T>();
+            var collection = GetCollection<T>(appType);
             collection.Add(obj);
 
-            var appType = ApplicationType.Application1; // TODO: We should set it dynamically
 
             using (var file = File.CreateText(DirectoryHelper.GetApplicationDataFilePath(appType)))
             {
@@ -24,11 +23,10 @@ namespace NFI.Helper
             }
         }
 
-        public static List<T> GetCollection<T>()
+        public static List<T> GetCollection<T>(ApplicationType appType)
         {
             var collection = new List<T>();
-            var appType = ApplicationType.Application1; // TODO: We should set it dynamically
-
+           
             string fileName = DirectoryHelper.GetApplicationDataFilePath(appType);
 
             if (!File.Exists(fileName))
