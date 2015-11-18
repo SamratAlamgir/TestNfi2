@@ -29,16 +29,18 @@ namespace NFI.Helper
 
         public static string GetApplicationDataFilePath(ApplicationType appType)
         {
-            var fileName = "";
-
-            if (appType == ApplicationType.Application1)
-            {
-                fileName = Settings.Default.ApplicationDataFile;
-            }
-
-            var filePath = Path.Combine(GetApplicationDirPath(appType), fileName);
+            var filePath = Path.Combine(GetApplicationDirPath(appType), Settings.Default.ApplicationDataFile);
 
             return filePath;
+        }
+
+        // TODO: Need to pass the ApplicationDTO and file should contain the applicant name
+        public static string GetZipFilePath(ApplicationType appType, Guid appId)
+        {
+            var dirPath =  Path.Combine(GetApplicationDirPath(appType), Settings.Default.ZipDir);
+            var fileName = "UserName_" + appId;
+
+            return Path.Combine(dirPath, fileName);
         }
     }
 }

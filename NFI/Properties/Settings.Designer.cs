@@ -43,10 +43,19 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("App1Data.json")]
+        [global::System.Configuration.DefaultSettingValueAttribute("data.json")]
         public string ApplicationDataFile {
             get {
                 return ((string)(this["ApplicationDataFile"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Archive/")]
+        public string ZipDir {
+            get {
+                return ((string)(this["ZipDir"]));
             }
         }
     }
