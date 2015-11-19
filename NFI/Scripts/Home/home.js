@@ -63,85 +63,62 @@
         onTabShow: wizardOnTabShow
     });
 
-    $('#rootwizard .finish').click(function () {
-        var $valid = $("#commentForm").valid();
-        if (!$valid) {
-            $validator.focusInvalid();
-            return false;
-        }
-        $("#ajaxLoader").show();
-        $("#wizardBtn").hide();
-        $.post("/home/SumitUserInfoWithFile"
-            ,
-            {
-                name: $("#namefield").val(),
-                email: $("#emailfield").val(),
-                sex: $('input:radio[name="sexradio"]:checked', '#commentForm').val(),
-                company: $("#companyfield").val(),
-                fileDtos: filesToUpload,
-            }).done(function (data) {
-                if (data.IsSuccess) {
-                    clear_form_elements("tab-pane");
-                    $('#rootwizard').find("a[href*='tab1']").trigger('click');
-                    filesToUpload = new Array();
-                    $('#fileList ol').empty();
-                    $('#fileList').addClass('hide');
-                }
-            }).fail(function (error) {
-                alert("error");
-                console.log(error);
-            }).always(function () {
-                $("#ajaxLoader").hide();
-                $("#wizardBtn").show();
-            });
-    });
+    //$('#rootwizard .finish').click(function () {
+    //    var $valid = $("#commentForm").valid();
+    //    if (!$valid) {
+    //        $validator.focusInvalid();
+    //        return false;
+    //    }
+    //    $("#ajaxLoader").show();
+    //    $("#wizardBtn").hide();
+    //    $.post("/home/SumitUserInfoWithFile"
+    //        ,
+    //        {
+    //            name: $("#namefield").val(),
+    //            email: $("#emailfield").val(),
+    //            sex: $('input:radio[name="sexradio"]:checked', '#commentForm').val(),
+    //            company: $("#companyfield").val(),
+    //            fileDtos: filesToUpload,
+    //        }).done(function (data) {
+    //            if (data.IsSuccess) {
+    //                clear_form_elements("tab-pane");
+    //                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+    //                filesToUpload = new Array();
+    //                $('#fileList ol').empty();
+    //                $('#fileList').addClass('hide');
+    //            }
+    //        }).fail(function (error) {
+    //            alert("error");
+    //            console.log(error);
+    //        }).always(function () {
+    //            $("#ajaxLoader").hide();
+    //            $("#wizardBtn").show();
+    //        });
+    //});
 
     
 
-    $('#fileUpload').on('change', function (sender) {
+    //$('#fileUpload').on('change', function (sender) {
 
-        var files = sender.target.files;
+    //    var files = sender.target.files;
 
-        $.each(files, function (index, file) {
-            var reader = new FileReader();
-            reader.onload = function (event) {
-                $('.file-input-name').hide();
-               var  object = {};
-                object.Name = file.name;
-                object.Content = event.target.result;
-                filesToUpload.push(object);
-                $('#fileList ol').append("<li>" + file.name + "</li>");
-                $('#fileList').removeClass('hide');
+    //    $.each(files, function (index, file) {
+    //        var reader = new FileReader();
+    //        reader.onload = function (event) {
+    //            $('.file-input-name').hide();
+    //           var  object = {};
+    //            object.Name = file.name;
+    //            object.Content = event.target.result;
+    //            filesToUpload.push(object);
+    //            $('#fileList ol').append("<li>" + file.name + "</li>");
+    //            $('#fileList').removeClass('hide');
 
-            };
-            reader.readAsDataURL(file);
-        });
-    });
+    //        };
+    //        reader.readAsDataURL(file);
+    //    });
+    //});
 
-    //function handleFileSelect(evt) {
-        
-    //    var files = evt.target.files; // FileList object
-        
-    //    if (files) {
-    //        $("#ajaxLoader").show();
-    //        for (var i = 0; i < files.length; ++i) {
-    //            var f = files[i];
-    //            var reader = new FileReader();
-    //            // Closure to capture the file information.
-    //            reader.onload = (function(theFile) {
-    //                return function(e) {
-    //                    // stroe file content
-    //                    fileName = theFile.name;
-    //                    fileContent = e.target.result;
-    //                    $('#rootwizard .finish').show();
-    //                };
-    //            })(f);
-    //            $('#rootwizard .finish').hide();
-    //            reader.readAsDataURL(f);
-    //        }
-    //    }
-    //    $("#ajaxLoader").hide();
-    //}
+  
     
 
     function clear_form_elements(class_name) {

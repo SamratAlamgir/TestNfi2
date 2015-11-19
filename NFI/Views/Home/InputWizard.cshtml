@@ -8,7 +8,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>File Upload Wizard</h2>
-<form id="commentForm" method="get" action="" class="form-horizontal">
+<form id="commentForm" class="form-horizontal" action="/Home/Index" enctype="multipart/form-data" method="post">
     <div id="rootwizard" class="container well panel col-sm-8">
         <ul>
             <li><a href="#tab1" data-toggle="tab">User Info</a></li>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2" for="">Upload File</label>
                     <div class="controls">
-                        <input type="file" id="fileUpload" name="filesToUpload[]" class="btn-default" multiple />
+                        <input type="file" name="file" id="file"/>
                     </div>
                 </div>
                 <div id="fileList" class=" col-md-4 text-right form-group upload hide">
@@ -56,15 +56,32 @@
                     <ol class="list-group"></ol>
                 </div>
             </div>
-            <div class="row"><img alt="*" id="ajaxLoader" src="~/Images/ajax-loader.gif" style="display: none" /></div>
+            <div class="row"><img alt="*" id="ajaxLoader" src="~/Images/ajax-loader.gif" style="display: none"/>
+            </div>
             <div id="wizardBtn" class="row col-sm-8">
                 <ul class="pager wizard">
                     <li class="previous"><a href="javascript:;">Previous</a></li>
                     <li class="next"><a href="javascript:;">Next</a></li>
-                    <li class="next finish" style="display:none;"><a href="javascript:;">Submit</a></li>
+                    @*<li class="next finish" style="display: block;"><a href="javascript:;">Submit</a></li>*@
+
                 </ul>
+                <input type="submit" name="Submit" />
             </div>
 
         </div>
     </div>
 </form>
+
+@*<h2>Basic File Upload</h2>
+@using (Html.BeginForm("Index",
+                                                "Home",
+                                                FormMethod.Post,
+                                                new { enctype = "multipart/form-data" }))
+{
+    <input type="text" name="namefield" class="form-control required">
+    <label for="file">Upload</label>
+    <input type="file" name="file" id="file" /><br><br>
+    <input type="submit" value="Submit" />
+    <br><br>
+    @ViewBag.Message
+}*@
