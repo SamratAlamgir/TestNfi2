@@ -1,15 +1,13 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
-using NFI.Utility;
 
 namespace NFI.Controllers
 {
-    public class HomeController : System.Web.Mvc.Controller
+    public class HomeController : Controller
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
         public ActionResult Index()
