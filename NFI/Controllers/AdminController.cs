@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
 
-namespace NFI.Controller
+namespace NFI.Controllers
 {
-    public class AdminController : System.Web.Mvc.Controller
+    [BasicAuthenticationAttribute("admin", "test123", BasicRealm = "admin")]
+    public class AdminController : Controller
     {
-
+       
         public ActionResult Index()
         {
             return View("ApplicationList");
