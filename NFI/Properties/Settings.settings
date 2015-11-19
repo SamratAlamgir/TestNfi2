@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="RootDir" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">D://NFI Data/</Value>
+      <Value Profile="(Default)">/NFI Data/</Value>
     </Setting>
     <Setting Name="ApplicationDir1" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App1/</Value>
