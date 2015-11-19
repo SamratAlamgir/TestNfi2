@@ -5,14 +5,14 @@ using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
+using NFI.Properties;
+using NFI.Utility;
 
 namespace NFI.Controllers
 {
     public class HomeController : Controller
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
-      
-
         public ActionResult InputWizard()
         {
             return View();
@@ -57,6 +57,7 @@ namespace NFI.Controllers
                 };
 
                 JsonHelper.Save(application1Dto, appType);
+                SendEmailToPredefinedAdressee(application1Dto);
                 return Json(new { IsSuccess = true, Message = "File uploaded successfully" });
             }
             catch (Exception exception)
@@ -65,11 +66,24 @@ namespace NFI.Controllers
             }
 
         }
+
+        private void SendEmailToPredefinedAdressee(Application1Dto application1Dto)
+        {
+            var from = Settings.Default.FromEmailAddress;
+            var to = Settings.Default.ToEmailAddress;
+            var body = $"User Name: {application1Dto.Name}<br/>" +
+                       $"Email: {application1Dto.Email}<br/>" +
+                       $"Sex: {application1Dto.Sex}<br/>" +
+                       $" Attachment Link: {application1Dto.ZipFilePath}";
+            var subject = "File Send";
+            Emailer.SendMail(from, to, from, subject, body);
+        }
+
         private string GetFilenameWithTimeStamp(string filename)
         {
             var extension = Path.GetExtension(filename);
             var timeStamp = DateTime.Now.ToString(TimestampPattern);
-            return string.Format("{0}_{1}{2}", Path.GetFileNameWithoutExtension(filename), timeStamp, extension);
+            return $"{Path.GetFileNameWithoutExtension(filename)}_{timeStamp}{extension}";
         }
     }
 }
