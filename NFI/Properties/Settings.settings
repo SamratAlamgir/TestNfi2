@@ -17,5 +17,11 @@
     <Setting Name="AttachmentDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Attachment/</Value>
     </Setting>
+    <Setting Name="FromEmailAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">sajib.cefalo@hotmail.com</Value>
+    </Setting>
+    <Setting Name="ToEmailAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">rezaul.sajib@cefalo.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
