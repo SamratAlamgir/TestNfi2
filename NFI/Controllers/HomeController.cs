@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web.Mvc;
@@ -37,34 +38,44 @@ namespace NFI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SumitUserInfoWithFile(string name, string email, string sex, string company, string data, string fileName)
+        public ActionResult SumitUserInfoWithFile(string name, string email, string sex, string company, FileDto[] fileDtos)
         {
+            var files = new List<string>();
             try
             {
                 var appType = ApplicationType.Application1;
-                var fileContentNotManipulated = data;
-                var content = fileContentNotManipulated.Substring(fileContentNotManipulated.IndexOf("base64", StringComparison.Ordinal) + 7);
-                var fileContent = Convert.FromBase64String(content);
-                var path = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1);
-                if (!Directory.Exists(path))
+                var userId = Guid.NewGuid();
+                foreach (var fileDto in fileDtos)
                 {
-                    Directory.CreateDirectory(path);
-                }
-                fileName = GetFilenameWithTimeStamp(fileName);
-                var fullPath = Path.Combine(path, fileName);
-                if (System.IO.File.Exists(fullPath))
-                {
-                    throw new Exception($"File {fullPath} already exists. File not saved.");
-                }
+                    var fileContentNotManipulated = fileDto.Content;
+                    var content = fileContentNotManipulated.Substring(fileContentNotManipulated.IndexOf("base64", StringComparison.Ordinal) + 7);
+                    var fileContent = Convert.FromBase64String(content);
+                    var path = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1);
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    fileDto.Name = GetFilenameWithTimeStamp(fileDto.Name);
+                    var fullPath = Path.Combine(path, fileDto.Name);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        throw new Exception($"File {fullPath} already exists. File not saved.");
+                    }
+                    files.Add(fullPath);
+                    System.IO.File.WriteAllBytes(fullPath, fileContent);
 
-                System.IO.File.WriteAllBytes(fullPath, fileContent);
+                }
+                var zipFile = DirectoryHelper.GetZipFilePath(appType, userId);
+                ZipHelper.CreateZipFromFiles(files, appType, name, userId);
                 var application1Dto = new Application1Dto
                 {
+                    UserId = userId.ToString(),
                     Name = name ?? "",
                     Email = email ?? "",
-                    FilePath = fullPath,
+                    ZipFilePath = zipFile,
                     Sex = sex ?? "",
                 };
+
                 JsonHelper.Save(application1Dto, appType);
                 return Json(new { IsSuccess = true, Message = "File uploaded successfully" });
             }

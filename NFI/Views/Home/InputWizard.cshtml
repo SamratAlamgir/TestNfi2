@@ -6,28 +6,29 @@
 }
 <h2>File Upload Wizard</h2>
 <form id="commentForm" method="get" action="" class="form-horizontal">
-    <div id="rootwizard" class="container">
+    <div id="rootwizard" class="container well panel col-sm-8">
         <ul>
             <li><a href="#tab1" data-toggle="tab">User Info</a></li>
             <li><a href="#tab2" data-toggle="tab">File Upload</a></li>
         </ul>
+        <br/>
         <div class="tab-content">
             <div class="tab-pane" id="tab1">
                 <div class="form-group">
-                    <label class="control-label" for="namefield" required>Name</label>
+                    <label class="control-label col-xs-2" for="namefield">Name</label>
                     <div class="controls">
-                        <input type="text" id="namefield" name="namefield" class="required">
+                        <input type="text" id="namefield" name="namefield" class="form-control required">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="emailfield">Email</label>
+                    <label class="control-label col-xs-2" for="emailfield">Email</label>
                     <div class="controls">
-                        <input type="text" id="emailfield" name="emailfield" class="required email">
+                        <input type="text" id="emailfield" name="emailfield" class="form-control required email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="emailfield">Sex</label>
+                    <label class="control-label col-xs-2" for="emailfield">Sex</label>
                     <div class="controls">
                         <label class="radio-inline"><input checked type="radio" value="Male" name="sexradio">Male</label>
                         <label class="radio-inline"><input type="radio" value="Female" name="sexradio">Female</label>
@@ -36,21 +37,24 @@
             </div>
             <div class="tab-pane" id="tab2">
                 <div class="form-group">
-                    <label class="control-label" for="companyfield">Company</label>
+                    <label class="control-label col-xs-2" for="companyfield">Company</label>
                     <div class="controls">
-                        <input type="text" id="companyfield" name="companyfield">
+                        <input type="text" id="companyfield" class="form-control" name="companyfield">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="">Upload File</label>
+                    <label class="control-label col-xs-2" for="">Upload File</label>
                     <div class="controls">
-                        <input type="file" id="fileUpload" class="btn-default" />
-                        <span class="" id="uploadSizeError" style="display: none">File size could not be greater than 100MB</span>
+                        <input type="file" id="fileUpload" name="filesToUpload[]" class="btn-default" multiple />
                     </div>
+                </div>
+                <div id="fileList" class=" col-md-4 text-right form-group upload hide">
+                    <h4>Uploaded Files</h4>
+                    <ol class="list-group"></ol>
                 </div>
             </div>
             <div class="row"><img alt="*" id="ajaxLoader" src="~/Images/ajax-loader.gif" style="display: none" /></div>
-            <div id="wizardBtn" class="row">
+            <div id="wizardBtn" class="row col-sm-8">
                 <ul class="pager wizard">
                     <li class="previous"><a href="javascript:;">Previous</a></li>
                     <li class="next"><a href="javascript:;">Next</a></li>

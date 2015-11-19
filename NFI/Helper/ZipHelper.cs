@@ -18,14 +18,14 @@ namespace NFI.Helper
             ZipFile.CreateFromDirectory(srcFolder, zipFile);
         }
 
-        public static void CreateZipFromFiles(List<string> filesToZip, ApplicationType appType, Guid appId)
+        public static void CreateZipFromFiles(List<string> filesToZip, ApplicationType appType, string userName, Guid userId)
         {
             // Do nothing if no files are sent
             if (filesToZip == null || filesToZip.Count == 0)
                 return;
-
             //provide the path and name for the zip file to create
-            string zipFile = DirectoryHelper.GetZipFilePath(appType, appId);
+            var zipFile = DirectoryHelper.GetZipFilePath(appType, userId);
+            zipFile = zipFile.Replace("UserName", userName);
 
             try
             {
@@ -37,7 +37,7 @@ namespace NFI.Helper
                     }
                 }
             }
-            catch 
+            catch
             {
                 // Remove invalid zip archive
                 if (File.Exists(zipFile))
