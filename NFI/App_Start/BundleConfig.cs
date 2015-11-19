@@ -24,9 +24,13 @@ namespace NFI
                       "~/Scripts/respond.js",
                       "~/Scripts/jquery.bootstrap.wizard.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
+                "~/Scripts/jquery.dataTables.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/jquery.dataTables*"));
         }
     }
 }

@@ -1,37 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
-using NFI.Utility;
 
 namespace NFI.Controllers
 {
     public class HomeController : Controller
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
-        public ActionResult Index()
-        {
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+      
 
         public ActionResult InputWizard()
         {
