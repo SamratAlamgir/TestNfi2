@@ -9,7 +9,7 @@ using NFI.Utility;
 
 namespace NFI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : System.Web.Mvc.Controller
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
         public ActionResult Index()
