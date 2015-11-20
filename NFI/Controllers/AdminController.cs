@@ -21,7 +21,8 @@ namespace NFI.Controllers
 
         public JsonResult GetApplications()
         {
-            var result = JsonHelper.GetCollections<Application1Dto>(ApplicationType.Application1);
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
+            var result = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }

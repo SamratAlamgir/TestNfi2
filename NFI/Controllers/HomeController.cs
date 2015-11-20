@@ -24,40 +24,44 @@ namespace NFI.Controllers
                 var files = new List<string>();
                 var appType = ApplicationType.Application1;
                 var userId = Guid.NewGuid();
-                var path = Server.MapPath (DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
 
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
-                    }
+                var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1);
 
-                //string path = Path.Combine(Server.MapPath("~/test"),
-                //                           Path.GetFileName(file.FileName));
+                var physicalPath = Server.MapPath(networkPath);
 
-    
+                if (!Directory.Exists(physicalPath))
+                {
+                    Directory.CreateDirectory(physicalPath);
+                }
+
                 var fileName = GetFilenameWithTimeStamp(file.FileName);
-                var fullPath = Path.Combine(path, fileName);
-                    if (System.IO.File.Exists(fullPath))
-                    {
-                        throw new Exception($"File {fullPath} already exists. File not saved.");
-                    }
-                    files.Add(fullPath);
+                var fullPath = Path.Combine(physicalPath, fileName);
+                if (System.IO.File.Exists(fullPath))
+                {
+                    throw new Exception($"File {fullPath} already exists. File not saved.");
+                }
+                files.Add(fullPath);
 
                 file.SaveAs(fullPath);
 
-                var zipFile = DirectoryHelper.GetZipFilePath(appType, userId);
-                ZipHelper.CreateZipFromFiles(files, appType, namefield, userId);
+                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, userId, namefield);
+
+                var zipFilePhysicalPath = Server.MapPath(zipFilePath);
+
+                ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
+
                 var application1Dto = new Application1Dto
                 {
                     UserId = userId.ToString(),
                     Name = namefield ?? "",
                     Email = emailfield ?? "",
-                    ZipFilePath = zipFile,
                     Sex = sex ?? "",
-                    Company = companyfield ?? ""
+                    Company = companyfield ?? "",
+                    ZipFilePath = "~/.." + zipFilePath
                 };
 
-                JsonHelper.Save(application1Dto, appType);
+                string dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
+                JsonHelper.Save(application1Dto, Server.MapPath(dataFilePath));
                 SendEmailToPredefinedAdressee(application1Dto);
                 return Json(new { IsSuccess = true, Message = "File uploaded successfully" });
             }
