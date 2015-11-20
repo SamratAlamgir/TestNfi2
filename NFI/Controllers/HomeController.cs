@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using NFI.App_Start;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -11,6 +15,7 @@ using NFI.Utility;
 
 namespace NFI.Controllers
 {
+    [CaptchaAuthorize]
     public class HomeController : Controller
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
@@ -24,24 +29,24 @@ namespace NFI.Controllers
                 var files = new List<string>();
                 var appType = ApplicationType.Application1;
                 var userId = Guid.NewGuid();
-                var path = Server.MapPath (DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
+                var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
 
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
-                    }
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
 
                 //string path = Path.Combine(Server.MapPath("~/test"),
                 //                           Path.GetFileName(file.FileName));
 
-    
+
                 var fileName = GetFilenameWithTimeStamp(file.FileName);
                 var fullPath = Path.Combine(path, fileName);
-                    if (System.IO.File.Exists(fullPath))
-                    {
-                        throw new Exception($"File {fullPath} already exists. File not saved.");
-                    }
-                    files.Add(fullPath);
+                if (System.IO.File.Exists(fullPath))
+                {
+                    throw new Exception($"File {fullPath} already exists. File not saved.");
+                }
+                files.Add(fullPath);
 
                 file.SaveAs(fullPath);
 
@@ -66,7 +71,7 @@ namespace NFI.Controllers
                 return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
             }
         }
-
+       
         public ActionResult InputWizard()
         {
             return View();
@@ -88,5 +93,8 @@ namespace NFI.Controllers
             var subject = "File Send";
             Emailer.SendMail(from, to, from, subject, body);
         }
+
+
+
     }
 }
