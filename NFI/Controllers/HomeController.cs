@@ -16,54 +16,38 @@ namespace NFI.Controllers
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
 
         [HttpPost]
-        public ActionResult Index(string namefield, string emailfield, string sex, string companyfield, HttpPostedFileBase file)
+        public ActionResult SubmitForm1(ViewModelFrom1Data formData)
         {
-            if (file == null || file.ContentLength <= 0) return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
+            if (formData.file1 == null || formData.file1.ContentLength <= 0 || formData.file2 == null || formData.file2.ContentLength <= 0) return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
             try
             {
-                var files = new List<string>();
                 var appType = ApplicationType.Application1;
                 var userId = Guid.NewGuid();
-
-                var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1);
-                var physicalPath = Server.MapPath(networkPath);
-
-                if (!Directory.Exists(physicalPath))
+                var files = new List<string>
                 {
-                    Directory.CreateDirectory(physicalPath);
-                }
+                    SaveUploadedFiles(formData.file1),
+                    SaveUploadedFiles(formData.file2)
+                };
 
-                var fileName = GetFilenameWithTimeStamp(file.FileName);
-                var fullPath = Path.Combine(physicalPath, fileName);
-                if (System.IO.File.Exists(fullPath))
-                {
-                    throw new Exception($"File {fullPath} already exists. File not saved.");
-                }
-                files.Add(fullPath);
-
-                file.SaveAs(fullPath);
-
-
-                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, userId, namefield);
+                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, userId, formData.Name);
                 var zipFilePhysicalPath = Server.MapPath(zipFilePath);
 
                 var application1Dto = new Application1Dto
                 {
                     UserId = userId.ToString(),
-                    Name = namefield ?? "",
-                    Email = emailfield ?? "",
-                    Sex = sex ?? "",
-                    Company = companyfield ?? "",
-                    IsArchived = false,
+                    Name = formData.Name ?? "",
+                    Email = formData.Email ?? "",
+                    Sex = formData.Sex ?? "",
+                    Company = formData.Company ?? "",
                     ZipFilePath = ".." + zipFilePath
                 };
 
-                string userDataFilePath = CreateUserDataFile(application1Dto);
+                var userDataFilePath = CreateUserDataFile(application1Dto);
                 files.Add(userDataFilePath);
 
                 ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
 
-                string dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
+                var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
                 JsonHelper.Save(application1Dto, Server.MapPath(dataFilePath));
                 SendEmailToPredefinedAdressee(application1Dto);
                 return Json(new { IsSuccess = true, Message = "File uploaded successfully" });
@@ -78,11 +62,32 @@ namespace NFI.Controllers
         {
             return View();
         }
-        private string GetFilenameWithTimeStamp(string filename)
+
+        #region Helper Mehtods
+
+        private string GetFilenameWithTimeStamp(string file1Name)
         {
-            var extension = Path.GetExtension(filename);
+            var extension = Path.GetExtension(file1Name);
             var timeStamp = DateTime.Now.ToString(TimestampPattern);
-            return $"{Path.GetFileNameWithoutExtension(filename)}_{timeStamp}{extension}";
+            return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}{extension}";
+        }
+
+        private string SaveUploadedFiles(HttpPostedFileBase file)
+        {
+            var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1);
+            var physicalPath = Server.MapPath(networkPath);
+            if (!Directory.Exists(physicalPath))
+            {
+                Directory.CreateDirectory(physicalPath);
+            }
+            var file1Name = GetFilenameWithTimeStamp(file.FileName);
+            var fullPath = Path.Combine(physicalPath, file1Name);
+            if (System.IO.File.Exists(fullPath))
+            {
+                throw new Exception($"File {fullPath} already exists. File not saved.");
+            }
+            file.SaveAs(fullPath);
+            return fullPath;
         }
         private void SendEmailToPredefinedAdressee(Application1Dto application1Dto)
         {
@@ -107,7 +112,7 @@ namespace NFI.Controllers
             string path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
 
             string fullPath = Path.Combine(path, fileName);
-            
+
             if (!System.IO.File.Exists(fullPath))
             {
                 // Create a file to write to.
@@ -119,9 +124,11 @@ namespace NFI.Controllers
 
         private string GetServerPathForFile(string filePath)
         {
-             var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
+            var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
 
             return filePath.Replace("../", rootUri);
         }
+
+        #endregion
     }
 }
