@@ -91,14 +91,13 @@ namespace NFI.Controllers
         }
         private void SendEmailToPredefinedAdressee(Application1Dto application1Dto)
         {
-            var from = Settings.Default.FromEmailAddress;
             var to = Settings.Default.ToEmailAddress;
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
                        $" Attachment Link: {GetServerPathForFile(application1Dto.ZipFilePath)}";
             var subject = "File Send";
-            Emailer.SendMail(from, to, from, subject, body);
+            Emailer.SendMail(to, subject, body);
         }
 
         private string CreateUserDataFile(Application1Dto application1Dto)
