@@ -26,7 +26,6 @@ namespace NFI.Controllers
                 var userId = Guid.NewGuid();
 
                 var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1);
-
                 var physicalPath = Server.MapPath(networkPath);
 
                 if (!Directory.Exists(physicalPath))
@@ -45,7 +44,6 @@ namespace NFI.Controllers
                 file.SaveAs(fullPath);
 
                 var zipFilePath = DirectoryHelper.GetZipFilePath(appType, userId, namefield);
-
                 var zipFilePhysicalPath = Server.MapPath(zipFilePath);
 
                 ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
@@ -57,12 +55,12 @@ namespace NFI.Controllers
                     Email = emailfield ?? "",
                     Sex = sex ?? "",
                     Company = companyfield ?? "",
-                    ZipFilePath = "~/.." + zipFilePath
+                    ZipFilePath = ".." + zipFilePath
                 };
 
                 string dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
                 JsonHelper.Save(application1Dto, Server.MapPath(dataFilePath));
-                SendEmailToPredefinedAdressee(application1Dto);
+                //SendEmailToPredefinedAdressee(application1Dto);
                 return Json(new { IsSuccess = true, Message = "File uploaded successfully" });
             }
             catch (Exception ex)
