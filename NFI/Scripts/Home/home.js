@@ -39,6 +39,7 @@
         return true;
     };
     var wizardOnTabShow = function (tab, navigation, index) {
+
         var $total = navigation.find('li').length;
         var $current = index + 1;
         var $percent = ($current / $total) * 100;
@@ -56,88 +57,26 @@
 
     };
 
-    var filesToUpload = new Array();
+    //var filesToUpload = new Array();
 
     $('#rootwizard').bootstrapWizard({
         onNext: wizardOnTabChange,
         onTabShow: wizardOnTabShow
     });
 
-    //$('#rootwizard .finish').click(function () {
-    //    var $valid = $("#commentForm").valid();
-    //    if (!$valid) {
-    //        $validator.focusInvalid();
-    //        return false;
-    //    }
-    //    $("#ajaxLoader").show();
-    //    $("#wizardBtn").hide();
-    //    $.post("/home/SumitUserInfoWithFile"
-    //        ,
-    //        {
-    //            name: $("#namefield").val(),
-    //            email: $("#emailfield").val(),
-    //            sex: $('input:radio[name="sexradio"]:checked', '#commentForm').val(),
-    //            company: $("#companyfield").val(),
-    //            fileDtos: filesToUpload,
-    //        }).done(function (data) {
-    //            if (data.IsSuccess) {
-    //                clear_form_elements("tab-pane");
-    //                $('#rootwizard').find("a[href*='tab1']").trigger('click');
-    //                filesToUpload = new Array();
-    //                $('#fileList ol').empty();
-    //                $('#fileList').addClass('hide');
-    //            }
-    //        }).fail(function (error) {
-    //            alert("error");
-    //            console.log(error);
-    //        }).always(function () {
-    //            $("#ajaxLoader").hide();
-    //            $("#wizardBtn").show();
-    //        });
-    //});
+    $("#file2").on('change', function () {
+        debugger;
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
 
-    
-
-    //$('#fileUpload').on('change', function (sender) {
-
-    //    var files = sender.target.files;
-
-    //    $.each(files, function (index, file) {
-    //        var reader = new FileReader();
-    //        reader.onload = function (event) {
-    //            $('.file-input-name').hide();
-    //           var  object = {};
-    //            object.Name = file.name;
-    //            object.Content = event.target.result;
-    //            filesToUpload.push(object);
-    //            $('#fileList ol').append("<li>" + file.name + "</li>");
-    //            $('#fileList').removeClass('hide');
-
-    //        };
-    //        reader.readAsDataURL(file);
-    //    });
-    //});
-
-  
-    
-
-    function clear_form_elements(class_name) {
-        jQuery("." + class_name).find(':input').each(function () {
-            switch (this.type) {
-                case 'password':
-                case 'text':
-                case 'textarea':
-                case 'file':
-                case 'select-one':
-                case 'select-multiple':
-                    jQuery(this).val('');
-                    break;
-                case 'checkbox':
-                    //case 'radio':
-                    //    this.checked = false;
-            }
-        });
-    }
-
-
+    $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+        debugger;
+        if (numFiles >= 0 && typeof label !== 'undefined') {
+       
+          $("#btnSubmit").show();
+      }
+    });
 });

@@ -12,9 +12,9 @@
                     { "mDataProp": "Sex" },
                     { "mDataProp": "Company" },
                     {
-                        "mDataProp": "FilePath",
+                        "mDataProp": "ZipFilePath",
                         "fnCreatedCell": function (nTd, sData, oData) {
-                            $(nTd).html("<a href='/" + oData.FilePath + "'>Download</a>");
+                            $(nTd).html("<a href='/" + oData.ZipFilePath + "'>Download</a>");
                         }
                     }
                 ],

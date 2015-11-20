@@ -8,28 +8,29 @@ using NFI.Enums;
 
 namespace NFI.Helper
 {
-    public class ZipHelper
+    public static class ZipHelper
     {
-        public static void CreateZipFromDirectory(string srcFolder, ApplicationType appType, Guid appId)
+        public static void CreateZipFromDirectory(string srcFolder, string zipFilePath)
         {
-            string zipFile = DirectoryHelper.GetZipFilePath(appType, appId);
-
-            //call the ZipFile.CreateFromDirectory() method
-            ZipFile.CreateFromDirectory(srcFolder, zipFile);
+            ZipFile.CreateFromDirectory(srcFolder, zipFilePath);
         }
 
-        public static void CreateZipFromFiles(List<string> filesToZip, ApplicationType appType, string userName, Guid userId)
+        public static void CreateZipFromFiles(List<string> filesToZip, string zipFilePath)
         {
             // Do nothing if no files are sent
-            if (filesToZip == null || filesToZip.Count == 0)
+            if (filesToZip == null || filesToZip.Count == 0 || string.IsNullOrEmpty(zipFilePath))
                 return;
-            //provide the path and name for the zip file to create
-            var zipFile = DirectoryHelper.GetZipFilePath(appType, userId);
-            zipFile = zipFile.Replace("UserName", userName);
 
             try
             {
-                using (ZipArchive zipArchive = ZipFile.Open(zipFile, ZipArchiveMode.Create))
+                string dirName = Path.GetDirectoryName(zipFilePath);
+                if (!Directory.Exists(dirName))
+                {
+                    Directory.CreateDirectory(dirName);
+                }
+
+
+                using (ZipArchive zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
                 {
                     foreach (var filePath in filesToZip)
                     {
@@ -37,11 +38,11 @@ namespace NFI.Helper
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 // Remove invalid zip archive
-                if (File.Exists(zipFile))
-                    File.Delete(zipFile);
+                if (File.Exists(zipFilePath))
+                    File.Delete(zipFilePath);
             }
         }
 
