@@ -19,7 +19,7 @@ namespace NFI.Controllers
             return View("ApplicationList");
         }
 
-        public JsonResult GetApplications()
+        public JsonResult GetApplications(bool includeArchive)
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
             var result = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));

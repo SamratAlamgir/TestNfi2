@@ -13,6 +13,7 @@ namespace NFI.Models
         public string Email { get; set; }
         public string Sex { get; set; }
         public string Company { get; set; }
+        public bool IsArchived { get; set; }
         public string ZipFilePath { get; set; }
 
     }

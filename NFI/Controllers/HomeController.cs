@@ -54,6 +54,7 @@ namespace NFI.Controllers
                     Email = emailfield ?? "",
                     Sex = sex ?? "",
                     Company = companyfield ?? "",
+                    IsArchived = false,
                     ZipFilePath = ".." + zipFilePath
                 };
 
