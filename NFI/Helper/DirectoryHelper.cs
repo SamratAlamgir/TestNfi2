@@ -42,15 +42,14 @@ namespace NFI.Helper
             return filePath;
         }
 
-        // TODO: Need to pass the ApplicationDTO and file should contain the applicant name
-        public static string GetZipFilePath(ApplicationType appType, Guid appId)
+        public static string GetZipFilePath(ApplicationType appType, Guid appId, string userName)
         {
             var dirPath = Path.Combine(GetApplicationDirPath(appType), Settings.Default.ZipDir);
             if (!Directory.Exists(dirPath))
             {
                 Directory.CreateDirectory(dirPath);
             }
-            var fileName = "UserName_" + appId + ".zip";
+            var fileName = userName + "_" + appId + ".zip";
 
             return Path.Combine(dirPath, fileName);
         }

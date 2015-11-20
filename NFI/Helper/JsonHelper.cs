@@ -10,32 +10,30 @@ namespace NFI.Helper
 {
     public static class JsonHelper
     {
-        public static void Save<T>(T obj,ApplicationType appType)
+        public static void Save<T>(T obj, string dataFilePath)
         {
-            var collection = GetCollections<T>(appType);
+            var collection = GetCollections<T>(dataFilePath);
             collection.Add(obj);
 
 
-            using (var file = File.CreateText(DirectoryHelper.GetApplicationDataFilePath(appType)))
+            using (var file = File.CreateText(dataFilePath))
             {
                 var serializer = new JsonSerializer();
                 serializer.Serialize(file, collection);
             }
         }
 
-        public static List<T> GetCollections<T>(ApplicationType appType)
+        public static List<T> GetCollections<T>(string dataFilePath)
         {
             var collection = new List<T>();
-           
-            string fileName = DirectoryHelper.GetApplicationDataFilePath(appType);
 
-            if (!File.Exists(fileName))
+            if (!File.Exists(dataFilePath))
             {
                 return collection;
             }
 
             // deserialize JSON 
-            using (StreamReader file = File.OpenText(fileName))
+            using (StreamReader file = File.OpenText(dataFilePath))
             {
                 var serializer = new JsonSerializer();
                 collection = (List<T>)serializer.Deserialize(file, typeof(List<T>));
