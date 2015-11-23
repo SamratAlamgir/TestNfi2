@@ -21,7 +21,7 @@
                     "fnCreatedCell": function (nTd, sData, oData) {
 
                         if (!oData.IsArchived) {
-                            $(nTd).html("<Button>Archive</Button>");
+                            $(nTd).html("<Button data-appId='" + oData.AppId + "'>Archive</Button>");
                         } else {
                             $(nTd).html("<h4><span class='label label-warning'>Archived</span></h4>");
                         }
@@ -32,8 +32,8 @@
         });
 
         $('#applicationListTable tbody').on('click', 'button', function () {
-            var data = table.row($(this).parents('tr')).data();
-            markAsArchive(data.AppId);
+            var appId = this.getAttribute("data-appid");
+            markAsArchive(appId);
         });
     }
 
@@ -52,15 +52,16 @@
 
     var markAsArchive = function (appId) {
 
-        if (!confirm("Are you sure to mark this application as Archive?"))
-            return;
+        bootbox.confirm("Are you sure you want to move this application to Archive?", function (result) {
+            if (!result) return; // do nothing
 
-        $.post("/admin/MarkAsArchive", { "appId": appId })
-       .done(function () {
-           loadGridData();
-       })
-        .fail(function () {
-            alert("Fail");
+            $.post("/admin/MarkAsArchive", { "appId": appId })
+                .done(function () {
+                    loadGridData();
+                })
+                .fail(function () {
+                    alert("Fail");
+                });
         });
     };
 
