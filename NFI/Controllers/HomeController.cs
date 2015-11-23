@@ -22,19 +22,19 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Application1;
-                var userId = Guid.NewGuid();
+                var appId = Guid.NewGuid();
                 var files = new List<string>
                 {
                     SaveUploadedFiles(formData.file1),
                     SaveUploadedFiles(formData.file2)
                 };
 
-                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, userId, formData.Name);
+                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appId, formData.Name);
                 var zipFilePhysicalPath = Server.MapPath(zipFilePath);
 
                 var application1Dto = new Application1Dto
                 {
-                    UserId = userId.ToString(),
+                    AppId = appId.ToString(),
                     Name = formData.Name ?? "",
                     Email = formData.Email ?? "",
                     Sex = formData.Sex ?? "",

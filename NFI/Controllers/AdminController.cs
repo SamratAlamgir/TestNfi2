@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -19,12 +20,32 @@ namespace NFI.Controllers
             return View("ApplicationList");
         }
 
-        public JsonResult GetApplications(bool includeArchive)
+        public JsonResult GetApplications(ApplicationType appType, bool includeArchive)
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
-            var result = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
+            var result = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath)).OrderBy(x => x.IsArchived).ToList();
+
+            if (!includeArchive)
+            {
+                result = result.Where(x => !x.IsArchived).ToList();
+            }
+
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public bool MarkAsArchive(string appId)
+        {
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
+            var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
+
+            var selectedAppp = resultSet.Single(x => x.AppId == appId);
+            selectedAppp.IsArchived = true;
+
+            
+            JsonHelper.Save(resultSet, Server.MapPath(dataFilePath));
+
+            return true;
         }
     }
 }

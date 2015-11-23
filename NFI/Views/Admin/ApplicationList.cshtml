@@ -7,25 +7,48 @@
         <script src="~/Scripts/Admin/admin.js"></script>
     }
 
-    <title> Application List </title>
-
 </head>
 <body>
-    <div>
+    <div class="container">
         <h2> Application List </h2>
-        <table id="applicationListTable" class="display" width="100%">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Sex</th>
-                    <th>Company</th>
-                    <th>Download</th>
-                </tr>
-            </thead>
-           
-        </table>
-    </div>
+        <div class="row">
 
+            <div class="panel">
+                <div class="panel-body">
+
+                    <div class="col-sm-3">
+                        <select id="appType" class="form-control">
+                            <option value="0">All</option>
+                            <option value="1" selected="selected">Application1</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label class="checkbox-inline"><input id="includeArchive" type="checkbox" value="1">Include Archive</label>
+                    </div>
+
+                    <button type="button" id="searchButton" class="btn btn-default">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div>
+                <table id="applicationListTable" class="display" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Sex</th>
+                            <th>Company</th>
+                            <th>Download</th>
+                            <th>Archive</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
