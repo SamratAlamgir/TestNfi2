@@ -22,6 +22,7 @@ namespace NFI
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
+                      "~/Scripts/bootbox.js",
                       "~/Scripts/jquery.bootstrap.wizard.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
