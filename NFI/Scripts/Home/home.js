@@ -3,7 +3,7 @@
         var maxFileSize = 1024 * 1024 * 100;
         var files = element.files;
         for (var i = 0; i < files.length; ++i) {
-            var size = files[i];
+            var size = files[i].size;
             if (size > maxFileSize) // checks the file more than 100 MB
             {
                 return false;
@@ -22,7 +22,11 @@
                 required: true,
                 minlength: 3
             },
-            fileUpload: {
+            file1: {
+                required: true,
+                fileUploadSize: true
+            },
+            file2: {
                 required: true,
                 fileUploadSize: true
             }
@@ -30,13 +34,18 @@
         }
     });
 
-    var wizardOnTabChange = function (tab, navigation, index) {
-        var $valid = $("#commentForm").valid();
-        if (!$valid) {
+    function validateActiveTab() {
+        var $valid = true;
+        $("#rootwizard .tab-pane.active :input").each(function (index, element) {
+            var v = $validator.element(element);
+            $valid = $valid && v;
+            if (v);
             $validator.focusInvalid();
-            return false;
-        }
-        return true;
+        });
+        return $valid;
+    }
+    var wizardOnTabChange = function (tab, navigation, index) {
+        return validateActiveTab();
     };
     var wizardOnTabShow = function (tab, navigation, index) {
 
@@ -45,38 +54,26 @@
         var $percent = ($current / $total) * 100;
         $('#rootwizard').find('.bar').css({ width: $percent + '%' });
 
-        // If it's the last tab then hide the last button and show the finish instead
+        // If it's the last tab then hide the next button
         if ($current >= $total) {
             $('#rootwizard').find('.pager .next').hide();
-            $('#rootwizard').find('.pager .finish').show();
-            $('#rootwizard').find('.pager .finish').removeClass('disabled');
+            $('#rootwizard').find('.pager .prev').show();
+            $("#btnSubmit").show();
         } else {
             $('#rootwizard').find('.pager .next').show();
-            $('#rootwizard').find('.pager .finish').hide();
+            $('#rootwizard').find('.pager .prev').hide();
+            $('#btnSubmit').hide();
         }
 
     };
-
-    //var filesToUpload = new Array();
-
     $('#rootwizard').bootstrapWizard({
         onNext: wizardOnTabChange,
         onTabShow: wizardOnTabShow
     });
 
-    $("#file2").on('change', function () {
-        debugger;
-        var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [numFiles, label]);
+    $("#btnSubmit").click(function () {
+        return validateActiveTab();
     });
 
-    $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
-        debugger;
-        if (numFiles >= 0 && typeof label !== 'undefined') {
-       
-          $("#btnSubmit").show();
-      }
-    });
+   
 });
