@@ -36,11 +36,11 @@
 
     function validateActiveTab() {
         var $valid = true;
-        $("#rootwizard .tab-pane.active :input").each(function (index, element) {
+        $('#rootwizard .tab-pane.active :input').not(':button,:hidden').each(function (index, element) {
             var v = $validator.element(element);
             $valid = $valid && v;
-            if (v);
-            $validator.focusInvalid();
+            if (v)
+                $validator.focusInvalid();
         });
         return $valid;
     }
@@ -71,9 +71,11 @@
         onTabShow: wizardOnTabShow
     });
 
-    $("#btnSubmit").click(function () {
+     $('#rootwizard input[type=file]').change(function(event) {
+         if ($validator.element(event.target))
+             $validator.focusInvalid();
+     });
+     $('#btnSubmit').click(function () {
         return validateActiveTab();
     });
-
-   
 });
