@@ -167,8 +167,10 @@
   <ItemGroup>
     <Compile Include="App_Start\BasicAuthenticationAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CaptchaAuthorizeAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Enums\Enum.cs" />
@@ -179,6 +181,7 @@
     <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="Helper\ZipHelper.cs" />
     <Compile Include="Models\Application1Dto.cs" />
+    <Compile Include="Models\CaptachaModel.cs" />
     <Compile Include="Models\FileDto.cs" />
     <Compile Include="Models\ViewModelFromData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -322,6 +325,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\InputWizard.cshtml" />
     <Content Include="Views\Admin\ApplicationList.cshtml" />
+    <Content Include="Views\Captcha\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
