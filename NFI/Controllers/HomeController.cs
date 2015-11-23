@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using NFI.App_Start;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -11,6 +12,7 @@ using NFI.Utility;
 
 namespace NFI.Controllers
 {
+    [CaptchaAuthorize]
     public class HomeController : Controller
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
@@ -24,7 +26,7 @@ namespace NFI.Controllers
                 var appType = ApplicationType.Application1;
                 var userId = Guid.NewGuid();
                 var files = new List<string>
-                {
+                    {
                     SaveUploadedFiles(formData.file1),
                     SaveUploadedFiles(formData.file2)
                 };
