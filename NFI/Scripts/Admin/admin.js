@@ -5,7 +5,8 @@
         var table = $('#applicationListTable').DataTable({
             "iDisplayLength": 25,
             "aaData": data,
-            "aaSorting": [],
+            //"aaSorting": [],
+            "order": [[ 2, "desc" ]],
             "bDestroy": true,
             "aoColumns": [
                 { "mDataProp": "Name" },
