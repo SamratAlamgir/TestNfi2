@@ -328,6 +328,7 @@
     <Content Include="Views\Home\InputWizard.cshtml" />
     <Content Include="Views\Admin\ApplicationList.cshtml" />
     <Content Include="Views\Captcha\Index.cshtml" />
+    <Content Include="Views\Home\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

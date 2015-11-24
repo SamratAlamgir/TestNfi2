@@ -20,8 +20,12 @@ namespace NFI.Controllers
         [HttpPost]
         public ActionResult SubmitForm1(ViewModelForm1Data formData)
         {
+
             if (ValidateFileInput(formData))
-                return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
+            {
+                TempData["Status"] = "Error";
+                return View("InputWizard");
+            }
             try
             {
                 var appType = ApplicationType.Application1;
@@ -54,11 +58,12 @@ namespace NFI.Controllers
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
                 JsonHelper.Save(application1Dto, Server.MapPath(dataFilePath));
                 SendEmailToPredefinedAdressee(application1Dto);
-                return Json(new { IsSuccess = true, Message = "File uploaded successfully" });
+                return View("Success");
             }
             catch (Exception ex)
             {
-                return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
+                TempData["Status"] = "Error";
+                return View("InputWizard");
             }
         }
 
