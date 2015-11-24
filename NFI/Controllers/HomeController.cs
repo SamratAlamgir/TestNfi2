@@ -18,7 +18,7 @@ namespace NFI.Controllers
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
 
         [HttpPost]
-        public ActionResult SubmitForm1(ViewModelFrom1Data formData)
+        public ActionResult SubmitForm1(ViewModelForm1Data formData)
         {
 
             if (ValidateFileInput(formData))
@@ -46,7 +46,8 @@ namespace NFI.Controllers
                     Email = formData.Email ?? "",
                     Sex = formData.Sex ?? "",
                     Company = formData.Company ?? "",
-                    ZipFilePath = ".." + zipFilePath
+                    ZipFilePath = ".." + zipFilePath,
+                    CreateDate = DateTime.Now
                 };
 
                 var userDataFilePath = CreateUserDataFile(application1Dto);
@@ -66,10 +67,11 @@ namespace NFI.Controllers
             }
         }
 
-        private bool ValidateFileInput(ViewModelFrom1Data formData)
+        private bool ValidateFileInput(ViewModelForm1Data formData)
         {
             var maxsize = 1024 * 1024 * 100;
-            return formData.file1 == null || (formData.file1.ContentLength <= 0 || formData.file1.ContentLength > maxsize) || formData.file2 == null || (formData.file2.ContentLength <= 0 || formData.file2.ContentLength > maxsize);
+            return formData.file1 == null || (formData.file1.ContentLength <= 0 || formData.file1.ContentLength > maxsize) || 
+                formData.file2 == null || (formData.file2.ContentLength <= 0 || formData.file2.ContentLength > maxsize);
         }
 
 

@@ -23,7 +23,8 @@ namespace NFI.Controllers
         public JsonResult GetApplications(ApplicationType appType, bool includeArchive)
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
-            var result = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath)).OrderBy(x => x.IsArchived).ToList();
+            var result = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath))
+                .OrderBy(x => x.IsArchived).ThenByDescending(x => x.CreateDate).ToList();
 
             if (!includeArchive)
             {
