@@ -10,7 +10,14 @@
             "aoColumns": [
                 { "mDataProp": "Name" },
                 { "mDataProp": "Email" },
-                { "mDataProp": "Sex" },
+                {
+                    "mDataProp": "CreateDate",
+                    "fnCreatedCell": function (nTd, sData, oData) {
+                        var date = new Date(parseInt(sData.substr(6)));
+                        $(nTd).html((date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear());
+                    }
+                },
+
                 { "mDataProp": "Company" },
                 {
                     "mDataProp": "ZipFilePath",
@@ -34,7 +41,7 @@
         });
 
         if (!eventSubscribed) {
-            $('#applicationListTable tbody').on('click', 'button', function() {
+            $('#applicationListTable tbody').on('click', 'button', function () {
                 var appId = this.getAttribute("data-appid");
                 markAsArchive(appId);
             });
