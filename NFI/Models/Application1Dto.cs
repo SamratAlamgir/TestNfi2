@@ -15,6 +15,6 @@ namespace NFI.Models
         public string Company { get; set; }
         public bool IsArchived { get; set; }
         public string ZipFilePath { get; set; }
-
+        public DateTime CreateDate { get; set; }
     }
 }

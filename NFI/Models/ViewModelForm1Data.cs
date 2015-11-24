@@ -2,7 +2,7 @@
 
 namespace NFI.Models
 {
-    public class ViewModelFrom1Data
+    public class ViewModelForm1Data
     {
         public string Name { get; set; }
         public string Email { get; set; }

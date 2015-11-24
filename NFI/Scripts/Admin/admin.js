@@ -1,9 +1,11 @@
 ﻿$(function () {
+    var eventSubscribed = false;
 
     var setGridData = function (data) {
         var table = $('#applicationListTable').DataTable({
             "iDisplayLength": 25,
             "aaData": data,
+            "aaSorting": [],
             "bDestroy": true,
             "aoColumns": [
                 { "mDataProp": "Name" },
@@ -31,10 +33,14 @@
             "columnDefs": [{ "targets": 4, "orderable": false, "searchable": false }]
         });
 
-        $('#applicationListTable tbody').on('click', 'button', function () {
-            var appId = this.getAttribute("data-appid");
-            markAsArchive(appId);
-        });
+        if (!eventSubscribed) {
+            $('#applicationListTable tbody').on('click', 'button', function() {
+                var appId = this.getAttribute("data-appid");
+                markAsArchive(appId);
+            });
+
+            eventSubscribed = true;
+        }
     }
 
     var loadGridData = function () {
