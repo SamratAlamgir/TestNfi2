@@ -20,7 +20,8 @@ namespace NFI.Controllers
         [HttpPost]
         public ActionResult SubmitForm1(ViewModelFrom1Data formData)
         {
-            if (formData.file1 == null || formData.file1.ContentLength <= 0 || formData.file2 == null || formData.file2.ContentLength <= 0) return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
+            if (ValidateFileInput(formData))
+                return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
             try
             {
                 var appType = ApplicationType.Application1;
@@ -59,6 +60,13 @@ namespace NFI.Controllers
                 return Json(new { IsSuccess = false, Message = "Unable to Upload File" });
             }
         }
+
+        private bool ValidateFileInput(ViewModelFrom1Data formData)
+        {
+            var maxsize = 1024 * 1024 * 100;
+            return formData.file1 == null || (formData.file1.ContentLength <= 0 || formData.file1.ContentLength > maxsize) || formData.file2 == null || (formData.file2.ContentLength <= 0 || formData.file2.ContentLength > maxsize);
+        }
+
 
         public ActionResult InputWizard()
         {
