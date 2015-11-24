@@ -191,8 +191,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Utility\Emailer.cs" />
-    <Compile Include="Utility\SiteEnums.cs" />
+    <Compile Include="Helper\Emailer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -275,6 +274,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Scripts\Admin\admin.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -330,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

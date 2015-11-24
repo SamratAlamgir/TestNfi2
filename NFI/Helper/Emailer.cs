@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Net;
 using System.Net.Mail;
+using NFI.Properties;
 
 namespace NFI.Utility
 {
@@ -11,29 +12,29 @@ namespace NFI.Utility
         {
         }
 
-        public static bool SendMail(string from, string to, string fromName, string subject, string body)
+        public static bool SendMail(string to, string subject, string body)
         {
             try
             {
                 var message = new MailMessage();
-                var host = ConfigurationManager.AppSettings[SettingsKey.EmailHost.ToString()];
-                var port = Convert.ToInt32(ConfigurationManager.AppSettings[SettingsKey.EmailPort.ToString()]);
-                var fromEmail = ConfigurationManager.AppSettings[SettingsKey.FromEmail.ToString()];
-                var fromPassword = ConfigurationManager.AppSettings[SettingsKey.FromPassWord.ToString()];
+                var host = Settings.Default.EmailHost;
+                var port = Settings.Default.EmailPort;
+                var fromEmail = Settings.Default.FromEmailAddress;
+                var fromPassword = Settings.Default.FromPassword;
+                var fromName = Settings.Default.FromName;
 
                 var smtpClient = new SmtpClient
                 {
                     Host = host,
-                    Port = port,
+                    Port = int.Parse(port),
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(fromEmail, fromPassword)
                 };
+                
 
-                fromName = string.IsNullOrWhiteSpace(fromName) ? ConfigurationManager.AppSettings[SettingsKey.FromName.ToString()] : fromName;
-
-                var fromAddress = new MailAddress(from, fromName);
+                var fromAddress = new MailAddress(fromEmail, fromName);
                 
                 //From address will be given as a MailAddress Object
                 message.From = fromAddress;

@@ -23,6 +23,15 @@ namespace NFI.Helper
             }
         }
 
+        public static void Save<T>(List<T> collection, string dataFilePath)
+        {
+            using (var file = File.CreateText(dataFilePath))
+            {
+                var serializer = new JsonSerializer();
+                serializer.Serialize(file, collection);
+            }
+        }
+
         public static List<T> GetCollections<T>(string dataFilePath)
         {
             var collection = new List<T>();
@@ -39,7 +48,7 @@ namespace NFI.Helper
                 collection = (List<T>)serializer.Deserialize(file, typeof(List<T>));
             }
 
-            return collection;
+            return collection ?? new List<T>();
         }
     }
 }

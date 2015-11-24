@@ -7,6 +7,7 @@ namespace NFI.Enums
 {
     public enum ApplicationType
     {
+        All = 0,
         Application1 = 1,
         Application2 = 2,
         Application3 = 3,

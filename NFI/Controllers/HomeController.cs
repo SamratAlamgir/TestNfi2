@@ -25,27 +25,30 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Application1;
-                var userId = Guid.NewGuid();
+                var appId = Guid.NewGuid();
                 var files = new List<string>
                     {
                     SaveUploadedFiles(formData.file1),
                     SaveUploadedFiles(formData.file2)
                 };
 
-                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, userId, formData.Name);
+                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appId, formData.Name);
                 var zipFilePhysicalPath = Server.MapPath(zipFilePath);
-
-                ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
 
                 var application1Dto = new Application1Dto
                 {
-                    UserId = userId.ToString(),
+                    AppId = appId.ToString(),
                     Name = formData.Name ?? "",
                     Email = formData.Email ?? "",
                     Sex = formData.Sex ?? "",
                     Company = formData.Company ?? "",
                     ZipFilePath = ".." + zipFilePath
                 };
+
+                var userDataFilePath = CreateUserDataFile(application1Dto);
+                files.Add(userDataFilePath);
+
+                ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
 
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
                 JsonHelper.Save(application1Dto, Server.MapPath(dataFilePath));
@@ -98,14 +101,41 @@ namespace NFI.Controllers
         }
         private void SendEmailToPredefinedAdressee(Application1Dto application1Dto)
         {
-            var from = Settings.Default.FromEmailAddress;
             var to = Settings.Default.ToEmailAddress;
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
-                       $" Attachment Link: {application1Dto.ZipFilePath}";
+                       $" Attachment Link: {GetServerPathForFile(application1Dto.ZipFilePath)}";
             var subject = "File Send";
-            Emailer.SendMail(from, to, from, subject, body);
+            Emailer.SendMail(to, subject, body);
+        }
+
+        private string CreateUserDataFile(Application1Dto application1Dto)
+        {
+            var fileContent = $"User Name: {application1Dto.Name} {Environment.NewLine}" +
+                       $"Email: {application1Dto.Email} {Environment.NewLine}" +
+                       $"Sex: {application1Dto.Sex} {Environment.NewLine}" +
+                       $"Attachment Link: {GetServerPathForFile(application1Dto.ZipFilePath)}";
+
+            string fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.txt");
+            string path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
+
+            string fullPath = Path.Combine(path, fileName);
+
+            if (!System.IO.File.Exists(fullPath))
+            {
+                // Create a file to write to.
+                System.IO.File.WriteAllText(fullPath, fileContent);
+            }
+
+            return fullPath;
+        }
+
+        private string GetServerPathForFile(string filePath)
+        {
+            var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
+
+            return filePath.Replace("../", rootUri);
         }
 
         #endregion
