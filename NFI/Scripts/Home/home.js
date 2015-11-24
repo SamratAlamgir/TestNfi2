@@ -76,6 +76,11 @@
              $validator.focusInvalid();
      });
      $('#btnSubmit').click(function () {
-        return validateActiveTab();
-    });
+         var valid = validateActiveTab();
+         if (valid) {
+             $("#wizardBtn").hide();
+             $("#ajaxLoader").show();
+         }
+         return valid;
+     });
 });
