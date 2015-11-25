@@ -112,7 +112,7 @@ namespace NFI.Controllers
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
-                       $" Attachment Link: {GetServerPathForFile(application1Dto.ZipFilePath)}";
+                       $" Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
             var subject = "File Send";
             Emailer.SendMail(to, subject, body);
         }
@@ -122,7 +122,7 @@ namespace NFI.Controllers
             var fileContent = $"User Name: {application1Dto.Name} {Environment.NewLine}" +
                        $"Email: {application1Dto.Email} {Environment.NewLine}" +
                        $"Sex: {application1Dto.Sex} {Environment.NewLine}" +
-                       $"Attachment Link: {GetServerPathForFile(application1Dto.ZipFilePath)}";
+                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
 
             string fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.txt");
             string path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
@@ -138,11 +138,13 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        private string GetServerPathForFile(string filePath)
+        private string GetDownloadLinkForFile(string appId)
         {
+            var fileLink = "Admin/DownloadZipFile?appId=" + appId;
+
             var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
 
-            return filePath.Replace("../", rootUri);
+            return rootUri + fileLink;
         }
 
         #endregion
