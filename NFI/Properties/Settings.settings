@@ -35,5 +35,8 @@
     <Setting Name="FromPassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)">*****</Value>
     </Setting>
+    <Setting Name="ExecutiveMailAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">nfi.executive@testmail.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
