@@ -68,6 +68,8 @@ namespace NFI.Controllers
                 };
                 CommunicationHelper.SendMailToExecutive(valuesForMail, Settings.Default.ExecutiveMailAddress);
 
+                CommunicationHelper.SendMailToApplicant(valuesForMail, application1Dto.Email);
+
                 return View("Success");
             }
             catch (Exception ex)
