@@ -12,7 +12,7 @@ namespace NFI.Helper
 {
     public static class PdfUtility
     {
-        private static readonly Font Linkfont = FontFactory.GetFont("Arial", 10, Font.UNDERLINE | Font.ITALIC, new BaseColor(0, 0, 255));
+        private static readonly Font Linkfont = FontFactory.GetFont("Arial", 8, Font.UNDERLINE | Font.ITALIC, new BaseColor(0, 0, 255));
         private static readonly Font Headerfont = FontFactory.GetFont("Georgia", 12, Font.BOLD, BaseColor.BLACK);
         private static readonly Font Namefont = FontFactory.GetFont("Courier", 10, Font.BOLD, BaseColor.BLACK);
         private static readonly Font Valuefont = FontFactory.GetFont("Courier", 10, Font.NORMAL, BaseColor.BLACK);
@@ -71,22 +71,20 @@ namespace NFI.Helper
             p.Add(c1);
             if (linkAttribute != null)
             {
-                var anchorName = "";
                 if (linkAttribute is EmailLinkAttribute)
                 {
-                    anchorName = propetyValue;
+                    var c2 = new Chunk(propetyValue, Linkfont);
+                    p.Add(c2);
                 }
                 else
                 {
-                    anchorName = keyName;
+                    var anchor = new Anchor(keyName, Linkfont)
+                    {
+                        Reference = propetyValue,
+                    };
+                    p.Add(anchor);
                 }
-                var anchor = new Anchor(anchorName, Linkfont)
-                {
-                    Reference = propetyValue,
-                    Font = Linkfont
-                };
 
-                p.Add(anchor);
             }
             else
             {

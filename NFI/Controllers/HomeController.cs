@@ -70,7 +70,7 @@ namespace NFI.Controllers
         private bool ValidateFileInput(ViewModelForm1Data formData)
         {
             var maxsize = 1024 * 1024 * 100;
-            return formData.file1 == null || (formData.file1.ContentLength <= 0 || formData.file1.ContentLength > maxsize) ||
+            return formData.file1 == null || (formData.file1.ContentLength <= 0 || formData.file1.ContentLength > maxsize) || 
                 formData.file2 == null || (formData.file2.ContentLength <= 0 || formData.file2.ContentLength > maxsize);
         }
 
@@ -112,7 +112,7 @@ namespace NFI.Controllers
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
-                       $" Attachment Link: {GetServerPathForFile(application1Dto.ZipFilePath)}";
+                       $" Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
             var subject = "File Send";
             Emailer.SendMail(to, subject, body);
         }
@@ -134,15 +134,6 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        private string GetServerPathForFile(string filePath)
-        {
-            var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
-
-            return filePath.Replace("../", rootUri);
-        }
-
-        #endregion
-
         private string GetDownloadLinkForFile(string appId)
         {
             var fileLink = "Admin/DownloadZipFile?appId=" + appId;
@@ -151,5 +142,7 @@ namespace NFI.Controllers
 
             return rootUri + fileLink;
         }
+
+        #endregion
     }
 }
