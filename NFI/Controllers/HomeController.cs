@@ -70,7 +70,7 @@ namespace NFI.Controllers
         private bool ValidateFileInput(ViewModelForm1Data formData)
         {
             var maxsize = 1024 * 1024 * 100;
-            return formData.file1 == null || (formData.file1.ContentLength <= 0 || formData.file1.ContentLength > maxsize) || 
+            return formData.file1 == null || (formData.file1.ContentLength <= 0 || formData.file1.ContentLength > maxsize) ||
                 formData.file2 == null || (formData.file2.ContentLength <= 0 || formData.file2.ContentLength > maxsize);
         }
 
@@ -119,20 +119,16 @@ namespace NFI.Controllers
 
         private string CreateUserDataFile(Application1Dto application1Dto)
         {
-            var fileContent = $"User Name: {application1Dto.Name} {Environment.NewLine}" +
-                       $"Email: {application1Dto.Email} {Environment.NewLine}" +
-                       $"Sex: {application1Dto.Sex} {Environment.NewLine}" +
-                       $"Attachment Link: {GetServerPathForFile(application1Dto.ZipFilePath)}";
 
-            string fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.txt");
-            string path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
-
-            string fullPath = Path.Combine(path, fileName);
-
+            var fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.pdf");
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
+            var fullPath = Path.Combine(path, fileName);
+            var downloadLink = GetDownloadLinkForFile(application1Dto.AppId);
             if (!System.IO.File.Exists(fullPath))
             {
+
                 // Create a file to write to.
-                System.IO.File.WriteAllText(fullPath, fileContent);
+                PdfUtility.CreatePdf(application1Dto, fullPath, downloadLink);
             }
 
             return fullPath;
@@ -146,5 +142,14 @@ namespace NFI.Controllers
         }
 
         #endregion
+
+        private string GetDownloadLinkForFile(string appId)
+        {
+            var fileLink = "Admin/DownloadZipFile?appId=" + appId;
+
+            var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
+
+            return rootUri + fileLink;
+        }
     }
 }
