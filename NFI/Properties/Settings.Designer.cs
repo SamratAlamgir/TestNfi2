@@ -121,5 +121,14 @@ namespace NFI.Properties {
                 return ((string)(this["FromPassword"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("nfi.executive@testmail.com")]
+        public string ExecutiveMailAddress {
+            get {
+                return ((string)(this["ExecutiveMailAddress"]));
+            }
+        }
     }
 }

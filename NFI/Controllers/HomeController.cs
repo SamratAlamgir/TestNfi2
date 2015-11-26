@@ -58,6 +58,16 @@ namespace NFI.Controllers
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
                 JsonHelper.Save(application1Dto, Server.MapPath(dataFilePath));
                 SendEmailToPredefinedAdressee(application1Dto);
+
+                var valuesForMail = new Dictionary<string, string>()
+                {
+                    {"<UserName>", application1Dto.Name},
+                    {"<ApplicationType>", "Application 1"},
+                    {"<ZipFileLink>", GetDownloadLinkForFile(application1Dto.AppId) },
+                    {"<DetailViewLink>", GetDetailViewLink(application1Dto.AppId) }
+                };
+                CommunicationHelper.SendMailToExecutive(valuesForMail, Settings.Default.ExecutiveMailAddress);
+
                 return View("Success");
             }
             catch (Exception ex)
@@ -112,7 +122,7 @@ namespace NFI.Controllers
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
-                       $" Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
+                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
             var subject = "File Send";
             Emailer.SendMail(to, subject, body);
         }
@@ -137,9 +147,14 @@ namespace NFI.Controllers
         private string GetDownloadLinkForFile(string appId)
         {
             var fileLink = "Admin/DownloadZipFile?appId=" + appId;
-
             var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
+            return rootUri + fileLink;
+        }
 
+        private string GetDetailViewLink(string appId)
+        {
+            var fileLink = "Admin/ShowDetail?appId=" + appId;
+            var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
             return rootUri + fileLink;
         }
 
