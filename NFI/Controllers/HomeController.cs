@@ -119,20 +119,16 @@ namespace NFI.Controllers
 
         private string CreateUserDataFile(Application1Dto application1Dto)
         {
-            var fileContent = $"User Name: {application1Dto.Name} {Environment.NewLine}" +
-                       $"Email: {application1Dto.Email} {Environment.NewLine}" +
-                       $"Sex: {application1Dto.Sex} {Environment.NewLine}" +
-                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
 
-            string fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.txt");
-            string path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
-
-            string fullPath = Path.Combine(path, fileName);
-
+            var fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.pdf");
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
+            var fullPath = Path.Combine(path, fileName);
+            var downloadLink = GetDownloadLinkForFile(application1Dto.AppId);
             if (!System.IO.File.Exists(fullPath))
             {
+
                 // Create a file to write to.
-                System.IO.File.WriteAllText(fullPath, fileContent);
+                PdfUtility.CreatePdf(application1Dto, fullPath, downloadLink);
             }
 
             return fullPath;
