@@ -462,19 +462,25 @@
                     <h3> 4. Visuelt materiale:</h3>
                 </div>
 
-                <input type="Button" class="btn btn-default" value="+" onclick="addVisualItem"/>
+                <div class="form-group ">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default glyphicon glyphicon-plus" id="addVisualItemButton"> </button>
+                        <button type="button" class="btn btn-default glyphicon glyphicon-minus" id="removeVisualItemButton"> </button>
+                    </div>
+                </div>
 
                 <div id="visualDiv">
-                    <div class="form-group">
-                        <label class="control-label col-md-5">Test1</label>
-                        <input type="text" class="form-control" />
-                    </div>
+                    <div class="well" name ="VisueltMaterialeList">
+                        <div class="form-group">
+                            <label class="control-label col-md-5">Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)</label>
+                            <input type="text" name="VisueltMaterialeList[0].NettadresseEventueltVisueltMateriale" class="form-control" />
+                        </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-5">Test2</label>
-                        <input type="text" class="form-control" />
+                        <div class="form-group">
+                            <label class="control-label col-md-5">Oppgi evt passord til nettadresse med visuelt materiale</label>
+                            <input type="text" name="VisueltMaterialeList[0].OppgiEvtPassordNettadresse" class="form-control" />
+                        </div>
                     </div>
-                   
 
                 </div>
             </div>
@@ -576,9 +582,6 @@
                 </ul>
 
             </div>
-
         </div>
-
     </div>
-
 </form>

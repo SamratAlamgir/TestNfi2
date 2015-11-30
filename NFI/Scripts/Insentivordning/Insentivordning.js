@@ -28,7 +28,7 @@
 
         }
     });
-
+    
     function validateActiveTab() {
         var $valid = true;
         $('#rootwizard .tab-pane.active :input').not(':button,:hidden').each(function (index, element) {
@@ -53,7 +53,7 @@
         if ($current == 1) {
             $('#rootwizard').find('.pager .next').show();
             $('#rootwizard').find('.pager .previous').hide();
-            $('#btnSubmit').hide();
+            $('#btnSubmit').show();
         }
         else if ($current == $total) {
             $('#rootwizard').find('.pager .next').hide();
@@ -82,4 +82,27 @@
         }
         return valid;
     });
+
+
+    $("#addVisualItemButton").click(function () {
+
+        var itemCount = $("#visualDiv > div").length;
+
+        var item1 = "<div class='form-group'><label class='control-label col-md-5'>Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)</label> " +
+             " <input type='text' class='form-control' name='VisueltMaterialeList[" + itemCount + "].NettadresseEventueltVisueltMateriale' /></div>";
+        var item2 = "<div class='form-group'><label class='control-label col-md-5'>Oppgi evt passord til nettadresse med visuelt materiale</label>" +
+            " <input type='text' class='form-control' name='VisueltMaterialeList[" + itemCount + "].OppgiEvtPassordNettadresse' /></div>";
+
+        $("#visualDiv").append("<div class='well' name ='VisueltMaterialeList'> " + item1 + item2 + "</div>");
+    });
+
+    $("#removeVisualItemButton").click(function () {
+        var itemCount = $("#visualDiv > div").length;
+
+        if (itemCount > 1) {
+            $("#visualDiv > div").last().remove();
+        }
+    });
+
 });
+
