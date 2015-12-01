@@ -7,14 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NFI.Models
 {
-    public class InsentivordningDto
+    public class InsentivordningDto : BaseAppDto
     {
-        public Guid AppId { get; set; }
-        public string ZipFilePath { get; set; }
-        public string PdfFilePath { get; set; }
-        public List<string> UploadedFilesPath { get; set; }
-        public bool IsArchived { get; set; }
-
         // 1. Kontaktinformasjon hovedprodusent:
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Produksjonsforetakets navn")]
