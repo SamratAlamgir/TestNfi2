@@ -34,8 +34,9 @@
         $('#rootwizard .tab-pane.active :input').not(':button,:hidden').each(function (index, element) {
             var v = $validator.element(element);
             $valid = $valid && v;
-            if (v)
+            if (!v) {
                 $validator.focusInvalid();
+            }
         });
         return $valid;
     }
