@@ -8,8 +8,8 @@ namespace NFI.Enums
     public enum ApplicationType
     {
         All = 0,
-        Application1 = 1,
-        Application2 = 2,
+        Sorfond = 1,
+        Insentivordning = 2,
         Application3 = 3,
         Application4 = 4,
         Application5 = 5,

@@ -9,10 +9,11 @@ namespace NFI.Models
 {
     public class InsentivordningDto
     {
-        public string AppId { get; set; }
+        public Guid AppId { get; set; }
         public string ZipFilePath { get; set; }
         public string PdfFilePath { get; set; }
         public List<string> UploadedFilesPath { get; set; }
+        public bool IsArchived { get; set; }
 
         // 1. Kontaktinformasjon hovedprodusent:
         [Required(ErrorMessage = "This field is required")]
@@ -52,28 +53,21 @@ namespace NFI.Models
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Hovedproduksjonsforetakets hjemmeside")]
         public string HovedproduksjonsforetaketsHjemmeside { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [DisplayName("Legg ved Certificate of origin for hovedproduksjonsselskap")]
 
+        [JsonIgnore]
+        [DisplayName("Legg ved Certificate of origin for hovedproduksjonsselskap")]
+        public HttpPostedFileBase LeggCertificateOriginForHovedproduksjonsselskap { get; set; }
         public string LeggCertificateOriginForHovedproduksjonsselskapPath { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
         [JsonIgnore]
-        public HttpPostedFileBase LeggCertificateOriginForHovedproduksjonsselskap { get; set; }
-
+        [DisplayName("Legg ved hovedprodusentens CV")]
+        public HttpPostedFileBase LeggHovedprodusentensCv { get; set; }
         public string LeggHovedprodusentensCvPath { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
-        [DisplayName("Legg ved hovedprodusentens CV")]
         [JsonIgnore]
-        public HttpPostedFileBase LeggHovedprodusentensCv { get; set; }
-
-        public string LeggHovedproduksjonsselskapetsTrackRecordPath { get; set; }
-
-        [Required(ErrorMessage = "This field is required")]
         [DisplayName("Legg ved  hovedproduksjonsselskapets track record")]
-        [JsonIgnore]
         public HttpPostedFileBase LeggHovedproduksjonsselskapetsTrackRecord { get; set; }
+        public string LeggHovedproduksjonsselskapetsTrackRecordPath { get; set; }
 
         // 2. Kontaktinformasjon søker: / hvis annen enn hovedprodusent
         [DisplayName("Søkers navn")]
@@ -103,8 +97,8 @@ namespace NFI.Models
         [DisplayName("Produksjonsforetakets hjemmeside")]
         public string ProduksjonsforetaketsHjemmeside { get; set; }
 
-        [DisplayName("Last opp erklæring fra hovedprodusent på at søker kan søke på vegne av hovedprodusent")]
         [JsonIgnore]
+        [DisplayName("Last opp erklæring fra hovedprodusent på at søker kan søke på vegne av hovedprodusent")]
         public HttpPostedFileBase LastoppErklæring { get; set; }
         public string LastoppErklæringPath { get; set; }
 
@@ -116,9 +110,12 @@ namespace NFI.Models
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Er prosjektet et originalverk?")]
         public string ErProsjektetOriginalverk { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+
+        [JsonIgnore]
         [DisplayName("Legg ved dokumentasjon på at hovedprodusenten har opsjon/filmrett")]
         public HttpPostedFileBase LeggvedDokumentasjonHovedprodusenten { get; set; }
+        public string LeggvedDokumentasjonHovedprodusentenPath { get; set; }
+
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Format")]
         public string Format { get; set; }
@@ -137,33 +134,51 @@ namespace NFI.Models
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Antatt siste opptaksdag i Norge")]
         public DateTime AntattSisteOpptaksdagNorge { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+
+        [JsonIgnore]
         [DisplayName("Legg ved utfylt kultur-og produksjonstest. Testen finner du her")]
         public HttpPostedFileBase LeggvedUtfyltkulturProduksjonstest { get; set; }
+        public string LeggvedUtfyltkulturProduksjonstestPath { get; set; }
+
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Kort beskrivelse av handlingen, max 200 tegn")]
         public string KortBeskrivelseHandlingen { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+
+        [JsonIgnore]
         [DisplayName("Legg ved manuskript")]
         public HttpPostedFileBase LeggvedManuskript { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public string LeggvedManuskriptPath { get; set; }
+
+        [JsonIgnore]
         [DisplayName("Legg ved treatment")]
         public HttpPostedFileBase LeggvedTreatment { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public string LeggvedTreatmentPath { get; set; }
+
+        [JsonIgnore]
         [DisplayName("Legg ved produksjonsplan")]
         public HttpPostedFileBase LeggvedProduksjonsplan { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public string LeggvedProduksjonsplanPath { get; set; }
+
+        [JsonIgnore]
         [DisplayName("Legg ved cast & crew liste")]
         public HttpPostedFileBase LeggvedCastCrewListe { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public string LeggvedCastCrewListePath { get; set; }
+
+        [JsonIgnore]
         [DisplayName("Legg ved liste over locations/innspillingssteder")]
         public HttpPostedFileBase LeggvedListeOverLocations { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public string LeggvedListeOverLocationsPath { get; set; }
+
+        [JsonIgnore]
         [DisplayName("Legg ved liste over leverandører i Norge og EØS")]
         public HttpPostedFileBase LeggvedListeOverLeverandører { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public string LeggvedListeOverLeverandørerPath { get; set; }
+
+        [JsonIgnore]
         [DisplayName("Legg ved distribusjonsplan")]
         public HttpPostedFileBase LeggvedDistribusjonsPlan { get; set; }
+        public string LeggvedDistribusjonsPlanPath { get; set; }
+
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Beskriv hvordan produksjonen er egnet til å øke de involverte filmskapernes kompetanse og evne til å lage ambisiøse og krevende prosjekter med høy kvalitet")]
         public string BeskrivHvordanProduksjonen { get; set; }
@@ -178,28 +193,38 @@ namespace NFI.Models
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Totalbudsjett for prosjektet i NOK")]
         public string TotalbudsjettForProsjektet { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+
+        [JsonIgnore]
         [DisplayName("Legg ved totalbudsjettet i enten NOK/EURO/USD")]
         public HttpPostedFileBase LeggvedTotalbudsjettet { get; set; }
+        public string LeggvedTotalbudsjettetPath { get; set; }
+
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Estimerte kostnader i Norge i NOK")]
         public string EstimerteKostnader { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+
+        [JsonIgnore]
         [DisplayName("Legg ved budsjett for produksjonen i Norge i NOK (samt budsjettbeløp i EU/EØS om mer enn 80% av  produksjonskostnaden er antatt å påløpe i Norge)")]
         public HttpPostedFileBase LeggvedBudsjettForProduksjonen { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        public string LeggvedBudsjettForProduksjonenPath { get; set; }
+
+        [JsonIgnore]
         [DisplayName("Legg ved finansieringsplan (med spesifisering av private og offentlige midler samt angitt bekreftet/ubekreftet finansiering)")]
         public HttpPostedFileBase LeggvedFinansieringsplan { get; set; }
+        public string LeggvedFinansieringsplanPath { get; set; }
+
         [DisplayName("Prosentandel av finansieringen som er bekreftet")]
         public string ProsentandelFinansieringen { get; set; }
 
         // 6. Eventuelle andre vedlegg
+        [JsonIgnore]
         [DisplayName("Har du vedlegg som er relevante til søknaden som du ikke har fått lastet opp? Legg de ved her")]
         public IEnumerable<HttpPostedFileBase> HarduVedleggSomerRelevante { get; set; }
+        public IEnumerable<string> HarduVedleggSomerRelevantePath { get; set; }
+
         [DisplayName("Beskrivelse av andre vedlegg: Beskriv innholdet i vedleggene lastet opp under Eventuelle andre vedlegg.")]
         public string BeskrivelseavAndreVedlegg { get; set; }
     }
-
 
     public class VisueltMaterialeDto
     {
