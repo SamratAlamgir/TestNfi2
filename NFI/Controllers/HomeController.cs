@@ -28,7 +28,7 @@ namespace NFI.Controllers
             }
             try
             {
-                var appType = ApplicationType.Application1;
+                var appType = ApplicationType.Sorfond;
                 var appId = Guid.NewGuid();
                 var files = new List<string>
                     {
@@ -103,7 +103,7 @@ namespace NFI.Controllers
 
         private string SaveUploadedFiles(HttpPostedFileBase file)
         {
-            var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1);
+            var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Sorfond);
             var physicalPath = Server.MapPath(networkPath);
             if (!Directory.Exists(physicalPath))
             {
@@ -133,7 +133,7 @@ namespace NFI.Controllers
         {
 
             var fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.pdf");
-            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Application1));
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Sorfond));
             var fullPath = Path.Combine(path, fileName);
             var downloadLink = GetDownloadLinkForFile(application1Dto.AppId);
             if (!System.IO.File.Exists(fullPath))
