@@ -83,17 +83,12 @@
         return valid;
     });
 
-
     $("#addVisualItemButton").click(function () {
-
         var itemCount = $("#visualDiv > div").length;
+        var templateHtml = $("#visualDiv > div").last().html();
+        var updatedHtml = templateHtml.replace(/\[\d+\]/g, "[" + itemCount + "]");
 
-        var item1 = "<div class='form-group'><label class='control-label col-md-5'>Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)</label> " +
-             " <input type='text' class='form-control' name='VisueltMaterialeList[" + itemCount + "].NettadresseEventueltVisueltMateriale' /></div>";
-        var item2 = "<div class='form-group'><label class='control-label col-md-5'>Oppgi evt passord til nettadresse med visuelt materiale</label>" +
-            " <input type='text' class='form-control' name='VisueltMaterialeList[" + itemCount + "].OppgiEvtPassordNettadresse' /></div>";
-
-        $("#visualDiv").append("<div class='well' name ='VisueltMaterialeList'> " + item1 + item2 + "</div>");
+        $("#visualDiv").append("<div class='well'> " + updatedHtml + "</div>");
     });
 
     $("#removeVisualItemButton").click(function () {
