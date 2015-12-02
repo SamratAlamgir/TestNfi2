@@ -193,6 +193,7 @@
     <Compile Include="Models\CaptachaModel.cs" />
     <Compile Include="Models\FileDto.cs" />
     <Compile Include="Models\HyperLinkAttribute.cs" />
+    <Compile Include="Models\IncentiveSchemeDto.cs" />
     <Compile Include="Models\InsentivordningDto.cs" />
     <Compile Include="Models\ViewModelForm1Data.cs" />
     <Compile Include="Models\VisibleAttribute.cs" />
@@ -419,6 +420,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Utility\" />
+    <Folder Include="Views\IncentiveScheme\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
