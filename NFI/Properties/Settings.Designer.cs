@@ -121,5 +121,23 @@ namespace NFI.Properties {
                 return ((string)(this["FromPassword"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("nfi.executive@testmail.com")]
+        public string ExecutiveMailAddress {
+            get {
+                return ((string)(this["ExecutiveMailAddress"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App2/")]
+        public string ApplicationDir2 {
+            get {
+                return ((string)(this["ApplicationDir2"]));
+            }
+        }
     }
 }

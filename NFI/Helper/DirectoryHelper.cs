@@ -19,9 +19,13 @@ namespace NFI.Helper
         {
             var dirPath = "";
 
-            if (appType == ApplicationType.Application1)
+            if (appType == ApplicationType.Sorfond)
             {
                 dirPath = Settings.Default.ApplicationDir1;
+            }
+            else if (appType == ApplicationType.Insentivordning)
+            {
+                dirPath = Settings.Default.ApplicationDir2;
             }
 
             return Path.Combine(GetRootDirectory(), dirPath);

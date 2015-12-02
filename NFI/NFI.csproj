@@ -174,19 +174,23 @@
     <Compile Include="App_Start\CaptchaAuthorizeAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\InsentivordningController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CommunicationHelper.cs" />
     <Compile Include="Helper\DirectoryHelper.cs" />
     <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="Helper\PdfUtility.cs" />
     <Compile Include="Helper\ZipHelper.cs" />
     <Compile Include="Models\Application1Dto.cs" />
+    <Compile Include="Models\BaseAppDto.cs" />
     <Compile Include="Models\CaptachaModel.cs" />
     <Compile Include="Models\DacListen.cs" />
     <Compile Include="Models\EventuelleAndreVedlegg.cs" />
@@ -202,6 +206,8 @@
     <Compile Include="Models\Prosjektinformasjon.cs" />
     <Compile Include="Models\Regissoren.cs" />
     <Compile Include="Models\Sorfond.cs" />
+    <Compile Include="Models\IncentiveSchemeDto.cs" />
+    <Compile Include="Models\InsentivordningDto.cs" />
     <Compile Include="Models\ViewModelForm1Data.cs" />
     <Compile Include="Models\NotVisibleAttribute.cs" />
     <Compile Include="Models\VisueltMateriale.cs" />
@@ -324,6 +330,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Home\home.js" />
+    <Content Include="Scripts\Insentivordning\Insentivordning.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -427,10 +434,12 @@
     <Content Include="Views\Home\Success.cshtml" />
     <Content Include="Views\Admin\Application1Detail.cshtml" />
     <Content Include="Views\Sorfond\Index.cshtml" />
+    <Content Include="Views\Insentivordning\Insentivordning.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Utility\" />
+    <Folder Include="Views\IncentiveScheme\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

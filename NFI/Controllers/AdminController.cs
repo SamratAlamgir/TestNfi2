@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
+using System.Collections.Generic;
 
 namespace NFI.Controllers
 {
@@ -23,21 +24,33 @@ namespace NFI.Controllers
 
         public JsonResult GetApplications(ApplicationType appType, bool includeArchive)
         {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
-            var result = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath)).ToList();
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
+
+            dynamic result = null;
+
+            if (appType == ApplicationType.Insentivordning)
+            {
+                result = GetInsentivordningDtoList(dataFilePath, includeArchive);
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<InsentivordningDto> GetInsentivordningDtoList(string dataFilePath, bool includeArchive)
+        {
+            var result = JsonHelper.GetCollections<InsentivordningDto>(Server.MapPath(dataFilePath)).ToList();
 
             if (!includeArchive)
             {
                 result = result.Where(x => !x.IsArchived).ToList();
             }
 
-
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return result;
         }
 
         public bool MarkAsArchive(string appId)
         {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sorfond);
             var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
 
             var selectedApp = resultSet.Single(x => x.AppId == appId);
@@ -68,7 +81,7 @@ namespace NFI.Controllers
 
         private Application1Dto GetApplicationDto(string appId)
         {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Application1);
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sorfond);
             var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
 
             return resultSet.Single(x => x.AppId == appId);
