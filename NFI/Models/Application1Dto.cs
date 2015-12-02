@@ -6,12 +6,12 @@ namespace NFI.Models
     public class Application1Dto
     {
         public string AppId { get; set; }
-        [Visible]
+        [NotVisible]
         public string Name { get; set; }
-        [Visible]
+        [NotVisible]
         [EmailLink]
         public string Email { get; set; }
-        [Visible]
+        [NotVisible]
         public string Sex { get; set; }
         public string Company { get; set; }
         public bool IsArchived { get; set; }
