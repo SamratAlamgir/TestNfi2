@@ -106,7 +106,7 @@ namespace NFI.Controllers
 
         private Uri GetBaseUri()
         {
-            return new Uri(Request.UrlReferrer?.AbsoluteUri ?? "");
+            return new Uri(Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/");
         }
     }
 }

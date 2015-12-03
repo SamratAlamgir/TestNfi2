@@ -106,7 +106,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("nfi")]
+        [global::System.Configuration.DefaultSettingValueAttribute("NFI")]
         public string FromName {
             get {
                 return ((string)(this["FromName"]));
