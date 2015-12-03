@@ -62,15 +62,15 @@ namespace NFI.Controllers
             return true;
         }
 
-        public ActionResult ShowDetail(string appId)
+        public ActionResult ShowDetail(string appId, ApplicationType appType)
         {
-            var selectedApp = GetApplicationDto(appId);
+            var selectedApp = GetApplicationDto(appId, appType);
             return View("Application1Detail", selectedApp);
         }
 
-        public FileResult DownloadZipFile(string appId)
+        public FileResult DownloadZipFile(string appId, ApplicationType appType)
         {
-            var selectedApp = GetApplicationDto(appId);
+            var selectedApp = GetApplicationDto(appId, appType);
 
             var filePath = Server.MapPath(selectedApp.ZipFilePath);
 
@@ -79,9 +79,9 @@ namespace NFI.Controllers
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
-        private Application1Dto GetApplicationDto(string appId)
+        private Application1Dto GetApplicationDto(string appId, ApplicationType appType)
         {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sorfond);
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
             var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
 
             return resultSet.Single(x => x.AppId == appId);

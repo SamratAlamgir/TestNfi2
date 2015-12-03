@@ -72,7 +72,7 @@ namespace NFI.Controllers
             {
                 if (fieldInfo.PropertyType == typeof(HttpPostedFileBase))
                 {
-                    var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj));
+                    var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj), ApplicationType.Sorfond);
                     _filePathList.Add(filePath);
                     var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Path");
                     fieldPath?.SetValue(obj, filePath);
@@ -84,7 +84,7 @@ namespace NFI.Controllers
                     var files = (List<HttpPostedFileBase>)fieldInfo.GetValue(obj);
                     if (files != null)
                     {
-                        var filePaths = files.Select(SaveUploadedFile).ToList();
+                        var filePaths = files.Select( x => SaveUploadedFile(x, ApplicationType.Sorfond) ).ToList();
                         _filePathList.AddRange(filePaths);
                         var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Paths");
                         fieldPath?.SetValue(obj, filePaths);

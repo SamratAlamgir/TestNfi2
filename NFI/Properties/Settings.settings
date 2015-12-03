@@ -18,10 +18,10 @@
       <Value Profile="(Default)">Attachment/</Value>
     </Setting>
     <Setting Name="FromEmailAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">sajib.cefalo@hotmail.com</Value>
+      <Value Profile="(Default)">systemnfi@gmail.com</Value>
     </Setting>
     <Setting Name="ToEmailAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">rezaul.sajib@cefalo.com</Value>
+      <Value Profile="(Default)">samrat@cefalo.com</Value>
     </Setting>
     <Setting Name="EmailHost" Type="System.String" Scope="Application">
       <Value Profile="(Default)">smtp.gmail.com</Value>
@@ -30,10 +30,10 @@
       <Value Profile="(Default)">587</Value>
     </Setting>
     <Setting Name="FromName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">monjurul</Value>
+      <Value Profile="(Default)">nfi</Value>
     </Setting>
     <Setting Name="FromPassword" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">*****</Value>
+      <Value Profile="(Default)">SystemNfi987</Value>
     </Setting>
     <Setting Name="ExecutiveMailAddress" Type="System.String" Scope="Application">
       <Value Profile="(Default)">nfi.executive@testmail.com</Value>
