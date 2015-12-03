@@ -63,7 +63,7 @@ namespace NFI.Controllers
                 {
                     {"<UserName>", application1Dto.Name},
                     {"<ApplicationType>", "Application 1"},
-                    {"<ZipFileLink>", GetDownloadLinkForFile(application1Dto.AppId) },
+                    {"<ZipFileLink>", GetDownloadLinkForFile(application1Dto.AppId, appType) },
                     {"<DetailViewLink>", GetDetailViewLink(application1Dto.AppId) }
                 };
                 CommunicationHelper.SendMailToExecutive(valuesForMail, Settings.Default.ExecutiveMailAddress);
@@ -124,7 +124,7 @@ namespace NFI.Controllers
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
-                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
+                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId, ApplicationType.Sorfond)}";
             var subject = "File Send";
             Emailer.SendMail(to, subject, body);
         }
@@ -135,7 +135,7 @@ namespace NFI.Controllers
             var fileName = GetFilenameWithTimeStamp(application1Dto.Name + "_data.pdf");
             var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Sorfond));
             var fullPath = Path.Combine(path, fileName);
-            var downloadLink = GetDownloadLinkForFile(application1Dto.AppId);
+            var downloadLink = GetDownloadLinkForFile(application1Dto.AppId, ApplicationType.Sorfond);
             if (!System.IO.File.Exists(fullPath))
             {
 
@@ -146,9 +146,9 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        private string GetDownloadLinkForFile(string appId)
+        private string GetDownloadLinkForFile(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId;
+            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + appType;
             var rootUri = Request.UrlReferrer?.AbsoluteUri ?? "";
             return rootUri + fileLink;
         }

@@ -24,6 +24,11 @@ namespace NFI.Helper
             return Emailer.SendMail(mailTo, subject, body);
         }
 
+        public static bool SendMailToExecutive(string subject, string body, string mailTo)
+        {
+            return Emailer.SendMail(mailTo, subject, body);
+        }
+
         public static bool SendMailToApplicant(Dictionary<string, string> values, string mailTo)
         {
             var subject = "Application type <ApplicationType> submitted";

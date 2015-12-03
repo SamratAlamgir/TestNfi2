@@ -42,26 +42,26 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        public void SendEmailToPredefinedAdressee(Application1Dto application1Dto)
+        public void SendEmailToPredefinedAdressee(Application1Dto application1Dto, ApplicationType appType)
         {
             var to = Settings.Default.ToEmailAddress;
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
-                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
+                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId, appType)}";
             var subject = "File Send";
             Emailer.SendMail(to, subject, body);
         }
 
-        public string CreateUserDataFile<T>(T appDto)
+        public string CreateUserDataFile<T>(T appDto, ApplicationType appType)
         {
             var type = appDto.GetType();
             var appId = type.GetProperty("AppId").GetValue(appDto);
 
             var fileName = GetFilenameWithTimeStamp("user_data.pdf");
-            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Sorfond));
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(appType));
             var fullPath = Path.Combine(path, fileName);
-            var downloadLink = GetDownloadLinkForFile(appId.ToString());
+            var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
             if (!System.IO.File.Exists(fullPath))
             {
                 // Create a file to write to.
@@ -71,15 +71,15 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        public string CreateTextFile<T>(T appDto)
+        public string CreateTextFile<T>(T appDto, ApplicationType appType)
         {
             var type = appDto.GetType();
             var appId = type.GetProperty("AppId").GetValue(appDto);
 
             var fileName = GetFilenameWithTimeStamp("user_data.txt");
-            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Insentivordning));
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(appType));
             var fullPath = Path.Combine(path, fileName);
-            var downloadLink = GetDownloadLinkForFile(appId.ToString());
+            var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
             if (!System.IO.File.Exists(fullPath))
             {
                 // Create a file to write to.
@@ -92,15 +92,15 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        public string GetDownloadLinkForFile(string appId)
+        public string GetDownloadLinkForFile(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId;
+            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
             return new Uri(GetBaseUri(), fileLink).ToString(); 
         }
 
-        public string GetDetailViewLink(string appId)
+        public string GetDetailViewLink(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/ShowDetail?appId=" + appId;
+            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
             return new Uri(GetBaseUri(), fileLink).ToString();
         }
 

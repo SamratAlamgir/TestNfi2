@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
+using NFI.Properties;
 
 namespace NFI.Controllers
 {
@@ -47,7 +48,7 @@ namespace NFI.Controllers
                 files.AddRange(appDto.HarduVedleggSomerRelevantePath = appDto.HarduVedleggSomerRelevante.Select(x => SaveUploadedFile(x, appType)));
                 files = files.Where(x => x != null).ToList();
 
-                files.Add(CreateTextFile(appDto)); // User data file
+                files.Add(CreateTextFile(appDto, appType)); // User data file
 
                 var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appDto.AppId, appDto.ProduksjonsforetaketsNavn);
                 appDto.ZipFilePath = ".." + zipFilePath;
@@ -59,6 +60,12 @@ namespace NFI.Controllers
                 JsonHelper.Save<InsentivordningDto>(appDto, Server.MapPath(dataFilePath));
 
                 //TODO: Send the mails
+                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+                var mailBody = "A new application has been submitted.<br/>" +
+                               "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                var mailTo = Settings.Default.ToEmailAddress;
+                CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
+
 
             }
             catch (Exception ex)
