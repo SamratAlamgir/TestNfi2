@@ -65,13 +65,16 @@ namespace NFI.Controllers
                 type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
                     .Where(f => NotPrimitive(f.PropertyType))
                     .ToList();
+            var allFieldPaths = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                    .Where(f => f.Name.Contains("Path"))
+                    .ToList();
             foreach (var fieldInfo in fieldInfos)
             {
                 if (fieldInfo.PropertyType == typeof(HttpPostedFileBase))
                 {
                     var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj));
                     _filePathList.Add(filePath);
-                    var fieldPath = fieldInfos.FirstOrDefault(c => c.Name == fieldInfo.Name + "Path");
+                    var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Path");
                     fieldPath?.SetValue(obj, filePath);
                 }
                 else if (fieldInfo.PropertyType.IsGenericType
@@ -83,7 +86,7 @@ namespace NFI.Controllers
                     {
                         var filePaths = files.Select(SaveUploadedFile).ToList();
                         _filePathList.AddRange(filePaths);
-                        var fieldPath = fieldInfos.FirstOrDefault(c => c.Name == fieldInfo.Name + "Paths");
+                        var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Paths");
                         fieldPath?.SetValue(obj, filePaths);
                     }
                 }
