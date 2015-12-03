@@ -142,7 +142,7 @@ namespace NFI.Models
         public DateTime AntattSisteOpptaksdagNorge { get; set; }
 
         [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
-        [DisplayName("Legg ved utfylt kultur-og produksjonstest. Testen finner du her")]
+        [DisplayName("Legg ved utfylt kultur-og produksjonstest.")]
         public HttpPostedFileBase LeggvedUtfyltkulturProduksjonstest { get; set; }
         public string LeggvedUtfyltkulturProduksjonstestPath { get; set; }
 

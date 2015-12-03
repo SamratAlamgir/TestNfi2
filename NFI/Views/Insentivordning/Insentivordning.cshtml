@@ -5,8 +5,6 @@
     <script src="~/Scripts/Insentivordning/Insentivordning.js"></script>
 }
 
-
-
 @{
     ViewBag.Title = "Insentivordning";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -136,7 +134,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggCertificateOriginForHovedproduksjonsselskap, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggCertificateOriginForHovedproduksjonsselskap, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggCertificateOriginForHovedproduksjonsselskap, "", new { @class = "text-danger" })
                     </div>
@@ -147,7 +145,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggHovedprodusentensCv, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggHovedprodusentensCv, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggHovedprodusentensCv, "", new { @class = "text-danger" })
                     </div>
@@ -158,7 +156,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggHovedproduksjonsselskapetsTrackRecord, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggHovedproduksjonsselskapetsTrackRecord, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggHovedproduksjonsselskapetsTrackRecord, "", new { @class = "text-danger" })
                     </div>
@@ -274,7 +272,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LastoppErklæring, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LastoppErklæring, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LastoppErklæring, "", new { @class = "text-danger" })
                     </div>
@@ -312,7 +310,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedDokumentasjonHovedprodusenten, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedDokumentasjonHovedprodusenten, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedDokumentasjonHovedprodusenten, "", new { @class = "text-danger" })
                     </div>
@@ -378,11 +376,13 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedUtfyltkulturProduksjonstest, htmlAttributes: new { @class = "control-label col-md-5" })
-
+                    <div class="col-md-5">
+                        @Html.LabelFor(model => model.LeggvedUtfyltkulturProduksjonstest, htmlAttributes: new { @class = "control-label" })
+                        <a href="http://www.nfi.no/_attachment/144523" class="pull-right">Testen finner du her</a>
+                    </div>
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedUtfyltkulturProduksjonstest, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedUtfyltkulturProduksjonstest, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedUtfyltkulturProduksjonstest, "", new { @class = "text-danger" })
                     </div>
@@ -401,7 +401,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedManuskript, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedManuskript, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedManuskript, "", new { @class = "text-danger" })
                     </div>
@@ -413,7 +413,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedTreatment, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedTreatment, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedTreatment, "", new { @class = "text-danger" })
                     </div>
@@ -425,7 +425,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedProduksjonsplan, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedProduksjonsplan, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedProduksjonsplan, "", new { @class = "text-danger" })
                     </div>
@@ -437,7 +437,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedCastCrewListe, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedCastCrewListe, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedCastCrewListe, "", new { @class = "text-danger" })
                     </div>
@@ -448,7 +448,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedListeOverLocations, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedListeOverLocations, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedListeOverLocations, "", new { @class = "text-danger" })
                     </div>
@@ -460,7 +460,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedListeOverLeverandører, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedListeOverLeverandører, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedListeOverLeverandører, "", new { @class = "text-danger" })
                     </div>
@@ -471,7 +471,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedDistribusjonsPlan, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedDistribusjonsPlan, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedDistribusjonsPlan, "", new { @class = "text-danger" })
                     </div>
@@ -532,8 +532,8 @@
                 <div class="form-group">
 
                     <div class="col-md-5">
-                        @Html.LabelFor(model => model.TotalbudsjettForProsjektet, htmlAttributes: new { @class = "control-label " })
-                        <a href=""> (use this currency converter)</a>
+                        @Html.LabelFor(model => model.TotalbudsjettForProsjektet, htmlAttributes: new { @class = "control-label" })
+                        <a class="pull-right" target="_blank" href="http://ec.europa.eu/budget/contracts_grants/info_contracts/inforeuro/inforeuro_en.cfm"> (use this currency converter)</a>
                     </div>
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.TotalbudsjettForProsjektet, new { htmlAttributes = new { @class = "form-control" } })
@@ -547,7 +547,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedTotalbudsjettet, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedTotalbudsjettet, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedTotalbudsjettet, "", new { @class = "text-danger" })
                     </div>
@@ -566,7 +566,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedBudsjettForProduksjonen, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedBudsjettForProduksjonen, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedBudsjettForProduksjonen, "", new { @class = "text-danger" })
                     </div>
@@ -577,7 +577,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedFinansieringsplan, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.LeggvedFinansieringsplan, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.LeggvedFinansieringsplan, "", new { @class = "text-danger" })
                     </div>
@@ -606,7 +606,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.HarduVedleggSomerRelevante, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.HarduVedleggSomerRelevante, new { type = "file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.HarduVedleggSomerRelevante, "", new { @class = "text-danger" })
                     </div>
