@@ -30,7 +30,7 @@ namespace NFI.Helper
                 paragraph.Add(chunk);
                 var t = toExport.GetType();
                 var fieldInfo = t.GetProperties().Where(
-                    prop => Attribute.IsDefined(prop, typeof(VisibleAttribute)));
+                    prop => Attribute.IsDefined(prop, typeof(NotVisibleAttribute)));
                 Phrase p;
                 foreach (var col in fieldInfo)
                 {

@@ -9,7 +9,9 @@ namespace NFI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                       "~/Scripts/jquery-ui-{version}.js",
+                       "~/Scripts/jquery-migrate-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate.*"));
@@ -33,6 +35,7 @@ namespace NFI
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-datepicker.css",
                       "~/Content/site.css",
+                      "~/Content/jquery-ui.css",
                       "~/Content/jquery.dataTables*"));
         }
     }
