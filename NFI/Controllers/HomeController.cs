@@ -17,6 +17,11 @@ namespace NFI.Controllers
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult SubmitForm1(ViewModelForm1Data formData)
         {

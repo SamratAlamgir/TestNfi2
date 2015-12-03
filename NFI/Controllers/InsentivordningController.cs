@@ -13,9 +13,9 @@ namespace NFI.Controllers
     public class InsentivordningController : BaseController
     {
         // GET: Insentivordning
-        public ActionResult Insentivordning()
+        public ActionResult Index()
         {
-            return View("Insentivordning");
+            return View();
         }
 
         public bool Save(InsentivordningDto appDto)
