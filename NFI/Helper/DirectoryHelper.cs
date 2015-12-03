@@ -31,7 +31,6 @@ namespace NFI.Helper
             return Path.Combine(GetRootDirectory(), dirPath);
         }
 
-
         public static string GetApplicationDataFilePath(ApplicationType appType)
         {
             var filePath = Path.Combine(GetApplicationDirPath(appType), Settings.Default.ApplicationDataFile);

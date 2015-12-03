@@ -23,6 +23,8 @@ namespace NFI.Controllers
             {
                 var appType = ApplicationType.Insentivordning;
                 appDto.AppId = Guid.NewGuid();
+                appDto.CreateTime = DateTime.Now;
+                
 
                 var files = new List<string>();
 
