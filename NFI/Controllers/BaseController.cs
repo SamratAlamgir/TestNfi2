@@ -21,12 +21,12 @@ namespace NFI.Controllers
             return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}{extension}";
         }
 
-        public string SaveUploadedFile(HttpPostedFileBase file)
+        public string SaveUploadedFile(HttpPostedFileBase file, ApplicationType appType)
         {
             if (file == null)
                 return null;
 
-            var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Sorfond);
+            var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var physicalPath = Server.MapPath(networkPath);
             if (!Directory.Exists(physicalPath))
             {
@@ -66,6 +66,27 @@ namespace NFI.Controllers
             {
                 // Create a file to write to.
                 PdfUtility.CreatePdf(appDto, fullPath, downloadLink);
+            }
+
+            return fullPath;
+        }
+
+        public string CreateTextFile<T>(T appDto)
+        {
+            var type = appDto.GetType();
+            var appId = type.GetProperty("AppId").GetValue(appDto);
+
+            var fileName = GetFilenameWithTimeStamp("user_data.txt");
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Insentivordning));
+            var fullPath = Path.Combine(path, fileName);
+            var downloadLink = GetDownloadLinkForFile(appId.ToString());
+            if (!System.IO.File.Exists(fullPath))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = System.IO.File.CreateText(fullPath))
+                {
+                    sw.WriteLine(appDto.ToString());
+                }
             }
 
             return fullPath;

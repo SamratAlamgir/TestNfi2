@@ -391,7 +391,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.KortBeskrivelseHandlingen, htmlAttributes: new { @class = "control-label col-md-5" })
                     <div class="col-md-7">
-                        @Html.TextAreaFor(model => model.KortBeskrivelseHandlingen, new { @class = "form-control", @rows = 5, @maxlength = 250 })
+                        @Html.TextAreaFor(model => model.KortBeskrivelseHandlingen, new { @class = "form-control", @rows = 5, @maxlength = 200 })
                         @Html.ValidationMessageFor(model => model.KortBeskrivelseHandlingen, "", new { @class = "text-danger" })
                     </div>
                 </div>

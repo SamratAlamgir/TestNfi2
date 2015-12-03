@@ -54,7 +54,7 @@
         if ($current == 1) {
             $('#rootwizard').find('.pager .next').show();
             $('#rootwizard').find('.pager .previous').hide();
-            $('#btnSubmit').show();
+            //$('#btnSubmit').show();
         }
         else if ($current == $total) {
             $('#rootwizard').find('.pager .next').hide();
