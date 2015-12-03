@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Web;
+﻿using System.ComponentModel;
 
 namespace NFI.Models
 {
-    public class Sorfond
+    public class SorfondDto : BaseAppDto
     {
         //1. Kontaktinformasjon norsk minoritetsprodusent:
         public NorskMinoritetsprodusent NorskMinoritetsprodusent { get; set; } = new NorskMinoritetsprodusent();

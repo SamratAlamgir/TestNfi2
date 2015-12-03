@@ -199,6 +199,7 @@
     <Compile Include="Models\FinansieringsInformasjon.cs" />
     <Compile Include="Models\HovedProdusent.cs" />
     <Compile Include="Models\HyperLinkAttribute.cs" />
+    <Compile Include="Models\IMember.cs" />
     <Compile Include="Models\InformasjonOmPersonerRoller.cs" />
     <Compile Include="Models\Manusforfatterens.cs" />
     <Compile Include="Models\NettadresseVisueltMateriale.cs" />
@@ -329,6 +330,7 @@
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\Insentivordning\Insentivordning.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -431,7 +433,7 @@
     <Content Include="Views\Home\InputWizard.cshtml" />
     <Content Include="Views\Admin\ApplicationList.cshtml" />
     <Content Include="Views\Captcha\Index.cshtml" />
-    <Content Include="Views\Home\Success.cshtml" />
+    <Content Include="Views\Shared\Success.cshtml" />
     <Content Include="Views\Admin\Application1Detail.cshtml" />
     <Content Include="Views\Sorfond\Index.cshtml" />
     <Content Include="Views\Insentivordning\Insentivordning.cshtml" />

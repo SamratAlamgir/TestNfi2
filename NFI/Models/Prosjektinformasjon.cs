@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace NFI.Models
 {
-    public class Prosjektinformasjon
+    public class Prosjektinformasjon : IMember
     {
         [Required]
         [Header("Prosjektinformasjon")]
@@ -16,9 +17,10 @@ namespace NFI.Models
         [DisplayName("Er prosjektet et originalverk")]
         public string ErProsjektetEtOriginalverk { get; set; }
 
-        [Required, FileSize(1024 * 1024 * 10)]
+        [Required, NotVisible, FileSize, JsonIgnore]
         [DisplayName("Dokumentasjon på at hovedprodusenten har opsjon/filmrett")]
         public List<HttpPostedFileBase> DokumentasjonPåHovedprodusentenHarOpsjonFilmrett { get; set; }
+        public List<string> DokumentasjonPåHovedprodusentenHarOpsjonFilmrettPaths { get; set; }
 
         [Required]
         [DisplayName("Språk")]
@@ -44,45 +46,42 @@ namespace NFI.Models
         [DisplayName("Lengde")]
         public string Lengde { get; set; }
 
-        [Required]
-        [NotVisible]
+        [Required, FileSize, JsonIgnore]
         [DisplayName("Reginotat")]
         public HttpPostedFileBase Reginotat { get; set; }
         public string ReginotatPath { get; set; }
 
-        [Required]
-        [NotVisible]
+        [Required, NotVisible, FileSize, JsonIgnore]
         [DisplayName("Synopsis/handlingsbeskrivelse (1 A4 side)")]
         public HttpPostedFileBase HandlingsbeskrivelseSynopsis { get; set; }
         public string HandlingsbeskrivelseSynopsisPath { get; set; }
 
-        [Required]
-        [NotVisible]
+
         [DisplayName("Manuskript")]
+        [Required, NotVisible, FileSize, JsonIgnore]
         public HttpPostedFileBase Manuskript { get; set; }
         public string ManuskriptPath { get; set; }
-        [Required]
-        [NotVisible]
+      
         [DisplayName("Fremdriftsplan")]
+        [Required, NotVisible, FileSize, JsonIgnore]
         public HttpPostedFileBase Fremdriftsplan { get; set; }
         public string FremdriftsplanPath { get; set; }
-        [Required]
-        [NotVisible]
+      
         [DisplayName("Opptaksplan")]
+        [Required, NotVisible, FileSize, JsonIgnore]
         public HttpPostedFileBase Opptaksplan { get; set; }
         public string OpptaksplanPath { get; set; }
 
-        [Required]
-        [NotVisible]
+        [Required, NotVisible, FileSize, JsonIgnore]
         [DisplayName("Samproduksjonsavtale eller intensjonsavtale om samproduksjon")]
         public List<HttpPostedFileBase> SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjon { get; set; }
-        public List<string> SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjonPath { get; set; }
+        public List<string> SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjonPaths { get; set; }
 
 
         [DisplayName("Eventuelle avtaler med distributører, tv-kanaler eller andre medietjenester")]
-        [NotVisible]
+        [Required, NotVisible, FileSize, JsonIgnore]
         public List<HttpPostedFileBase> EventuelleAvtalerMedDistributører { get; set; }
-        public List<string> EventuelleAvtalerMedDistributørerPath { get; set; }
+        public List<string> EventuelleAvtalerMedDistributørerPaths { get; set; }
 
         [DisplayName("Eventuell kommentar til prosjektinformasjon")]
         public string EventuellKommentarTilProsjektinformasjon { get; set; }

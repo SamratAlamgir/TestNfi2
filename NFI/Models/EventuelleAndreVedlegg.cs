@@ -3,7 +3,7 @@ using System.ComponentModel;
 namespace NFI.Models
 {
     [DisplayName("Eventuelle andre vedlegg")]
-    public class EventuelleAndreVedlegg
+    public class EventuelleAndreVedlegg : IMember
     {
         [Header("Eventuelle andre vedlegg")]
         [DisplayName(" Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]

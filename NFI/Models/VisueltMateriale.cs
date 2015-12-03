@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace NFI.Models
 {
-    public class VisueltMateriale
+    public class VisueltMateriale:IMember
     {
         [Header("Visuelt materiale")]
         [DisplayName("Inntil tre av regissørens siste produksjoner kan gjøres tilgjengelig for påsyn")]
