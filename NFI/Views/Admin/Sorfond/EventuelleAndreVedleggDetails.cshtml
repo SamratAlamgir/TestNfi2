@@ -1,0 +1,26 @@
+﻿@model NFI.Models.EventuelleAndreVedlegg
+
+<div>
+    <h4>Eventuelle andre vedlegg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HarduvedleggPaths)
+        </dt>
+        @foreach (var v in Model.HarduvedleggPaths)
+        {
+            <dd>
+                @v
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Beskrivelseav)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beskrivelseav)
+        </dd>
+
+    </dl>
+</div>

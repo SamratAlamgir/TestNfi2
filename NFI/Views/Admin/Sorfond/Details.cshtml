@@ -1,0 +1,64 @@
+﻿@model NFI.Models.SorfondDto
+
+@{
+    ViewBag.Title = "SorfondDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .dl-horizontal dt {
+        width: 280px;
+        white-space: normal;
+        margin-bottom: 10px;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 300px;
+    }
+</style>
+<h2>Søknadsskjema detaljer SØRFOND</h2>
+
+<div>
+    <h4>Sorfond </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AppId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AppId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipFilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipFilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdfFilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdfFilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+    </dl>
+</div>
+@Html.Partial("Sorfond/NorskMinoritetsprodusentDetails", Model.NorskMinoritetsprodusent)
+@Html.Partial("Sorfond/HovedProdusentDetails", Model.HovedProdusent)
+@Html.Partial("Sorfond/ProsjektinformasjonDetails", Model.Prosjektinformasjon)
+@Html.Partial("Sorfond/InformasjonOmPersonerRollerDetails", Model.InformasjonOmPersonerRoller)
+@Html.Partial("Sorfond/FinansieringsInformasjonDetails", Model.FinansieringsInformasjon)
+@Html.Partial("Sorfond/DacListen", Model.DacListen)
+@Html.Partial("Sorfond/VisueltMateriale", Model.VisueltMateriale)
+@Html.Partial("Sorfond/EventuelleAndreVedleggDetails", Model.EventuelleAndreVedlegg)

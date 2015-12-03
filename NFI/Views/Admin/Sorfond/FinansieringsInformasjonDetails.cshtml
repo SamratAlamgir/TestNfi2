@@ -1,0 +1,65 @@
+﻿@model NFI.Models.FinansieringsInformasjon
+
+<div>
+    <h4>Finansierings informasjon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalbudsjettForProsjektet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalbudsjettForProsjektet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøknadssumNorskFilminstitutt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøknadssumNorskFilminstitutt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KalkylePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KalkylePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinansieringsplanMedSpesifikasjonPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinansieringsplanMedSpesifikasjonPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BekreftetFinansiering)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BekreftetFinansiering)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SamtligDokumentasjonPåProsjektetsBekreftedePaths)
+        </dt>
+
+        @foreach (var t in Model.SamtligDokumentasjonPåProsjektetsBekreftedePaths)
+            {
+            <dd>
+                @t
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.EventuellKommentarTilFinansiering)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventuellKommentarTilFinansiering)
+        </dd>
+
+    </dl>
+</div>
