@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace NFI.Models
 {
     [DisplayName("Kontaktinformasjon norsk minoritetsprodusent:")]
-    public class NorskMinoritetsprodusent
+    public class NorskMinoritetsprodusent:IMember
     {
         [Required]
         [DisplayName("Produksjonsforetakets navn")]

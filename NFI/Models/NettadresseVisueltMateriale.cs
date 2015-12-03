@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace NFI.Models
 {
-    public class NettadresseVisueltMateriale
+    public class NettadresseVisueltMateriale:IMember
     {
         [DisplayName("Nettadresse til eventuelt visuelt materiale(webside, Vimeo, etc):")]
         public string Nettadressetil { get; set; }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NFI.Models
 {
-    public class HovedProdusent
+    public class HovedProdusent:IMember
     {
         [Required]
         [Header("Kontaktinformasjon hovedprodusent:")]

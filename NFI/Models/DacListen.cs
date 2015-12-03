@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NFI.Models
 {
-    public class DacListen
+    public class DacListen:IMember
     {
         [Required]
         [Header("DAC-listen")]
