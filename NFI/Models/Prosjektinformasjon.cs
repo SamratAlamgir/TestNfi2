@@ -61,12 +61,12 @@ namespace NFI.Models
         [Required, NotVisible, FileSize, JsonIgnore]
         public HttpPostedFileBase Manuskript { get; set; }
         public string ManuskriptPath { get; set; }
-      
+
         [DisplayName("Fremdriftsplan")]
         [Required, NotVisible, FileSize, JsonIgnore]
         public HttpPostedFileBase Fremdriftsplan { get; set; }
         public string FremdriftsplanPath { get; set; }
-      
+
         [DisplayName("Opptaksplan")]
         [Required, NotVisible, FileSize, JsonIgnore]
         public HttpPostedFileBase Opptaksplan { get; set; }
@@ -79,7 +79,7 @@ namespace NFI.Models
 
 
         [DisplayName("Eventuelle avtaler med distributører, tv-kanaler eller andre medietjenester")]
-        [Required, NotVisible, FileSize, JsonIgnore]
+        [NotVisible, FileSize, JsonIgnore]
         public List<HttpPostedFileBase> EventuelleAvtalerMedDistributører { get; set; }
         public List<string> EventuelleAvtalerMedDistributørerPaths { get; set; }
 
