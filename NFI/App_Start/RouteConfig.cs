@@ -15,8 +15,9 @@ namespace NFI
           );
             routes.MapRoute(
              name: "detailsLink",
-             url: "{controller}/{action}/{appType}/{appId}"
-         );
+             url: "{admin}/{action}/{appType}/{appId}",
+             defaults: new { controller = "Admin", action = "ShowDetails" }
+        );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

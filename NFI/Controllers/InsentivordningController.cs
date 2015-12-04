@@ -44,7 +44,7 @@ namespace NFI.Controllers
                 files.Add(appDto.LeggvedBudsjettForProduksjonenPath = SaveUploadedFile(appDto.LeggvedBudsjettForProduksjonen, appType));
                 files.Add(appDto.LeggvedFinansieringsplanPath = SaveUploadedFile(appDto.LeggvedFinansieringsplan, appType));
 
-                files.AddRange(appDto.HarduVedleggSomerRelevantePath = appDto.HarduVedleggSomerRelevante.Select(x => SaveUploadedFile(x, appType)));
+                files.AddRange(appDto.HarduVedleggSomerRelevantePaths = appDto.HarduVedleggSomerRelevante.Select(x => SaveUploadedFile(x, appType)).ToList());
                 files = files.Where(x => x != null).ToList();
 
                 files.Add(CreateTextFile(appDto, appType)); // User data file
@@ -61,7 +61,10 @@ namespace NFI.Controllers
                 //TODO: Send the mails
                 var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
                 var mailBody = "A new application has been submitted.<br/>" +
-                               "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                    "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
+                    "<br/>" +
+                    "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
+
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
 
