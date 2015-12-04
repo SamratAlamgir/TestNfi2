@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using NFI.App_Start;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -11,7 +12,7 @@ namespace NFI.Controllers
 {
     public class InsentivordningController : BaseController
     {
-        // GET: Insentivordning
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();
