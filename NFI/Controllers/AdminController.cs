@@ -71,7 +71,7 @@ namespace NFI.Controllers
             return View("Application1Detail", selectedApp);
         }
 
-        public FileResult DownloadZipFile(string appId, ApplicationType appType)
+        public FileResult DownloadZipFile(ApplicationType appType, string appId)
         {
             var selectedApp = GetApplicationDto(appId, appType);
 

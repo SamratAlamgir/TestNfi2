@@ -18,7 +18,7 @@ namespace NFI.Controllers
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
         protected List<string> FilePathList = new List<string>();
-        
+
         public string GetFilenameWithTimeStamp(string file1Name)
         {
             var extension = Path.GetExtension(file1Name);
@@ -97,15 +97,15 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        public string GetDownloadLinkForFile(string appId, ApplicationType appType)
+        protected string GetDownloadLinkForFile(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
-            return new Uri(GetBaseUri(), fileLink).ToString(); 
+            var fileLink = "Admin/DownloadZipFile/" + (int)appType + "/" + appId;
+            return new Uri(GetBaseUri(), fileLink).ToString();
         }
 
-        public string GetDetailViewLink(string appId, ApplicationType appType)
+        protected string GetDetailViewLink(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
+            var fileLink = "Admin/ShowDetail/" + (int)appType + "/" + appId;
             return new Uri(GetBaseUri(), fileLink).ToString();
         }
 
@@ -128,7 +128,7 @@ namespace NFI.Controllers
             {
                 if (fieldInfo.PropertyType == typeof(HttpPostedFileBase))
                 {
-                    var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj),ApplicationType.Sorfond);
+                    var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj), ApplicationType.Sorfond);
                     FilePathList.Add(filePath);
                     var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Path");
                     fieldPath?.SetValue(obj, filePath);

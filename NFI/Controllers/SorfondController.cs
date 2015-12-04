@@ -49,9 +49,10 @@ namespace NFI.Controllers
 
                 //TODO: Send the mails
                 var mailSubject = "SØRFOND " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
-                var mailBody = "A new application has been submitted.<br/>" +
+                var mailBody = "A new application has been submitted.<br/>Application Details: <a href='Admin/SorfondDetails/" + sorfondDto.AppId + "'> Click Here </a> ";
+                mailBody += "<br/>" +
                                "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
-                mailBody += "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
 
