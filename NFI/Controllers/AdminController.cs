@@ -118,8 +118,6 @@ namespace NFI.Controllers
             return resultSet.Single(x => x.AppId.ToString() == appId);
         }
 
-
-
         #region helper method
         private void TrimPathAndOnlyFileName(Object obj)
         {

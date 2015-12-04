@@ -605,7 +605,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.HarduVedleggSomerRelevante, new { type = "file" })
+                            @Html.TextBoxFor(model => model.HarduVedleggSomerRelevante, new { type = "file", multiple = "" })
                         </span>
                         @Html.ValidationMessageFor(model => model.HarduVedleggSomerRelevante, "", new { @class = "text-danger" })
                     </div>

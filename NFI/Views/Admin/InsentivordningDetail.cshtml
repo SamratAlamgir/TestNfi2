@@ -6,62 +6,22 @@
 }
 <style type="text/css">
     .dl-horizontal dt {
-        width: 280px;
+        width: 400px;
         white-space: normal;
         margin-bottom: 10px;
     }
 
     .dl-horizontal dd {
-        margin-left: 300px;
+        margin-left: 420px;
     }
 </style>
 
 <h2>Insentivordning (kommer også på engelsk)</h2>
 
 <div>
-    <h4></h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AppId)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AppId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ZipFilePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ZipFilePath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PdfFilePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PdfFilePath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsArchived)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsArchived)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateTime)
-        </dd>
-
+    <h4>1. Kontaktinformasjon hovedprodusent </h4>
+    <dl class="dl-horizontal well">
         <dt>
             @Html.DisplayNameFor(model => model.ProduksjonsforetaketsNavn)
         </dt>
@@ -181,7 +141,11 @@
         <dd>
             @Html.DisplayFor(model => model.LeggHovedproduksjonsselskapetsTrackRecordPath)
         </dd>
+    </dl>
 
+    <h4>2. Kontaktinformasjon søker: / hvis annen enn hovedprodusent</h4>
+
+    <dl class="dl-horizontal well">
         <dt>
             @Html.DisplayNameFor(model => model.SøkersNavn)
         </dt>
@@ -286,6 +250,10 @@
             @Html.DisplayFor(model => model.LastoppErklæringPath)
         </dd>
 
+    </dl>
+
+    <h4>3. Prosjektinformasjon</h4>
+    <dl class="dl-horizontal well">
         <dt>
             @Html.DisplayNameFor(model => model.TittelpåProsjektet)
         </dt>
@@ -446,6 +414,34 @@
             @Html.DisplayFor(model => model.SkrivinnStrategi)
         </dd>
 
+    </dl>
+
+    <h4> 4. Visuelt materiale </h4>
+    <dl class="dl-horizontal well">
+        @for (var i = 0; i < Model.VisueltMaterialeList.Count; i++)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.VisueltMaterialeList[i].NettadresseEventueltVisueltMateriale)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VisueltMaterialeList[i].NettadresseEventueltVisueltMateriale)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VisueltMaterialeList[i].OppgiEvtPassordNettadresse)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VisueltMaterialeList[i].OppgiEvtPassordNettadresse)
+            </dd>
+        }
+
+    </dl>
+
+    <h4> 5. Finansieringsinformasjon</h4>
+    <dl class="dl-horizontal well">
+
         <dt>
             @Html.DisplayNameFor(model => model.TotalbudsjettForProsjektet)
         </dt>
@@ -494,6 +490,25 @@
             @Html.DisplayFor(model => model.ProsentandelFinansieringen)
         </dd>
 
+    </dl>
+
+    <h4>6. Eventuelle andre vedlegg </h4>
+    <dl class="dl-horizontal well">
+
+        @if (Model.HarduVedleggSomerRelevantePaths != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.HarduVedleggSomerRelevantePaths)
+            </dt>
+
+            for (var i = 0; i < Model.HarduVedleggSomerRelevantePaths.Count; i++)
+            {
+                <dd>
+                    File @(i + 1): @Html.DisplayFor(model => model.HarduVedleggSomerRelevantePaths[i])
+                </dd>
+            }
+        }
+
         <dt>
             @Html.DisplayNameFor(model => model.BeskrivelseavAndreVedlegg)
         </dt>
@@ -503,8 +518,12 @@
         </dd>
 
     </dl>
+
+    <div class="form-group">
+        <label class="col-sm-2">Create Time:</label>
+        <div class="col-sm-10">
+            <span>@Html.DisplayTextFor(model => model.CreateTime) </span>
+        </div>
+    </div>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
