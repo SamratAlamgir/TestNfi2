@@ -4,7 +4,7 @@
     ViewBag.Title = "Insentivordning";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style type="text/css">
+@*<style type="text/css">
     .dl-horizontal dt {
         width: 400px;
         white-space: normal;
@@ -14,14 +14,14 @@
     .dl-horizontal dd {
         margin-left: 420px;
     }
-</style>
+</style>*@
 
 <h2>Insentivordning (kommer også på engelsk)</h2>
 
 <div>
 
     <h4>1. Kontaktinformasjon hovedprodusent </h4>
-    <dl class="dl-horizontal well">
+    <dl class="well">
         <dt>
             @Html.DisplayNameFor(model => model.ProduksjonsforetaketsNavn)
         </dt>
@@ -145,7 +145,7 @@
 
     <h4>2. Kontaktinformasjon søker: / hvis annen enn hovedprodusent</h4>
 
-    <dl class="dl-horizontal well">
+    <dl class="well">
         <dt>
             @Html.DisplayNameFor(model => model.SøkersNavn)
         </dt>
@@ -253,7 +253,7 @@
     </dl>
 
     <h4>3. Prosjektinformasjon</h4>
-    <dl class="dl-horizontal well">
+    <dl class="well">
         <dt>
             @Html.DisplayNameFor(model => model.TittelpåProsjektet)
         </dt>
@@ -417,7 +417,7 @@
     </dl>
 
     <h4> 4. Visuelt materiale </h4>
-    <dl class="dl-horizontal well">
+    <dl class="well">
         @for (var i = 0; i < Model.VisueltMaterialeList.Count; i++)
         {
             <dt>
@@ -440,7 +440,7 @@
     </dl>
 
     <h4> 5. Finansieringsinformasjon</h4>
-    <dl class="dl-horizontal well">
+    <dl class="well">
 
         <dt>
             @Html.DisplayNameFor(model => model.TotalbudsjettForProsjektet)
@@ -493,7 +493,7 @@
     </dl>
 
     <h4>6. Eventuelle andre vedlegg </h4>
-    <dl class="dl-horizontal well">
+    <dl class="well">
 
         @if (Model.HarduVedleggSomerRelevantePaths != null)
         {

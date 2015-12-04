@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Web.Mvc;
 using NFI.App_Start;
+using System.Web.Routing;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -65,7 +69,11 @@ namespace NFI.Controllers
                 var mailBody = "A new application has been submitted.<br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
-                    "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                    "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
+
+                var responseText =  GetResponseHtml(ApplicationType.Insentivordning, appDto.AppId);
+
+                mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
@@ -79,5 +87,36 @@ namespace NFI.Controllers
                 return View("Error");
             }
         }
+
+        public string GetResponseHtml(ApplicationType appType, Guid appId)
+        {
+            string output = string.Empty;
+
+            RouteValueDictionary rvd = new RouteValueDictionary();
+            rvd.Add("appType", appType);
+            rvd.Add("appId", appId);
+
+            WebRequest webRequest = WebRequest.Create(GetDetailViewLink(appId.ToString(), appType) );
+
+            SetBasicAuthHeader(webRequest, "admin", "test123");
+
+            WebResponse webResponse = webRequest.GetResponse();
+            if (webResponse.GetResponseStream().CanRead)
+            {
+                StreamReader reader = new StreamReader(webResponse.GetResponseStream());
+                output = reader.ReadToEnd();
+            }
+            webResponse.Close();
+
+            return output;
+        }
+
+        public void SetBasicAuthHeader(WebRequest request, String userName, String userPassword)
+        {
+            string authInfo = userName + ":" + userPassword;
+            authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+            request.Headers["Authorization"] = "Basic " + authInfo;
+        }
+
     }
 }
