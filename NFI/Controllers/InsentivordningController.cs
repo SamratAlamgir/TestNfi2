@@ -10,14 +10,15 @@ using NFI.Properties;
 
 namespace NFI.Controllers
 {
+    [CaptchaAuthorize]
     public class InsentivordningController : BaseController
     {
-        [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Save(InsentivordningDto appDto)
         {
             try
@@ -51,7 +52,7 @@ namespace NFI.Controllers
                 files.Add(CreateTextFile(appDto, appType)); // User data file
 
                 var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appDto.AppId, appDto.ProduksjonsforetaketsNavn);
-                appDto.ZipFilePath =  zipFilePath;
+                appDto.ZipFilePath = zipFilePath;
 
                 var zipFilePhysicalPath = zipFilePath;
                 ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
@@ -69,6 +70,7 @@ namespace NFI.Controllers
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
 
+                Session["IsCaptchaVerfied"] = false;
                 return View("Success");
             }
             catch (Exception ex)
