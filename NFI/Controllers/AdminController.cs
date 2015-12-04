@@ -64,59 +64,61 @@ namespace NFI.Controllers
 
             return true;
         }
-
-        public ActionResult ShowDetail(string appId, ApplicationType appType)
+        public ActionResult ShowDetail(ApplicationType appType, string appId)
         {
-            var selectedApp = GetApplicationDto(appId, appType);
-            return View("Application1Detail", selectedApp);
+            var viewName = "";
+            object selectedApp = null;
+            try
+            {
+                switch (appType)
+                {
+                    case ApplicationType.Insentivordning:
+                        viewName = "InsentivordningDetail";
+                        selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
+                        break;
+                    case ApplicationType.Sorfond:
+                        viewName = "Sorfond/Details";
+                        selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+                        break;
+                }
+                TrimPathAndOnlyFileName(selectedApp);
+                return View(viewName, selectedApp);
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
         }
 
         public FileResult DownloadZipFile(ApplicationType appType, string appId)
         {
-            var selectedApp = GetApplicationDto(appId, appType);
-
-            var filePath = Server.MapPath(selectedApp.ZipFilePath);
-
-            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
-            string fileName = Path.GetFileName(filePath);
+            BaseAppDto selectedApp = null;
+            switch (appType)
+            {
+                case ApplicationType.Insentivordning:
+                    selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
+                    break;
+                case ApplicationType.Sorfond:
+                    selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+                    break;
+            }
+            var filePath = System.Web.HttpContext.Current.Server.MapPath(selectedApp?.ZipFilePath);
+            filePath = filePath.Replace(@"\Admin\DownloadZipFile", "");
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+            var fileName = Path.GetFileName(filePath);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
-        private Application1Dto GetApplicationDto(string appId, ApplicationType appType)
+        private T GetApplicationDto<T>(string appId, ApplicationType appType)
+            where T : BaseAppDto
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-            var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
-
-            return resultSet.Single(x => x.AppId == appId);
-        }
-        public ActionResult SorfondDetails(string id)
-        {
-            try
-            {
-                var sorfond = GetSrofondDto(id);
-                TrimPathAndOnlyFileName(sorfond);
-                return View("Sorfond/Details", sorfond);
-
-            }
-            catch (Exception ex)
-            {
-
-                return View("Error");
-            }
-
-        }
-
-        #region Sorfond
-
-        private SorfondDto GetSrofondDto(string appId)
-        {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sorfond);
-            var resultSet = JsonHelper.GetCollections<SorfondDto>(Server.MapPath(dataFilePath));
+            var resultSet = JsonHelper.GetCollections<T>(Server.MapPath(dataFilePath));
 
             return resultSet.Single(x => x.AppId.ToString() == appId);
         }
 
-        #endregion
+
 
         #region helper method
         private void TrimPathAndOnlyFileName(Object obj)

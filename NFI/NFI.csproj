@@ -438,6 +438,7 @@
     <Content Include="Views\Admin\Sorfond\NettadresseVisueltMaterialeDetails.cshtml" />
     <Content Include="Views\Admin\Sorfond\VisueltMateriale.cshtml" />
     <Content Include="Views\Admin\Sorfond\EventuelleAndreVedleggDetails.cshtml" />
+    <Content Include="Views\Admin\InsentivordningDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\IncentiveScheme\" />

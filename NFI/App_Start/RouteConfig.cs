@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace NFI
@@ -19,7 +15,7 @@ namespace NFI
           );
             routes.MapRoute(
              name: "detailsLink",
-             url: "admin/{action}/{appType}/{appId}"
+             url: "{controller}/{action}/{appType}/{appId}"
          );
             routes.MapRoute(
                 name: "Default",
