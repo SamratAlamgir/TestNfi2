@@ -50,13 +50,13 @@ namespace NFI.Controllers
                 files.Add(CreateTextFile(appDto, appType)); // User data file
 
                 var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appDto.AppId, appDto.ProduksjonsforetaketsNavn);
-                appDto.ZipFilePath = ".." + zipFilePath;
+                appDto.ZipFilePath =  zipFilePath;
 
-                var zipFilePhysicalPath = Server.MapPath(zipFilePath);
+                var zipFilePhysicalPath = zipFilePath;
                 ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
 
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-                JsonHelper.Save<InsentivordningDto>(appDto, Server.MapPath(dataFilePath));
+                JsonHelper.Save<InsentivordningDto>(appDto, dataFilePath);
 
                 //TODO: Send the mails
                 var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
@@ -69,6 +69,7 @@ namespace NFI.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.error = ex;
                 return View("Error");
             }
         }

@@ -41,7 +41,7 @@ namespace NFI.Controllers
 
         private List<InsentivordningDto> GetInsentivordningDtoList(string dataFilePath, bool includeArchive)
         {
-            var result = JsonHelper.GetCollections<InsentivordningDto>(Server.MapPath(dataFilePath)).ToList();
+            var result = JsonHelper.GetCollections<InsentivordningDto>(dataFilePath).ToList();
 
             if (!includeArchive)
             {
@@ -54,13 +54,13 @@ namespace NFI.Controllers
         public bool MarkAsArchive(string appId)
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sorfond);
-            var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
+            var resultSet = JsonHelper.GetCollections<Application1Dto>(dataFilePath);
 
             var selectedApp = resultSet.Single(x => x.AppId == appId);
             selectedApp.IsArchived = true;
 
 
-            JsonHelper.Save(resultSet, Server.MapPath(dataFilePath));
+            JsonHelper.Save(resultSet, dataFilePath);
 
             return true;
         }
@@ -102,7 +102,7 @@ namespace NFI.Controllers
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
                     break;
             }
-            var filePath = System.Web.HttpContext.Current.Server.MapPath(selectedApp?.ZipFilePath);
+            var filePath = selectedApp?.ZipFilePath;
             filePath = filePath.Replace(@"\Admin\DownloadZipFile", "");
             var fileBytes = System.IO.File.ReadAllBytes(filePath);
             var fileName = Path.GetFileName(filePath);
@@ -113,7 +113,7 @@ namespace NFI.Controllers
             where T : BaseAppDto
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-            var resultSet = JsonHelper.GetCollections<T>(Server.MapPath(dataFilePath));
+            var resultSet = JsonHelper.GetCollections<T>(dataFilePath);
 
             return resultSet.Single(x => x.AppId.ToString() == appId);
         }

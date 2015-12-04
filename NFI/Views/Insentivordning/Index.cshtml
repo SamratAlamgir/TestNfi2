@@ -12,7 +12,8 @@
 
 <h2>Insentivordning</h2>
 
-<form id="MainForm" class="form-horizontal" action="http://ubp387.stwserver.net/demo/Insentivordning/Save" enctype="multipart/form-data" method="post">
+<form id="MainForm" class="form-horizontal" action="/Insentivordning/Save" enctype="multipart/form-data" method="post">
+
     <div id="rootwizard" class="container well panel col-md-8">
         <ul style="display: none">
             <li><a href="#tab1" data-toggle="tab"></a></li>
@@ -202,7 +203,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.SøkersEpostAdresse, htmlAttributes: new { @class = "control-label col-md-5" },
-            labelText: "Søkers epost-adresse (E-postadressen som skal motta bekreftelse på at søknaden er sendt inn)")
+                        labelText: "Søkers epost-adresse (E-postadressen som skal motta bekreftelse på at søknaden er sendt inn)")
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.SøkersEpostAdresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.SøkersEpostAdresse, "", new { @class = "text-danger" })
@@ -633,4 +634,3 @@
         </div>
     </div>
 </form>
-
