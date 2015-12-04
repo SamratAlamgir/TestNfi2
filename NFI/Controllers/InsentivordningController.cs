@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
+using NFI.Properties;
 
 namespace NFI.Controllers
 {
     public class InsentivordningController : BaseController
     {
         // GET: Insentivordning
-        public ActionResult Insentivordning()
+        public ActionResult Index()
         {
-            return View("Insentivordning");
+            return View();
         }
 
         public bool Save(InsentivordningDto appDto)
@@ -24,31 +24,30 @@ namespace NFI.Controllers
                 var appType = ApplicationType.Insentivordning;
                 appDto.AppId = Guid.NewGuid();
                 appDto.CreateTime = DateTime.Now;
-                
 
                 var files = new List<string>();
 
-                files.Add(appDto.LeggCertificateOriginForHovedproduksjonsselskapPath = SaveUploadedFile(appDto.LeggCertificateOriginForHovedproduksjonsselskap));
-                files.Add(appDto.LeggHovedprodusentensCvPath = SaveUploadedFile(appDto.LeggHovedprodusentensCv));
-                files.Add(appDto.LeggHovedproduksjonsselskapetsTrackRecordPath = SaveUploadedFile(appDto.LeggHovedproduksjonsselskapetsTrackRecord));
-                files.Add(appDto.LastoppErklæringPath = SaveUploadedFile(appDto.LastoppErklæring));
-                files.Add(appDto.LeggvedDokumentasjonHovedprodusentenPath = SaveUploadedFile(appDto.LeggvedDokumentasjonHovedprodusenten));
-                files.Add(appDto.LeggvedUtfyltkulturProduksjonstestPath = SaveUploadedFile(appDto.LeggvedUtfyltkulturProduksjonstest));
-                files.Add(appDto.LeggvedManuskriptPath = SaveUploadedFile(appDto.LeggvedManuskript));
-                files.Add(appDto.LeggvedTreatmentPath = SaveUploadedFile(appDto.LeggvedTreatment));
-                files.Add(appDto.LeggvedProduksjonsplanPath = SaveUploadedFile(appDto.LeggvedProduksjonsplan));
-                files.Add(appDto.LeggvedCastCrewListePath = SaveUploadedFile(appDto.LeggvedCastCrewListe));
-                files.Add(appDto.LeggvedListeOverLocationsPath = SaveUploadedFile(appDto.LeggvedListeOverLocations));
-                files.Add(appDto.LeggvedListeOverLeverandørerPath = SaveUploadedFile(appDto.LeggvedListeOverLeverandører));
-                files.Add(appDto.LeggvedDistribusjonsPlanPath = SaveUploadedFile(appDto.LeggvedDistribusjonsPlan));
-                files.Add(appDto.LeggvedTotalbudsjettetPath = SaveUploadedFile(appDto.LeggvedTotalbudsjettet));
-                files.Add(appDto.LeggvedBudsjettForProduksjonenPath = SaveUploadedFile(appDto.LeggvedBudsjettForProduksjonen));
-                files.Add(appDto.LeggvedFinansieringsplanPath = SaveUploadedFile(appDto.LeggvedFinansieringsplan));
+                files.Add(appDto.LeggCertificateOriginForHovedproduksjonsselskapPath = SaveUploadedFile(appDto.LeggCertificateOriginForHovedproduksjonsselskap, appType));
+                files.Add(appDto.LeggHovedprodusentensCvPath = SaveUploadedFile(appDto.LeggHovedprodusentensCv, appType));
+                files.Add(appDto.LeggHovedproduksjonsselskapetsTrackRecordPath = SaveUploadedFile(appDto.LeggHovedproduksjonsselskapetsTrackRecord, appType));
+                files.Add(appDto.LastoppErklæringPath = SaveUploadedFile(appDto.LastoppErklæring, appType));
+                files.Add(appDto.LeggvedDokumentasjonHovedprodusentenPath = SaveUploadedFile(appDto.LeggvedDokumentasjonHovedprodusenten, appType));
+                files.Add(appDto.LeggvedUtfyltkulturProduksjonstestPath = SaveUploadedFile(appDto.LeggvedUtfyltkulturProduksjonstest, appType));
+                files.Add(appDto.LeggvedManuskriptPath = SaveUploadedFile(appDto.LeggvedManuskript, appType));
+                files.Add(appDto.LeggvedTreatmentPath = SaveUploadedFile(appDto.LeggvedTreatment, appType));
+                files.Add(appDto.LeggvedProduksjonsplanPath = SaveUploadedFile(appDto.LeggvedProduksjonsplan, appType));
+                files.Add(appDto.LeggvedCastCrewListePath = SaveUploadedFile(appDto.LeggvedCastCrewListe, appType));
+                files.Add(appDto.LeggvedListeOverLocationsPath = SaveUploadedFile(appDto.LeggvedListeOverLocations, appType));
+                files.Add(appDto.LeggvedListeOverLeverandørerPath = SaveUploadedFile(appDto.LeggvedListeOverLeverandører, appType));
+                files.Add(appDto.LeggvedDistribusjonsPlanPath = SaveUploadedFile(appDto.LeggvedDistribusjonsPlan, appType));
+                files.Add(appDto.LeggvedTotalbudsjettetPath = SaveUploadedFile(appDto.LeggvedTotalbudsjettet, appType));
+                files.Add(appDto.LeggvedBudsjettForProduksjonenPath = SaveUploadedFile(appDto.LeggvedBudsjettForProduksjonen, appType));
+                files.Add(appDto.LeggvedFinansieringsplanPath = SaveUploadedFile(appDto.LeggvedFinansieringsplan, appType));
 
-                files.AddRange(appDto.HarduVedleggSomerRelevante.Select(SaveUploadedFile));
+                files.AddRange(appDto.HarduVedleggSomerRelevantePath = appDto.HarduVedleggSomerRelevante.Select(x => SaveUploadedFile(x, appType)));
                 files = files.Where(x => x != null).ToList();
 
-                files.Add(CreateUserDataFile(appDto)); // User data file
+                files.Add(CreateTextFile(appDto, appType)); // User data file
 
                 var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appDto.AppId, appDto.ProduksjonsforetaketsNavn);
                 appDto.ZipFilePath = ".." + zipFilePath;
@@ -60,6 +59,12 @@ namespace NFI.Controllers
                 JsonHelper.Save<InsentivordningDto>(appDto, Server.MapPath(dataFilePath));
 
                 //TODO: Send the mails
+                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+                var mailBody = "A new application has been submitted.<br/>" +
+                               "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                var mailTo = Settings.Default.ToEmailAddress;
+                CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
+
 
             }
             catch (Exception ex)

@@ -5,12 +5,12 @@ using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
+using NFI.Properties;
 
 namespace NFI.Controllers
 {
     public class SorfondController : BaseController
     {
-       
         // GET: Sorfond
         public ActionResult Index()
         {
@@ -47,6 +47,14 @@ namespace NFI.Controllers
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
                 JsonHelper.Save<SorfondDto>(sorfondDto, Server.MapPath(dataFilePath));
 
+                //TODO: Send the mails
+                var mailSubject = "SØRFOND " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
+                var mailBody = "A new application has been submitted.<br/>" +
+                               "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                mailBody += "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                var mailTo = Settings.Default.ToEmailAddress;
+                CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
+
                 return View("Success");
             }
             catch (Exception ex)
@@ -56,6 +64,6 @@ namespace NFI.Controllers
 
         }
 
-     
+
     }
 }

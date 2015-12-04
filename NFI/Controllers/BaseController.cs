@@ -18,6 +18,7 @@ namespace NFI.Controllers
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
         protected List<string> FilePathList = new List<string>();
+        
         public string GetFilenameWithTimeStamp(string file1Name)
         {
             var extension = Path.GetExtension(file1Name);
@@ -25,12 +26,12 @@ namespace NFI.Controllers
             return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}{extension}";
         }
 
-        public string SaveUploadedFile(HttpPostedFileBase file)
+        public string SaveUploadedFile(HttpPostedFileBase file, ApplicationType appType)
         {
             if (file == null)
                 return null;
 
-            var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Sorfond);
+            var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var physicalPath = Server.MapPath(networkPath);
             if (!Directory.Exists(physicalPath))
             {
@@ -46,26 +47,26 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        public void SendEmailToPredefinedAdressee(Application1Dto application1Dto)
+        public void SendEmailToPredefinedAdressee(Application1Dto application1Dto, ApplicationType appType)
         {
             var to = Settings.Default.ToEmailAddress;
             var body = $"User Name: {application1Dto.Name}<br/>" +
                        $"Email: {application1Dto.Email}<br/>" +
                        $"Sex: {application1Dto.Sex}<br/>" +
-                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId)}";
+                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId, appType)}";
             var subject = "File Send";
             Emailer.SendMail(to, subject, body);
         }
 
-        public string CreateUserDataFile<T>(T appDto)
+        public string CreateUserDataFile<T>(T appDto, ApplicationType appType)
         {
             var type = appDto.GetType();
             var appId = type.GetProperty("AppId").GetValue(appDto);
 
             var fileName = GetFilenameWithTimeStamp("user_data.pdf");
-            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(ApplicationType.Sorfond));
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(appType));
             var fullPath = Path.Combine(path, fileName);
-            var downloadLink = GetDownloadLinkForFile(appId.ToString());
+            var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
             if (!System.IO.File.Exists(fullPath))
             {
                 // Create a file to write to.
@@ -75,21 +76,42 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        public string GetDownloadLinkForFile(string appId)
+        public string CreateTextFile<T>(T appDto, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId;
+            var type = appDto.GetType();
+            var appId = type.GetProperty("AppId").GetValue(appDto);
+
+            var fileName = GetFilenameWithTimeStamp("user_data.txt");
+            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(appType));
+            var fullPath = Path.Combine(path, fileName);
+            var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
+            if (!System.IO.File.Exists(fullPath))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = System.IO.File.CreateText(fullPath))
+                {
+                    sw.WriteLine(appDto.ToString());
+                }
+            }
+
+            return fullPath;
+        }
+
+        public string GetDownloadLinkForFile(string appId, ApplicationType appType)
+        {
+            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
             return new Uri(GetBaseUri(), fileLink).ToString(); 
         }
 
-        public string GetDetailViewLink(string appId)
+        public string GetDetailViewLink(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/ShowDetail?appId=" + appId;
+            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
             return new Uri(GetBaseUri(), fileLink).ToString();
         }
 
         private Uri GetBaseUri()
         {
-            return new Uri(Request.UrlReferrer?.AbsoluteUri ?? "");
+            return new Uri(Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/");
         }
 
         protected void SaveFilesAndSetFilePath(Object obj)
@@ -106,7 +128,7 @@ namespace NFI.Controllers
             {
                 if (fieldInfo.PropertyType == typeof(HttpPostedFileBase))
                 {
-                    var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj));
+                    var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj),ApplicationType.Sorfond);
                     FilePathList.Add(filePath);
                     var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Path");
                     fieldPath?.SetValue(obj, filePath);
@@ -118,7 +140,7 @@ namespace NFI.Controllers
                     var files = (List<HttpPostedFileBase>)fieldInfo.GetValue(obj);
                     if (files != null)
                     {
-                        var filePaths = files.Select(SaveUploadedFile).ToList();
+                        var filePaths = files.Select(httpPostedFileBase => SaveUploadedFile(httpPostedFileBase, ApplicationType.Sorfond)).ToList();
                         FilePathList.AddRange(filePaths);
                         var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Paths");
                         fieldPath?.SetValue(obj, filePaths);

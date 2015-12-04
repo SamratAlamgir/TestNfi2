@@ -70,7 +70,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sajib.cefalo@hotmail.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("systemnfi@gmail.com")]
         public string FromEmailAddress {
             get {
                 return ((string)(this["FromEmailAddress"]));
@@ -79,7 +79,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("samrat@cefalo.com")]
         public string ToEmailAddress {
             get {
                 return ((string)(this["ToEmailAddress"]));
@@ -106,7 +106,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("monjurul")]
+        [global::System.Configuration.DefaultSettingValueAttribute("NFI")]
         public string FromName {
             get {
                 return ((string)(this["FromName"]));
@@ -115,7 +115,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("*****")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SystemNfi987")]
         public string FromPassword {
             get {
                 return ((string)(this["FromPassword"]));
