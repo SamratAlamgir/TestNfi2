@@ -64,27 +64,50 @@ namespace NFI.Controllers
 
         public ActionResult ShowDetail(string appId, ApplicationType appType)
         {
-            var selectedApp = GetApplicationDto(appId, appType);
-            return View("Application1Detail", selectedApp);
+            var viewName = "";
+            object selectedApp = null;
+
+            if (appType == ApplicationType.Insentivordning)
+            {
+                viewName = "InsentivordningDetail";
+                selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
+            }
+            else if (appType == ApplicationType.Sorfond)
+            {
+                viewName = "SorfondDetail";
+                selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+            }
+
+            return View(viewName, selectedApp);
         }
 
         public FileResult DownloadZipFile(string appId, ApplicationType appType)
         {
-            var selectedApp = GetApplicationDto(appId, appType);
+            BaseAppDto selectedApp = null;
 
-            var filePath = Server.MapPath(selectedApp.ZipFilePath);
+            if (appType == ApplicationType.Insentivordning)
+            {
+                selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
+            }
+            else if (appType == ApplicationType.Sorfond)
+            {
+                selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+            }
+
+            var filePath = Server.MapPath(selectedApp?.ZipFilePath);
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
             string fileName =  Path.GetFileName(filePath);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
-        private Application1Dto GetApplicationDto(string appId, ApplicationType appType)
+        private T GetApplicationDto<T> (string appId, ApplicationType appType)
+            where T : BaseAppDto
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-            var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
+            var resultSet = JsonHelper.GetCollections<T>(Server.MapPath(dataFilePath));
 
-            return resultSet.Single(x => x.AppId == appId);
+            return resultSet.Single(x => x.AppId.ToString() == appId);
         }
     }
 }

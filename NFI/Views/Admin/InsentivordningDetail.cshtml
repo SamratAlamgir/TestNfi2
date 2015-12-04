@@ -1,0 +1,510 @@
+﻿@model NFI.Models.InsentivordningDto
+
+@{
+    ViewBag.Title = "Insentivordning";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .dl-horizontal dt {
+        width: 280px;
+        white-space: normal;
+        margin-bottom: 10px;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 300px;
+    }
+</style>
+
+<h2>Insentivordning (kommer også på engelsk)</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AppId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipFilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipFilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdfFilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdfFilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsArchived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsArchived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProduksjonsforetaketsNavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProduksjonsforetaketsNavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisasjonsNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisasjonsNummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisasjonsPostadresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisasjonsPostadresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisasjonsPostnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisasjonsPostnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisasjonsPoststed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisasjonsPoststed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisasjonsLand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisasjonsLand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HovedprodusentensNavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HovedprodusentensNavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HovedprodusentensTittel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HovedprodusentensTittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HovedprodusentensTelefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HovedprodusentensTelefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HovedprodusentensMobiltelefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HovedprodusentensMobiltelefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HovedprodusentensEpostadresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HovedprodusentensEpostadresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HovedproduksjonsforetaketsHjemmeside)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HovedproduksjonsforetaketsHjemmeside)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggCertificateOriginForHovedproduksjonsselskapPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggCertificateOriginForHovedproduksjonsselskapPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggHovedprodusentensCvPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggHovedprodusentensCvPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggHovedproduksjonsselskapetsTrackRecordPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggHovedproduksjonsselskapetsTrackRecordPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersNavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersNavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersTittel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersTittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersTelefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersTelefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersMobiltelefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersMobiltelefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersEpostAdresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersEpostAdresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersProduksjonsforetaketsNavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersProduksjonsforetaketsNavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersOrganisasjonsNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersOrganisasjonsNummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersPostadresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersPostadresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersPostnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersPostnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersPoststed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersPoststed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøkersLand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøkersLand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProduksjonsforetaketsHjemmeside)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProduksjonsforetaketsHjemmeside)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastoppErklæringPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastoppErklæringPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TittelpåProsjektet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TittelpåProsjektet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ErProsjektetOriginalverk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ErProsjektetOriginalverk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedDokumentasjonHovedprodusentenPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedDokumentasjonHovedprodusentenPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Format)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Format)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sjanger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sjanger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lengde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lengde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Språk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Språk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatoForOpptaksstartNorge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatoForOpptaksstartNorge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AntattSisteOpptaksdagNorge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AntattSisteOpptaksdagNorge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedUtfyltkulturProduksjonstestPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedUtfyltkulturProduksjonstestPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KortBeskrivelseHandlingen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KortBeskrivelseHandlingen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedManuskriptPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedManuskriptPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedTreatmentPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedTreatmentPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedProduksjonsplanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedProduksjonsplanPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedCastCrewListePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedCastCrewListePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedListeOverLocationsPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedListeOverLocationsPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedListeOverLeverandørerPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedListeOverLeverandørerPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedDistribusjonsPlanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedDistribusjonsPlanPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeskrivHvordanProduksjonen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeskrivHvordanProduksjonen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkrivinnStrategi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkrivinnStrategi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalbudsjettForProsjektet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalbudsjettForProsjektet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedTotalbudsjettetPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedTotalbudsjettetPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimerteKostnader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimerteKostnader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedBudsjettForProduksjonenPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedBudsjettForProduksjonenPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedFinansieringsplanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedFinansieringsplanPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProsentandelFinansieringen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProsentandelFinansieringen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeskrivelseavAndreVedlegg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeskrivelseavAndreVedlegg)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
