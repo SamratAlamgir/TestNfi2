@@ -1,0 +1,68 @@
+﻿@using NFI.Models
+@model NFI.Models.InformasjonOmPersonerRoller
+
+<div>
+    <h4>Informasjon om personer/roller</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CVtilMinoritetprodusentensProduksjonsforetakPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVtilMinoritetprodusentensProduksjonsforetakPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVTilAnsvarligMinoritetsprodusentforetakPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVTilAnsvarligMinoritetsprodusentforetakPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVtilHovedprodusentensProduksjonsforetakPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVtilHovedprodusentensProduksjonsforetakPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVtilAnsvarligHovedprodusentPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVtilAnsvarligHovedprodusentPath)
+        </dd>
+        <dt>
+            Regissoren
+        </dt>
+
+        @foreach (Regissoren t in Model.Regissoren)
+            {
+            <dd>
+                @Html.Partial("Sorfond/RegissorenDetails", t)
+            </dd>
+        }
+        <dt>
+            Manusforfatterens
+        </dt>
+
+        @foreach (Manusforfatterens t in Model.Manusforfatterens)
+            {
+            <dd>
+                @Html.Partial("Sorfond/ManusforfatterensDetails", t)
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.EventuellKommentarPåPersoner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventuellKommentarPåPersoner)
+        </dd>
+
+    </dl>
+</div>

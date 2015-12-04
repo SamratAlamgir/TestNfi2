@@ -425,6 +425,20 @@
     <Content Include="Views\Sorfond\Index.cshtml" />
     <Content Include="Views\Insentivordning\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Insentivordning\Insentivordning.cshtml" />
+    <Content Include="Views\Admin\Sorfond\Details.cshtml" />
+    <Content Include="Views\Admin\Sorfond\NorskMinoritetsprodusentDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\HovedProdusentDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\ProsjektinformasjonDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\RegissorenDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\ManusforfatterensDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\InformasjonOmPersonerRollerDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\FinansieringsInformasjonDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\DacListen.cshtml" />
+    <Content Include="Views\Admin\Sorfond\NettadresseVisueltMaterialeDetails.cshtml" />
+    <Content Include="Views\Admin\Sorfond\VisueltMateriale.cshtml" />
+    <Content Include="Views\Admin\Sorfond\EventuelleAndreVedleggDetails.cshtml" />
+    <Content Include="Views\Admin\InsentivordningDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\IncentiveScheme\" />

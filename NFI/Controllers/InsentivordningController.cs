@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
@@ -18,7 +17,7 @@ namespace NFI.Controllers
             return View();
         }
 
-        public bool Save(InsentivordningDto appDto)
+        public ActionResult Save(InsentivordningDto appDto)
         {
             try
             {
@@ -66,14 +65,12 @@ namespace NFI.Controllers
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
 
-
+                return View("Success");
             }
             catch (Exception ex)
             {
-                throw ex;
+                return View("Error");
             }
-
-            return true;
         }
     }
 }
