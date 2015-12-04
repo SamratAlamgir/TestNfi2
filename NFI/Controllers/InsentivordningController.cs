@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web.Mvc;
-using NFI.App_Start;
 using System.Web.Routing;
 using NFI.Enums;
 using NFI.Helper;
@@ -14,7 +13,6 @@ using NFI.Properties;
 
 namespace NFI.Controllers
 {
-    [CaptchaAuthorize]
     public class InsentivordningController : BaseController
     {
         public ActionResult Index()
@@ -22,7 +20,6 @@ namespace NFI.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public ActionResult Save(InsentivordningDto appDto)
         {
             try
@@ -77,8 +74,6 @@ namespace NFI.Controllers
 
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
-
-                Session["IsCaptchaVerfied"] = false;
                 return View("Success");
             }
             catch (Exception ex)
