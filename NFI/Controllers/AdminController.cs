@@ -134,13 +134,17 @@ namespace NFI.Controllers
                 if (propertyInfo.Name.Contains("Paths"))
                 {
                     var filePaths = (List<string>)propertyInfo.GetValue(obj);
-                    var fileNames = filePaths.Select(Path.GetFileName).ToList();
+                    var fileNames = filePaths?.Select(Path.GetFileName).ToList();
                     propertyInfo.SetValue(obj, fileNames);
                 }
                 else if (propertyInfo.Name.Contains("Path"))
                 {
                     var filePath = (string)propertyInfo.GetValue(obj);
-                    propertyInfo.SetValue(obj, Path.GetFileName(filePath));
+
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        propertyInfo.SetValue(obj, Path.GetFileName(filePath));
+                    }
                 }
             }
             foreach (var fieldInfo in fieldInfos)
