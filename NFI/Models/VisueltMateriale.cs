@@ -14,7 +14,7 @@ namespace NFI.Models
 
         [DisplayName("Følger det pilot eller annet visuelt materiale som blir ettersendt søknaden:")]
         public string Følgerdet { get; set; }
-
+        [DisplayName(" Nett adresse Visuelt Materiales:")]
         public List<NettadresseVisueltMateriale> NettadresseVisueltMateriale { get; } = new List<NettadresseVisueltMateriale>();
     }
 }

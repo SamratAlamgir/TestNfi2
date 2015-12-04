@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using NFI.Enums;
@@ -13,6 +17,7 @@ namespace NFI.Controllers
     public class BaseController : Controller
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
+        protected List<string> FilePathList = new List<string>();
 
         public string GetFilenameWithTimeStamp(string file1Name)
         {
@@ -92,21 +97,84 @@ namespace NFI.Controllers
             return fullPath;
         }
 
-        public string GetDownloadLinkForFile(string appId, ApplicationType appType)
+        protected string GetDownloadLinkForFile(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
-            return new Uri(GetBaseUri(), fileLink).ToString(); 
+            var fileLink = "Admin/DownloadZipFile/" + (int)appType + "/" + appId;
+            return new Uri(GetBaseUri(), fileLink).ToString();
         }
 
-        public string GetDetailViewLink(string appId, ApplicationType appType)
+        protected string GetDetailViewLink(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
+            var fileLink = "Admin/ShowDetail/" + (int)appType + "/" + appId;
             return new Uri(GetBaseUri(), fileLink).ToString();
         }
 
         private Uri GetBaseUri()
         {
             return new Uri(Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/");
+        }
+
+        protected void SaveFilesAndSetFilePath(Object obj)
+        {
+            var type = obj.GetType();
+            var fieldInfos =
+                type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                    .Where(f => NotPrimitive(f.PropertyType))
+                    .ToList();
+            var allFieldPaths = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                    .Where(f => f.Name.Contains("Path"))
+                    .ToList();
+            foreach (var fieldInfo in fieldInfos)
+            {
+                if (fieldInfo.PropertyType == typeof(HttpPostedFileBase))
+                {
+                    var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj), ApplicationType.Sorfond);
+                    FilePathList.Add(filePath);
+                    var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Path");
+                    fieldPath?.SetValue(obj, filePath);
+                }
+                else if (fieldInfo.PropertyType.IsGenericType
+                         && fieldInfo.PropertyType.GetGenericTypeDefinition() == typeof(List<>)
+                         && fieldInfo.PropertyType.GetGenericArguments()[0] == typeof(HttpPostedFileBase))
+                {
+                    var files = (List<HttpPostedFileBase>)fieldInfo.GetValue(obj);
+                    if (files != null)
+                    {
+                        var filePaths = files.Select(httpPostedFileBase => SaveUploadedFile(httpPostedFileBase, ApplicationType.Sorfond)).ToList();
+                        FilePathList.AddRange(filePaths);
+                        var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Paths");
+                        fieldPath?.SetValue(obj, filePaths);
+                    }
+                }
+                else if (fieldInfo.PropertyType.IsGenericType &&
+                         fieldInfo.PropertyType.GetGenericTypeDefinition() == typeof(List<>)
+                         && fieldInfo.PropertyType.GetGenericArguments()[0].GetInterfaces().Contains(typeof(IMember)))
+                {
+
+                    var objs = fieldInfo.GetValue(obj) as IList;
+                    if (objs != null)
+                    {
+                        foreach (var member in objs)
+                        {
+                            SaveFilesAndSetFilePath(member);
+                        }
+                    }
+                }
+
+                else if (fieldInfo.PropertyType.GetInterfaces().Contains(typeof(IMember)))
+                {
+                    var o = fieldInfo.GetValue(obj);
+                    if (o != null)
+                        SaveFilesAndSetFilePath(o);
+                }
+
+            }
+        }
+
+        private static bool NotPrimitive(Type type)
+        {
+            return !(type.IsPrimitive || type == typeof(Guid)
+                     || type == typeof(string));
         }
     }
 }

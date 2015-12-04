@@ -19,10 +19,12 @@ namespace NFI.Models
 
         [Required, FileSize, NotVisible, JsonIgnore]
         public HttpPostedFileBase Kalkyle { get; set; }
+        [DisplayName("Kalkyle")]
         public string KalkylePath { get; set; }
         [Required, FileSize, NotVisible, JsonIgnore]
         [DisplayName("Finansieringsplan med spesifikasjon")]
         public HttpPostedFileBase FinansieringsplanMedSpesifikasjon { get; set; }
+        [DisplayName("Finansieringsplan med spesifikasjon")]
         public string FinansieringsplanMedSpesifikasjonPath { get; set; }
 
         [Required]
@@ -32,6 +34,7 @@ namespace NFI.Models
         [FileSize, NotVisible, JsonIgnore]
         [DisplayName("Samtlig dokumentasjon på prosjektets bekreftede finansiering oppgitt i punktet over(LOI er ikke godkjent)")]
         public List<HttpPostedFileBase> SamtligDokumentasjonPåProsjektetsBekreftede { get; set; }
+        [DisplayName("Samtlig dokumentasjon på prosjektets bekreftede finansiering oppgitt i punktet over(LOI er ikke godkjent)")]
         public List<string> SamtligDokumentasjonPåProsjektetsBekreftedePaths { get; set; }
 
         [DisplayName("Eventuell kommentar til finansiering")]
