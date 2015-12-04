@@ -1,0 +1,41 @@
+﻿@using NFI.Models
+@model NFI.Models.VisueltMateriale
+
+<div>
+    <h4>Visuelt materiale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InntilTre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InntilTre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HvilkeSkrivTittelÅr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HvilkeSkrivTittelÅr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Følgerdet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Følgerdet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NettadresseVisueltMateriale)
+        </dt>
+        @foreach (NettadresseVisueltMateriale t in Model.NettadresseVisueltMateriale)
+        {
+            <dd>
+                @Html.Partial("Sorfond/NettadresseVisueltMaterialeDetails", t)
+            </dd>
+        }
+    </dl>
+</div>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
@@ -18,7 +17,7 @@ namespace NFI.Controllers
             return View();
         }
 
-        public bool Save(InsentivordningDto appDto)
+        public ActionResult Save(InsentivordningDto appDto)
         {
             try
             {
@@ -62,17 +61,19 @@ namespace NFI.Controllers
                 //TODO: Send the mails
                 var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
                 var mailBody = "A new application has been submitted.<br/>" +
-                               "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
-                               
+                    "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
+                    "<br/>" +
+                    "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
+
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
+
+                return View("Success");
             }
             catch (Exception ex)
             {
-                throw ex;
+                return View("Error");
             }
-
-            return true;
         }
     }
 }

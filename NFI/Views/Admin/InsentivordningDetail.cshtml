@@ -23,46 +23,6 @@
     <h4>1. Kontaktinformasjon hovedprodusent </h4>
     <dl class="dl-horizontal well">
         <dt>
-            @Html.DisplayNameFor(model => model.AppId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AppId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ZipFilePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ZipFilePath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PdfFilePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PdfFilePath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsArchived)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsArchived)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateTime)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.ProduksjonsforetaketsNavn)
         </dt>
 
@@ -537,15 +497,14 @@
 
         @if (Model.HarduVedleggSomerRelevantePaths != null)
         {
+            <dt>
+                @Html.DisplayNameFor(model => model.HarduVedleggSomerRelevantePaths)
+            </dt>
 
             for (var i = 0; i < Model.HarduVedleggSomerRelevantePaths.Count; i++)
             {
-                <dt>
-                    @Html.DisplayNameFor(model => model.HarduVedleggSomerRelevantePaths[i])
-                </dt>
-
                 <dd>
-                    @Html.DisplayFor(model => model.HarduVedleggSomerRelevantePaths[i])
+                    File @(i + 1): @Html.DisplayFor(model => model.HarduVedleggSomerRelevantePaths[i])
                 </dd>
             }
         }
@@ -559,4 +518,12 @@
         </dd>
 
     </dl>
+
+    <div class="form-group">
+        <label class="col-sm-2">Create Time:</label>
+        <div class="col-sm-10">
+            <span>@Html.DisplayTextFor(model => model.CreateTime) </span>
+        </div>
+    </div>
+
 </div>

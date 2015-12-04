@@ -12,18 +12,22 @@ namespace NFI.Models
         [DisplayName("CV til minoritetprodusentens produksjonsforetak")]
         [Required, FileSize, NotVisible, JsonIgnore]
         public HttpPostedFileBase CVtilMinoritetprodusentensProduksjonsforetak { get; set; }
+        [DisplayName("CV til minoritetprodusentens produksjonsforetak")]
         public string CVtilMinoritetprodusentensProduksjonsforetakPath { get; set; }
         [Required, FileSize, NotVisible, JsonIgnore]
         [DisplayName("CV til ansvarlig minoritetsprodusent")]
         public HttpPostedFileBase CVTilAnsvarligMinoritetsprodusentforetak { get; set; }
+        [DisplayName("CV til ansvarlig minoritetsprodusent")]
         public string CVTilAnsvarligMinoritetsprodusentforetakPath { get; set; }
         [Required, FileSize, NotVisible, JsonIgnore]
         [DisplayName("CV til hovedprodusentens produksjonsforetak")]
         public HttpPostedFileBase CVtilHovedprodusentensProduksjonsforetak { get; set; }
+        [DisplayName("CV til hovedprodusentens produksjonsforetak")]
         public string CVtilHovedprodusentensProduksjonsforetakPath { get; set; }
         [Required, FileSize, NotVisible, JsonIgnore]
         [DisplayName("CV til ansvarlig hovedprodusent(er)")]
         public HttpPostedFileBase CVtilAnsvarligHovedprodusent { get; set; }
+        [DisplayName("CV til ansvarlig hovedprodusent(er)")]
         public string CVtilAnsvarligHovedprodusentPath { get; set; }
         public List<Regissoren> Regissoren { get; } = new List<Regissoren>();
 

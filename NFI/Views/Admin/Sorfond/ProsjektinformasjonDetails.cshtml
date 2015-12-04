@@ -1,0 +1,152 @@
+﻿@model NFI.Models.Prosjektinformasjon
+<div>
+    <h4>Prosjektinformasjon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TittelPåProsjektet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TittelPåProsjektet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ErProsjektetEtOriginalverk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ErProsjektetEtOriginalverk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DokumentasjonPåHovedprodusentenHarOpsjonFilmrettPaths)
+        </dt>
+
+
+        @foreach (string t in Model.DokumentasjonPåHovedprodusentenHarOpsjonFilmrettPaths)
+            {
+            <dd>
+                @t
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Språk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Språk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateForOpptaksstart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateForOpptaksstart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AntattFerdigstillelseEllerPremiereDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AntattFerdigstillelseEllerPremiereDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KortBeskrivelseAvProsjektet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KortBeskrivelseAvProsjektet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sjanger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sjanger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lengde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lengde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReginotatPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReginotatPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HandlingsbeskrivelseSynopsisPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HandlingsbeskrivelseSynopsisPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManuskriptPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManuskriptPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FremdriftsplanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FremdriftsplanPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpptaksplanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpptaksplanPath)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjonPaths)
+        </dt>
+
+
+        @foreach (string t in Model.SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjonPaths)
+            {
+            <dd>
+                @t
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.EventuelleAvtalerMedDistributørerPaths)
+        </dt>
+
+
+        @foreach (string t in Model.EventuelleAvtalerMedDistributørerPaths)
+            {
+            <dd>
+                @t
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventuellKommentarTilProsjektinformasjon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventuellKommentarTilProsjektinformasjon)
+        </dd>
+
+    </dl>
+</div>
