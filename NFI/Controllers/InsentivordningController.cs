@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web.Mvc;
+using NFI.App_Start;
 using System.Web.Routing;
 using NFI.Enums;
 using NFI.Helper;
@@ -13,14 +14,15 @@ using NFI.Properties;
 
 namespace NFI.Controllers
 {
+    [CaptchaAuthorize]
     public class InsentivordningController : BaseController
     {
-        // GET: Insentivordning
         public ActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Save(InsentivordningDto appDto)
         {
             try
@@ -54,13 +56,13 @@ namespace NFI.Controllers
                 files.Add(CreateTextFile(appDto, appType)); // User data file
 
                 var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appDto.AppId, appDto.ProduksjonsforetaketsNavn);
-                appDto.ZipFilePath = ".." + zipFilePath;
+                appDto.ZipFilePath = zipFilePath;
 
-                var zipFilePhysicalPath = Server.MapPath(zipFilePath);
+                var zipFilePhysicalPath = zipFilePath;
                 ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
 
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-                JsonHelper.Save<InsentivordningDto>(appDto, Server.MapPath(dataFilePath));
+                JsonHelper.Save<InsentivordningDto>(appDto, dataFilePath);
 
                 //TODO: Send the mails
                 var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
@@ -76,13 +78,12 @@ namespace NFI.Controllers
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
 
-
-                
-
+                Session["IsCaptchaVerfied"] = false;
                 return View("Success");
             }
             catch (Exception ex)
             {
+                ViewBag.error = ex;
                 return View("Error");
             }
         }

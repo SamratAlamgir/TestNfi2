@@ -9,17 +9,17 @@
             "order": [[ 2, "desc" ]],
             "bDestroy": true,
             "aoColumns": [
-                { "mDataProp": "Name" },
-                { "mDataProp": "Email" },
+                { "mDataProp": "ProduksjonsforetaketsNavn" },
+                { "mDataProp": "OrganisasjonsNummer" },
                 {
-                    "mDataProp": "CreateDate",
+                    "mDataProp": "CreateTime",
                     "fnCreatedCell": function (nTd, sData, oData) {
                         var date = new Date(parseInt(sData.substr(6)));
                         $(nTd).html((date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear());
                     }
                 },
 
-                { "mDataProp": "Company" },
+                { "mDataProp": "OrganisasjonsPostnummer" },
                 {
                     "mDataProp": "ZipFilePath",
                     "fnCreatedCell": function (nTd, sData, oData) {

@@ -25,7 +25,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/NFI Data/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:/inetpub/wwwroot/NFI Data/")]
         public string RootDir {
             get {
                 return ((string)(this["RootDir"]));
