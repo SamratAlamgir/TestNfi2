@@ -100,7 +100,7 @@ namespace NFI.Controllers
 
         public string GetDetailViewLink(string appId, ApplicationType appType)
         {
-            var fileLink = "Admin/DownloadZipFile?appId=" + appId + "&appType=" + (int)appType;
+            var fileLink = "Admin/ShowDetail?appId=" + appId + "&appType=" + (int)appType;
             return new Uri(GetBaseUri(), fileLink).ToString();
         }
 
