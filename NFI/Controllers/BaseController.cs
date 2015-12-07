@@ -16,14 +16,14 @@ namespace NFI.Controllers
 {
     public class BaseController : Controller
     {
-        private const string TimestampPattern = "yyyyMMddHHmmssfff";
+        private const string TimestampPattern = "yyyyMMddHHmm";
         protected List<string> FilePathList = new List<string>();
 
         public string GetFilenameWithTimeStamp(string file1Name)
         {
             var extension = Path.GetExtension(file1Name);
             var timeStamp = DateTime.Now.ToString(TimestampPattern);
-            var g = Guid.NewGuid();
+            var g = Guid.NewGuid().ToString().Split('-')[0];
             return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}_{g}{extension}";
         }
 
