@@ -40,14 +40,14 @@ namespace NFI.Controllers
 
                 // User data file
                 FilePathList = FilePathList.Where(x => !string.IsNullOrEmpty(x)).ToList();
-                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, sorfondDto.AppId, sorfondDto.HovedProdusent.HovedprodusentProduksjonsforetaketsNavn);
-                sorfondDto.ZipFilePath = ".." + zipFilePath;
+                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, sorfondDto.AppId, sorfondDto.Prosjektinformasjon.TittelPåProsjektet);
+                sorfondDto.ZipFilePath = zipFilePath;
 
-                var zipFilePhysicalPath = Server.MapPath(zipFilePath);
+                var zipFilePhysicalPath = zipFilePath;
                 ZipHelper.CreateZipFromFiles(FilePathList, zipFilePhysicalPath);
 
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-                JsonHelper.Save<SorfondDto>(sorfondDto, Server.MapPath(dataFilePath));
+                JsonHelper.Save<SorfondDto>(sorfondDto, dataFilePath);
 
                 //TODO: Send the mails
                 var mailSubject = "SØRFOND " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
