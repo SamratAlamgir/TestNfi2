@@ -16,7 +16,7 @@ namespace NFI.Controllers
 {
     public class BaseController : Controller
     {
-        private const string TimestampPattern = "yyyyMMddHHmmssfff";
+        private const string TimestampPattern = "yyyyMMddHHmm";
         protected List<string> FilePathList = new List<string>();
 
 
@@ -37,7 +37,7 @@ namespace NFI.Controllers
             switch (appType)
             {
                 case ApplicationType.Sorfond:
-                    viewName = "../Admin/Sorfond/Detail";
+                    viewName = "../Admin/Sorfond/Details";
                     break;
                 case ApplicationType.Insentivordning:
                     viewName = "../Admin/InsentivordningDetail";
@@ -99,6 +99,7 @@ namespace NFI.Controllers
 
         protected string GetApplicationDetailsStringHtml(Controller controller, string viewName, object model)
         {
+            
             TrimPathAndOnlyFileName(model);
             controller.ViewData.Model = model;
             using (var sw = new StringWriter())
@@ -173,7 +174,7 @@ namespace NFI.Controllers
             application.CreateTime = DateTime.Now;
 
             FilePathList = new List<string>();
-            SaveFilesAndSetFilePath(application,applicationType);
+            SaveFilesAndSetFilePath(application, applicationType);
             FilePathList = FilePathList.Where(f => !string.IsNullOrEmpty(f)).ToList();
 
             FilePathList.Add(CreateUserDataFile(application, applicationType)); // User data file
@@ -191,7 +192,7 @@ namespace NFI.Controllers
         #region File Helper Methods
 
 
-        private void SaveFilesAndSetFilePath(Object obj,ApplicationType applicationType)
+        private void SaveFilesAndSetFilePath(Object obj, ApplicationType applicationType)
         {
             var type = obj.GetType();
             var fieldInfos =
@@ -199,8 +200,8 @@ namespace NFI.Controllers
                     .Where(f => NotPrimitive(f.PropertyType))
                     .ToList();
             var allFieldPaths = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(f => f.Name.Contains("Path"))
-                .ToList();
+                    .Where(f => f.Name.Contains("Path"))
+                    .ToList();
             foreach (var fieldInfo in fieldInfos)
             {
                 if (fieldInfo.PropertyType == typeof(HttpPostedFileBase))
@@ -237,7 +238,7 @@ namespace NFI.Controllers
                     {
                         foreach (var member in objs)
                         {
-                            SaveFilesAndSetFilePath(member,applicationType);
+                            SaveFilesAndSetFilePath(member, applicationType);
                         }
                     }
                 }
@@ -246,7 +247,7 @@ namespace NFI.Controllers
                 {
                     var o = fieldInfo.GetValue(obj);
                     if (o != null)
-                        SaveFilesAndSetFilePath(o,applicationType);
+                        SaveFilesAndSetFilePath(o, applicationType);
                 }
 
             }

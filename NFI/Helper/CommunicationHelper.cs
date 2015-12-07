@@ -27,6 +27,11 @@ namespace NFI.Helper
             return Emailer.SendMail(mailTo, subject, body);
         }
 
+        public static bool SendEmailToArchivist(string subject, string body, string mailTo, List<string> attachmentFilePaths)
+        {
+            return Emailer.SendMail(mailTo, subject, body, attachmentFilePaths);
+        }
+
         public static bool SendMailToApplicant(Dictionary<string, string> values, string mailTo)
         {
             var subject = "Application type <ApplicationType> submitted";

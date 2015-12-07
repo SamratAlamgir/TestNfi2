@@ -19,7 +19,7 @@
 
 <div>
     <h4>Sorfond </h4>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.AppId)
@@ -54,7 +54,7 @@
 
     </dl>
 </div>
-@Html.Partial("Sorfond/NorskMinoritetsprodusentDetails", Model.NorskMinoritetsprodusent)
+@{ Html.RenderPartial("/Sorfond/NorskMinoritetsprodusentDetails", Model.NorskMinoritetsprodusent) }
 @Html.Partial("Sorfond/HovedProdusentDetails", Model.HovedProdusent)
 @Html.Partial("Sorfond/ProsjektinformasjonDetails", Model.Prosjektinformasjon)
 @Html.Partial("Sorfond/InformasjonOmPersonerRollerDetails", Model.InformasjonOmPersonerRoller)

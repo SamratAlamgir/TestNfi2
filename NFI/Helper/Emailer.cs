@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Configuration;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using NFI.Properties;
 
 namespace NFI.Utility
@@ -12,7 +14,7 @@ namespace NFI.Utility
         {
         }
 
-        public static bool SendMail(string to, string subject, string body)
+        public static bool SendMail(string to, string subject, string body, List<string> attachmentFilePath = null)
         {
             try
             {
@@ -32,7 +34,6 @@ namespace NFI.Utility
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(fromEmail, fromPassword)
                 };
-                
 
                 var fromAddress = new MailAddress(fromEmail, fromName);
                 
@@ -50,6 +51,25 @@ namespace NFI.Utility
 
                 // Message body content
                 message.Body = body;
+
+                if (attachmentFilePath != null)
+                {
+                    foreach (var filePath in attachmentFilePath)
+                    {
+                        if (!File.Exists(filePath)) { continue; }
+
+                        // Create  the file attachment for this e-mail message.
+                        Attachment data = new Attachment(filePath, MediaTypeNames.Application.Octet);
+                        data.Name = Path.GetFileName(filePath);
+                        // Add time stamp information for the file.
+                        ContentDisposition disposition = data.ContentDisposition;
+                        disposition.CreationDate = System.IO.File.GetCreationTime(filePath);
+                        disposition.ModificationDate = System.IO.File.GetLastWriteTime(filePath);
+                        disposition.ReadDate = System.IO.File.GetLastAccessTime(filePath);
+                        // Add the file attachment to this e-mail message.
+                        message.Attachments.Add(data);
+                    }
+                }
 
                 //Send SMTP mail
                 smtpClient.Send(message);
