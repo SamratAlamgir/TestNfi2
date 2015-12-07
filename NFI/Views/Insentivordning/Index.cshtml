@@ -33,7 +33,7 @@
                     <h3> 1. Kontaktinformasjon hovedprodusent</h3>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ProduksjonsforetaketsNavn, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.ProduksjonsforetaketsNavn, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.ProduksjonsforetaketsNavn, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.ProduksjonsforetaketsNavn, "", new { @class = "text-danger" })
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.OrganisasjonsNummer, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.OrganisasjonsNummer, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.OrganisasjonsNummer, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.OrganisasjonsNummer, "", new { @class = "text-danger" })
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.OrganisasjonsPostadresse, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.OrganisasjonsPostadresse, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.OrganisasjonsPostadresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.OrganisasjonsPostadresse, "", new { @class = "text-danger" })
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.OrganisasjonsPostnummer, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.OrganisasjonsPostnummer, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.OrganisasjonsPostnummer, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.OrganisasjonsPostnummer, "", new { @class = "text-danger" })
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.OrganisasjonsPoststed, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.OrganisasjonsPoststed, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.OrganisasjonsPoststed, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.OrganisasjonsPoststed, "", new { @class = "text-danger" })
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.OrganisasjonsLand, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.OrganisasjonsLand, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.OrganisasjonsLand, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.OrganisasjonsLand, "", new { @class = "text-danger" })
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedprodusentensNavn, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.HovedprodusentensNavn, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.HovedprodusentensNavn, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedprodusentensNavn, "", new { @class = "text-danger" })
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedprodusentensTittel, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.HovedprodusentensTittel, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.HovedprodusentensTittel, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedprodusentensTittel, "", new { @class = "text-danger" })
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedprodusentensTelefon, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.HovedprodusentensTelefon, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.HovedprodusentensTelefon, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedprodusentensTelefon, "", new { @class = "text-danger" })
@@ -105,7 +105,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedprodusentensMobiltelefon, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.HovedprodusentensMobiltelefon, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.HovedprodusentensMobiltelefon, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedprodusentensMobiltelefon, "", new { @class = "text-danger" })
@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedprodusentensEpostadresse, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.HovedprodusentensEpostadresse, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.HovedprodusentensEpostadresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedprodusentensEpostadresse, "", new { @class = "text-danger" })
@@ -130,7 +130,7 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggCertificateOriginForHovedproduksjonsselskap, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggCertificateOriginForHovedproduksjonsselskap, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -141,7 +141,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggHovedprodusentensCv, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggHovedprodusentensCv, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -152,7 +152,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggHovedproduksjonsselskapetsTrackRecord, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggHovedproduksjonsselskapetsTrackRecord, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -202,7 +202,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SøkersEpostAdresse, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.SøkersEpostAdresse, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.SøkersEpostAdresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.SøkersEpostAdresse, "", new { @class = "text-danger" })
@@ -287,7 +287,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.TittelpåProsjektet, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.TittelpåProsjektet, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.TittelpåProsjektet, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.TittelpåProsjektet, "", new { @class = "text-danger" })
@@ -295,7 +295,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ErProsjektetOriginalverk, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.ErProsjektetOriginalverk, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.RadioButtonFor(model => model.ErProsjektetOriginalverk, "Ja") Ja
                         @Html.RadioButtonFor(model => model.ErProsjektetOriginalverk, "Nei") Nei
@@ -305,7 +305,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedDokumentasjonHovedprodusenten, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedDokumentasjonHovedprodusenten, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -316,7 +316,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Format, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.Format, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.Format, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Format, "", new { @class = "text-danger" })
@@ -324,7 +324,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Sjanger, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.Sjanger, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.Sjanger, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Sjanger, "", new { @class = "text-danger" })
@@ -332,7 +332,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Lengde, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.Lengde, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.Lengde, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Lengde, "", new { @class = "text-danger" })
@@ -340,7 +340,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Språk, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.Språk, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.Språk, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Språk, "", new { @class = "text-danger" })
@@ -348,8 +348,8 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DatoForOpptaksstartNorge, htmlAttributes: new { @class = "control-label col-md-5" })
-                    <div class="col-md-5">
+                    @Html.LabelFor(model => model.DatoForOpptaksstartNorge, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-5 label-required">
                         <div class="input-group date" data-provide="datepicker" data-date-format="dd.mm.yyyy">
                             <input type="text" class="form-control" required readonly id="DatoForOpptaksstartNorge" name="DatoForOpptaksstartNorge">
                             <div class="input-group-addon">
@@ -362,8 +362,8 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.AntattSisteOpptaksdagNorge, htmlAttributes: new { @class = "control-label col-md-5" })
-                    <div class="col-md-5">
+                    @Html.LabelFor(model => model.AntattSisteOpptaksdagNorge, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-5 label-required">
                         <div class="input-group date" data-provide="datepicker" data-date-format="dd.mm.yyyy">
                             <input type="text" class="form-control" required readonly id="AntattSisteOpptaksdagNorge" name="AntattSisteOpptaksdagNorge">
                             <div class="input-group-addon">
@@ -375,7 +375,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-5">
+                    <div class="col-md-5 label-required">
                         @Html.LabelFor(model => model.LeggvedUtfyltkulturProduksjonstest, htmlAttributes: new { @class = "control-label" })
                         <a href="http://www.nfi.no/_attachment/144523" class="pull-right">Testen finner du her</a>
                     </div>
@@ -388,7 +388,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.KortBeskrivelseHandlingen, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.KortBeskrivelseHandlingen, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.TextAreaFor(model => model.KortBeskrivelseHandlingen, new { @class = "form-control", @rows = 5, @maxlength = 200 })
                         @Html.ValidationMessageFor(model => model.KortBeskrivelseHandlingen, "", new { @class = "text-danger" })
@@ -396,7 +396,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedManuskript, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedManuskript, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -408,7 +408,7 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedTreatment, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedTreatment, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -420,7 +420,7 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedProduksjonsplan, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedProduksjonsplan, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -432,7 +432,7 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedCastCrewListe, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedCastCrewListe, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -443,7 +443,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedListeOverLocations, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedListeOverLocations, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -455,7 +455,7 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedListeOverLeverandører, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedListeOverLeverandører, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -466,7 +466,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedDistribusjonsPlan, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedDistribusjonsPlan, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -477,7 +477,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.BeskrivHvordanProduksjonen, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.BeskrivHvordanProduksjonen, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.TextAreaFor(model => model.BeskrivHvordanProduksjonen, new { @class = "form-control", @rows = 5 })
                         @Html.ValidationMessageFor(model => model.BeskrivHvordanProduksjonen, "", new { @class = "text-danger" })
@@ -485,7 +485,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SkrivinnStrategi, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.SkrivinnStrategi, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.TextAreaFor(model => model.SkrivinnStrategi, new { @class = "form-control", @rows = 5 })
                         @Html.ValidationMessageFor(model => model.SkrivinnStrategi, "", new { @class = "text-danger" })
@@ -510,12 +510,12 @@
                 <div id="visualDiv">
                     <div class="well" name="VisueltMaterialeList">
                         <div class="form-group">
-                            <label class="control-label col-md-5">Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)</label>
+                            <label class="control-label col-md-5 label-required">Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)</label>
                             <input type="text" name="VisueltMaterialeList[0].NettadresseEventueltVisueltMateriale" class="form-control" />
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-5">Oppgi evt passord til nettadresse med visuelt materiale</label>
+                            <label class="control-label col-md-5 label-required">Oppgi evt passord til nettadresse med visuelt materiale</label>
                             <input type="text" name="VisueltMaterialeList[0].OppgiEvtPassordNettadresse" class="form-control" />
                         </div>
                     </div>
@@ -530,7 +530,7 @@
                 </div>
                 <div class="form-group">
 
-                    <div class="col-md-5">
+                    <div class="col-md-5 label-required">
                         @Html.LabelFor(model => model.TotalbudsjettForProsjektet, htmlAttributes: new { @class = "control-label" })
                         <a class="pull-right" target="_blank" href="http://ec.europa.eu/budget/contracts_grants/info_contracts/inforeuro/inforeuro_en.cfm"> (use this currency converter)</a>
                     </div>
@@ -542,7 +542,7 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedTotalbudsjettet, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedTotalbudsjettet, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -553,7 +553,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.EstimerteKostnader, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.EstimerteKostnader, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.EstimerteKostnader, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.EstimerteKostnader, "", new { @class = "text-danger" })
@@ -561,7 +561,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedBudsjettForProduksjonen, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedBudsjettForProduksjonen, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -572,7 +572,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LeggvedFinansieringsplan, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.LeggvedFinansieringsplan, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
