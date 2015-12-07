@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using NFI.App_Start;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -12,6 +13,7 @@ namespace NFI.Controllers
     public class SorfondController : BaseController
     {
         // GET: Sorfond
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             var model = new SorfondDto();
@@ -23,10 +25,10 @@ namespace NFI.Controllers
         [HttpPost]
         public ActionResult Create(SorfondDto sorfondDto)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View("Error");
-            //}
+            if (!ModelState.IsValid)
+            {
+                return View("Error");
+            }
             try
             {
                 var appType = ApplicationType.Sorfond;
@@ -38,14 +40,14 @@ namespace NFI.Controllers
 
                 // User data file
                 FilePathList = FilePathList.Where(x => !string.IsNullOrEmpty(x)).ToList();
-                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, sorfondDto.AppId, sorfondDto.HovedProdusent.HovedprodusentProduksjonsforetaketsNavn);
-                sorfondDto.ZipFilePath = ".." + zipFilePath;
+                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, sorfondDto.AppId, sorfondDto.Prosjektinformasjon.TittelPåProsjektet);
+                sorfondDto.ZipFilePath = zipFilePath;
 
-                var zipFilePhysicalPath = Server.MapPath(zipFilePath);
+                var zipFilePhysicalPath = zipFilePath;
                 ZipHelper.CreateZipFromFiles(FilePathList, zipFilePhysicalPath);
 
                 var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-                JsonHelper.Save<SorfondDto>(sorfondDto, Server.MapPath(dataFilePath));
+                JsonHelper.Save<SorfondDto>(sorfondDto, dataFilePath);
 
                 //TODO: Send the mails
                 var mailSubject = "SØRFOND " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
