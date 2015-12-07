@@ -4,7 +4,7 @@
 <div>
     <h4>Informasjon om personer/roller</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl>
         <dt>
             @Html.DisplayNameFor(model => model.CVtilMinoritetprodusentensProduksjonsforetakPath)
         </dt>
@@ -43,7 +43,7 @@
         @foreach (Regissoren t in Model.Regissoren)
             {
             <dd>
-                @Html.Partial("Sorfond/RegissorenDetails", t)
+                @Html.Partial("../Admin/Sorfond/RegissorenDetails", t)
             </dd>
         }
         <dt>
@@ -53,7 +53,7 @@
         @foreach (Manusforfatterens t in Model.Manusforfatterens)
             {
             <dd>
-                @Html.Partial("Sorfond/ManusforfatterensDetails", t)
+                @Html.Partial("../Admin/Sorfond/ManusforfatterensDetails", t)
             </dd>
         }
         <dt>

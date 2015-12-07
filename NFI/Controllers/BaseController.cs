@@ -99,7 +99,7 @@ namespace NFI.Controllers
 
         protected string GetApplicationDetailsStringHtml(Controller controller, string viewName, object model)
         {
-            
+
             TrimPathAndOnlyFileName(model);
             controller.ViewData.Model = model;
             using (var sw = new StringWriter())

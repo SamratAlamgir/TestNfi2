@@ -4,7 +4,7 @@
 <div>
     <h4>Visuelt materiale</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl>
         <dt>
             @Html.DisplayNameFor(model => model.InntilTre)
         </dt>
@@ -34,7 +34,7 @@
         @foreach (NettadresseVisueltMateriale t in Model.NettadresseVisueltMateriale)
         {
             <dd>
-                @Html.Partial("Sorfond/NettadresseVisueltMaterialeDetails", t)
+                @Html.Partial("../Admin/Sorfond/NettadresseVisueltMaterialeDetails", t)
             </dd>
         }
     </dl>

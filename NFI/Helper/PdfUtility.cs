@@ -25,7 +25,7 @@ namespace NFI.Helper
 
             using (var input = new MemoryStream(bytes))
             {
-                using (var document = new Document(iTextSharp.text.PageSize.A4, 50, 50, 50, 50))
+                using (var document = new Document(PageSize.LETTER, 50, 50, 50, 50))
                 {
                     using (var fileStream = new FileStream(fullPath, FileMode.Create))
                     using (var writer = PdfWriter.GetInstance(document, fileStream))

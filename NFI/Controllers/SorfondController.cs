@@ -38,13 +38,10 @@ namespace NFI.Controllers
                 var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a> ";
                 mailBody += "<br/>" +
                                "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
-
                 var responseText = GetApplicationDetailsStringHtml(this, "../Admin/Sorfond/Details", sorfondDto);
                 mailBody += responseText;
-
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
-
+                CommunicationHelper.SendEmailToArchivist(mailSubject, mailBody, mailTo, FilePathList);
                 return View("Success");
             }
             catch (Exception ex)
