@@ -63,7 +63,7 @@ namespace NFI.Controllers
 
                 //TODO: Send the mails
                 var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
-                var mailBody = "A new application has been submitted.<br/>" +
+                var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
                     "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
@@ -73,7 +73,7 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendMailToExecutive(mailSubject, mailBody, mailTo);
+                CommunicationHelper.SendEmailToArchivist(mailSubject, mailBody, mailTo, files);
                 return View("Success");
             }
             catch (Exception ex)
