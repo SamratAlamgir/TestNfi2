@@ -41,7 +41,7 @@ namespace NFI.Controllers
 
         private List<InsentivordningDto> GetInsentivordningDtoList(string dataFilePath, bool includeArchive)
         {
-            var result = JsonHelper.GetCollections<InsentivordningDto>(Server.MapPath(dataFilePath)).ToList();
+            var result = JsonHelper.GetCollections<InsentivordningDto>(dataFilePath).ToList();
 
             if (!includeArchive)
             {
@@ -54,13 +54,13 @@ namespace NFI.Controllers
         public bool MarkAsArchive(string appId)
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sorfond);
-            var resultSet = JsonHelper.GetCollections<Application1Dto>(Server.MapPath(dataFilePath));
+            var resultSet = JsonHelper.GetCollections<Application1Dto>(dataFilePath);
 
             var selectedApp = resultSet.Single(x => x.AppId == appId);
             selectedApp.IsArchived = true;
 
 
-            JsonHelper.Save(resultSet, Server.MapPath(dataFilePath));
+            JsonHelper.Save(resultSet, dataFilePath);
 
             return true;
         }
@@ -102,7 +102,7 @@ namespace NFI.Controllers
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
                     break;
             }
-            var filePath = System.Web.HttpContext.Current.Server.MapPath(selectedApp?.ZipFilePath);
+            var filePath = selectedApp?.ZipFilePath;
             filePath = filePath.Replace(@"\Admin\DownloadZipFile", "");
             var fileBytes = System.IO.File.ReadAllBytes(filePath);
             var fileName = Path.GetFileName(filePath);
@@ -113,12 +113,10 @@ namespace NFI.Controllers
             where T : BaseAppDto
         {
             var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-            var resultSet = JsonHelper.GetCollections<T>(Server.MapPath(dataFilePath));
+            var resultSet = JsonHelper.GetCollections<T>(dataFilePath);
 
             return resultSet.Single(x => x.AppId.ToString() == appId);
         }
-
-
 
         #region helper method
         private void TrimPathAndOnlyFileName(Object obj)
@@ -136,13 +134,17 @@ namespace NFI.Controllers
                 if (propertyInfo.Name.Contains("Paths"))
                 {
                     var filePaths = (List<string>)propertyInfo.GetValue(obj);
-                    var fileNames = filePaths.Select(Path.GetFileName).ToList();
+                    var fileNames = filePaths?.Select(Path.GetFileName).ToList();
                     propertyInfo.SetValue(obj, fileNames);
                 }
                 else if (propertyInfo.Name.Contains("Path"))
                 {
                     var filePath = (string)propertyInfo.GetValue(obj);
-                    propertyInfo.SetValue(obj, Path.GetFileName(filePath));
+
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        propertyInfo.SetValue(obj, Path.GetFileName(filePath));
+                    }
                 }
             }
             foreach (var fieldInfo in fieldInfos)

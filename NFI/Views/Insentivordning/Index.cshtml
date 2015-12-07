@@ -202,8 +202,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SøkersEpostAdresse, htmlAttributes: new { @class = "control-label col-md-5" },
-                        labelText: "Søkers epost-adresse (E-postadressen som skal motta bekreftelse på at søknaden er sendt inn)")
+                    @Html.LabelFor(model => model.SøkersEpostAdresse, htmlAttributes: new { @class = "control-label col-md-5" })
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.SøkersEpostAdresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.SøkersEpostAdresse, "", new { @class = "text-danger" })
@@ -606,7 +605,7 @@
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.HarduVedleggSomerRelevante, new { type = "file" })
+                            @Html.TextBoxFor(model => model.HarduVedleggSomerRelevante, new { type = "file", multiple = "" })
                         </span>
                         @Html.ValidationMessageFor(model => model.HarduVedleggSomerRelevante, "", new { @class = "text-danger" })
                     </div>
@@ -621,7 +620,8 @@
             </div>
 
             <div class="row col-sm-10" id="ajaxLoader" style="display: none">
-                <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
+            <label class="alert-danger">Your application is in-progress. Please wait...</label>
+            <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif"/>
             </div>
             <div id="wizardBtn" class="row col-sm-10">
                 <ul class="pager wizard">

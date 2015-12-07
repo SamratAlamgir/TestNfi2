@@ -23,7 +23,8 @@ namespace NFI.Controllers
         {
             var extension = Path.GetExtension(file1Name);
             var timeStamp = DateTime.Now.ToString(TimestampPattern);
-            return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}{extension}";
+            var g = Guid.NewGuid();
+            return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}_{g}{extension}";
         }
 
         public string SaveUploadedFile(HttpPostedFileBase file, ApplicationType appType)
@@ -32,7 +33,7 @@ namespace NFI.Controllers
                 return null;
 
             var networkPath = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
-            var physicalPath = Server.MapPath(networkPath);
+            var physicalPath =networkPath;
             if (!Directory.Exists(physicalPath))
             {
                 Directory.CreateDirectory(physicalPath);
@@ -64,7 +65,7 @@ namespace NFI.Controllers
             var appId = type.GetProperty("AppId").GetValue(appDto);
 
             var fileName = GetFilenameWithTimeStamp("user_data.pdf");
-            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(appType));
+            var path =DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var fullPath = Path.Combine(path, fileName);
             var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
             if (!System.IO.File.Exists(fullPath))
@@ -82,7 +83,7 @@ namespace NFI.Controllers
             var appId = type.GetProperty("AppId").GetValue(appDto);
 
             var fileName = GetFilenameWithTimeStamp("user_data.txt");
-            var path = Server.MapPath(DirectoryHelper.GetApplicationAttachmentDirPath(appType));
+            var path =DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var fullPath = Path.Combine(path, fileName);
             var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
             if (!System.IO.File.Exists(fullPath))
@@ -100,7 +101,7 @@ namespace NFI.Controllers
         protected string GetDownloadLinkForFile(string appId, ApplicationType appType)
         {
             var fileLink = "Admin/DownloadZipFile/" + (int)appType + "/" + appId;
-            return new Uri(GetBaseUri(), fileLink).ToString();
+            return new Uri(GetBaseUri(), fileLink).ToString(); 
         }
 
         protected string GetDetailViewLink(string appId, ApplicationType appType)
