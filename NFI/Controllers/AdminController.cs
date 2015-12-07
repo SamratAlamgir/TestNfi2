@@ -12,7 +12,7 @@ using System.Reflection;
 namespace NFI.Controllers
 {
     [BasicAuthenticationAttribute("admin", "test123", BasicRealm = "admin")]
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
 
         public ActionResult Index()
@@ -118,66 +118,5 @@ namespace NFI.Controllers
             return resultSet.Single(x => x.AppId.ToString() == appId);
         }
 
-        #region helper method
-        private void TrimPathAndOnlyFileName(Object obj)
-        {
-            var type = obj.GetType();
-            var fieldInfos =
-                type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                    .Where(f => NotPrimitive(f.PropertyType))
-                    .ToList();
-            var allFieldPaths = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                    .Where(f => f.Name.Contains("Path"))
-                    .ToList();
-            foreach (var propertyInfo in allFieldPaths)
-            {
-                if (propertyInfo.Name.Contains("Paths"))
-                {
-                    var filePaths = (List<string>)propertyInfo.GetValue(obj);
-                    var fileNames = filePaths?.Select(Path.GetFileName).ToList();
-                    propertyInfo.SetValue(obj, fileNames);
-                }
-                else if (propertyInfo.Name.Contains("Path"))
-                {
-                    var filePath = (string)propertyInfo.GetValue(obj);
-
-                    if (!string.IsNullOrEmpty(filePath))
-                    {
-                        propertyInfo.SetValue(obj, Path.GetFileName(filePath));
-                    }
-                }
-            }
-            foreach (var fieldInfo in fieldInfos)
-            {
-                if (fieldInfo.PropertyType.IsGenericType &&
-                           fieldInfo.PropertyType.GetGenericTypeDefinition() == typeof(List<>)
-                           && fieldInfo.PropertyType.GetGenericArguments()[0].GetInterfaces().Contains(typeof(IMember)))
-                {
-
-                    var objs = fieldInfo.GetValue(obj) as IList;
-                    if (objs != null)
-                    {
-                        foreach (var member in objs)
-                        {
-                            TrimPathAndOnlyFileName(member);
-                        }
-                    }
-                }
-
-                else if (fieldInfo.PropertyType.GetInterfaces().Contains(typeof(IMember)))
-                {
-                    var o = fieldInfo.GetValue(obj);
-                    if (o != null)
-                        TrimPathAndOnlyFileName(o);
-                }
-
-            }
-        }
-        private static bool NotPrimitive(Type type)
-        {
-            return !(type.IsPrimitive || type == typeof(Guid)
-                     || type == typeof(string));
-        }
-        #endregion
     }
 }

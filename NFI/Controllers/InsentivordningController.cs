@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Web.Mvc;
-using System.Web.Routing;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -25,41 +19,7 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Insentivordning;
-                appDto.AppId = Guid.NewGuid();
-                appDto.CreateTime = DateTime.Now;
-
-                var files = new List<string>();
-
-                files.Add(appDto.LeggCertificateOriginForHovedproduksjonsselskapPath = SaveUploadedFile(appDto.LeggCertificateOriginForHovedproduksjonsselskap, appType));
-                files.Add(appDto.LeggHovedprodusentensCvPath = SaveUploadedFile(appDto.LeggHovedprodusentensCv, appType));
-                files.Add(appDto.LeggHovedproduksjonsselskapetsTrackRecordPath = SaveUploadedFile(appDto.LeggHovedproduksjonsselskapetsTrackRecord, appType));
-                files.Add(appDto.LastoppErklæringPath = SaveUploadedFile(appDto.LastoppErklæring, appType));
-                files.Add(appDto.LeggvedDokumentasjonHovedprodusentenPath = SaveUploadedFile(appDto.LeggvedDokumentasjonHovedprodusenten, appType));
-                files.Add(appDto.LeggvedUtfyltkulturProduksjonstestPath = SaveUploadedFile(appDto.LeggvedUtfyltkulturProduksjonstest, appType));
-                files.Add(appDto.LeggvedManuskriptPath = SaveUploadedFile(appDto.LeggvedManuskript, appType));
-                files.Add(appDto.LeggvedTreatmentPath = SaveUploadedFile(appDto.LeggvedTreatment, appType));
-                files.Add(appDto.LeggvedProduksjonsplanPath = SaveUploadedFile(appDto.LeggvedProduksjonsplan, appType));
-                files.Add(appDto.LeggvedCastCrewListePath = SaveUploadedFile(appDto.LeggvedCastCrewListe, appType));
-                files.Add(appDto.LeggvedListeOverLocationsPath = SaveUploadedFile(appDto.LeggvedListeOverLocations, appType));
-                files.Add(appDto.LeggvedListeOverLeverandørerPath = SaveUploadedFile(appDto.LeggvedListeOverLeverandører, appType));
-                files.Add(appDto.LeggvedDistribusjonsPlanPath = SaveUploadedFile(appDto.LeggvedDistribusjonsPlan, appType));
-                files.Add(appDto.LeggvedTotalbudsjettetPath = SaveUploadedFile(appDto.LeggvedTotalbudsjettet, appType));
-                files.Add(appDto.LeggvedBudsjettForProduksjonenPath = SaveUploadedFile(appDto.LeggvedBudsjettForProduksjonen, appType));
-                files.Add(appDto.LeggvedFinansieringsplanPath = SaveUploadedFile(appDto.LeggvedFinansieringsplan, appType));
-
-                files.AddRange(appDto.HarduVedleggSomerRelevantePaths = appDto.HarduVedleggSomerRelevante.Select(x => SaveUploadedFile(x, appType)).ToList());
-                files = files.Where(x => x != null).ToList();
-
-                files.Add(CreateTextFile(appDto, appType)); // User data file
-
-                var zipFilePath = DirectoryHelper.GetZipFilePath(appType, appDto.AppId, appDto.ProduksjonsforetaketsNavn);
-                appDto.ZipFilePath = zipFilePath;
-
-                var zipFilePhysicalPath = zipFilePath;
-                ZipHelper.CreateZipFromFiles(files, zipFilePhysicalPath);
-
-                var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
-                JsonHelper.Save<InsentivordningDto>(appDto, dataFilePath);
+                SaveApplication(appDto, appType, appDto.ProduksjonsforetaketsNavn);
 
                 //TODO: Send the mails
                 var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
@@ -68,12 +28,12 @@ namespace NFI.Controllers
                     "<br/>" +
                     "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
 
-                var responseText =  GetResponseHtml(ApplicationType.Insentivordning, appDto.AppId);
+                var responseText = GetApplicationDetailsStringHtml(this, "../Admin/InsentivordningDetail", appDto);
 
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmailToArchivist(mailSubject, mailBody, mailTo, files);
+                CommunicationHelper.SendEmailToArchivist(mailSubject, mailBody, mailTo, FilePathList);
                 return View("Success");
             }
             catch (Exception ex)
@@ -82,36 +42,5 @@ namespace NFI.Controllers
                 return View("Error");
             }
         }
-
-        public string GetResponseHtml(ApplicationType appType, Guid appId)
-        {
-            string output = string.Empty;
-
-            RouteValueDictionary rvd = new RouteValueDictionary();
-            rvd.Add("appType", appType);
-            rvd.Add("appId", appId);
-
-            WebRequest webRequest = WebRequest.Create(GetDetailViewLink(appId.ToString(), appType) );
-
-            SetBasicAuthHeader(webRequest, "admin", "test123");
-
-            WebResponse webResponse = webRequest.GetResponse();
-            if (webResponse.GetResponseStream().CanRead)
-            {
-                StreamReader reader = new StreamReader(webResponse.GetResponseStream());
-                output = reader.ReadToEnd();
-            }
-            webResponse.Close();
-
-            return output;
-        }
-
-        public void SetBasicAuthHeader(WebRequest request, String userName, String userPassword)
-        {
-            string authInfo = userName + ":" + userPassword;
-            authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
-            request.Headers["Authorization"] = "Basic " + authInfo;
-        }
-
     }
 }
