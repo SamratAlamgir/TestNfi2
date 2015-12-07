@@ -5,6 +5,8 @@ using iTextSharp.text;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System.Text;
+using iTextSharp.tool.xml;
 using NFI.Models;
 using Font = iTextSharp.text.Font;
 
@@ -16,6 +18,29 @@ namespace NFI.Helper
         private static readonly Font Headerfont = FontFactory.GetFont("Georgia", 12, Font.BOLD, BaseColor.BLACK);
         private static readonly Font Namefont = FontFactory.GetFont("Courier", 10, Font.BOLD, BaseColor.BLACK);
         private static readonly Font Valuefont = FontFactory.GetFont("Courier", 10, Font.NORMAL, BaseColor.BLACK);
+
+        public static void SavePdfFile(string html, string fullPath)
+        {
+            var bytes = Encoding.UTF8.GetBytes(html);
+
+            using (var input = new MemoryStream(bytes))
+            {
+                using (var document = new Document(iTextSharp.text.PageSize.A4, 50, 50, 50, 50))
+                {
+                    using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                    using (var writer = PdfWriter.GetInstance(document, fileStream))
+                    {
+                        writer.CloseStream = false;
+                        document.Open();
+                        var xmlWorker = XMLWorkerHelper.GetInstance();
+                        xmlWorker.GetDefaultCssResolver(true);
+                        xmlWorker.ParseXHtml(writer, document, input, Encoding.UTF8);
+                        document.Close();
+                    }
+                }
+
+            }
+        }
         public static void CreatePdf<T>(T toExport, string fileName, string attachmentLink)
         {
 
