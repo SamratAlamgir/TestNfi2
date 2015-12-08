@@ -8,7 +8,7 @@ namespace NFI.Helper
 {
     public static class MailTemplate
     {
-        public static string GetMailBody(ApplicationType appType)
+        public static string GetMailBodyForApplicant(ApplicationType appType)
         {
             var mailBody = "";
 

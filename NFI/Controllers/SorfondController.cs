@@ -45,7 +45,7 @@ namespace NFI.Controllers
 
                 // Send mail to applicant
                 mailSubject = "Søfond søknad sendtt";
-                mailBody = MailTemplate.GetMailBody(ApplicationType.Sorfond);
+                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sorfond);
 
                 CommunicationHelper.SendEmail(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
 
