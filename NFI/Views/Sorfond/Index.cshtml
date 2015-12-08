@@ -1,4 +1,4 @@
-﻿@using NFI.Models
+﻿@using NFI.Helper
 @model NFI.Models.SorfondDto
 @section scripts
 {
@@ -9,7 +9,7 @@
     ViewBag.Title = "NFI";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form id="commentForm" class="form-horizontal" action="/Sorfond/Create" enctype="multipart/form-data" method="post">
+<form id="commentForm" class="form-horizontal" action="@Html.GetHostServerUrl()/Sorfond/Create" enctype="multipart/form-data" method="post">
     @{
         if (TempData["Status"] != null)
         {

@@ -3,7 +3,7 @@
 namespace NFI.Controllers
 {
     //[CaptchaAuthorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private const string TimestampPattern = "yyyyMMddHHmmssfff";
 
