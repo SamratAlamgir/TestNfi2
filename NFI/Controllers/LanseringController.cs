@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using NFI.App_Start;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
@@ -9,8 +10,8 @@ namespace NFI.Controllers
 {
     public class LanseringController : BaseController
     {
-        // GET: Sorfond
-       // [CaptchaAuthorize]
+
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();
