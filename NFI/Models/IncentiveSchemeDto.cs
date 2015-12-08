@@ -10,7 +10,6 @@ namespace NFI.Models
 {
     public class IncentiveSchemeDto : BaseAppDto
     {
-
         // 1. Contact information, Main producer
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Name of production company")]
@@ -118,6 +117,7 @@ namespace NFI.Models
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Project title")]
         public string ProjectTitle { get; set; }
+
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Is the project an original work?")]
         public string IsTheProjectOriginalWork { get; set; }

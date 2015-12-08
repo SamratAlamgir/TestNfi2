@@ -446,10 +446,9 @@
     <Content Include="Views\Admin\Sorfond\VisueltMateriale.cshtml" />
     <Content Include="Views\Admin\Sorfond\EventuelleAndreVedleggDetails.cshtml" />
     <Content Include="Views\Admin\InsentivordningDetail.cshtml" />
+    <Content Include="Views\IncentiveScheme\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\IncentiveScheme\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
