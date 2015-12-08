@@ -1,19 +1,15 @@
-﻿@using NFI.Models
+﻿@using NFI.Helper
 @model NFI.Models.SorfondDto
 @section scripts
 {
     <script src="~/Scripts/Sorfond/sorfond.js"></script>
 }
-<style type="text/css">
-    label.postfix:after {
-        content: "*";
-    }
-</style>
+
 @{
     ViewBag.Title = "NFI";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form id="commentForm" class="form-horizontal" action="/Sorfond/Create" enctype="multipart/form-data" method="post">
+<form id="commentForm" class="form-horizontal" action="@Html.GetHostServerUrl()/Sorfond/Create" enctype="multipart/form-data" method="post">
     @{
         if (TempData["Status"] != null)
         {
@@ -40,7 +36,7 @@
                 <h2>Kontaktinformasjon norsk minoritetsprodusent:</h2>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.ProduksjonsforetaketsNavn, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.ProduksjonsforetaketsNavn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.ProduksjonsforetaketsNavn, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.ProduksjonsforetaketsNavn, "", new { @class = "text-danger" })
@@ -48,7 +44,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Organisasjonsnummer, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Organisasjonsnummer, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.Organisasjonsnummer, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.Organisasjonsnummer, "", new { @class = "text-danger" })
@@ -56,7 +52,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Postadresse, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Postadresse, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.Postadresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.Postadresse, "", new { @class = "text-danger" })
@@ -64,7 +60,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Postnummer, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Postnummer, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.Postnummer, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.Postnummer, "", new { @class = "text-danger" })
@@ -72,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Poststed, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Poststed, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.Poststed, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.Poststed, "", new { @class = "text-danger" })
@@ -80,7 +76,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Land, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.Land, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.Land, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.Land, "", new { @class = "text-danger" })
@@ -136,7 +132,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, "", new { @class = "text-danger" })
@@ -144,7 +140,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensKjonn, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensKjonn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
 
                         @Html.RadioButtonFor(m => m.NorskMinoritetsprodusent.MinoritetsprodusentensKjonn, "Mann") Mann
@@ -158,7 +154,7 @@
                 <h2>Kontaktinformasjon hovedprodusent:</h2>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentProduksjonsforetaketsNavn, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentProduksjonsforetaketsNavn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentProduksjonsforetaketsNavn, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentProduksjonsforetaketsNavn, "", new { @class = "text-danger" })
@@ -166,7 +162,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentOrganisasjonsnummer, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentOrganisasjonsnummer, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentOrganisasjonsnummer, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentOrganisasjonsnummer, "", new { @class = "text-danger" })
@@ -174,7 +170,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentPostadresse, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentPostadresse, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentPostadresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentPostadresse, "", new { @class = "text-danger" })
@@ -182,7 +178,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentPostnummer, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentPostnummer, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentPostnummer, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentPostnummer, "", new { @class = "text-danger" })
@@ -190,7 +186,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentPoststed, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentPoststed, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentPoststed, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentPoststed, "", new { @class = "text-danger" })
@@ -198,7 +194,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentLand, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentLand, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentLand, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentLand, "", new { @class = "text-danger" })
@@ -214,7 +210,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensNavn, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensNavn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentensNavn, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentensNavn, "", new { @class = "text-danger" })
@@ -267,7 +263,7 @@
                 <h2>Prosjektinformasjon:</h2>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.TittelPåProsjektet, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.TittelPåProsjektet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.Prosjektinformasjon.TittelPåProsjektet, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.TittelPåProsjektet, "", new { @class = "text-danger" })
@@ -275,7 +271,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.ErProsjektetEtOriginalverk, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.ErProsjektetEtOriginalverk, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.RadioButtonFor(m => m.Prosjektinformasjon.ErProsjektetEtOriginalverk, "Ja") Ja
                         @Html.RadioButtonFor(m => m.Prosjektinformasjon.ErProsjektetEtOriginalverk, "Nei") Nei
@@ -284,7 +280,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-4 postfix" for="">Dokumentasjon på at hovedprodusenten har opsjon/filmrett</label>
+                    <label class="control-label col-md-4 label-required" for="">Dokumentasjon på at hovedprodusenten har opsjon/filmrett</label>
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
                             @Html.TextBoxFor(model => model.Prosjektinformasjon.DokumentasjonPåHovedprodusentenHarOpsjonFilmrett, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
@@ -294,7 +290,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.Språk, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.Språk, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.Prosjektinformasjon.Språk, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.Språk, "", new { @class = "text-danger" })
@@ -302,7 +298,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.DateForOpptaksstart, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.DateForOpptaksstart, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
                             @Html.TextBoxFor(model => model.Prosjektinformasjon.DateForOpptaksstart, new { @readonly = "", htmlAttributes = new { @class = "form-control text-box single-line" } })
@@ -314,7 +310,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.AntattFerdigstillelseEllerPremiereDate, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.AntattFerdigstillelseEllerPremiereDate, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
                             @Html.TextBoxFor(model => model.Prosjektinformasjon.AntattFerdigstillelseEllerPremiereDate, new { @readonly = "", htmlAttributes = new { @class = "form-control text-box single-line" } })
@@ -326,7 +322,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.TextAreaFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet, "", new { @class = "text-danger" })
@@ -334,7 +330,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.Sjanger, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.Sjanger, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.Prosjektinformasjon.Sjanger, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.Sjanger, "", new { @class = "text-danger" })
@@ -342,7 +338,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.Lengde, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.Lengde, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.Prosjektinformasjon.Lengde, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.Lengde, "", new { @class = "text-danger" })
@@ -350,7 +346,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.Reginotat, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.Reginotat, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -361,7 +357,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.HandlingsbeskrivelseSynopsis, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.HandlingsbeskrivelseSynopsis, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -372,7 +368,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.Manuskript, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.Manuskript, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -383,7 +379,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.Fremdriftsplan, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.Fremdriftsplan, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -394,7 +390,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.Opptaksplan, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.Opptaksplan, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -405,7 +401,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prosjektinformasjon.SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjon, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.Prosjektinformasjon.SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjon, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -439,7 +435,7 @@
                 <hr />
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVtilMinoritetprodusentensProduksjonsforetak, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVtilMinoritetprodusentensProduksjonsforetak, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -450,7 +446,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVTilAnsvarligMinoritetsprodusentforetak, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVTilAnsvarligMinoritetsprodusentforetak, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -461,7 +457,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVtilHovedprodusentensProduksjonsforetak, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVtilHovedprodusentensProduksjonsforetak, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -472,7 +468,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVtilAnsvarligHovedprodusent, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.InformasjonOmPersonerRoller.CVtilAnsvarligHovedprodusent, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -495,14 +491,14 @@
                             {
                                 <div class="well">
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensNavnt, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensNavnt, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                         <div class="col-md-6">
                                             @Html.EditorFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensNavnt, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensNavnt, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensKjønn, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensKjønn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                         <div class="col-md-6">
                                             @Html.RadioButtonFor(m => m.InformasjonOmPersonerRoller.Regissoren[i].RegissørensKjønn, "Mann") Mann
                                             @Html.RadioButtonFor(m => m.InformasjonOmPersonerRoller.Regissoren[i].RegissørensKjønn, "Kvinne")Kvinne
@@ -511,7 +507,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensCV, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensCV, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                                         <div class="col-md-6">
                                             <span class="btn btn-default btn-file">
@@ -539,14 +535,14 @@
                             {
                                 <div class="well">
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensNavn, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensNavn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                         <div class="col-md-6">
                                             @Html.EditorFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensNavn, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensNavn, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensKjønn, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensKjønn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                         <div class="col-md-6">
                                             @Html.RadioButtonFor(m => m.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensKjønn, "Mann") Mann
                                             @Html.RadioButtonFor(m => m.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensKjønn, "Kvinne")Kvinne
@@ -554,7 +550,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensCV, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                                        @Html.LabelFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensCV, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                                         <div class="col-md-6">
                                             <span class="btn btn-default btn-file">
@@ -583,7 +579,7 @@
                 <h2>Finansierings informasjon legges inn her</h2>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FinansieringsInformasjon.TotalbudsjettForProsjektet, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.FinansieringsInformasjon.TotalbudsjettForProsjektet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.FinansieringsInformasjon.TotalbudsjettForProsjektet, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.FinansieringsInformasjon.TotalbudsjettForProsjektet, "", new { @class = "text-danger" })
@@ -591,7 +587,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FinansieringsInformasjon.SøknadssumNorskFilminstitutt, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.FinansieringsInformasjon.SøknadssumNorskFilminstitutt, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.FinansieringsInformasjon.SøknadssumNorskFilminstitutt, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.FinansieringsInformasjon.SøknadssumNorskFilminstitutt, "", new { @class = "text-danger" })
@@ -599,7 +595,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FinansieringsInformasjon.Kalkyle, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.FinansieringsInformasjon.Kalkyle, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -610,7 +606,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FinansieringsInformasjon.FinansieringsplanMedSpesifikasjon, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.FinansieringsInformasjon.FinansieringsplanMedSpesifikasjon, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
@@ -621,7 +617,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FinansieringsInformasjon.BekreftetFinansiering, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.FinansieringsInformasjon.BekreftetFinansiering, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.FinansieringsInformasjon.BekreftetFinansiering, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.FinansieringsInformasjon.BekreftetFinansiering, "", new { @class = "text-danger" })
@@ -649,7 +645,7 @@
                 <h2> DAC-listen</h2>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DacListen.HovedprodusentensForetak, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.DacListen.HovedprodusentensForetak, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
 
                         @Html.RadioButtonFor(m => m.DacListen.HovedprodusentensForetak, "Ja") Ja
@@ -660,7 +656,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DacListen.Hvilket, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.DacListen.Hvilket, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.DacListen.Hvilket, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.DacListen.Hvilket, "", new { @class = "text-danger" })
@@ -668,7 +664,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DacListen.RegissørenErStatsborger, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.DacListen.RegissørenErStatsborger, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.RadioButtonFor(m => m.DacListen.RegissørenErStatsborger, "Ja") Ja
                         @Html.RadioButtonFor(m => m.DacListen.RegissørenErStatsborger, "Nei")Nei
@@ -676,14 +672,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DacListen.Hvilketland, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.DacListen.Hvilketland, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.DacListen.Hvilketland, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.DacListen.Hvilketland, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DacListen.FilmenSka, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.DacListen.FilmenSka, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.RadioButtonFor(m => m.DacListen.FilmenSka, "Ja") Ja
                         @Html.RadioButtonFor(m => m.DacListen.FilmenSka, "Nei")Nei
@@ -692,7 +688,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DacListen.HvilkethvilkeLand, htmlAttributes: new { @class = "control-label col-md-4 postfix" })
+                    @Html.LabelFor(model => model.DacListen.HvilkethvilkeLand, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.TextAreaFor(model => model.DacListen.HvilkethvilkeLand, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.DacListen.HvilkethvilkeLand, "", new { @class = "text-danger" })

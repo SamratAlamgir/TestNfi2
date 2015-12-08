@@ -265,7 +265,7 @@ namespace NFI.Controllers
         {
             var extension = Path.GetExtension(file1Name);
             var timeStamp = DateTime.Now.ToString(TimestampPattern);
-            var g = Guid.NewGuid();
+            var g = Guid.NewGuid().ToString().Split('-')[0];
             return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}_{g}{extension}";
         }
 

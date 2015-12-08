@@ -79,6 +79,15 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("samrat@cefalo.com")]
+        public string ToEmailAddress {
+            get {
+                return ((string)(this["ToEmailAddress"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
         public string EmailHost {
             get {
@@ -133,10 +142,10 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
-        public string ToEmailAddress {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://ubp387.stwserver.net/demo")]
+        public string HostServerUrl {
             get {
-                return ((string)(this["ToEmailAddress"]));
+                return ((string)(this["HostServerUrl"]));
             }
         }
         
