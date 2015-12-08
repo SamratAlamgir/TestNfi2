@@ -1,4 +1,5 @@
-﻿@model NFI.Models.InsentivordningDto
+﻿@using NFI.Helper
+@model NFI.Models.InsentivordningDto
 
 @section scripts
 {
@@ -12,7 +13,7 @@
 
 <h2>Insentivordning</h2>
 
-<form id="MainForm" class="form-horizontal" action="/Insentivordning/Save" enctype="multipart/form-data" method="post">
+<form id="MainForm" class="form-horizontal" action="@Html.GetHostServerUrl()/Insentivordning/Save" enctype="multipart/form-data" method="post">
 
     <div id="rootwizard" class="container well panel col-md-8">
         <ul style="display: none">
