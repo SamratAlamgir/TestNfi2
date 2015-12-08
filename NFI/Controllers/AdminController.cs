@@ -80,6 +80,10 @@ namespace NFI.Controllers
                         viewName = "Sorfond/Details";
                         selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
                         break;
+                    case ApplicationType.Lansering:
+                        viewName = "LanseringDetail";
+                        selectedApp = GetApplicationDto<LanseringDto>(appId, appType);
+                        break;
                 }
                 TrimPathAndOnlyFileName(selectedApp);
                 return View(viewName, selectedApp);
@@ -100,6 +104,9 @@ namespace NFI.Controllers
                     break;
                 case ApplicationType.Sorfond:
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+                    break;
+                case ApplicationType.Lansering:
+                    selectedApp = GetApplicationDto<LanseringDto>(appId, appType);
                     break;
             }
             var filePath = selectedApp?.ZipFilePath;

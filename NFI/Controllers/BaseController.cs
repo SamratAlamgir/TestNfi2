@@ -42,6 +42,9 @@ namespace NFI.Controllers
                 case ApplicationType.Insentivordning:
                     viewName = "../Admin/InsentivordningDetail";
                     break;
+                case ApplicationType.Lansering:
+                    viewName = "../Admin/LanseringDetail";
+                    break;
 
             }
             var fileName = GetFilenameWithTimeStamp("user_data.pdf");
@@ -104,7 +107,7 @@ namespace NFI.Controllers
             controller.ViewData.Model = model;
             using (var sw = new StringWriter())
             {
-                var viewResult = ViewEngines.Engines.FindView(controller.ControllerContext, viewName, "_Layout");
+                var viewResult = ViewEngines.Engines.FindView(controller.ControllerContext, viewName,null);
                 var viewContext = new ViewContext(controller.ControllerContext, viewResult.View, controller.ViewData, controller.TempData, sw);
                 viewResult.View.Render(viewContext, sw);
                 viewResult.ViewEngine.ReleaseView(controller.ControllerContext, viewResult.View);

@@ -12,7 +12,7 @@ namespace NFI.Enums
         Insentivordning = 2,
         Application3 = 3,
         Application4 = 4,
-        Application5 = 5,
+        Lansering = 5,
         Application6 = 6,
         Application7 = 7
     }
