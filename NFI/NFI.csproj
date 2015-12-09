@@ -188,6 +188,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\IncentiveSchemeController.cs" />
     <Compile Include="Controllers\InsentivordningController.cs" />
+    <Compile Include="Controllers\LanseringController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Global.asax.cs">
@@ -212,6 +213,7 @@
     <Compile Include="Models\HyperLinkAttribute.cs" />
     <Compile Include="Models\IMember.cs" />
     <Compile Include="Models\InformasjonOmPersonerRoller.cs" />
+    <Compile Include="Models\LanseringDto.cs" />
     <Compile Include="Models\Manusforfatterens.cs" />
     <Compile Include="Models\NettadresseVisueltMateriale.cs" />
     <Compile Include="Models\NorskMinoritetsprodusent.cs" />
@@ -350,6 +352,7 @@
     <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\Lansering\Lansering.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.ar.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.az.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.bg.min.js" />
@@ -449,6 +452,8 @@
     <Content Include="Views\Admin\Sorfond\VisueltMateriale.cshtml" />
     <Content Include="Views\Admin\Sorfond\EventuelleAndreVedleggDetails.cshtml" />
     <Content Include="Views\Admin\InsentivordningDetail.cshtml" />
+    <Content Include="Views\Lansering\Index.cshtml" />
+    <Content Include="Views\Admin\LanseringDetail.cshtml" />
     <Content Include="Views\IncentiveScheme\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
