@@ -1,20 +1,197 @@
-﻿
+﻿@using NFI.Helper
 @{
     ViewBag.Title = "NFI Services";
-
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+@*<div>
     <p class="lead">NFI Services: </p>
     <pre>&lt;iframe src="http://ubp387.stwserver.net/demo/Insentivordning" width="1050" height="700"&gt;&lt;/iframe&gt;</pre>
-   <p>This is a demo iframe form. If you want to test the form with another site just copy and paste the above code. Change the "width" and "height" according to your need. </p>
-</div>
+    <p>This is a demo iframe form. If you want to test the form with another site just copy and paste the above code. Change the "width" and "height" according to your need. </p>
+</div>*@
+<h1> Please click on the form name to view the full form:</h1>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-<div class="row">
-    <div class="col-sm-8">
-        <iframe src="../Insentivordning/" width="1050" height="700"></iframe>
+    @*1. Sorfond*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                    1. Sorfond
+                </a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <iframe src="@Html.GetHostServerUrl()/Sorfond/" width="1050" height="700"></iframe>
+            </div>
+        </div>
     </div>
+    @*End Sorfond*@
+
+    @*2. Insentivordning*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading2">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    2. Insentivordning
+                </a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+            <div class="panel-body">
+                <iframe src="@Html.GetHostServerUrl()/Insentivordning/" width="1050" height="700"></iframe>
+            </div>
+        </div>
+    </div>
+    @*End Insentivordning*@
+
+
+
+    @*3. Incentive scheme*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading3">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    3. Incentive Scheme
+                </a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End  Incentive scheme*@
+
+    @*4. UDs reisestotte*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading4">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                    4. UDs Reisestotte
+                </a>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End UDs reisestotte*@
+
+    @*5. Lansering*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading5">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    5. Lansering
+                </a>
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End Lansering*@
+
+    @*6. 3 ordninger*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading6">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                    6. 3 Ordninger
+                </a>
+            </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End 3 ordninger*@
+
+    @*7. Video*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading7">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                    7. Video
+                </a>
+            </h4>
+        </div>
+        <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End Video*@
+
+    @*8. Film*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading8">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                    8. Film
+                </a>
+            </h4>
+        </div>
+        <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End Film*@
+
+    @*9. Den kulturelle skolesekken *@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading9">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                    9. Den Kulturelle Skolesekken
+                </a>
+            </h4>
+        </div>
+        <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End Den kulturelle skolesekken*@
+
+    @*10. Ark2*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading10">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                    10. Ark2
+                </a>
+            </h4>
+        </div>
+        <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+            <div class="panel-body alert-warning">
+                We are working hard to build this section, will be available soon :-)
+                @*<iframe src="@Html.GetHostServerUrl()" width="1050" height="700"></iframe>*@
+            </div>
+        </div>
+    </div>
+    @*End Ark2*@
+
 </div>
 
 
