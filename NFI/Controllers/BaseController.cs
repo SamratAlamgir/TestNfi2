@@ -56,7 +56,7 @@ namespace NFI.Controllers
             var length = htmlString.IndexOf("</head>", StringComparison.Ordinal) - startIndex;
             var replace = htmlString.Substring(startIndex, length);
             htmlString = htmlString.Replace(replace, "");
-            PdfUtility.SavePdfFile(htmlString, fullPath);
+            PdfUtility.SavePdfFile(htmlString, fullPath,Server.MapPath("~"));
             return fullPath;
         }
 

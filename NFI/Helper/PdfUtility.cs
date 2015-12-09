@@ -7,7 +7,13 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 using iTextSharp.tool.xml;
+using iTextSharp.tool.xml.html;
+using iTextSharp.tool.xml.parser;
+using iTextSharp.tool.xml.pipeline.css;
+using iTextSharp.tool.xml.pipeline.end;
+using iTextSharp.tool.xml.pipeline.html;
 using NFI.Models;
+using Anchor = iTextSharp.text.Anchor;
 using Font = iTextSharp.text.Font;
 
 namespace NFI.Helper
@@ -19,22 +25,29 @@ namespace NFI.Helper
         private static readonly Font Namefont = FontFactory.GetFont("Courier", 10, Font.BOLD, BaseColor.BLACK);
         private static readonly Font Valuefont = FontFactory.GetFont("Courier", 10, Font.NORMAL, BaseColor.BLACK);
 
-        public static void SavePdfFile(string html, string fullPath)
+        public static void SavePdfFile(string html, string fullPath,string rootPath)
         {
             var bytes = Encoding.UTF8.GetBytes(html);
 
             using (var input = new MemoryStream(bytes))
             {
-                using (var document = new Document(PageSize.LETTER, 50, 50, 50, 50))
+                using (var document = new Document(PageSize.A4, 10, 10, 25, 10))
                 {
                     using (var fileStream = new FileStream(fullPath, FileMode.Create))
                     using (var writer = PdfWriter.GetInstance(document, fileStream))
                     {
+                        var htmlContext = new HtmlPipelineContext(null);
+                        htmlContext.SetTagFactory(Tags.GetHtmlTagProcessorFactory());
+                        var cssResolver = XMLWorkerHelper.GetInstance().GetDefaultCssResolver(false);
+                        cssResolver.AddCssFile(@"D:\Projects\NFI\NFI\Content\bootstrap.css", true);
+                        cssResolver.AddCss("body {height: 842px;width: 595px;margin - left: auto;margin - right: auto;}",true);
+                        IPipeline pipeline = new CssResolverPipeline(cssResolver, new HtmlPipeline(htmlContext, new PdfWriterPipeline(document, writer)));
                         writer.CloseStream = false;
                         document.Open();
-                        var xmlWorker = XMLWorkerHelper.GetInstance();
-                        xmlWorker.GetDefaultCssResolver(true);
-                        xmlWorker.ParseXHtml(writer, document, input, Encoding.UTF8);
+                        var worker = new XMLWorker(pipeline, true);
+                        var xmlParse = new XMLParser(true, worker);
+                        xmlParse.Parse(input);
+                        xmlParse.Flush();
                         document.Close();
                     }
                 }
