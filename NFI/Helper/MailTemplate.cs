@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using NFI.Enums;
+﻿using NFI.Enums;
 
 namespace NFI.Helper
 {
@@ -11,19 +7,20 @@ namespace NFI.Helper
         public static string GetMailBodyForApplicant(ApplicationType appType)
         {
             var mailBody = "";
-
-            if (appType == ApplicationType.Sorfond)
+            switch (appType)
             {
-                mailBody = @"Vi bekrefter med dette å ha mottatt din søknad.<br/> 
+                case ApplicationType.Sorfond:
+
+                    mailBody = @"Vi bekrefter med dette å ha mottatt din søknad.<br/> 
 Normalt kan du forvente et svar på søknaden innen 5 til 7 uker.<br/> 
 Behandlingstiden gjelder fra søknadsfrist.<br/><br/>  
-
 Med vennelig hilsen<br/>
 Norsk filminstitutt";
-            }
-            else if (appType == ApplicationType.Insentivordning)
-            {
-                mailBody = @"Vi bekrefter med dette å ha mottatt din søknad.<br/><br/> 
+                    break;
+
+                case ApplicationType.Insentivordning:
+
+                    mailBody = @"Vi bekrefter med dette å ha mottatt din søknad.<br/><br/> 
 Normalt kan du forvente svar på søknaden innen 6 uker.Behandlingstiden gjelder fra søknadsfrist.<br/><br/>
 Minner om opplysningsplikten iht forskriften § 14:<br/>
 Søker plikter å gi Norsk filminstitutt alle opplysninger som er nødvendige for å behandle søknaden og grunnlaget for tilskuddet.<br/>
@@ -33,10 +30,9 @@ Tilskuddsmottakeren kan ikke foreta vesentlige endringer i den aktuelle produksj
 Spørsmål kan rettes til: <strong>insentiv@nfi.no</strong><br/>
 Med vennelig hilsen<br/>
 Norsk filminstitutt";
-            }
-            else if (appType == ApplicationType.IncentiveScheme)
-            {
-                mailBody = @"We hereby confirm the submission of your application.<br/>
+                    break;
+                case ApplicationType.IncentiveScheme:
+                    mailBody = @"We hereby confirm the submission of your application.<br/>
 The evaluation period is six weeks from the date of the application deadline.<br/><br/>
 
 Calling attention to the Regulations, section 14, Disclosure duty:<br/> 
@@ -47,7 +43,19 @@ For questions, please contact: incentive@nfi.no<br/><br/>
 
 Best regards<br/>
 Norwegian Film Institute";
+                    break;
+                case ApplicationType.Lansering:
+                    mailBody = @"Hei,<br/> <br/> 
+Vi bekrefter med dette å ha mottatt din søknad. <br/> 
+Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker. <br/> 
+For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/> <br/> 
+
+Med vennlig hilsen <br/> 
+Norsk filminstitutt";
+                    break;
+
             }
+
 
             return mailBody;
 
