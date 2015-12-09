@@ -1,4 +1,5 @@
-﻿@model NFI.Models.LanseringDto
+﻿@using NFI.Helper
+@model NFI.Models.LanseringDto
 @section scripts
 {
     <script src="~/Scripts/Lansering/Lansering.js"></script>
@@ -7,7 +8,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form id="commentForm" class="form-horizontal" action="/Lansering/Create" enctype="multipart/form-data" method="post">
+<form id="commentForm" class="form-horizontal" action="@Html.GetHostServerUrl()/Lansering/Create" enctype="multipart/form-data" method="post">
     <h2>Felles lanseringstiltak på viktige internasjonale arenaer</h2>
 
     @Html.AntiForgeryToken()

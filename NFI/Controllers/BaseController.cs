@@ -56,7 +56,7 @@ namespace NFI.Controllers
             var length = htmlString.IndexOf("</head>", StringComparison.Ordinal) - startIndex;
             var replace = htmlString.Substring(startIndex, length);
             htmlString = htmlString.Replace(replace, "");
-            PdfUtility.SavePdfFile(htmlString, fullPath,Server.MapPath("~"));
+            PdfUtility.SavePdfFile(htmlString, fullPath, Server.MapPath("~"));
             return fullPath;
         }
 
@@ -107,7 +107,7 @@ namespace NFI.Controllers
             controller.ViewData.Model = model;
             using (var sw = new StringWriter())
             {
-                var viewResult = ViewEngines.Engines.FindView(controller.ControllerContext, viewName,null);
+                var viewResult = ViewEngines.Engines.FindView(controller.ControllerContext, viewName, null);
                 var viewContext = new ViewContext(controller.ControllerContext, viewResult.View, controller.ViewData, controller.TempData, sw);
                 viewResult.View.Render(viewContext, sw);
                 viewResult.ViewEngine.ReleaseView(controller.ControllerContext, viewResult.View);
