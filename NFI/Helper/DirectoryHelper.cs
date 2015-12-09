@@ -27,6 +27,10 @@ namespace NFI.Helper
             {
                 dirPath = Settings.Default.ApplicationDir2;
             }
+            else if (appType == ApplicationType.IncentiveScheme)
+            {
+                dirPath = Settings.Default.ApplicationDir3;
+            }
 
             return Path.Combine(GetRootDirectory(), dirPath);
         }

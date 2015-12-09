@@ -186,6 +186,7 @@
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\IncentiveSchemeController.cs" />
     <Compile Include="Controllers\InsentivordningController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
     <Compile Include="Enums\Enum.cs" />
