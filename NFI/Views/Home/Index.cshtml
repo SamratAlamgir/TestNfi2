@@ -9,18 +9,36 @@
     <pre>&lt;iframe src="http://ubp387.stwserver.net/demo/Insentivordning" width="1050" height="700"&gt;&lt;/iframe&gt;</pre>
     <p>This is a demo iframe form. If you want to test the form with another site just copy and paste the above code. Change the "width" and "height" according to your need. </p>
 </div>*@
-
+<h1> Please click on the form name to view the full form:</h1>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    @*1. Insentivordning*@
+
+    @*1. Sorfond*@
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading1">
             <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                    1. Insentivordning
+                    1. Sorfond
                 </a>
             </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <iframe src="@Html.GetHostServerUrl()/Sorfond/" width="1050" height="700"></iframe>
+            </div>
+        </div>
+    </div>
+    @*End Sorfond*@
+
+    @*2. Insentivordning*@
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading2">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    2. Insentivordning
+                </a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
             <div class="panel-body">
                 <iframe src="@Html.GetHostServerUrl()/Insentivordning/" width="1050" height="700"></iframe>
             </div>
@@ -28,22 +46,7 @@
     </div>
     @*End Insentivordning*@
 
-    @*2. Sorfond*@
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading2">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                    2. Sorfond
-                </a>
-            </h4>
-        </div>
-        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-            <div class="panel-body">
-                <iframe src="@Html.GetHostServerUrl()/Sorfond/" width="1050" height="700"></iframe>
-            </div>
-        </div>
-    </div>
-    @*End Sorfond*@
+
 
     @*3. Incentive scheme*@
     <div class="panel panel-default">

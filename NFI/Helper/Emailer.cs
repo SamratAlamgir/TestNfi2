@@ -32,6 +32,7 @@ namespace NFI.Utility
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
+                    Timeout = 3600000, // 1 hour
                     Credentials = new NetworkCredential(fromEmail, fromPassword)
                 };
 

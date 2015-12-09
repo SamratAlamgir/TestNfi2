@@ -10,7 +10,7 @@ namespace NFI.Enums
         All = 0,
         Sorfond = 1,
         Insentivordning = 2,
-        Application3 = 3,
+        IncentiveScheme = 3,
         Application4 = 4,
         Lansering = 5,
         Application6 = 6,

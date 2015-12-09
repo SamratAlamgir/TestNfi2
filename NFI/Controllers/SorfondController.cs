@@ -41,7 +41,14 @@ namespace NFI.Controllers
                 var responseText = GetApplicationDetailsStringHtml(this, "../Admin/Sorfond/Details", sorfondDto);
                 mailBody += responseText;
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmailToArchivist(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+
+                // Send mail to applicant
+                mailSubject = "Søfond søknad sendtt";
+                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sorfond);
+
+                CommunicationHelper.SendEmail(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
+
                 return View("Success");
             }
             catch (Exception ex)
