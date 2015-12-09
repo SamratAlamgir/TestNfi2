@@ -1,0 +1,686 @@
+﻿@model NFI.Models.IncentiveSchemeDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-8">
+    <h2>The incentive scheme</h2>
+    <hr />
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <h3>1. Contact information, Main producer</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.NameProductionCompany)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.NameProductionCompany)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.LegalRegistrationNumber)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.LegalRegistrationNumber)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.PostalAddress)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.PostalAddress)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Postcode)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Postcode)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CityTown)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CityTown)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Country)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.NameProducer)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.NameProducer)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Title)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.PhoneNumber)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CellNumber)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CellNumber)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Email)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ProductionCompanyWebpage)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ProductionCompanyWebpage)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CertificateOriginProductionCompanyPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CertificateOriginProductionCompanyPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ProducersCvPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ProducersCvPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.TrackRecordTheProductionCompanyPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.TrackRecordTheProductionCompanyPath)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>2. Contact information applicant: / if different from main producer</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table">
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.NameApplicant)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.NameApplicant)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.TitleContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.TitleContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.PhoneNumberContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.PhoneNumberContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CellNumberContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CellNumberContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.EmailContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.EmailContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.NameCompanyContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.NameCompanyContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.LegalRegistrationNumberContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.LegalRegistrationNumberContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.PostalAddressContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.PostalAddressContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.PostcodeContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.PostcodeContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CityTownContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CityTownContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CountryContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CountryContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ProductionCompanyWebpageContactInfo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ProductionCompanyWebpageContactInfo)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DeclarationFromMainProducerPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.DeclarationFromMainProducerPath)
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>3. Project information</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ProjectTitle)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ProjectTitle)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.IsTheProjectOriginalWork)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.IsTheProjectOriginalWork)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DocumentationOwnershipOfRightsPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.DocumentationOwnershipOfRightsPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ProjectFormat)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ProjectFormat)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Genre)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Genre)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DurationInMinutes)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.DurationInMinutes)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ProductionLanguage)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ProductionLanguage)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.StartDateForProductionInNorway)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.StartDateForProductionInNorway)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.FinalDateForProductionInNorway)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.FinalDateForProductionInNorway)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.QualificationTestPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.QualificationTestPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ShortSummaryOfTheStory)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ShortSummaryOfTheStory)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ScreenplayScriptPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ScreenplayScriptPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.TreatmentSeasonOutlinePath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.TreatmentSeasonOutlinePath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ProductionSchedulePath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ProductionSchedulePath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CastCrewListPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CastCrewListPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.LocationListPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.LocationListPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ListOfOrganisationsPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.ListOfOrganisationsPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DistributionStrategyPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.DistributionStrategyPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DescribeHowTheProductionIsSuited)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.DescribeHowTheProductionIsSuited)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DescribeTheProductionStrategy)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.DescribeTheProductionStrategy)
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>4. Visual materials</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table">
+                        <tbody>
+
+                            @for (var i = 0; i < Model.VisualMaterialList.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.VisualMaterialList[i].VisualMaterials)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(model => model.VisualMaterialList[i].VisualMaterials)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.VisualMaterialList[i].PasswordForWebsite)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(model => model.VisualMaterialList[i].PasswordForWebsite)
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>5. Financial information</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.TotalProductionBudget)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.TotalProductionBudget)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.AttachmentTotalProductionBudgetPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.AttachmentTotalProductionBudgetPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.EstimatedCostsSpentInNorway)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.EstimatedCostsSpentInNorway)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.BudgetForProductionInNorwayPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.BudgetForProductionInNorwayPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.FinancingPlanPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.FinancingPlanPath)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.PercentageConfirmedFinancing)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.PercentageConfirmedFinancing)
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>6. Eventuelle andre vedlegg</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DescriptionOfOtherAttachments)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.DescriptionOfOtherAttachments)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>@Html.DisplayNameFor(model => model.CreateTime) </strong> 
+                                </td>
+
+                                <td>
+                                    <strong> @Html.DisplayFor(model => model.CreateTime)</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+

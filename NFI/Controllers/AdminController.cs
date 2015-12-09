@@ -72,13 +72,17 @@ namespace NFI.Controllers
             {
                 switch (appType)
                 {
+                    case ApplicationType.Sorfond:
+                        viewName = "Sorfond/Details";
+                        selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+                        break;
                     case ApplicationType.Insentivordning:
                         viewName = "InsentivordningDetail";
                         selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
                         break;
-                    case ApplicationType.Sorfond:
-                        viewName = "Sorfond/Details";
-                        selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+                    case ApplicationType.IncentiveScheme:
+                        viewName = "IncentiveSchemeDetail";
+                        selectedApp = GetApplicationDto<IncentiveSchemeDto>(appId, appType);
                         break;
                     case ApplicationType.Lansering:
                         viewName = "LanseringDetail";

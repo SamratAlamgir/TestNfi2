@@ -42,9 +42,13 @@ namespace NFI.Controllers
                 case ApplicationType.Insentivordning:
                     viewName = "../Admin/InsentivordningDetail";
                     break;
+                case ApplicationType.IncentiveScheme:
+                    viewName = "../Admin/IncentiveSchemeDetail";
+                    break;
                 case ApplicationType.Lansering:
                     viewName = "../Admin/LanseringDetail";
                     break;
+
 
             }
             var fileName = GetFilenameWithTimeStamp("user_data.pdf");

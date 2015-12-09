@@ -31,7 +31,7 @@
             <div class="tab-pane" id="tab1">
 
                 <div class="form-group">
-                    <h3> 1. Kontaktinformasjon hovedprodusent</h3>
+                    <h3> 1. Contact information, Main producer</h3>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.NameProductionCompany, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
@@ -167,7 +167,7 @@
             <!--Tab 2 -->
             <div class="tab-pane" id="tab2">
                 <div class="form-group">
-                    <h3> 2. Kontaktinformasjon søker (hvis annen enn hovedprodusent):</h3>
+                    <h3> 2. Contact information applicant: / if different from main producer</h3>
                 </div>
 
                 <div class="form-group">
@@ -284,7 +284,7 @@
 
             <div class="tab-pane" id="tab3">
                 <div class="form-group">
-                    <h3> 3. Prosjektinformasjon:</h3>
+                    <h3> 3. Project information</h3>
                 </div>
 
                 <div class="form-group">
@@ -377,7 +377,7 @@
 
                 <div class="form-group">
                     <div class="col-md-5 label-required">
-                        @Html.LabelFor(model => model.QualificationTest, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.QualificationTest, htmlAttributes: new { @class = "control-label label-required" })
                         <a href="http://www.nfi.no/_attachment/144524" class="pull-right">Find template here</a>
                     </div>
                     <div class="col-md-7">
@@ -498,7 +498,7 @@
             <div class="tab-pane" id="tab4">
 
                 <div class="form-group">
-                    <h3> 4. Visuelt materiale:</h3>
+                    <h3> 4. Visual materials</h3>
                 </div>
 
                 <div class="form-group ">
@@ -511,12 +511,12 @@
                 <div id="visualDiv">
                     <div class="well" name="VisualMaterialList">
                         <div class="form-group">
-                            <label class="control-label col-md-5 label-required">Visual materials (website, Vimeo, etc)</label>
+                            <label class="control-label col-md-5">Visual materials (website, Vimeo, etc)</label>
                             <input type="text" name="VisualMaterialList[0].VisualMaterials" class="form-control" />
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-5 label-required">Password for website with visual materials</label>
+                            <label class="control-label col-md-5">Password for website with visual materials</label>
                             <input type="text" name="VisualMaterialList[0].PasswordForWebsite" class="form-control" />
                         </div>
                     </div>
@@ -527,7 +527,7 @@
             <div class="tab-pane" id="tab5">
 
                 <div class="form-group">
-                    <h3>5. Finansieringsinformasjon:</h3>
+                    <h3> 5. Financial information:</h3>
                 </div>
                 <div class="form-group">
 
@@ -598,7 +598,7 @@
             <div class="tab-pane" id="tab6">
 
                 <div class="form-group">
-                    <h3>6. Eventuelle andre vedlegg:</h3>
+                    <h3> 6. Other attachments</h3>
                 </div>
 
                 <div class="form-group">
