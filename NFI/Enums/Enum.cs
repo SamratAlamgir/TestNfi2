@@ -11,7 +11,7 @@ namespace NFI.Enums
         Sorfond = 1,
         Insentivordning = 2,
         IncentiveScheme = 3,
-        Application4 = 4,
+        UdsReisestotte = 4,
         Lansering = 5,
         Application6 = 6,
         Application7 = 7

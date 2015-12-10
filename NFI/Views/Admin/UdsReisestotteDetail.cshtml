@@ -1,0 +1,131 @@
+﻿@model NFI.Models.UdsReisestotteDto
+
+@{
+    ViewBag.Title = "UdsReisestotteDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UdsReisestotteDetail</h2>
+
+<div>
+    <h4>UdsReisestotteDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AppId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipFilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipFilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdfFilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdfFilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsArchived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsArchived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Søkersnavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Søkersnavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Søkerspostadresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Søkerspostadresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Søkerspoststed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Søkerspoststed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Søkersland)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Søkersland)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Søkersepost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Søkersepost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Målforreisen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Målforreisen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beskrivelse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beskrivelse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budsjettfortiltak)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budsjettfortiltak)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dokumentasjon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dokumentasjon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

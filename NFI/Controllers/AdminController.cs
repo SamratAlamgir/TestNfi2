@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
@@ -7,7 +6,6 @@ using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace NFI.Controllers
 {
@@ -83,6 +81,10 @@ namespace NFI.Controllers
                     case ApplicationType.IncentiveScheme:
                         viewName = "IncentiveSchemeDetail";
                         selectedApp = GetApplicationDto<IncentiveSchemeDto>(appId, appType);
+                        break;
+                    case ApplicationType.UdsReisestotte:
+                        viewName = "UdsReisestotteDetail";
+                        selectedApp = GetApplicationDto<UdsReisestotteDto>(appId, appType);
                         break;
                     case ApplicationType.Lansering:
                         viewName = "LanseringDetail";
