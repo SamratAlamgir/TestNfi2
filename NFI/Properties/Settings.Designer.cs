@@ -175,5 +175,14 @@ namespace NFI.Properties {
                 return ((string)(this["ToEmailAddress"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App4/")]
+        public string ApplicationDir4 {
+            get {
+                return ((string)(this["ApplicationDir4"]));
+            }
+        }
     }
 }
