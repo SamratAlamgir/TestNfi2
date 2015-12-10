@@ -92,7 +92,7 @@ namespace NFI.Controllers
             {
                 return View("Error");
             }
-           
+
         }
 
         private BaseAppDto BaseAppDto(ApplicationType appType, string appId)
@@ -102,6 +102,9 @@ namespace NFI.Controllers
             {
                 case ApplicationType.Insentivordning:
                     selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
+                    break;
+                case ApplicationType.IncentiveScheme:
+                    selectedApp = GetApplicationDto<IncentiveSchemeDto>(appId, appType);
                     break;
                 case ApplicationType.Sorfond:
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);

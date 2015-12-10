@@ -186,6 +186,7 @@
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\IncentiveSchemeController.cs" />
     <Compile Include="Controllers\InsentivordningController.cs" />
     <Compile Include="Controllers\LanseringController.cs" />
     <Compile Include="Controllers\OrdningerController.cs" />
@@ -459,10 +460,10 @@
     <Content Include="Views\Admin\LanseringDetail.cshtml" />
     <Content Include="Views\Ordninger\Index.cshtml" />
     <Content Include="Views\Admin\OrdningerDetail.cshtml" />
+    <Content Include="Views\IncentiveScheme\Index.cshtml" />
+    <Content Include="Views\Admin\IncentiveSchemeDetail.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\IncentiveScheme\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>

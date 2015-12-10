@@ -26,6 +26,9 @@ namespace NFI.Helper
                 case ApplicationType.Insentivordning:
                     dirPath = Settings.Default.ApplicationDir2;
                     break;
+                case ApplicationType.IncentiveScheme:
+                    dirPath = Settings.Default.ApplicationDir3;
+                    break;
                 case ApplicationType.Lansering:
                     dirPath = Settings.Default.ApplicationDir5;
                     break;

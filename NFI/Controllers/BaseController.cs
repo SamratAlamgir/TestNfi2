@@ -37,7 +37,6 @@ namespace NFI.Controllers
             var fileName = GetFilenameWithTimeStamp("user_data.pdf");
             var path = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var fullPath = Path.Combine(path, fileName);
-
             var htmlString = GetApplicationDetailsStringHtml(this, viewName, appDto);
             var startIndex = htmlString.IndexOf("<head>", StringComparison.Ordinal) + 6;
             var length = htmlString.IndexOf("</head>", StringComparison.Ordinal) - startIndex;
