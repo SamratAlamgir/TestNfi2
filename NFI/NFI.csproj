@@ -222,6 +222,7 @@
     <Compile Include="Models\Sorfond.cs" />
     <Compile Include="Models\IncentiveSchemeDto.cs" />
     <Compile Include="Models\InsentivordningDto.cs" />
+    <Compile Include="Models\VideoDto.cs" />
     <Compile Include="Models\ViewModelForm1Data.cs" />
     <Compile Include="Models\NotVisibleAttribute.cs" />
     <Compile Include="Models\VisueltMateriale.cs" />
