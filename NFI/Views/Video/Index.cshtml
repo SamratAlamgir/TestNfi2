@@ -1,0 +1,216 @@
+﻿@using NFI.Helper
+@model NFI.Models.VideoDto
+
+@section scripts
+{
+    <script src="~/Scripts/Insentivordning/Insentivordning.js"></script>
+}
+
+@{
+    ViewBag.Title = "Insentivordning";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tilskudd til videodistribusjon</h2>
+
+<form id="MainForm" class="form-horizontal" action="@Html.GetHostServerUrl()/Video/Save" enctype="multipart/form-data" method="post">
+    <div id="rootwizard" class="container well panel col-md-8">
+        <ul style="display: none">
+            <li><a href="#tab1" data-toggle="tab"></a></li>
+            <li><a href="#tab2" data-toggle="tab"></a></li>
+            <li><a href="#tab3" data-toggle="tab"></a></li>
+            <li><a href="#tab4" data-toggle="tab"></a></li>
+            <li><a href="#tab5" data-toggle="tab"></a></li>
+            <li><a href="#tab6" data-toggle="tab"></a></li>
+        </ul>
+        <br />
+
+        <div class="tab-content">
+
+            <!-- Tab 1-->
+            <div class="tab-pane" id="tab1">
+
+                <div class="form-group">
+                    <h3> 1. Om søker</h3>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NavnAnsvarligOrganisasjon, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.NavnAnsvarligOrganisasjon, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.NavnAnsvarligOrganisasjon, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Organisasjonsnummer, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Organisasjonsnummer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Organisasjonsnummer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OrganisasjonensVirkeområde, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.OrganisasjonensVirkeområde, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OrganisasjonensVirkeområde, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Postadresse, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Postadresse, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Postadresse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Postnummer, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Postnummer, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Postnummer, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Poststed, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Poststed, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Poststed, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OrganisasjonensTelefonnummer, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.OrganisasjonensTelefonnummer, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.OrganisasjonensTelefonnummer, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NavnKontaktpersonDenneSøknaden, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.NavnKontaktpersonDenneSøknaden, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NavnKontaktpersonDenneSøknaden, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Epostadressekontaktperson, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Epostadressekontaktperson, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Epostadressekontaktperson, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mobiltelefonkontaktperson, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Mobiltelefonkontaktperson, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Mobiltelefonkontaktperson, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KvalifikasjonersomDistributørCv, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+
+                    <div class="col-md-7">
+                        <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.KvalifikasjonersomDistributørCv, new { type = "file" })
+                        </span>
+                        @Html.ValidationMessageFor(model => model.KvalifikasjonersomDistributørCv, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EvtAnnenInformasjonOrganisasjonen, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.EvtAnnenInformasjonOrganisasjonen, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.EvtAnnenInformasjonOrganisasjonen, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HarsøkerTidligereMottattVideodistribusjon, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.HarsøkerTidligereMottattVideodistribusjon, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.HarsøkerTidligereMottattVideodistribusjon, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HvisJaLeggVedRapportTiltakher, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.HvisJaLeggVedRapportTiltakher, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.HvisJaLeggVedRapportTiltakher, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NavnKontaktpersonDenneSøknaden, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.NavnKontaktpersonDenneSøknaden, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.NavnKontaktpersonDenneSøknaden, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NavnKontaktpersonDenneSøknaden, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.NavnKontaktpersonDenneSøknaden, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.NavnKontaktpersonDenneSøknaden, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+               
+
+            </div>
+
+            <!-- Tab 2-->
+            <div class="tab-pane" id="tab2">
+
+
+
+            </div>
+
+
+            <!-- Tab 3-->
+            <div class="tab-pane" id="tab3">
+
+
+
+            </div>
+
+
+            <!-- Tab 4-->
+            <div class="tab-pane" id="tab4">
+
+
+
+            </div>
+
+
+            <!-- Tab 5-->
+            <div class="tab-pane" id="tab5">
+
+
+
+            </div>
+
+
+            <!-- Tab 6-->
+            <div class="tab-pane" id="tab6">
+
+
+
+            </div>
+
+        </div>
+
+        </div> <!--End of Wizard-->
+</form>

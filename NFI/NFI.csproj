@@ -457,6 +457,7 @@
     <Content Include="Views\Admin\LanseringDetail.cshtml" />
     <Content Include="Views\IncentiveScheme\Index.cshtml" />
     <Content Include="Views\Admin\IncentiveSchemeDetail.cshtml" />
+    <Content Include="Views\Video\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
