@@ -40,6 +40,10 @@ namespace NFI.Models
         public string NameProducer { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
+        [DisplayName("Gender, Main producer")]
+        public string GenderMainProducer { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
         [DisplayName("Title")]
         public string Title { get; set; }
 
@@ -195,11 +199,7 @@ namespace NFI.Models
         [DisplayName("List of organisations and subcontractors involved the production in Norway and the EEC")]
         public string ListOfOrganisationsPath { get; set; }
 
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
-        [DisplayName("Distribution strategy")]
-        public HttpPostedFileBase DistributionStrategy { get; set; }
-        [DisplayName("Distribution strategy")]
-        public string DistributionStrategyPath { get; set; }
+        
 
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Describe how the production is suited to increase the capacity of the filmmakers involved to undertake ambitious and demanding productions of high quality and of cultural value")]
@@ -209,11 +209,19 @@ namespace NFI.Models
         [DisplayName("Describe the production strategy for sustainable and green recording")]
         public string DescribeTheProductionStrategy { get; set; }
 
+        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [DisplayName("Distribution strategy")]
+        public HttpPostedFileBase DistributionStrategy { get; set; }
+        [DisplayName("Distribution strategy")]
+        public string DistributionStrategyPath { get; set; }
 
-        // 4. Visual materials
-        public List<VisualMaterialDto> VisualMaterialList { get; set; }
+        [JsonIgnore, FileSize]
+        [DisplayName("International distribution agreement")]
+        public HttpPostedFileBase InternationalDistributionAgreement { get; set; }
+        [DisplayName("International distribution agreement")]
+        public string InternationalDistributionAgreementPath { get; set; }
 
-        // 5. Financial information
+        // 4. Financial information
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Total production budget in NOK")]
         public string TotalProductionBudget { get; set; }
@@ -244,7 +252,7 @@ namespace NFI.Models
         public string PercentageConfirmedFinancing { get; set; }
 
 
-        // 6. Eventuelle andre vedlegg
+        // 5. Eventuelle andre vedlegg
         [JsonIgnore, FileSize]
         [DisplayName("Other relevant attachments")]
         public List<HttpPostedFileBase> OtherRelevantAttachments { get; set; }
@@ -253,13 +261,5 @@ namespace NFI.Models
 
         [DisplayName("Description of other attachments")]
         public string DescriptionOfOtherAttachments { get; set; }
-    }
-
-    public class VisualMaterialDto
-    {
-        [DisplayName("Visual materials (website, Vimeo, etc)")]
-        public string VisualMaterials { get; set; }
-        [DisplayName("Password for website with visual materials")]
-        public string PasswordForWebsite { get; set; }
     }
 }

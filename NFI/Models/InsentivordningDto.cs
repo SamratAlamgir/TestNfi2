@@ -42,6 +42,10 @@ namespace NFI.Models
         public string HovedprodusentensNavn { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
+        [DisplayName("Hovedprodusentens kjønn")]
+        public string Hovedprodusentenskjønn { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
         [DisplayName("Hovedprodusentens tittel")]
         public string HovedprodusentensTittel { get; set; }
 
@@ -195,12 +199,6 @@ namespace NFI.Models
         [DisplayName("Legg ved liste over leverandører i Norge og EØS")]
         public string LeggvedListeOverLeverandørerPath { get; set; }
 
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
-        [DisplayName("Legg ved distribusjonsplan")]
-        public HttpPostedFileBase LeggvedDistribusjonsPlan { get; set; }
-        [DisplayName("Legg ved distribusjonsplan")]
-        public string LeggvedDistribusjonsPlanPath { get; set; }
-
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Beskriv hvordan produksjonen er egnet til å øke de involverte filmskapernes kompetanse og evne til å lage ambisiøse og krevende prosjekter med høy kvalitet")]
         public string BeskrivHvordanProduksjonen { get; set; }
@@ -208,10 +206,19 @@ namespace NFI.Models
         [DisplayName("Skriv inn strategi for bærekraftig og miljøvennlig innspilling")]
         public string SkrivinnStrategi { get; set; }
 
-        // 4. Visuelt materiale
-        public List<VisueltMaterialeDto> VisueltMaterialeList { get; set; }
+        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [DisplayName("Legg ved distribusjonsplan")]
+        public HttpPostedFileBase LeggvedDistribusjonsPlan { get; set; }
+        [DisplayName("Legg ved distribusjonsplan")]
+        public string LeggvedDistribusjonsPlanPath { get; set; }
 
-        // 5. Finansieringsinformasjon: 
+        [JsonIgnore, FileSize]
+        [DisplayName("Legg internasjonal distribusjonsavtale")]
+        public HttpPostedFileBase LegginternasjonalDistribusjonsavtale { get; set; }
+        [DisplayName("Legg internasjonal distribusjonsavtale")]
+        public string LegginternasjonalDistribusjonsavtalePath { get; set; }
+
+        // 4. Finansieringsinformasjon: 
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Totalbudsjett for prosjektet i NOK")]
         public string TotalbudsjettForProsjektet { get; set; }
@@ -241,7 +248,7 @@ namespace NFI.Models
         [DisplayName("Prosentandel av finansieringen som er bekreftet")]
         public string ProsentandelFinansieringen { get; set; }
 
-        // 6. Eventuelle andre vedlegg
+        // 5. Eventuelle andre vedlegg
         [JsonIgnore, FileSize]
         [DisplayName("Har du vedlegg som er relevante til søknaden som du ikke har fått lastet opp? Legg de ved her")]
         public List<HttpPostedFileBase> HarduVedleggSomerRelevante { get; set; }
@@ -250,120 +257,5 @@ namespace NFI.Models
 
         [DisplayName("Beskrivelse av andre vedlegg: Beskriv innholdet i vedleggene lastet opp under Eventuelle andre vedlegg.")]
         public string BeskrivelseavAndreVedlegg { get; set; }
-
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("Insentivordning (kommer også på engelsk)\n"); // Application Title
-
-            sb.AppendLine("1. Kontaktinformasjon hovedprodusent:"); // Section 1 Header
-            sb.AppendLine("-------------------------------------");
-            sb.AppendLine($"Produksjonsforetakets navn:\n {ProduksjonsforetaketsNavn}");
-            sb.AppendLine($"Organisasjonsnummer:\n {OrganisasjonsNummer}");
-            sb.AppendLine($"Postadresse:\n {OrganisasjonsPostadresse}");
-            sb.AppendLine($"Postnummer:\n {OrganisasjonsPostnummer}");
-            sb.AppendLine($"Poststed:\n {OrganisasjonsPoststed}");
-            sb.AppendLine($"Land:\n {OrganisasjonsLand}");
-            sb.AppendLine($"Hovedprodusentens navn:\n {HovedprodusentensNavn}");
-            sb.AppendLine($"Hovedprodusentens tittel:\n {HovedprodusentensTittel}");
-            sb.AppendLine($"Hovedprodusentens telefon:\n {HovedprodusentensTelefon}");
-            sb.AppendLine($"Hovedprodusentens mobiltelefon:\n {HovedprodusentensMobiltelefon}");
-            sb.AppendLine($"Hovedprodusentens e-postadresse:\n {HovedprodusentensEpostadresse}");
-            sb.AppendLine($"Hovedproduksjonsforetakets hjemmeside:\n {HovedproduksjonsforetaketsHjemmeside}");
-            sb.AppendLine($"Legg ved Certificate of origin for hovedproduksjonsselskap:\n {Path.GetFileName(LeggCertificateOriginForHovedproduksjonsselskapPath)}");
-            sb.AppendLine($"Legg ved hovedprodusentens CV:\n {Path.GetFileName(LeggHovedprodusentensCvPath)}");
-            sb.AppendLine($"Legg ved  hovedproduksjonsselskapets track record:\n {Path.GetFileName(LeggHovedproduksjonsselskapetsTrackRecordPath)}");
-
-            sb.AppendLine("2. Kontaktinformasjon søker: / hvis annen enn hovedprodusent:\n"); // Section 2 Header
-            sb.AppendLine("-------------------------------------------------------------");
-            sb.AppendLine($"Søkers navn:\n {SøkersNavn}");
-            sb.AppendLine($"Søkers tittel:\n {SøkersTittel}");
-            sb.AppendLine($"Søkers telefon:\n {SøkersTelefon}");
-            sb.AppendLine($"Søkers mobiltelefon:\n {SøkersMobiltelefon}");
-            sb.AppendLine($"Søkers epost-adresse:\n {SøkersEpostAdresse}");
-            sb.AppendLine($"Produksjonsforetakets navn:\n {SøkersProduksjonsforetaketsNavn}");
-            sb.AppendLine($"Organisasjonsnummer:\n {SøkersOrganisasjonsNummer}");
-            sb.AppendLine($"Postadresse:\n {SøkersPostadresse}");
-            sb.AppendLine($"Postnummer:\n {SøkersPostnummer}");
-            sb.AppendLine($"Poststed:\n {SøkersPoststed}");
-            sb.AppendLine($"Land:\n {SøkersLand}");
-            sb.AppendLine($"Produksjonsforetakets hjemmeside:\n {ProduksjonsforetaketsHjemmeside}");
-
-            if (!LastoppErklæringPath.IsNullOrWhiteSpace())
-            {
-                sb.AppendLine($"Last opp erklæring fra hovedprodusent på at søker kan søke på vegne av hovedprodusent:\n {Path.GetFileName(LastoppErklæringPath)}");
-            }
-
-            sb.AppendLine("3. Prosjektinformasjon:"); // Section 3 Header
-            sb.AppendLine("-----------------------");
-
-            sb.AppendLine($"Tittel på prosjektet :\n {TittelpåProsjektet}");
-            sb.AppendLine($"Er prosjektet et originalverk?:\n {ErProsjektetOriginalverk}");
-            sb.AppendLine($"Legg ved dokumentasjon på at hovedprodusenten har opsjon/filmrett:\n {Path.GetFileName(LeggvedDokumentasjonHovedprodusentenPath)}");
-            sb.AppendLine($"Format:\n {Format}");
-            sb.AppendLine($"Sjanger :\n {Sjanger}");
-            sb.AppendLine($"Lengde:\n {Lengde}");
-            sb.AppendLine($"Språk:\n {Språk}");
-            sb.AppendLine($"Dato for opptaksstart i Norge:\n {DatoForOpptaksstartNorge}");
-            sb.AppendLine($"Antatt siste opptaksdag i Norge :\n {AntattSisteOpptaksdagNorge}");
-            sb.AppendLine($"Legg ved utfylt kultur-og produksjonstest. Testen finner du her:\n {Path.GetFileName(LeggvedUtfyltkulturProduksjonstestPath)}");
-            sb.AppendLine($"Kort beskrivelse av handlingen, max 200 tegn:\n {KortBeskrivelseHandlingen}");
-            sb.AppendLine($"Legg ved manuskript:\n {Path.GetFileName(LeggvedManuskriptPath)}");
-            sb.AppendLine($"Legg ved treatment:\n {Path.GetFileName(LeggvedTreatmentPath)}");
-            sb.AppendLine($"Legg ved produksjonsplan:\n {Path.GetFileName(LeggvedProduksjonsplanPath)}");
-
-            sb.AppendLine($"Legg ved cast & crew liste:\n {Path.GetFileName(LeggvedCastCrewListePath)}");
-            sb.AppendLine($"Legg ved liste over locations/innspillingssteder:\n {Path.GetFileName(LeggvedListeOverLocationsPath)}");
-            sb.AppendLine($"Legg ved liste over leverandører i Norge og EØS:\n {Path.GetFileName(LeggvedListeOverLeverandørerPath)}");
-            sb.AppendLine($"Legg ved distribusjonsplan:\n {Path.GetFileName(LeggvedDistribusjonsPlanPath)}");
-            sb.AppendLine($"Beskriv hvordan produksjonen er egnet til å øke de involverte filmskapernes kompetanse og evne til å lage ambisiøse og krevende prosjekter med høy kvalitet:\n {BeskrivHvordanProduksjonen}");
-            sb.AppendLine($"Skriv inn strategi for bærekraftig og miljøvennlig innspilling:\n {SkrivinnStrategi}");
-
-            sb.AppendLine("4. Visuelt materiale"); // Section 4 Header
-            sb.AppendLine("---------------------");
-
-            foreach (var visueltMaterialeDto in VisueltMaterialeList)
-            {
-                sb.AppendLine($"Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc):\n {visueltMaterialeDto.NettadresseEventueltVisueltMateriale}");
-                sb.AppendLine($"Oppgi evt passord til nettadresse med visuelt materiale:\n {visueltMaterialeDto.OppgiEvtPassordNettadresse}");
-            }
-
-            sb.AppendLine("5. Finansieringsinformasjon"); // Section 5 Header
-            sb.AppendLine("----------------------------");
-            sb.AppendLine($"Totalbudsjett for prosjektet i NOK:\n {TotalbudsjettForProsjektet}");
-            sb.AppendLine($"Legg ved totalbudsjettet for prosjekte:\n {Path.GetFileName(LeggvedTotalbudsjettetPath)}");
-            sb.AppendLine($"Estimerte kostnader i Norge i NOK:\n{EstimerteKostnader}");
-            sb.AppendLine($"Legg ved budsjett for produksjonen i Norge i NOK (samt budsjettbeløp i EU/EØS om mer enn 80% av  produksjonskostnaden er antatt å påløpe i Norge):\n {Path.GetFileName(LeggvedBudsjettForProduksjonenPath)}");
-            sb.AppendLine($"Legg ved finansieringsplan (med spesifisering av private og offentlige midler samt angitt bekreftet/ubekreftet finansiering):\n {Path.GetFileName(LeggvedFinansieringsplanPath)}");
-            sb.AppendLine($"Prosentandel av finansieringen som er bekreftet:\n {ProsentandelFinansieringen}");
-
-            sb.AppendLine("6. Eventuelle andre vedlegg"); // Section 6 Header
-            sb.AppendLine("----------------------------");
-
-            if (HarduVedleggSomerRelevante != null)
-            {
-                sb.AppendLine($"Har du vedlegg som er relevante til søknaden som du ikke har fått lastet opp? Legg de ved her:\n");
-
-                var fileCount = 0;
-                foreach (var filePath in HarduVedleggSomerRelevantePaths)
-                {
-                    sb.AppendLine($"File {++fileCount}:\n {Path.GetFileName(filePath)}");
-                }
-            }
-
-            sb.AppendLine($"Beskrivelse av andre vedlegg: Beskriv innholdet i vedleggene lastet opp under Eventuelle andre vedlegg.:\n {BeskrivelseavAndreVedlegg}");
-
-            return sb.ToString();
-        }
     }
-
-    public class VisueltMaterialeDto
-    {
-        [DisplayName("Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)")]
-        public string NettadresseEventueltVisueltMateriale { get; set; }
-        [DisplayName("Oppgi evt passord til nettadresse med visuelt materiale")]
-        public string OppgiEvtPassordNettadresse { get; set; }
-    }
-    
 }

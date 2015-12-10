@@ -4,17 +4,7 @@
     ViewBag.Title = "Insentivordning";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@*<style type="text/css">
-    .dl-horizontal dt {
-        width: 400px;
-        white-space: normal;
-        margin-bottom: 10px;
-    }
 
-    .dl-horizontal dd {
-        margin-left: 420px;
-    }
-</style>*@
 
 <h2>Insentivordning (kommer også på engelsk)</h2>
 
@@ -76,6 +66,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.HovedprodusentensNavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hovedprodusentenskjønn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hovedprodusentenskjønn)
         </dd>
 
         <dt>
@@ -391,14 +389,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LeggvedDistribusjonsPlanPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LeggvedDistribusjonsPlanPath)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.BeskrivHvordanProduksjonen)
         </dt>
 
@@ -414,32 +404,25 @@
             @Html.DisplayFor(model => model.SkrivinnStrategi)
         </dd>
 
-    </dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedDistribusjonsPlanPath)
+        </dt>
 
-    <h4> 4. Visuelt materiale </h4>
-    <dl class="well">
-        @for (var i = 0; i < Model.VisueltMaterialeList.Count; i++)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.VisueltMaterialeList[i].NettadresseEventueltVisueltMateriale)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedDistribusjonsPlanPath)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.VisueltMaterialeList[i].NettadresseEventueltVisueltMateriale)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LegginternasjonalDistribusjonsavtalePath)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.VisueltMaterialeList[i].OppgiEvtPassordNettadresse)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.VisueltMaterialeList[i].OppgiEvtPassordNettadresse)
-            </dd>
-        }
+        <dd>
+            @Html.DisplayFor(model => model.LegginternasjonalDistribusjonsavtalePath)
+        </dd>
 
     </dl>
 
-    <h4> 5. Finansieringsinformasjon</h4>
+    <h4> 4. Finansieringsinformasjon</h4>
     <dl class="well">
 
         <dt>
@@ -492,7 +475,7 @@
 
     </dl>
 
-    <h4>6. Eventuelle andre vedlegg </h4>
+    <h4>5. Eventuelle andre vedlegg </h4>
     <dl class="well">
 
         @if (Model.HarduVedleggSomerRelevantePaths != null)
