@@ -1,89 +1,112 @@
 ﻿@model NFI.Models.UdsReisestotteDto
 
 @{
-    ViewBag.Title = "UdsReisestotteDetail";
+    ViewBag.Title = "UDs reisestøtte";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UdsReisestotteDetail</h2>
+<div class="col-md-8">
+    <h4>UDs reisestøtte</h4>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.CreateTime)
+                </td>
 
-<div>
-    <h4>UdsReisestotteDto</h4>
-    <hr />
-    <dl class="dl-horizontal">
+                <td>
+                    @Html.DisplayFor(model => model.CreateTime)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkersnavn)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Søkersnavn)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.Søkersnavn)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Søkersnavn)
-        </dd>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkerspostadresse)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Søkerspostadresse)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.Søkerspostadresse)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Søkerspostadresse)
-        </dd>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkerspoststed)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Søkerspoststed)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.Søkerspoststed)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Søkerspoststed)
-        </dd>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkersland)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Søkersland)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.Søkersland)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Søkersland)
-        </dd>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkersepost)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Søkersepost)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.Søkersepost)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Søkersepost)
-        </dd>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Målforreisen)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Målforreisen)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.Målforreisen)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Beskrivelse)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Målforreisen)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.Beskrivelse)
+                </td>
+            </tr>
+            <tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Beskrivelse)
-        </dt>
+                <td>
+                    @Html.DisplayNameFor(model => model.BudsjettfortiltakPath)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Beskrivelse)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.BudsjettfortiltakPath)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.DokumentasjonPath)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Budsjettfortiltak)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.DokumentasjonPath)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Budsjettfortiltak)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dokumentasjon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dokumentasjon)
-        </dd>
-
-    </dl>
+        </tbody>
+    </table>
 </div>
 

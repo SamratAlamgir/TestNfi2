@@ -109,6 +109,9 @@ namespace NFI.Controllers
                 case ApplicationType.Sorfond:
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
                     break;
+                case ApplicationType.UdsReisestotte:
+                    selectedApp = GetApplicationDto<UdsReisestotteDto>(appId, appType);
+                    break;
                 case ApplicationType.Lansering:
                     selectedApp = GetApplicationDto<LanseringDto>(appId, appType);
                     break;
