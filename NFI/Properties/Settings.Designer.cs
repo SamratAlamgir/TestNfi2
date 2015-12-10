@@ -79,15 +79,6 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
-        public string ToEmailAddress {
-            get {
-                return ((string)(this["ToEmailAddress"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
         public string EmailHost {
             get {
@@ -142,7 +133,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:58873/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:58873")]
         public string HostServerUrl {
             get {
                 return ((string)(this["HostServerUrl"]));
@@ -173,6 +164,15 @@ namespace NFI.Properties {
         public string ApplicationDir6 {
             get {
                 return ((string)(this["ApplicationDir6"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
+        public string ToEmailAddress {
+            get {
+                return ((string)(this["ToEmailAddress"]));
             }
         }
     }

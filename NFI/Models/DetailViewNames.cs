@@ -22,6 +22,11 @@ namespace NFI.Models
                 case ApplicationType.IncentiveScheme:
                     viewName = "../Admin/IncentiveSchemeDetail";
                     break;
+
+                case ApplicationType.UdsReisestotte:
+                    viewName = "../Admin/UdsReisestotteDetail";
+                    break;
+
                 case ApplicationType.Lansering:
                     viewName = "../Admin/LanseringDetail";
                     break;

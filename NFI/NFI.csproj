@@ -191,6 +191,7 @@
     <Compile Include="Controllers\LanseringController.cs" />
     <Compile Include="Controllers\OrdningerController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
+    <Compile Include="Controllers\UdsReisestotteController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,6 +226,7 @@
     <Compile Include="Models\Sorfond.cs" />
     <Compile Include="Models\IncentiveSchemeDto.cs" />
     <Compile Include="Models\InsentivordningDto.cs" />
+    <Compile Include="Models\UdsReisestotteDto.cs" />
     <Compile Include="Models\ViewModelForm1Data.cs" />
     <Compile Include="Models\NotVisibleAttribute.cs" />
     <Compile Include="Models\VisueltMateriale.cs" />
@@ -462,6 +464,8 @@
     <Content Include="Views\Admin\OrdningerDetail.cshtml" />
     <Content Include="Views\IncentiveScheme\Index.cshtml" />
     <Content Include="Views\Admin\IncentiveSchemeDetail.cshtml" />
+    <Content Include="Views\UdsReisestotte\Index.cshtml" />
+    <Content Include="Views\Admin\UdsReisestotteDetail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
