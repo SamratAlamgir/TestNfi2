@@ -34,7 +34,7 @@ namespace NFI.Controllers
                     "<br/>" +
                     "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
 
-                var responseText = GetApplicationDetailsStringHtml(this, "../Admin/IncentiveSchemeDetail", appDto);
+                var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
 
                 mailBody += responseText;
 
