@@ -33,20 +33,7 @@ namespace NFI.Controllers
 
         public string CreateUserDataFile<T>(T appDto, ApplicationType appType)
         {
-            var viewName = "";
-            switch (appType)
-            {
-                case ApplicationType.Sorfond:
-                    viewName = "../Admin/Sorfond/Details";
-                    break;
-                case ApplicationType.Insentivordning:
-                    viewName = "../Admin/InsentivordningDetail";
-                    break;
-                case ApplicationType.Lansering:
-                    viewName = "../Admin/LanseringDetail";
-                    break;
-
-            }
+            var viewName=DetailViewNames.ViewName(appType);
             var fileName = GetFilenameWithTimeStamp("user_data.pdf");
             var path = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var fullPath = Path.Combine(path, fileName);
