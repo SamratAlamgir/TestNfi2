@@ -115,6 +115,15 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
+        public string ToEmailAddress {
+            get {
+                return ((string)(this["ToEmailAddress"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("nfi.executive@testmail.com")]
         public string ExecutiveMailAddress {
             get {
@@ -160,28 +169,19 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("App6/")]
-        public string ApplicationDir6 {
-            get {
-                return ((string)(this["ApplicationDir6"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
-        public string ToEmailAddress {
-            get {
-                return ((string)(this["ToEmailAddress"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("App4/")]
         public string ApplicationDir4 {
             get {
                 return ((string)(this["ApplicationDir4"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App6/")]
+        public string ApplicationDir6 {
+            get {
+                return ((string)(this["ApplicationDir6"]));
             }
         }
     }

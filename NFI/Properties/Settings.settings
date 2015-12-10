@@ -32,6 +32,9 @@
     <Setting Name="FromPassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SystemNfi987</Value>
     </Setting>
+	  <Setting Name="ToEmailAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">rezaul.sajib@cefalo.com</Value>
+    </Setting>
     <Setting Name="ExecutiveMailAddress" Type="System.String" Scope="Application">
       <Value Profile="(Default)">nfi.executive@testmail.com</Value>
     </Setting>
@@ -47,11 +50,13 @@
     <Setting Name="ApplicationDir3" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App3/</Value>
     </Setting>
+	  <Setting Name="ApplicationDir4" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App4/</Value>
+    </Setting>
     <Setting Name="ApplicationDir6" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App6/</Value>
     </Setting>
-    <Setting Name="ToEmailAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">rezaul.sajib@cefalo.com</Value>
-    </Setting>
+  
+  
   </Settings>
 </SettingsFile>
