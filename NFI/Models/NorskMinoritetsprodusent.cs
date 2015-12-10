@@ -33,16 +33,16 @@ namespace NFI.Models
         [DisplayName("Produksjonsforetakets hjemmeside")]
         public string ProduksjonsforetaketsHjemmeside { get; set; }
 
-        [DisplayName("Minoritetsprodusentens navn")]
+        [Required,DisplayName("Minoritetsprodusentens navn")]
         public string MinoritetsprodusentensNavn { get; set; }
 
-        [DisplayName("Minoritetsprodusentens tittel")]
+        [Required,DisplayName("Minoritetsprodusentens tittel")]
         public string MinoritetsprodusentensTittel { get; set; }
 
-        [DisplayName("Minoritetsprodusentenss telefon ")]
+        [Required,DisplayName("Minoritetsprodusentenss telefon ")]
         public string MinoritetsprodusentenssTelefon { get; set; }
 
-        [DisplayName("Minoritetsprodusentens mobiltelefon ")]
+        [Required,DisplayName("Minoritetsprodusentens mobiltelefon ")]
         public string MinoritetsprodusentensMobiltelefon { get; set; }
 
         [DisplayName("Minoritetsprodusentens fulle adresse ")]
