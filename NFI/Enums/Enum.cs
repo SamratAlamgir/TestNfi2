@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace NFI.Enums
+﻿namespace NFI.Enums
 {
     public enum ApplicationType
     {
@@ -13,7 +8,10 @@ namespace NFI.Enums
         IncentiveScheme = 3,
         UdsReisestotte = 4,
         Lansering = 5,
-        Application6 = 6,
-        Application7 = 7
+        Ordninger = 6,
+        Video = 7,
+        Film = 8,
+        DenKulturelleSkolesekken = 9,
+        Ark2 = 10
     }
 }

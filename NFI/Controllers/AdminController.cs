@@ -64,43 +64,38 @@ namespace NFI.Controllers
         }
         public ActionResult ShowDetail(ApplicationType appType, string appId)
         {
-            var viewName = "";
-            object selectedApp = null;
             try
             {
-                switch (appType)
-                {
-                    case ApplicationType.Sorfond:
-                        viewName = "Sorfond/Details";
-                        selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
-                        break;
-                    case ApplicationType.Insentivordning:
-                        viewName = "InsentivordningDetail";
-                        selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
-                        break;
-                    case ApplicationType.IncentiveScheme:
-                        viewName = "IncentiveSchemeDetail";
-                        selectedApp = GetApplicationDto<IncentiveSchemeDto>(appId, appType);
-                        break;
-                    case ApplicationType.UdsReisestotte:
-                        viewName = "UdsReisestotteDetail";
-                        selectedApp = GetApplicationDto<UdsReisestotteDto>(appId, appType);
-                        break;
-                    case ApplicationType.Lansering:
-                        viewName = "LanseringDetail";
-                        selectedApp = GetApplicationDto<LanseringDto>(appId, appType);
-                        break;
-                }
+                var viewName = DetailViewNames.ViewName(appType);
+                object selectedApp = BaseAppDto(appType, appId);
                 TrimPathAndOnlyFileName(selectedApp);
                 return View(viewName, selectedApp);
+            }
+            catch (Exception)
+                {
+                return View("Error");
+            }
+                }
+
+        public ActionResult DownloadZipFile(ApplicationType appType, string appId)
+        {
+            try
+            {
+                var selectedApp = BaseAppDto(appType, appId);
+                var filePath = selectedApp?.ZipFilePath;
+                filePath = filePath.Replace(@"\Admin\DownloadZipFile", "");
+                var fileBytes = System.IO.File.ReadAllBytes(filePath);
+                var fileName = Path.GetFileName(filePath);
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
             }
             catch (Exception)
             {
                 return View("Error");
             }
+
         }
 
-        public FileResult DownloadZipFile(ApplicationType appType, string appId)
+        private BaseAppDto BaseAppDto(ApplicationType appType, string appId)
         {
             BaseAppDto selectedApp = null;
             switch (appType)
@@ -108,18 +103,20 @@ namespace NFI.Controllers
                 case ApplicationType.Insentivordning:
                     selectedApp = GetApplicationDto<InsentivordningDto>(appId, appType);
                     break;
+                case ApplicationType.IncentiveScheme:
+                    selectedApp = GetApplicationDto<IncentiveSchemeDto>(appId, appType);
+                    break;
                 case ApplicationType.Sorfond:
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
                     break;
                 case ApplicationType.Lansering:
                     selectedApp = GetApplicationDto<LanseringDto>(appId, appType);
                     break;
+                case ApplicationType.Ordninger:
+                    selectedApp = GetApplicationDto<OrdningerDto>(appId, appType);
+                    break;
             }
-            var filePath = selectedApp?.ZipFilePath;
-            filePath = filePath.Replace(@"\Admin\DownloadZipFile", "");
-            var fileBytes = System.IO.File.ReadAllBytes(filePath);
-            var fileName = Path.GetFileName(filePath);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            return selectedApp;
         }
 
         private T GetApplicationDto<T>(string appId, ApplicationType appType)

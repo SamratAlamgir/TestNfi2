@@ -1,0 +1,533 @@
+﻿@model NFI.Models.OrdningerDto
+
+@{
+    ViewBag.Title = "OrdningerDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>3 Ordninger programdetaljer</h2>
+
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <h4>
+                        1. Om søker
+                    </h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.CreateTime)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.CreateTime)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Navnpåansvarligorganisasjon)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Navnpåansvarligorganisasjon)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Organisasjonsnummer)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Organisasjonsnummer)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.OrganisasjonensVirkeområde)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.OrganisasjonensVirkeområde)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Postadresse)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Postadresse)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Postnummer)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Postnummer)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Poststed)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Poststed)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Organisasjonenstelefonnummer)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Organisasjonenstelefonnummer)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Navnpåkontaktperson)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Navnpåkontaktperson)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Epostadressekontaktperson)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Epostadressekontaktperson)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Mobiltelefonkontaktperson)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Mobiltelefonkontaktperson)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.KvalifikasjonersomArrangørCVPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.KvalifikasjonersomArrangørCVPath)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Evtanneninformasjonomorganisasjonen)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Evtanneninformasjonomorganisasjonen)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Harsøkertidligere)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Harsøkertidligere)
+                                </td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.HvisJAhvilkenavordningene)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.HvisJAhvilkenavordningene)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.HvisJaleggPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.HvisJaleggPath)
+                                </td>
+                            </tr>
+
+
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <h4>2. Om prosjektet</h4>
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Prosjektetstittel)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Prosjektetstittel)
+                                </td>
+
+
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Beskrivkortprosjektet)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Beskrivkortprosjektet)
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.LeggvedprosjektbeskrivelsePath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.LeggvedprosjektbeskrivelsePath)
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Hvilkenordningsøkes)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Hvilkenordningsøkes)
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Vedvalgavfilmkulturelletiltak)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Vedvalgavfilmkulturelletiltak)
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Haransvarligorganisasjon)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Haransvarligorganisasjon)
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.HvisJAskriv)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.HvisJAskriv)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>  3. Nedslagsfelt</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Hvorbredttiltaket)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Hvorbredttiltaket)
+                                </td>
+
+
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Angigeografisk)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Angigeografisk)
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4> 4. Tidsramme</h4>
+                </td>
+            </tr>
+          <tr>
+                <td>
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.NårskalprosjektetFromDate)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.NårskalprosjektetFromDate)
+                                </td>
+
+
+
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.NårskalprosjektetToDate)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.NårskalprosjektetToDate)
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>  5. Målgruppe(r)</h4>
+                </td>
+            </tr>
+           
+            <tr>
+                <td>
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Detallmennepublikum)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Detallmennepublikum)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Filmstudenterpedagoger)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Filmstudenterpedagoger)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Semiprofesjonelleprofesjonelle)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Semiprofesjonelleprofesjonelle)
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Flerkulturellemiljøer)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Flerkulturellemiljøer)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Barnogunge)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Barnogunge)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Andrespesiferitekstfelt)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Andrespesiferitekstfelt)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Beskrivkortmålet)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Beskrivkortmålet)
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td><h4>6. Økonomi</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.SøknadssumiNOK)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.SøknadssumiNOK)
+                                </td>
+
+
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.TotalbudsjettiNOK)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.TotalbudsjettiNOK)
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Nevndeviktigste)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Nevndeviktigste)
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayNameFor(model => model.LeggvedbudsjettPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.LeggvedbudsjettPath)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>7. Eventuelle andre vedlegg</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.HarduvedleggsomPath)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.HarduvedleggsomPath)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Beskrivelseavandrevedlegg)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Beskrivelseavandrevedlegg)
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</div>

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\IncentiveSchemeController.cs" />
     <Compile Include="Controllers\InsentivordningController.cs" />
     <Compile Include="Controllers\LanseringController.cs" />
+    <Compile Include="Controllers\OrdningerController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
     <Compile Include="Controllers\UdsReisestotteController.cs" />
     <Compile Include="Enums\Enum.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Models\BaseAppDto.cs" />
     <Compile Include="Models\CaptachaModel.cs" />
     <Compile Include="Models\DacListen.cs" />
+    <Compile Include="Models\DetailViewNames.cs" />
     <Compile Include="Models\EventuelleAndreVedlegg.cs" />
     <Compile Include="Models\FileDto.cs" />
     <Compile Include="Models\FileSizeAttribute.cs" />
@@ -218,6 +220,7 @@
     <Compile Include="Models\Manusforfatterens.cs" />
     <Compile Include="Models\NettadresseVisueltMateriale.cs" />
     <Compile Include="Models\NorskMinoritetsprodusent.cs" />
+    <Compile Include="Models\OrdningerDto.cs" />
     <Compile Include="Models\Prosjektinformasjon.cs" />
     <Compile Include="Models\Regissoren.cs" />
     <Compile Include="Models\Sorfond.cs" />
@@ -417,6 +420,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Ordninger\ordninger.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\Sorfond\sorfond.js" />
     <Content Include="Scripts\_references.js" />
@@ -456,6 +460,8 @@
     <Content Include="Views\Admin\InsentivordningDetail.cshtml" />
     <Content Include="Views\Lansering\Index.cshtml" />
     <Content Include="Views\Admin\LanseringDetail.cshtml" />
+    <Content Include="Views\Ordninger\Index.cshtml" />
+    <Content Include="Views\Admin\OrdningerDetail.cshtml" />
     <Content Include="Views\IncentiveScheme\Index.cshtml" />
     <Content Include="Views\Admin\IncentiveSchemeDetail.cshtml" />
     <Content Include="Views\UdsReisestotte\Index.cshtml" />

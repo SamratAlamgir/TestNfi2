@@ -72,6 +72,23 @@ namespace NFI.Helper
                                 Norsk filminstitutt";
                     break;
 
+                case ApplicationType.Ordninger:
+                    mailBody = @"Hei,<br/><br/>
+Vi bekrefter med dette å ha mottatt din søknad.<br/> 
+Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker. <br/>
+For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
+
+Med vennlig hilsen <br/>
+Norsk filminstitutt<br/><br/>
+
+Etter at tilsagn om tilskudd foreligger, plikter tilskuddsmottakeren av eget tiltak å gi melding om eventuelle endringer i forutsetningene for tilskuddet. <br/>
+Tilskuddsmottakeren kan ikke foreta vesentlige endringer i den aktuelle produksjonen uten at dette er skriftlig forelagt for og skriftlig godkjent av Norsk filminstitutt.<br/><br/>
+
+Spørsmål kan rettes til: insentiv@nfi.no<br/>
+Med vennelig hilsen<br/>
+Norsk filminstitutt";
+                    break;
+
             }
 
 
