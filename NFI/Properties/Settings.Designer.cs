@@ -142,7 +142,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://ubp387.stwserver.net/dev")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:58873")]
         public string HostServerUrl {
             get {
                 return ((string)(this["HostServerUrl"]));
