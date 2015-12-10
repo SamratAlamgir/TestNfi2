@@ -72,10 +72,10 @@ namespace NFI.Controllers
                 return View(viewName, selectedApp);
             }
             catch (Exception)
-            {
+                {
                 return View("Error");
             }
-        }
+                }
 
         public ActionResult DownloadZipFile(ApplicationType appType, string appId)
         {
@@ -108,6 +108,9 @@ namespace NFI.Controllers
                     break;
                 case ApplicationType.Sorfond:
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
+                    break;
+                case ApplicationType.UdsReisestotte:
+                    selectedApp = GetApplicationDto<UdsReisestotteDto>(appId, appType);
                     break;
                 case ApplicationType.Lansering:
                     selectedApp = GetApplicationDto<LanseringDto>(appId, appType);

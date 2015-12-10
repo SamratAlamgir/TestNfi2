@@ -32,6 +32,9 @@ namespace NFI.Helper
                 case ApplicationType.Lansering:
                     dirPath = Settings.Default.ApplicationDir5;
                     break;
+                case ApplicationType.UdsReisestotte:
+                    dirPath = Settings.Default.ApplicationDir4;
+                    break;
             }
 
             return Path.Combine(GetRootDirectory(), dirPath);
