@@ -3,63 +3,93 @@
 <div>
     <h4>Finansierings informasjon</h4>
     <hr />
-    <dl >
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalbudsjettForProsjektet)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TotalbudsjettForProsjektet)
-        </dd>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.TotalbudsjettForProsjektet)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SøknadssumNorskFilminstitutt)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.TotalbudsjettForProsjektet)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.SøknadssumNorskFilminstitutt)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KalkylePath)
-        </dt>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.SøknadssumNorskFilminstitutt)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.KalkylePath)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.SøknadssumNorskFilminstitutt)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FinansieringsplanMedSpesifikasjonPath)
-        </dt>
+            <tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.FinansieringsplanMedSpesifikasjonPath)
-        </dd>
+                <td>
+                    @Html.DisplayNameFor(model => model.KalkylePath)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BekreftetFinansiering)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.KalkylePath)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.BekreftetFinansiering)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SamtligDokumentasjonPåProsjektetsBekreftedePaths)
-        </dt>
+            <tr>
 
-        @foreach (var t in Model.SamtligDokumentasjonPåProsjektetsBekreftedePaths)
-            {
-            <dd>
-                @t
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.EventuellKommentarTilFinansiering)
-        </dt>
+                <td>
+                    @Html.DisplayNameFor(model => model.FinansieringsplanMedSpesifikasjonPath)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.EventuellKommentarTilFinansiering)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.FinansieringsplanMedSpesifikasjonPath)
+                </td>
 
-    </dl>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BekreftetFinansiering)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.BekreftetFinansiering)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.SamtligDokumentasjonPåProsjektetsBekreftedePaths)
+                </td>
+
+
+                <td>
+                    @if (Model.SamtligDokumentasjonPåProsjektetsBekreftedePaths.Count > 0)
+                    {
+                        <ol type="1">
+                            @foreach (string t in Model.SamtligDokumentasjonPåProsjektetsBekreftedePaths)
+                            {
+                                <li>@t</li>
+                            }
+                        </ol>
+                    }
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.EventuellKommentarTilFinansiering)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.EventuellKommentarTilFinansiering)
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
 </div>

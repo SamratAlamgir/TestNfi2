@@ -4,38 +4,48 @@
 <div>
     <h4>Visuelt materiale</h4>
     <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.InntilTre)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.InntilTre)
-        </dd>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.InntilTre)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.InntilTre)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HvilkeSkrivTittelÅr)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HvilkeSkrivTittelÅr)
-        </dd>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.HvilkeSkrivTittelÅr)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.HvilkeSkrivTittelÅr)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Følgerdet)
-        </dt>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Følgerdet)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Følgerdet)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Følgerdet)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NettadresseVisueltMateriale)
-        </dt>
-        @foreach (NettadresseVisueltMateriale t in Model.NettadresseVisueltMateriale)
-        {
-            <dd>
-                @Html.Partial("../Admin/Sorfond/NettadresseVisueltMaterialeDetails", t)
-            </dd>
-        }
-    </dl>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.NettadresseVisueltMateriale)
+                </td>
+                <td>
+                    @foreach (NettadresseVisueltMateriale t in Model.NettadresseVisueltMateriale)
+                    {
+                        @Html.Partial("../Admin/Sorfond/NettadresseVisueltMaterialeDetails", t)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

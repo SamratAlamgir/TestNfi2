@@ -2,23 +2,25 @@
 
 <div>
     <h4>Nettadresse Visuelt Materiale</h4>
-    <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.Nettadressetil)
-        </dt>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Nettadressetil)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Nettadressetil)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Eventueltpassord)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Eventueltpassord)
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nettadressetil)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Eventueltpassord)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Eventueltpassord)
-        </dd>
-
-    </dl>
 </div>
