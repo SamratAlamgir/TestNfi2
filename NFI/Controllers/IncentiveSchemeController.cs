@@ -52,6 +52,8 @@ namespace NFI.Controllers
             }
             catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
+
                 ViewBag.error = ex;
                 return View("Error");
             }

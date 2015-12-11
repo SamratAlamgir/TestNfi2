@@ -200,6 +200,7 @@
     <Compile Include="Helper\DirectoryHelper.cs" />
     <Compile Include="Helper\HtmlExtensions.cs" />
     <Compile Include="Helper\JsonHelper.cs" />
+    <Compile Include="Helper\LogWriter.cs" />
     <Compile Include="Helper\MailTemplate.cs" />
     <Compile Include="Helper\PdfUtility.cs" />
     <Compile Include="Helper\ZipHelper.cs" />
