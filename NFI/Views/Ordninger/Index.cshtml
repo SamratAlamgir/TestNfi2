@@ -294,7 +294,7 @@
                                 @Html.LabelFor(model => model.Detallmennepublikum, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
                                     <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Detallmennepublikum, new { type = "number", min = 1, max = 6,htmlAttributes = new { @class = "form-control" } })
+                                        @Html.TextBoxFor(model => model.Detallmennepublikum, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Detallmennepublikum, "", new { @class = "text-danger" })
                                 </div>
@@ -303,7 +303,7 @@
                                 @Html.LabelFor(model => model.Filmstudenterpedagoger, htmlAttributes: new { type = "number", min = 1, max = 6, @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
                                     <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Filmstudenterpedagoger, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" }})
+                                        @Html.TextBoxFor(model => model.Filmstudenterpedagoger, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Filmstudenterpedagoger, "", new { @class = "text-danger" })
                                 </div>
@@ -414,7 +414,7 @@
                 </div>
             </div>
             <div class="row col-sm-10" id="ajaxLoader" style="display: none">
-                <label class="alert-danger">Your application is in-progress. Please wait...</label>
+                <label class="alert-danger">@Html.GetWaitMessageForApplication()</label>
                 <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
             </div>
             <div id="wizardBtn" class="row col-sm-10">

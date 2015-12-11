@@ -86,7 +86,10 @@
                 @Html.ValidationMessageFor(model => model.Dokumentasjon, "", new {@class = "text-danger"})
             </div>
         </div>
-
+        <div class="row col-sm-10" id="ajaxLoader" style="display: none">
+            <label class="alert-danger">@Html.GetWaitMessageForApplication()</label>
+            <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
+        </div>
         <div class="form-group">
             <div class="col-md-10">
                 <input type="submit" value="Submit" class="btn btn-success pull-right" />
