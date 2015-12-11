@@ -26,11 +26,12 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Lansering;
-                SaveApplication(appDto, appType, appDto.ProsjektetsTittel);
+                var mailSubject = $"Felles lanseringstiltak på viktige internasjonale arenaer {appDto.PåhvilkenArena}  {appDto.NavnpåAnsvarligOrganisasjon}";
+
+                SaveApplication(appDto, appType, appDto.ProsjektetsTittel, mailSubject);
 
                 //TODO: Send the mails
                 // Send mail to archivist 
-                var mailSubject = $"Felles lanseringstiltak på viktige internasjonale arenaer {appDto.PåhvilkenArena}  {appDto.NavnpåAnsvarligOrganisasjon}";
                 var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a> ";
                 mailBody += "<br/>" +
                                "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
