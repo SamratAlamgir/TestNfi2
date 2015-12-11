@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using NFI.Helper;
 using NFI.Properties;
 
 namespace NFI.Utility
@@ -77,10 +78,12 @@ namespace NFI.Utility
             }
             catch (SmtpException smtpEx)
             {
+                LogWriter.Write(smtpEx.ToString(), "Error");
                 return false;
             }
             catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
                 return false;
             }
 
