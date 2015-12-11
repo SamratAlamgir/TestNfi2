@@ -159,6 +159,8 @@ namespace NFI.Controllers
 
         protected void SaveApplication<T>(T application, ApplicationType applicationType, string userName) where T : BaseAppDto
         {
+            LogWriter.Write("Save called for " + applicationType);
+
             application.AppId = Guid.NewGuid();
             application.CreateTime = DateTime.Now;
 

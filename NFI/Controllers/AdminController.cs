@@ -71,11 +71,12 @@ namespace NFI.Controllers
                 TrimPathAndOnlyFileName(selectedApp);
                 return View(viewName, selectedApp);
             }
-            catch (Exception)
-                {
+            catch (Exception ex)
+            {
+                LogWriter.Write(ex.ToString(), "Error");
                 return View("Error");
             }
-                }
+        }
 
         public ActionResult DownloadZipFile(ApplicationType appType, string appId)
         {
@@ -88,8 +89,9 @@ namespace NFI.Controllers
                 var fileName = Path.GetFileName(filePath);
                 return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
                 return View("Error");
             }
 
