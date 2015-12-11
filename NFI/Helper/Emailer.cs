@@ -20,24 +20,21 @@ namespace NFI.Utility
             try
             {
                 var message = new MailMessage();
-                var host = Settings.Default.EmailHost;
-                var port = Settings.Default.EmailPort;
                 var fromEmail = Settings.Default.FromEmailAddress;
-                var fromPassword = Settings.Default.FromPassword;
                 var fromName = Settings.Default.FromName;
 
-                var smtpClient = new SmtpClient
-                {
-                    Host = host,
-                    Port = int.Parse(port),
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Timeout = 3600000, // 1 hour
-                    Credentials = new NetworkCredential(fromEmail, fromPassword)
-                };
-
-                var fromAddress = new MailAddress(fromEmail, fromName);
+                //var smtpClient = new SmtpClient
+                //{
+                //    Host = host,
+                //    Port = int.Parse(port),
+                //    EnableSsl = true,
+                //    DeliveryMethod = SmtpDeliveryMethod.Network,
+                //    UseDefaultCredentials = false,
+                //    Timeout = 3600000, // 1 hour
+                //    //Credentials = new NetworkCredential(fromEmail, fromPassword)
+                //};
+                var smtpClient = new SmtpClient("80.239.10.95", 25);
+                var fromAddress = new MailAddress("post@nfi.no", fromName);
                 
                 //From address will be given as a MailAddress Object
                 message.From = fromAddress;
