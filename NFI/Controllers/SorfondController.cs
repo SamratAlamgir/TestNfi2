@@ -33,10 +33,11 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Sorfond;
-                SaveApplication(sorfondDto, appType, sorfondDto.Prosjektinformasjon.TittelPåProsjektet);
-
-                //TODO: Send the mails
                 var mailSubject = "SØRFOND " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
+
+                SaveApplication(sorfondDto, appType, sorfondDto.Prosjektinformasjon.TittelPåProsjektet, mailSubject);
+                
+                // Send the mails
                 var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a> ";
                 mailBody += "<br/>" +
                                "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";

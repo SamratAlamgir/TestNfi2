@@ -81,10 +81,10 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedprodusentensNavn, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                    @Html.LabelFor(model => model.HovedprodusentensNavn, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
-                        @Html.EditorFor(model => model.HovedprodusentensNavn, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.HovedprodusentensNavn, "", new {@class = "text-danger"})
+                        @Html.EditorFor(model => model.HovedprodusentensNavn, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HovedprodusentensNavn, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -475,7 +475,7 @@
                     </div>
                 </div>
 
-                
+
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.BeskrivHvordanProduksjonen, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
@@ -485,24 +485,24 @@
                     </div>
                 </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.SkrivinnStrategi, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
-                <div class="col-md-7">
-                    @Html.TextAreaFor(model => model.SkrivinnStrategi, new {@class = "form-control", @rows = 5})
-                    @Html.ValidationMessageFor(model => model.SkrivinnStrategi, "", new {@class = "text-danger"})
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SkrivinnStrategi, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-7">
+                        @Html.TextAreaFor(model => model.SkrivinnStrategi, new { @class = "form-control", @rows = 5 })
+                        @Html.ValidationMessageFor(model => model.SkrivinnStrategi, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeggvedDistribusjonsPlan, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LeggvedDistribusjonsPlan, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
-                <div class="col-md-7">
-                    <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.LeggvedDistribusjonsPlan, new {type = "file"})
+                    <div class="col-md-7">
+                        <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.LeggvedDistribusjonsPlan, new { type = "file" })
                         </span>
-                    @Html.ValidationMessageFor(model => model.LeggvedDistribusjonsPlan, "", new {@class = "text-danger"})
+                        @Html.ValidationMessageFor(model => model.LeggvedDistribusjonsPlan, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.LegginternasjonalDistribusjonsavtale, htmlAttributes: new { @class = "control-label col-md-5" })
@@ -516,7 +516,7 @@
                 </div>
 
             </div>
-           
+
             <!-- Tab 4 -->
             <div class="tab-pane" id="tab4">
 
@@ -615,8 +615,8 @@
             </div>
 
             <div class="row col-sm-10" id="ajaxLoader" style="display: none">
-            <label class="alert-danger">Your application is in-progress. Please wait...</label>
-            <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif"/>
+                <label class="alert-danger">@Html.GetWaitMessageForApplication()</label>
+                <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
             </div>
             <div id="wizardBtn" class="row col-sm-10">
                 <ul class="pager wizard">

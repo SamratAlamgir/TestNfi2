@@ -21,10 +21,12 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.UdsReisestotte;
-                SaveApplication(appDto, appType, appDto.Søkersnavn);
+                var mailSubject = "UDs REISESTØTTE " + appDto.Målforreisen + appDto.Søkersnavn;
+
+                SaveApplication(appDto, appType, appDto.Søkersnavn, mailSubject);
 
                 // Send mail to archivist
-                var mailSubject = "UDs REISESTØTTE " + appDto.Målforreisen+ appDto.Søkersnavn;
+                
                 var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
