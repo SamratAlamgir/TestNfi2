@@ -65,10 +65,11 @@ namespace NFI.Controllers
 
 
         [HttpPost]
-        public ActionResult Index(CaptachaModel model,string returnUrl)
+        public ActionResult Index(CaptachaModel model, string returnUrl)
         {
             //validate captcha 
-            if (Session["Captcha"] != null && Session["Captcha"].ToString() == model.Captcha)
+            var captchaResult = "Captcha" + model.Prefix;
+            if (Session[captchaResult] != null && Session[captchaResult].ToString() == model.Captcha)
             {
                 Session["IsCaptchaVerfied"] = true;
                 if (string.IsNullOrEmpty(returnUrl))
@@ -76,15 +77,19 @@ namespace NFI.Controllers
                 return Redirect(returnUrl);
 
             }
-            ModelState.AddModelError("Captcha", "Wrong value of sum, please try again.");
-            //dispay error and generate a new captcha 
-            //Session["IsCaptchaVerfied"] = false;
+            ModelState.AddModelError("Captcha", "Søknaden er sendt inn. Du vil motta en bekreftelse pr epost om kort tid.");
             return View(model);
         }
 
         public ActionResult Index()
         {
-            return View();
+            var captchaModel = new CaptachaModel
+            {
+                Prefix = Guid.NewGuid().ToString(),
+                Captcha = ""
+            };
+
+            return View(captchaModel);
         }
     }
 }
