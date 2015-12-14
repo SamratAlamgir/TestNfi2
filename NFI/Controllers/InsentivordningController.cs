@@ -38,14 +38,14 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.HovedprodusentensEpostadresse, appDto.ProduksjonsforetaketsNavn, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Insentivordning søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse);
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.SøkersEpostAdresse);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse);
+                //CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.SøkersEpostAdresse);
 
                 return View("Success");
             }

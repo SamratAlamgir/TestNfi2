@@ -40,12 +40,12 @@ namespace NFI.Controllers
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
                 mailBody += responseText;
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.Epostadressekontaktperson, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "3 Ordninger søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Ordninger);
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Epostadressekontaktperson);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
 
                 return View("Success");
             }

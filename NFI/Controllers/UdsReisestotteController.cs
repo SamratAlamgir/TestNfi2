@@ -26,7 +26,7 @@ namespace NFI.Controllers
                 SaveApplication(appDto, appType, appDto.Søkersnavn, mailSubject);
 
                 // Send mail to archivist
-                
+
                 var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
@@ -37,13 +37,13 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Søkersepost, appDto.Søkersepost, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "UDs Reisestøtte søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.UdsReisestotte);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Søkersepost);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Søkersepost);
 
                 return View("Success");
             }
