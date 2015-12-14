@@ -43,7 +43,7 @@ namespace NFI.Controllers
                 CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "3 Ordninger søknad sendtt";
+                mailSubject = "3 Ordninger søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Ordninger);
                 CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Epostadressekontaktperson);
 

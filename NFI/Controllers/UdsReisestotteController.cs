@@ -40,7 +40,7 @@ namespace NFI.Controllers
                 CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "UDs Reisestøtte søknad sendtt";
+                mailSubject = "UDs Reisestøtte søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.UdsReisestotte);
 
                 CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Søkersepost);

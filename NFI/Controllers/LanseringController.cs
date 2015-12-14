@@ -42,7 +42,7 @@ namespace NFI.Controllers
               
 
                 // Send mail to applicant
-                mailSubject = "Lansering søknad sendtt";
+                mailSubject = "Lansering søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Lansering);
 
                 CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.EpostadresseKontaktperson);

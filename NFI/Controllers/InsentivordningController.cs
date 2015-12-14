@@ -41,7 +41,7 @@ namespace NFI.Controllers
                 CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "Insentivordning søknad sendtt";
+                mailSubject = "Insentivordning søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
 
                 CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse);
