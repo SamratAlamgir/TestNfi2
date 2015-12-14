@@ -37,19 +37,19 @@ namespace NFI.Models
         [DisplayName("Hovedprodusentens navn")]
         public string HovedprodusentensNavn { get; set; }
 
-        [DisplayName("Hovedprodusentens tittel")]
+        [Required,DisplayName("Hovedprodusentens tittel")]
         public string HovedprodusentensTittel { get; set; }
 
         [DisplayName("Hovedprodusentens adresse")]
         public string HovedprodusentensAdresse { get; set; }
 
-        [DisplayName("Hovedprodusentens mobiltelefon ")]
+        [Required, DisplayName("Hovedprodusentens mobiltelefon ")]
         public string HovedprodusentensMobiltelefon { get; set; }
 
-        [DisplayName("Hovedprodusentens e-post adresse ")]
+        [Required,DisplayName("Hovedprodusentens e-post adresse ")]
         public string HovedprodusentensEPostAdresse { get; set; }
 
-        [DisplayName("Hovedprodusentens kjønn")]
+        [Required, DisplayName("Hovedprodusentens kjønn")]
         public string Hovedprodusentenskjonn { get; set; }
     }
 }

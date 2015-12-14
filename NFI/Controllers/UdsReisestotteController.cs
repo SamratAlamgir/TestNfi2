@@ -8,23 +8,22 @@ using NFI.Properties;
 
 namespace NFI.Controllers
 {
-    public class InsentivordningController : BaseController
+    public class UdsReisestotteController : BaseController
     {
         [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();
         }
-
         [HttpPost]
-        public ActionResult Save(InsentivordningDto appDto)
+        public ActionResult Save(UdsReisestotteDto appDto)
         {
             try
             {
-                var appType = ApplicationType.Insentivordning;
-                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+                var appType = ApplicationType.UdsReisestotte;
+                var mailSubject = "UDs REISESTØTTE " + appDto.Målforreisen + appDto.Søkersnavn;
 
-                SaveApplication(appDto, appType, appDto.ProduksjonsforetaketsNavn, mailSubject);
+                SaveApplication(appDto, appType, appDto.Søkersnavn, mailSubject);
 
                 // Send mail to archivist
                 
@@ -33,7 +32,7 @@ namespace NFI.Controllers
                     "<br/>" +
                     "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
 
-                var responseText = GetApplicationDetailsStringHtml(this, "../Admin/InsentivordningDetail", appDto);
+                var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
 
                 mailBody += responseText;
 
@@ -41,11 +40,10 @@ namespace NFI.Controllers
                 CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "Insentivordning søknad sendtt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
+                mailSubject = "UDs Reisestøtte søknad sendtt";
+                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.UdsReisestotte);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse);
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.SøkersEpostAdresse);
+                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Søkersepost);
 
                 return View("Success");
             }

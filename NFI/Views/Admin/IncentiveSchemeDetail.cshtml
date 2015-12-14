@@ -91,6 +91,16 @@
 
                             <tr>
                                 <td>
+                                    @Html.DisplayNameFor(model => model.GenderMainProducer)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.GenderMainProducer)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
                                     @Html.DisplayNameFor(model => model.Title)
                                 </td>
 
@@ -499,15 +509,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.DistributionStrategyPath)
-                                </td>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.DistributionStrategyPath)
-                                </td>
-                            </tr>
 
                             <tr>
                                 <td>
@@ -529,47 +531,31 @@
                                 </td>
                             </tr>
 
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DistributionStrategyPath)
+                                </td>
 
-            <tr>
-                <td>
-                    <h3>4. Visual materials</h3>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table class="table">
-                        <tbody>
+                                <td>
+                                    @Html.DisplayFor(model => model.DistributionStrategyPath)
+                                </td>
+                            </tr>
 
-                            @for (var i = 0; i < Model.VisualMaterialList.Count; i++)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayNameFor(model => model.VisualMaterialList[i].VisualMaterials)
-                                    </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.InternationalDistributionAgreementPath)
+                                </td>
 
-                                    <td>
-                                        @Html.DisplayFor(model => model.VisualMaterialList[i].VisualMaterials)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        @Html.DisplayNameFor(model => model.VisualMaterialList[i].PasswordForWebsite)
-                                    </td>
-
-                                    <td>
-                                        @Html.DisplayFor(model => model.VisualMaterialList[i].PasswordForWebsite)
-                                    </td>
-                                </tr>
-                            }
+                                <td>
+                                    @Html.DisplayFor(model => model.InternationalDistributionAgreementPath)
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>
                 </td>
             </tr>
+
             <tr>
                 <td>
                     <h3>5. Financial information</h3>
@@ -668,7 +654,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>@Html.DisplayNameFor(model => model.CreateTime) </strong> 
+                                    <strong>@Html.DisplayNameFor(model => model.CreateTime) </strong>
                                 </td>
 
                                 <td>

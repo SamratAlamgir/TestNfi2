@@ -1,0 +1,112 @@
+﻿@model NFI.Models.UdsReisestotteDto
+
+@{
+    ViewBag.Title = "UDs reisestøtte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-8">
+    <h4>UDs reisestøtte</h4>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.CreateTime)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.CreateTime)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkersnavn)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Søkersnavn)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkerspostadresse)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Søkerspostadresse)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkerspoststed)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Søkerspoststed)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkersland)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Søkersland)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Søkersepost)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Søkersepost)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Målforreisen)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Målforreisen)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Beskrivelse)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Beskrivelse)
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    @Html.DisplayNameFor(model => model.BudsjettfortiltakPath)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.BudsjettfortiltakPath)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.DokumentasjonPath)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.DokumentasjonPath)
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
