@@ -4,9 +4,6 @@ using System.ComponentModel;
 using System.Web;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Text;
-using Microsoft.Ajax.Utilities;
 
 namespace NFI.Models
 {

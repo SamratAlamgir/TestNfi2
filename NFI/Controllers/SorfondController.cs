@@ -44,13 +44,13 @@ namespace NFI.Controllers
                 var responseText = GetApplicationDetailsStringHtml(this, "../Admin/Sorfond/Details", sorfondDto);
                 mailBody += responseText;
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "Søfond søknad sendtt";
+                mailSubject = "Søfond søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sorfond);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
 
                 return View("Success");
             }
