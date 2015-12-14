@@ -35,6 +35,13 @@ namespace NFI.Helper
                 case ApplicationType.UdsReisestotte:
                     dirPath = Settings.Default.ApplicationDir4;
                     break;
+                case ApplicationType.Ordninger:
+                    dirPath = Settings.Default.ApplicationDir6;
+                    break;
+                case ApplicationType.Film:
+                    dirPath = Settings.Default.ApplicationDir8;
+
+                    break;
             }
 
             return Path.Combine(GetRootDirectory(), dirPath);

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\IncentiveSchemeController.cs" />
     <Compile Include="Controllers\InsentivordningController.cs" />
     <Compile Include="Controllers\LanseringController.cs" />
+    <Compile Include="Controllers\FilmController .cs" />
     <Compile Include="Controllers\OrdningerController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
     <Compile Include="Controllers\UdsReisestotteController.cs" />
@@ -210,7 +211,6 @@
     <Compile Include="Models\DacListen.cs" />
     <Compile Include="Models\DetailViewNames.cs" />
     <Compile Include="Models\EventuelleAndreVedlegg.cs" />
-    <Compile Include="Models\FileDto.cs" />
     <Compile Include="Models\FileSizeAttribute.cs" />
     <Compile Include="Models\FinansieringsInformasjon.cs" />
     <Compile Include="Models\HovedProdusent.cs" />
@@ -221,6 +221,7 @@
     <Compile Include="Models\Manusforfatterens.cs" />
     <Compile Include="Models\NettadresseVisueltMateriale.cs" />
     <Compile Include="Models\NorskMinoritetsprodusent.cs" />
+    <Compile Include="Models\FilmDto.cs" />
     <Compile Include="Models\OrdningerDto.cs" />
     <Compile Include="Models\Prosjektinformasjon.cs" />
     <Compile Include="Models\Regissoren.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Models\ViewModelForm1Data.cs" />
     <Compile Include="Models\NotVisibleAttribute.cs" />
     <Compile Include="Models\VisueltMateriale.cs" />
+    <Compile Include="Models\Økonomi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -467,6 +469,8 @@
     <Content Include="Views\Admin\IncentiveSchemeDetail.cshtml" />
     <Content Include="Views\UdsReisestotte\Index.cshtml" />
     <Content Include="Views\Admin\UdsReisestotteDetail.cshtml" />
+    <Content Include="Views\Film\Index.cshtml" />
+    <Content Include="Views\Admin\FilmDetail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -33,7 +33,7 @@ namespace NFI.Controllers
 
         public string CreateUserDataFile<T>(T appDto, ApplicationType appType, string fileNamePart)
         {
-            var viewName=DetailViewNames.ViewName(appType);
+            var viewName = DetailViewNames.ViewName(appType);
             var fileName = GetUpdatedFileName("Application data.pdf", fileNamePart);
             var path = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var fullPath = Path.Combine(path, fileName);
@@ -117,7 +117,8 @@ namespace NFI.Controllers
                 if (propertyInfo.Name.Contains("Paths"))
                 {
                     var filePaths = (List<string>)propertyInfo.GetValue(obj);
-                    var fileNames = filePaths?.Select(Path.GetFileName).ToList();
+                    filePaths = filePaths.Where(f => !string.IsNullOrEmpty(f)).ToList();
+                    var fileNames = filePaths.Select(Path.GetFileName).ToList();
                     propertyInfo.SetValue(obj, fileNames);
                 }
                 else if (propertyInfo.Name.Contains("Path"))

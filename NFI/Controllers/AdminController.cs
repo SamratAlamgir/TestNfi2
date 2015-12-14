@@ -120,6 +120,9 @@ namespace NFI.Controllers
                 case ApplicationType.Ordninger:
                     selectedApp = GetApplicationDto<OrdningerDto>(appId, appType);
                     break;
+                case ApplicationType.Film:
+                    selectedApp = GetApplicationDto<FilmDto>(appId, appType);
+                    break;
             }
             return selectedApp;
         }
