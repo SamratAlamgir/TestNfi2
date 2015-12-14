@@ -1,13 +1,18 @@
-﻿@model NFI.Models.OrdningerDto
+﻿@model NFI.Models.FilmDto
 
 @{
-    ViewBag.Title = "OrdningerDetail";
+    ViewBag.Title = "FilmDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style type="text/css">
+    .table th, .table td 
+    {
+         border-top: none !important;
+    }
+</style>
+<h2>Film programdetaljer</h2>
 
-<h2>3 Ordninger programdetaljer</h2>
-
-<div>
+<div class="col-md-8">
     <table>
         <tbody>
             <tr>
@@ -18,8 +23,8 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    <table class="table ">
+                <td class="col-md-8">
+                    <table class="table">
                         <tbody>
                             <tr>
                                 <td>
@@ -153,19 +158,6 @@
                                 </td>
                             </tr>
 
-
-
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.HvisJAhvilkenavordningene)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.HvisJAhvilkenavordningene)
-                                </td>
-                            </tr>
-
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.HvisJaleggPath)
@@ -176,26 +168,29 @@
                                 </td>
                             </tr>
 
-
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
                         </tbody>
                     </table>
-
                 </td>
-
             </tr>
             <tr>
                 <td>
                     <h4>2. Om prosjektet</h4>
                 </td>
             </tr>
-    
+
             <tr>
-                <td>
+                <td class="col-md-8">
                     <table class="table ">
                         <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Hvasøkesdet)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Hvasøkesdet)
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Prosjektetstittel)
@@ -204,11 +199,7 @@
                                 <td>
                                     @Html.DisplayFor(model => model.Prosjektetstittel)
                                 </td>
-
-
                             </tr>
-
-
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Beskrivkortprosjektet)
@@ -217,65 +208,14 @@
                                 <td>
                                     @Html.DisplayFor(model => model.Beskrivkortprosjektet)
                                 </td>
-
-
                             </tr>
-
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.LeggvedprosjektbeskrivelsePath)
+                                    @Html.DisplayNameFor(model => model.LastoppdokumentPath)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.LeggvedprosjektbeskrivelsePath)
-                                </td>
-
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Hvilkenordningsøkes)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Hvilkenordningsøkes)
-                                </td>
-
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Vedvalgavfilmkulturelletiltak)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Vedvalgavfilmkulturelletiltak)
-                                </td>
-
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Haransvarligorganisasjon)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Haransvarligorganisasjon)
-                                </td>
-
-
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.HvisJAskriv)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.HvisJAskriv)
+                                    @Html.DisplayFor(model => model.LastoppdokumentPath)
                                 </td>
                             </tr>
                         </tbody>
@@ -284,50 +224,32 @@
             </tr>
             <tr>
                 <td>
-                    <h4>  3. Nedslagsfelt</h4>
+                    <h4> 3. Distribusjonsplan</h4>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="col-md-8">
                     <table class="table ">
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Hvorbredttiltaket)
+                                    @Html.DisplayNameFor(model => model.LastoppdistribusjonsplanPath)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Hvorbredttiltaket)
+                                    @Html.DisplayFor(model => model.LastoppdistribusjonsplanPath)
                                 </td>
-
-
                             </tr>
-
-
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Angigeografisk)
+                                    @Html.DisplayNameFor(model => model.LastoppmarkedsplanPath)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Angigeografisk)
+                                    @Html.DisplayFor(model => model.LastoppmarkedsplanPath)
                                 </td>
                             </tr>
 
-
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h4> 4. Tidsramme</h4>
-                </td>
-            </tr>
-          <tr>
-                <td>
-                    <table class="table ">
-                        <tbody>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.NårskalprosjektetFromDate)
@@ -336,12 +258,7 @@
                                 <td>
                                     @Html.DisplayFor(model => model.NårskalprosjektetFromDate)
                                 </td>
-
-
-
                             </tr>
-
-
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.NårskalprosjektetToDate)
@@ -351,97 +268,56 @@
                                     @Html.DisplayFor(model => model.NårskalprosjektetToDate)
                                 </td>
                             </tr>
-
-
                         </tbody>
                     </table>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h4>  5. Målgruppe(r)</h4>
+                    <h4>  4. Målgruppe(r)</h4>
                 </td>
             </tr>
-           
+
             <tr>
-                <td>
+                <td class="col-md-8">
                     <table class="table ">
                         <tbody>
                             <tr>
-
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Detallmennepublikum)
+                                    @Html.DisplayNameFor(model => model.Voksne)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Detallmennepublikum)
+                                    @Html.DisplayFor(model => model.Voksne)
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Filmstudenterpedagoger)
+                                    @Html.DisplayNameFor(model => model.Barnogfamiliefilm)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Filmstudenterpedagoger)
+                                    @Html.DisplayFor(model => model.Barnogfamiliefilm)
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Semiprofesjonelleprofesjonelle)
+                                    @Html.DisplayNameFor(model => model.Andrespesiferitesktfelt):@Html.DisplayFor(model => model.AndrespesiferitesktfeltName)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Semiprofesjonelleprofesjonelle)
+                                    @Html.DisplayFor(model => model.Andrespesiferitesktfelt)
                                 </td>
                             </tr>
-                            <tr>
-
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Flerkulturellemiljøer)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Flerkulturellemiljøer)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Barnogunge)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Barnogunge)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Andrespesiferitekstfelt)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Andrespesiferitekstfelt)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Beskrivkortmålet)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Beskrivkortmålet)
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
                 </td>
             </tr>
             <tr>
-                <td><h4>6. Økonomi</h4></td>
+                <td><h4>5. Økonomi</h4></td>
             </tr>
             <tr>
-                <td>
+                <td class="col-md-8">
                     <table class="table ">
                         <tbody>
                             <tr>
@@ -452,11 +328,7 @@
                                 <td>
                                     @Html.DisplayFor(model => model.Økonomi.SøknadssumiNOK)
                                 </td>
-
-
                             </tr>
-
-
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Økonomi.TotalbudsjettiNOK)
@@ -465,10 +337,7 @@
                                 <td>
                                     @Html.DisplayFor(model => model.Økonomi.TotalbudsjettiNOK)
                                 </td>
-
-
                             </tr>
-
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Økonomi.Nevndeviktigste)
@@ -495,23 +364,22 @@
             </tr>
             <tr>
                 <td>
-                    <h4>7. Eventuelle andre vedlegg</h4>
+                    <h4>6. Eventuelle andre vedlegg</h4>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="col-md-8">
                     <table class="table ">
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.HarduvedleggsomPaths)
+                                    @Html.DisplayNameFor(model => model.EventuelleAndreVedlegg.HarduvedleggPaths)
                                 </td>
-
                                 <td>
-                                    @if (Model.HarduvedleggsomPaths.Count > 0)
+                                    @if (Model.EventuelleAndreVedlegg.HarduvedleggPaths.Count > 0)
                                     {
                                         <ol type="1">
-                                            @foreach (var t in Model.HarduvedleggsomPaths)
+                                            @foreach (var t in Model.EventuelleAndreVedlegg.HarduvedleggPaths)
                                             {
                                                 <li>@t</li>
                                             }
@@ -521,15 +389,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Beskrivelseavandrevedlegg)
+                                    @Html.DisplayNameFor(model => model.EventuelleAndreVedlegg.Beskrivelseav)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Beskrivelseavandrevedlegg)
+                                    @Html.DisplayFor(model => model.EventuelleAndreVedlegg.Beskrivelseav)
                                 </td>
                             </tr>
-
-
                         </tbody>
                     </table>
                 </td>

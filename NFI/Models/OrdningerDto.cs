@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 using Newtonsoft.Json;
@@ -123,30 +124,17 @@ namespace NFI.Models
 
 
         //5. Økonomi
-        [Required, DisplayName("Søknadssum i NOK")]
-        public string SøknadssumiNOK { get; set; }
-
-        [Required, DisplayName("Totalbudsjett i NOK")]
-        public string TotalbudsjettiNOK { get; set; }
-
-        [Required, DisplayName("Nevn de viktigste andre bidragsytere / tilskuddsorganisasjonene.Skriv Navn, Beløp NOK")]
-        public string Nevndeviktigste { get; set; }
-
-        [Required, JsonIgnore, FileSize, DisplayName("Legg ved budsjett og finansieringsplan")]
-        public HttpPostedFileBase Leggvedbudsjett { get; set; }
-
-        [DisplayName("Legg ved budsjett og finansieringsplan")]
-        public string LeggvedbudsjettPath { get; set; }
+        public Økonomi Økonomi { get; } = new Økonomi();
 
         //7. Eventuelle andre vedlegg
         [JsonIgnore, FileSize, DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]
-        public HttpPostedFileBase Harduvedleggsom { get; set; }
+        public List<HttpPostedFileBase> Harduvedleggsom { get; set; }
         [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]
-        public string HarduvedleggsomPath { get; set; }
+        public List<string> HarduvedleggsomPaths { get; set; }
 
         [DisplayName("Beskrivelse av andre vedlegg: Beskriv innholdet i vedleggene lastet opp under Eventuelle andre vedlegg.")]
         public string Beskrivelseavandrevedlegg { get; set; }
 
-
+        
     }
 }
