@@ -25,10 +25,12 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.IncentiveScheme;
-                SaveApplication(appDto, appType, appDto.NameProducer);
+                var mailSubject = "INSENTIVORDNING " + appDto.ProjectTitle;
+
+                SaveApplication(appDto, appType, appDto.NameProducer, mailSubject);
 
                 // Send mail to archivist
-                var mailSubject = "INSENTIVORDNING " + appDto.ProjectTitle;
+                
                 var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
@@ -52,6 +54,8 @@ namespace NFI.Controllers
             }
             catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
+
                 ViewBag.error = ex;
                 return View("Error");
             }

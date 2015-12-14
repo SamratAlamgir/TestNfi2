@@ -115,7 +115,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("systemnfi@gmail.com")]
         public string ToEmailAddress {
             get {
                 return ((string)(this["ToEmailAddress"]));

@@ -22,10 +22,12 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Insentivordning;
-                SaveApplication(appDto, appType, appDto.ProduksjonsforetaketsNavn);
+                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+
+                SaveApplication(appDto, appType, appDto.ProduksjonsforetaketsNavn, mailSubject);
 
                 // Send mail to archivist
-                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+                
                 var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
@@ -49,6 +51,7 @@ namespace NFI.Controllers
             }
             catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
                 ViewBag.error = ex;
                 return View("Error");
             }

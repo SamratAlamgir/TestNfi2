@@ -28,11 +28,12 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Ordninger;
-                SaveApplication(appDto, appType, appDto.Prosjektetstittel);
-
-                //TODO: Send the mails
-                // Send mail to archivist 
                 var mailSubject = $"{appDto.Prosjektetstittel}  {appDto.Prosjektetstittel}";
+
+                SaveApplication(appDto, appType, appDto.Prosjektetstittel, mailSubject);
+
+                
+                // Send mail to archivist 
                 var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a> ";
                 mailBody += "<br/>" +
                                "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
@@ -50,6 +51,7 @@ namespace NFI.Controllers
             }
             catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
                 return View("Error");
             }
         }
