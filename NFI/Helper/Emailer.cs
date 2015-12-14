@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using NFI.Helper;
@@ -21,7 +20,7 @@ namespace NFI.Utility
             {
                 var message = new MailMessage();
              
-                var smtpClient = new SmtpClient(Settings.Default.EmailHost, 25);
+                var smtpClient = new SmtpClient(Settings.Default.EmailHost, Convert.ToInt32(Settings.Default.EmailPort));
                 var fromAddress = new MailAddress(fromEmail, fromName);
 
                 //From address will be given as a MailAddress Object
