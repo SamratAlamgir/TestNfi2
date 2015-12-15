@@ -53,7 +53,7 @@ namespace NFI.Models
         [DisplayName("Hvis JA, hvilken av ordningene?")]
         public string HvisJAhvilkenavordningene { get; set; }
 
-        [Required, JsonIgnore, FileSize, DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her.")]
+        [JsonIgnore, FileSize, DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her.")]
         public HttpPostedFileBase HvisJalegg { get; set; }
 
         [DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her.")]
@@ -118,7 +118,10 @@ namespace NFI.Models
         public int Barnogunge { get; set; }
         //6. Andre, spesifer i tekstfelt
         [Required, Range(1, 6), DisplayName("Andre, spesifer i tekstfelt")]
+       
         public int Andrespesiferitekstfelt { get; set; }
+        [Required, DisplayName("Andre")]
+        public string AndrespesiferitekstfeltName { get; set; }
         [Required, DisplayName("Beskriv kort målet for prosjektet med tanke på prioritert målgruppe")]
         public string Beskrivkortmålet { get; set; }
 
