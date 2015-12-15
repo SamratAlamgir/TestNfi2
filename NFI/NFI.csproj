@@ -225,6 +225,7 @@
     <Compile Include="Models\OrdningerDto.cs" />
     <Compile Include="Models\Prosjektinformasjon.cs" />
     <Compile Include="Models\Regissoren.cs" />
+    <Compile Include="Models\RequiredAttribute.cs" />
     <Compile Include="Models\Sorfond.cs" />
     <Compile Include="Models\IncentiveSchemeDto.cs" />
     <Compile Include="Models\InsentivordningDto.cs" />
