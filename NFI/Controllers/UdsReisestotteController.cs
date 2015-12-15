@@ -10,7 +10,7 @@ namespace NFI.Controllers
 {
     public class UdsReisestotteController : BaseController
     {
-        [CaptchaAuthorize]
+        //[CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();

@@ -11,7 +11,7 @@ namespace NFI.Controllers
     public class LanseringController : BaseController
     {
 
-        [CaptchaAuthorize]
+        //[CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();
