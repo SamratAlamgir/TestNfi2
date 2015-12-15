@@ -13,18 +13,18 @@
             </a>
         </div>
         <div class="form-group">
-            @Html.HiddenFor(model => model.Prefix);
-            <div class="col-md-4">
+            @Html.HiddenFor(model => model.Prefix)
+            <div>
                 <a href="@Url.Action("Index")"> Prøv et nytt</a>
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Captcha, new { @class = "control-label col-md-5" })
+            @Html.LabelFor(model => model.Captcha, new { @class = "control-label col-md-4" })
             <div class="col-md-4">
                 @Html.TextBoxFor(model => model.Captcha, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Captcha, null, new { @class = "text-danger" })
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <input class="btn btn-success pull-right" type="submit" name="Submit" value="Send inn" />
             </div>
         </div>
