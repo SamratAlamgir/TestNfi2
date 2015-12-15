@@ -22,6 +22,11 @@ namespace NFI.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var erros = ModelState.Values.SelectMany(v => v.Errors).ToList();
+                //foreach (var error in erros)
+                //{
+                //    LogWriter.Write(error.Exception.Message, "Error");
+                //}
                 TempData["Status"] = "Error";
                 return View("Index");
             }
