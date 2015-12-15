@@ -41,14 +41,14 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Email, appDto.NameApplicant, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Insentivordning submitted successfully";
                 mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Email);
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.EmailContactInfo);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Email);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.EmailContactInfo);
 
                 return View("Success");
             }

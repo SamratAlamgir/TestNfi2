@@ -1,17 +1,15 @@
 ﻿@using NFI.Helper
-@using NFI.Models
-@model NFI.Models.OrdningerDto
+@model NFI.Models.FilmDto
 @section scripts
 {
     <script src="~/Scripts/Ordninger/ordninger.js"></script>
 }
 @{
-    ViewBag.Title = "Ordninger";
+    ViewBag.Title = "Film";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form id="commentForm" class="form-horizontal" action="@Html.GetHostServerUrl()/Ordninger/Create" enctype="multipart/form-data" method="post">
-    <h2>Tilskudd til kino, festival og filmkultur</h2>
-    <h4>Gjennom ordningene Lokale film- og kinotiltak, Tilskudd til festivalvirksomhet (beløp under 50.000), Tilskudd til filmkulturelle tiltak</h4>
+<form id="commentForm" class="form-horizontal" action="@Html.GetHostServerUrl()/Film/Create" enctype="multipart/form-data" method="post">
+    <h2>Tilskudd til filmimport og distribusjon</h2>
     @Html.AntiForgeryToken()
     @{
         if (TempData["Status"] != null)
@@ -27,12 +25,10 @@
             <li><a href="#tab1" data-toggle="tab"></a></li>
             <li><a href="#tab2" data-toggle="tab"></a></li>
             <li><a href="#tab3" data-toggle="tab"></a></li>
-            <li><a href="#tab4" data-toggle="tab"></a></li>
             <li><a href="#tab5" data-toggle="tab"></a></li>
             <li><a href="#tab6" data-toggle="tab"></a></li>
             <li><a href="#tab7" data-toggle="tab"></a></li>
         </ul>
-
         <div class="tab-content">
             <div class="tab-pane" id="tab1">
                 <h2>1. Om søker</h2>
@@ -145,17 +141,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HvisJAhvilkenavordningene, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-6">
-                        @Html.RadioButtonFor(model => model.HvisJAhvilkenavordningene, "Lokale film- og kino tiltak") Lokale film- og kino tiltak<br />
-                        @Html.RadioButtonFor(model => model.HvisJAhvilkenavordningene, "Filmfestival under 50 000 ")Filmfestival under 50 000 <br />
-                        @Html.RadioButtonFor(model => model.HvisJAhvilkenavordningene, "Filmkulturelle tiltak")Filmkulturelle tiltak
-                        @Html.ValidationMessageFor(model => model.HvisJAhvilkenavordningene, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.HvisJalegg, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                    @Html.LabelFor(model => model.HvisJalegg, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
                             @Html.TextBoxFor(model => model.HvisJalegg, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
@@ -167,6 +153,16 @@
             <div class="tab-pane" id="tab2">
                 <h2>2. Om prosjektet</h2>
                 <hr />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Hvasøkesdet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                    <div class="col-md-6">
+                        @Html.RadioButtonFor(model => model.Hvasøkesdet, "Import") Import
+                        @Html.RadioButtonFor(model => model.Hvasøkesdet, "Garanti")Garanti
+                        @Html.ValidationMessageFor(model => model.Hvasøkesdet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.Prosjektetstittel, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
@@ -178,82 +174,45 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Beskrivkortprosjektet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Beskrivkortprosjektet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Beskrivkortprosjektet, new { @class = "form-control", @rows = 5, @maxlength = 250 })
                         @Html.ValidationMessageFor(model => model.Beskrivkortprosjektet, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Leggvedprosjektbeskrivelse, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                    @Html.LabelFor(model => model.Lastoppdokument, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Leggvedprosjektbeskrivelse, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Lastoppdokument, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
                         </span>
-                        @Html.ValidationMessageFor(model => model.Leggvedprosjektbeskrivelse, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Lastoppdokument, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Hvilkenordningsøkes, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                    <div class="col-md-6">
-                        @Html.RadioButtonFor(model => model.Hvilkenordningsøkes, "Lokale film- og kino tiltak") Lokale film- og kino tiltak<br />
-                        @Html.RadioButtonFor(model => model.Hvilkenordningsøkes, "Filmfestival under 50 000 ")Filmfestival under 50 000<br>
-                        @Html.RadioButtonFor(model => model.Hvilkenordningsøkes, "Filmkulturelle tiltak")Filmkulturelle tiltak
-                        @Html.ValidationMessageFor(model => model.Hvilkenordningsøkes, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Vedvalgavfilmkulturelletiltak, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                    <div class="col-md-6">
-                        @Html.RadioButtonFor(model => model.Vedvalgavfilmkulturelletiltak, "Visning av film i kulturell, kunstnerisk, historisk eller lokal kontekst") Visning av film i kulturell, kunstnerisk, historisk eller lokal kontekst <br />
-                        @Html.RadioButtonFor(model => model.Vedvalgavfilmkulturelletiltak, "Arrangement med fokus på kort- og dokumentarfilm")Arrangement med fokus på kort- og dokumentarfilm<br />
-                        @Html.RadioButtonFor(model => model.Vedvalgavfilmkulturelletiltak, "Tiltak som styrker ny norsk films posisjon hos publikum")Tiltak som styrker ny norsk films posisjon hos publikum<br />
-                        @Html.RadioButtonFor(model => model.Vedvalgavfilmkulturelletiltak, "Utgivelser") Utgivelser
-                        @Html.ValidationMessageFor(model => model.Vedvalgavfilmkulturelletiltak, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Haransvarligorganisasjon, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                    <div class="col-md-6">
-                        @Html.RadioButtonFor(model => model.Haransvarligorganisasjon, "Ja") Ja
-                        @Html.RadioButtonFor(model => model.Haransvarligorganisasjon, "Nei")Nei
-                        @Html.ValidationMessageFor(model => model.Haransvarligorganisasjon, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.HvisJAskriv, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.HvisJAskriv, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.HvisJAskriv, "", new { @class = "text-danger" })
-                    </div>
-                </div>
             </div>
             <div class="tab-pane" id="tab3">
-                <h2>3. Nedslagsfelt</h2>
+                <h2>3. Distribusjonsplan</h2>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Hvorbredttiltaket, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                    @Html.LabelFor(model => model.Lastoppdistribusjonsplan, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.EditorFor(model => model.Hvorbredttiltaket, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Hvorbredttiltaket, "", new { @class = "text-danger" })
+                        <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.Lastoppdistribusjonsplan, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                        </span>
+                        @Html.ValidationMessageFor(model => model.Lastoppdistribusjonsplan, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lastoppmarkedsplan, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                    <div class="col-md-6">
+                        <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.Lastoppmarkedsplan, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                        </span>
+                        @Html.ValidationMessageFor(model => model.Lastoppmarkedsplan, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Angigeografisk, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                    <div class="col-md-6">
-                        @Html.EditorFor(model => model.Angigeografisk, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Angigeografisk, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="tab4">
-                <h2>4. Tidsramme</h2>
-                <h4>Når skal prosjektet gjennomføres? Oppgi prosjektperiode</h4>
-                <hr />
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.NårskalprosjektetFromDate, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
@@ -281,82 +240,49 @@
                 </div>
             </div>
             <div class="tab-pane" id="tab5">
-                <h2>5. Målgruppe®</h2>
+                <h2>4. Målgruppe</h2>
                 <hr />
-
-                <div class="form-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <label class="control-label label-required">Hva publikum ønsker først og fremst å nå? Prioriter med tall med 1 til 6.</label>
-                        </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Detallmennepublikum, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                                <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Detallmennepublikum, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.Detallmennepublikum, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Filmstudenterpedagoger, htmlAttributes: new { type = "number", min = 1, max = 6, @class = "control-label col-md-4 label-required" })
-                                <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Filmstudenterpedagoger, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.Filmstudenterpedagoger, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Semiprofesjonelleprofesjonelle, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                                <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Semiprofesjonelleprofesjonelle, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.Semiprofesjonelleprofesjonelle, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Flerkulturellemiljøer, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                                <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Flerkulturellemiljøer, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.Flerkulturellemiljøer, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Barnogunge, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                                <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Barnogunge, new { type = "number", @value = "1", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.Barnogunge, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Andrespesiferitekstfelt, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                                <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Andrespesiferitekstfelt, new { type = "number", @value = "1", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.Andrespesiferitekstfelt, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label class="control-label label-required">Hvilke målgrupper ønsker dere primært å nå? Prioriter med tall med 1 til 3.</label>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Beskrivkortmålet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
-                    <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Beskrivkortmålet, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Beskrivkortmålet, "", new { @class = "text-danger" })
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Voksne, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                            <div class="col-md-6">
+                                <div class="col-mid-3">
+                                    @Html.TextBoxFor(model => model.Voksne, new { type = "number", min = 1, max = 3, htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Voksne, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Barnogfamiliefilm, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                            <div class="col-md-6">
+                                <div class="col-mid-3">
+                                    @Html.TextBoxFor(model => model.Barnogfamiliefilm, new { type = "number", min = 1, max = 3, htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Barnogfamiliefilm, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AndrespesiferitesktfeltName, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                            <div class="col-md-6">
+                                <div class="col-md-8">
+                                  @Html.TextBoxFor(model => model.AndrespesiferitesktfeltName, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.AndrespesiferitesktfeltName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4 ">
+                                  @Html.TextBoxFor(model => model.Andrespesiferitesktfelt, new { type = "number", min = 1, max = 3, htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.Andrespesiferitesktfelt, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane" id="tab6">
-                <h2>6. Økonomi</h2>
+                <h2>5. Økonomi</h2>
                 <hr />
                 <div class="form-group">
                     @Html.LabelFor(model => model.Økonomi.SøknadssumiNOK, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
@@ -377,7 +303,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Økonomi.Nevndeviktigste, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Økonomi.Nevndeviktigste, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Økonomi.Nevndeviktigste, new { @class = "form-control", @rows = 5, @maxlength = 250 })
                         @Html.ValidationMessageFor(model => model.Økonomi.Nevndeviktigste, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -393,23 +319,23 @@
                 </div>
             </div>
             <div class="tab-pane" id="tab7">
-                <h2>7. Eventuelle andre vedlegg</h2>
+                <h2>6. Eventuelle andre vedlegg</h2>
                 <hr />
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Harduvedleggsom, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.EventuelleAndreVedlegg.Harduvedlegg, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Harduvedleggsom, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.EventuelleAndreVedlegg.Harduvedlegg, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
                         </span>
-                        @Html.ValidationMessageFor(model => model.Harduvedleggsom, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.EventuelleAndreVedlegg.Harduvedlegg, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Beskrivelseavandrevedlegg, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.EventuelleAndreVedlegg.Beskrivelseav, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Beskrivelseavandrevedlegg, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Beskrivelseavandrevedlegg, "", new { @class = "text-danger" })
+                        @Html.TextAreaFor(model => model.EventuelleAndreVedlegg.Beskrivelseav, new { @class = "form-control", @rows = 5, @maxlength = 250 })
+                        @Html.ValidationMessageFor(model => model.EventuelleAndreVedlegg.Beskrivelseav, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>

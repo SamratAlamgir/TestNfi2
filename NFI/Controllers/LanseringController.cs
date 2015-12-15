@@ -38,14 +38,14 @@ namespace NFI.Controllers
                 var responseText = GetApplicationDetailsStringHtml(this, "../Admin/LanseringDetail", appDto);
                 mailBody += responseText;
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.EpostadresseKontaktperson, appDto.EpostadresseKontaktperson, FilePathList);
               
 
                 // Send mail to applicant
-                mailSubject = "Lansering søknad sendtt";
+                mailSubject = "Lansering søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Lansering);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.EpostadresseKontaktperson);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.EpostadresseKontaktperson);
                 return View("Success");
             }
             catch (Exception ex)

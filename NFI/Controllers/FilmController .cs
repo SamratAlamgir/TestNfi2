@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -9,7 +8,7 @@ using NFI.Properties;
 
 namespace NFI.Controllers
 {
-    public class OrdningerController : BaseController
+    public class FilmController : BaseController
     {
         // GET: Ordninger
         [CaptchaAuthorize]
@@ -18,7 +17,7 @@ namespace NFI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(OrdningerDto appDto)
+        public ActionResult Create(FilmDto appDto)
         {
             if (!ModelState.IsValid)
             {
@@ -27,12 +26,9 @@ namespace NFI.Controllers
             }
             try
             {
-                var appType = ApplicationType.Ordninger;
-                var mailSubject = $"{appDto.Prosjektetstittel}  {appDto.Prosjektetstittel}";
-
+                var appType = ApplicationType.Film;
+                var mailSubject = $"TILSKUDD TIL FILMDISTRIBUSJON {appDto.Hvasøkesdet}  {appDto.Prosjektetstittel}";
                 SaveApplication(appDto, appType, appDto.Prosjektetstittel, mailSubject);
-
-                
                 // Send mail to archivist 
                 var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a> ";
                 mailBody += "<br/>" +
@@ -43,8 +39,8 @@ namespace NFI.Controllers
                 CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.Epostadressekontaktperson, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "3 Ordninger søknad sendt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Ordninger);
+                mailSubject = "Film søknad sendt";
+                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Film);
                 CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
 
                 return View("Success");

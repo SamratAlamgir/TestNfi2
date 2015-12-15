@@ -42,13 +42,13 @@ namespace NFI.Controllers
 
                 // Mail to admin
                 //var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, "post@nfi.no", FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, "post@nfi.no", appDto.Epostadressekontaktperson, appDto.NavnKontaktpersonDenneSøknaden, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Tilskudd til videodistribusjon søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Epostadressekontaktperson);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
 
                 return View("Success");
             }
