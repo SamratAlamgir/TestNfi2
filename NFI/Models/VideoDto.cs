@@ -78,8 +78,12 @@ namespace NFI.Models
         [DisplayName("Beskriv kort prosjektet, max 200 tegn")]
         public string BeskrivkortProsjektet { get; set; }
 
+        [JsonIgnore, FileSize]
         [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til?")]
-        public string LastoppDokumentMedOversikt { get; set; }
+        public HttpPostedFileBase LastoppDokumentMedOversikt { get; set; }
+
+        [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til?")]
+        public string LastoppDokumentMedOversiktPath { get; set; }
 
         // 3. Distribusjonsplan
         [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
@@ -97,7 +101,9 @@ namespace NFI.Models
         public string LastoppMarkedsplanPath { get; set; }
         
         [DisplayName("Tidsramme for prosjektet?")]
-        public DateTime? TidsrammeForProsjektet { get; set; }
+        public string TidsrammeForProsjektetFrom { get; set; }
+        public string TidsrammeForProsjektetTo { get; set; }
+
 
         // 4. Målgruppe(r)
         [DisplayName("Hvilke målgrupper ønsker dere primært å nå? Prioriter med tall.")]
@@ -128,9 +134,11 @@ namespace NFI.Models
         // 7. Eventuelle andre vedlegg
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her")]
-        public string HarduVedleggSomRelevante { get; set; }
+        public List<HttpPostedFileBase> HarduVedleggSomRelevante { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her")]
+        public List<string> HarduVedleggSomRelevantePaths { get; set; }
+
         [DisplayName("Beskrivelse av andre vedlegg: Beskriv innholdet i vedleggene lastet opp under Eventuelle andre vedlegg")]
         public string BeskrivelseavAndreVedlegg { get; set; }
     }
@@ -145,5 +153,7 @@ namespace NFI.Models
 
         [DisplayName("3. Annet, spesifiser [Single line text]")]
         public string AnnetSpesifiser  { get; set; }
+
+        public string AnnetText { get; set; }
     }
 }

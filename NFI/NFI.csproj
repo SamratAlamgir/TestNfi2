@@ -192,6 +192,7 @@
     <Compile Include="Controllers\OrdningerController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
     <Compile Include="Controllers\UdsReisestotteController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -425,6 +426,7 @@
     <Content Include="Scripts\Ordninger\ordninger.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\Sorfond\sorfond.js" />
+    <Content Include="Scripts\Video\Video.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

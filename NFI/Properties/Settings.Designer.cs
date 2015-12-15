@@ -184,5 +184,14 @@ namespace NFI.Properties {
                 return ((string)(this["ApplicationDir6"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App7/")]
+        public string ApplicationDir7 {
+            get {
+                return ((string)(this["ApplicationDir7"]));
+            }
+        }
     }
 }
