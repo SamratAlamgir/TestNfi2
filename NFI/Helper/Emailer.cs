@@ -20,7 +20,7 @@ namespace NFI.Utility
             try
             {
                 var message = new MailMessage();
-             
+
                 var smtpClient = new SmtpClient(Settings.Default.EmailHost, Convert.ToInt32(Settings.Default.EmailPort));
                 var fromAddress = new MailAddress(fromEmail, fromName);
 
@@ -43,7 +43,10 @@ namespace NFI.Utility
                 {
                     foreach (var filePath in attachmentFilePath)
                     {
-                        if (!File.Exists(filePath)) { continue; }
+                        if (!File.Exists(filePath))
+                        {
+                            continue;
+                        }
 
                         // Create  the file attachment for this e-mail message.
                         Attachment data = new Attachment(filePath, MediaTypeNames.Application.Octet);
@@ -57,18 +60,21 @@ namespace NFI.Utility
                         message.Attachments.Add(data);
                     }
                 }
-                LogWriter.Write("Email sending to...: " +message.To.First().Address, "Info");
+                LogWriter.Write("Email sending to...: " + message.To.First().Address, "Info");
                 //Send SMTP mail
                 smtpClient.Send(message);
             }
             catch (SmtpException smtpEx)
             {
                 LogWriter.Write(smtpEx.ToString(), "Error");
+                LogWriter.Write("Stack trace:" + smtpEx.StackTrace);
+
                 return false;
             }
             catch (Exception ex)
             {
                 LogWriter.Write(ex.ToString(), "Error");
+                LogWriter.Write("Stack trace:" + ex.StackTrace);
                 return false;
             }
 
