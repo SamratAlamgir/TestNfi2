@@ -41,7 +41,7 @@
         return $valid;
     }
     var wizardOnTabChange = function (tab, navigation, index) {
-        return true; //validateActiveTab();
+        return validateActiveTab();
     };
     var wizardOnTabShow = function (tab, navigation, index) {
 
@@ -54,7 +54,7 @@
         if ($current == 1) {
             $('#rootwizard').find('.pager .next').show();
             $('#rootwizard').find('.pager .previous').hide();
-            $('#btnSubmit').show();
+            $('#btnSubmit').hide();
         }
         else if ($current == $total) {
             $('#rootwizard').find('.pager .next').hide();

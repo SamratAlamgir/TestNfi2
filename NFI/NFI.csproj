@@ -475,6 +475,7 @@
     <Content Include="Views\Film\Index.cshtml" />
     <Content Include="Views\Admin\FilmDetail.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Admin\VideoDetail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

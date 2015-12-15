@@ -16,7 +16,7 @@ namespace NFI.Models
         public string NavnAnsvarligOrganisasjon { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
-        [Range(0, 999999999, ErrorMessage = "Please enter valid integer number")]
+        [Range(0, 999999999, ErrorMessage = "Please enter valid Organisasjonsnummer")]
         [DisplayName("Organisasjonsnummer")]
         public string Organisasjonsnummer { get; set; }
 
@@ -66,8 +66,12 @@ namespace NFI.Models
         [DisplayName("Har søker tidligere mottatt tilskudd til videodistribusjon?")]
         public string HarsøkerTidligereMottattVideodistribusjon { get; set; }
 
+        [JsonIgnore, FileSize]
         [DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her")]
-        public string HvisJaLeggVedRapportTiltakher { get; set; }
+        public HttpPostedFileBase HvisJaLeggVedRapportTiltakher { get; set; }
+
+        [DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her")]
+        public string HvisJaLeggVedRapportTiltakherPath { get; set; }
 
         // 2. Om prosjektet
         [Required(ErrorMessage = "This field is required")]
@@ -129,9 +133,7 @@ namespace NFI.Models
         [DisplayName("Legg ved budsjett og finansieringsplan")]
         public string LeggvedBudsjettFinansieringsplanPath { get; set; }
 
-        // 6. Not mentioned in document
-
-        // 7. Eventuelle andre vedlegg
+        // 6. Eventuelle andre vedlegg
         [Required(ErrorMessage = "This field is required")]
         [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her")]
         public List<HttpPostedFileBase> HarduVedleggSomRelevante { get; set; }
