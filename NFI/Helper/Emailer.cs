@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
 using NFI.Helper;
@@ -56,7 +57,7 @@ namespace NFI.Utility
                         message.Attachments.Add(data);
                     }
                 }
-
+                LogWriter.Write("Email sending to...: " +message.To.First().Address, "Info");
                 //Send SMTP mail
                 smtpClient.Send(message);
             }

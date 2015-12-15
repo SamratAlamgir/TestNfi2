@@ -70,7 +70,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("systemnfi@gmail.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("post@nfi.no")]
         public string FromEmailAddress {
             get {
                 return ((string)(this["FromEmailAddress"]));
@@ -79,7 +79,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.nfi.no")]
         public string EmailHost {
             get {
                 return ((string)(this["EmailHost"]));
@@ -88,7 +88,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("587")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public string EmailPort {
             get {
                 return ((string)(this["EmailPort"]));
@@ -97,19 +97,10 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("NFI")]
+        [global::System.Configuration.DefaultSettingValueAttribute("NFI Service")]
         public string FromName {
             get {
                 return ((string)(this["FromName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SystemNfi987")]
-        public string FromPassword {
-            get {
-                return ((string)(this["FromPassword"]));
             }
         }
         
