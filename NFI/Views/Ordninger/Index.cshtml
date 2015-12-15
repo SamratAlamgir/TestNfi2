@@ -264,7 +264,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.NårskalprosjektetFromDate, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
+                        <div class="input-group date col-md-8" data-provide="datepicker" data-date-format="dd.mm.yyyy">
                             @Html.TextBoxFor(model => model.NårskalprosjektetFromDate, new { @readonly = "",  @class = "form-control"  })
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
@@ -277,7 +277,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.NårskalprosjektetToDate, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
+                        <div class="input-group date col-md-8" data-provide="datepicker" data-date-format="dd.mm.yyyy">
                             @Html.TextBoxFor(model => model.NårskalprosjektetToDate, new { @readonly = "",  @class = "form-control" })
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
@@ -300,7 +300,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Detallmennepublikum, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         @Html.TextBoxFor(model => model.Detallmennepublikum, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Detallmennepublikum, "", new { @class = "text-danger" })
@@ -309,7 +309,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Filmstudenterpedagoger, htmlAttributes: new { type = "number", min = 1, max = 6, @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         @Html.TextBoxFor(model => model.Filmstudenterpedagoger, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Filmstudenterpedagoger, "", new { @class = "text-danger" })
@@ -318,7 +318,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Semiprofesjonelleprofesjonelle, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         @Html.TextBoxFor(model => model.Semiprofesjonelleprofesjonelle, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Semiprofesjonelleprofesjonelle, "", new { @class = "text-danger" })
@@ -327,7 +327,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Flerkulturellemiljøer, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         @Html.TextBoxFor(model => model.Flerkulturellemiljøer, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Flerkulturellemiljøer, "", new { @class = "text-danger" })
@@ -336,7 +336,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Barnogunge, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         @Html.TextBoxFor(model => model.Barnogunge, new { type = "number", @value = "1", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Barnogunge, "", new { @class = "text-danger" })
@@ -345,11 +345,11 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Andrespesiferitekstfelt, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-md-8">
+                                    <div class="col-md-7">
                                         @Html.TextBoxFor(model => model.AndrespesiferitekstfeltName, new { @class = "form-control" } )
                                         @Html.ValidationMessageFor(model => model.AndrespesiferitekstfeltName, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         @Html.TextBoxFor(model => model.Andrespesiferitekstfelt, new { type = "number", @value = "1", min = 1, max = 6, @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Andrespesiferitekstfelt, "", new { @class = "text-danger" })
                                     </div>
