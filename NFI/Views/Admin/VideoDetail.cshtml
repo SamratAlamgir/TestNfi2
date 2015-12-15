@@ -249,16 +249,31 @@
     </dl>
 
     <h4>6. Eventuelle andre vedlegg</h4>
-    <dl class="well">
+<dl class="well">
+
+    @if (Model.HarduVedleggSomRelevantePaths != null)
+    {
         <dt>
-            @Html.DisplayNameFor(model => model.BeskrivelseavAndreVedlegg)
+            @Html.DisplayNameFor(model => model.HarduVedleggSomRelevantePaths)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BeskrivelseavAndreVedlegg)
-        </dd>
+        for (var i = 0; i < Model.HarduVedleggSomRelevantePaths.Count; i++)
+        {
+            <dd>
+                File @(i + 1): @Html.DisplayFor(model => model.HarduVedleggSomRelevantePaths[i])
+            </dd>
+        }
+    }
 
-    </dl>
+    <dt>
+        @Html.DisplayNameFor(model => model.BeskrivelseavAndreVedlegg)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.BeskrivelseavAndreVedlegg)
+    </dd>
+
+</dl>
 
     <div class="form-group">
         <label class="col-sm-2">Create Time:</label>
