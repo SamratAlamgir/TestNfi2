@@ -121,7 +121,7 @@
                     @Html.LabelFor(model => model.KvalifikasjonersomArrangørCV, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.KvalifikasjonersomArrangørCV, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.KvalifikasjonersomArrangørCV, new { type = "file", @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.KvalifikasjonersomArrangørCV, "", new { @class = "text-danger" })
                     </div>
@@ -155,10 +155,10 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HvisJalegg, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
+                    @Html.LabelFor(model => model.HvisJalegg, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.HvisJalegg, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.HvisJalegg, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.HvisJalegg, "", new { @class = "text-danger" })
                     </div>
@@ -178,7 +178,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Beskrivkortprosjektet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Beskrivkortprosjektet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Beskrivkortprosjektet, new { @class = "form-control", @cols = 50, @rows = 5, @maxlength = 200 })
                         @Html.ValidationMessageFor(model => model.Beskrivkortprosjektet, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                     @Html.LabelFor(model => model.Leggvedprosjektbeskrivelse, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Leggvedprosjektbeskrivelse, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Leggvedprosjektbeskrivelse, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Leggvedprosjektbeskrivelse, "", new { @class = "text-danger" })
                     </div>
@@ -226,7 +226,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.HvisJAskriv, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.HvisJAskriv, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.HvisJAskriv, new { @class = "form-control", @cols = 50, @rows = 5, @maxlength = 200 })
                         @Html.ValidationMessageFor(model => model.HvisJAskriv, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -237,8 +237,15 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Hvorbredttiltaket, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.EditorFor(model => model.Hvorbredttiltaket, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Hvorbredttiltaket, "", new { @class = "text-danger" })
+                        <select name="Hvorbredttiltaket" class="form-control">
+                            <option value="Lokalt" selected="selected">Lokalt</option>
+                            <option value="Regionalt">Regionalt</option>
+                            <option value="Nasjonalt">Nasjonalt</option>
+                            <option value="Internasjonalt">Internasjonalt</option>
+                            <option value="Annet">Annet</option>
+                        </select>
+                       
+                        @Html.ValidationMessageFor(model => model.Hvorbredttiltaket, "", new {@class = "text-danger"})
                     </div>
                 </div>
 
@@ -246,7 +253,7 @@
                     @Html.LabelFor(model => model.Angigeografisk, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.Angigeografisk, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Angigeografisk, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Angigeografisk, "", new {@class = "text-danger"})
                     </div>
                 </div>
             </div>
@@ -258,7 +265,7 @@
                     @Html.LabelFor(model => model.NårskalprosjektetFromDate, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
-                            @Html.TextBoxFor(model => model.NårskalprosjektetFromDate, new { @readonly = "", htmlAttributes = new { @class = "form-control text-box single-line" } })
+                            @Html.TextBoxFor(model => model.NårskalprosjektetFromDate, new { @readonly = "",  @class = "form-control"  })
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -271,7 +278,7 @@
                     @Html.LabelFor(model => model.NårskalprosjektetToDate, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
-                            @Html.TextBoxFor(model => model.NårskalprosjektetToDate, new { @readonly = "", htmlAttributes = new { @class = "form-control text-box single-line" } })
+                            @Html.TextBoxFor(model => model.NårskalprosjektetToDate, new { @readonly = "",  @class = "form-control" })
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -281,7 +288,7 @@
                 </div>
             </div>
             <div class="tab-pane" id="tab5">
-                <h2>5. Målgruppe®</h2>
+                <h2>5. Målgruppe</h2>
                 <hr />
 
                 <div class="form-group">
@@ -293,8 +300,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Detallmennepublikum, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Detallmennepublikum, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(model => model.Detallmennepublikum, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Detallmennepublikum, "", new { @class = "text-danger" })
                                 </div>
@@ -302,8 +309,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Filmstudenterpedagoger, htmlAttributes: new { type = "number", min = 1, max = 6, @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Filmstudenterpedagoger, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(model => model.Filmstudenterpedagoger, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Filmstudenterpedagoger, "", new { @class = "text-danger" })
                                 </div>
@@ -311,8 +318,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Semiprofesjonelleprofesjonelle, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Semiprofesjonelleprofesjonelle, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(model => model.Semiprofesjonelleprofesjonelle, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Semiprofesjonelleprofesjonelle, "", new { @class = "text-danger" })
                                 </div>
@@ -320,8 +327,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Flerkulturellemiljøer, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Flerkulturellemiljøer, new { type = "number", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(model => model.Flerkulturellemiljøer, new { type = "number", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Flerkulturellemiljøer, "", new { @class = "text-danger" })
                                 </div>
@@ -329,8 +336,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Barnogunge, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Barnogunge, new { type = "number", @value = "1", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(model => model.Barnogunge, new { type = "number", @value = "1", min = 1, max = 6, @class = "form-control" })
                                     </div>
                                     @Html.ValidationMessageFor(model => model.Barnogunge, "", new { @class = "text-danger" })
                                 </div>
@@ -338,10 +345,15 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Andrespesiferitekstfelt, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                                 <div class="col-md-6">
-                                    <div class="col-mid-3">
-                                        @Html.TextBoxFor(model => model.Andrespesiferitekstfelt, new { type = "number", @value = "1", min = 1, max = 6, htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(model => model.AndrespesiferitekstfeltName, new { @class = "form-control" } )
+                                        @Html.ValidationMessageFor(model => model.AndrespesiferitekstfeltName, "", new { @class = "text-danger" })
                                     </div>
-                                    @Html.ValidationMessageFor(model => model.Andrespesiferitekstfelt, "", new { @class = "text-danger" })
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(model => model.Andrespesiferitekstfelt, new { type = "number", @value = "1", min = 1, max = 6, @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Andrespesiferitekstfelt, "", new { @class = "text-danger" })
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -350,7 +362,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Beskrivkortmålet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Beskrivkortmålet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Beskrivkortmålet, new { @class = "form-control", @cols = 50, @rows = 5, @maxlength = 200 })
                         @Html.ValidationMessageFor(model => model.Beskrivkortmålet, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -377,7 +389,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Økonomi.Nevndeviktigste, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Økonomi.Nevndeviktigste, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Økonomi.Nevndeviktigste, new { @class = "form-control", @cols = 50, @rows = 5, @maxlength = 200 })
                         @Html.ValidationMessageFor(model => model.Økonomi.Nevndeviktigste, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -386,7 +398,7 @@
                     @Html.LabelFor(model => model.Økonomi.Leggvedbudsjett, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Økonomi.Leggvedbudsjett, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Økonomi.Leggvedbudsjett, new { type = "file", @class = "btn-file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.Økonomi.Leggvedbudsjett, "", new { @class = "text-danger" })
                     </div>
@@ -399,7 +411,7 @@
                     @Html.LabelFor(model => model.Harduvedleggsom, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Harduvedleggsom, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Harduvedleggsom, new { type = "file", multiple = "", @class = "btn-file" })
                         </span>
                         @Html.ValidationMessageFor(model => model.Harduvedleggsom, "", new { @class = "text-danger" })
                     </div>
@@ -408,7 +420,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Beskrivelseavandrevedlegg, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Beskrivelseavandrevedlegg, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Beskrivelseavandrevedlegg, new { @class = "form-control", @cols = 50, @rows = 5, @maxlength = 200 })
                         @Html.ValidationMessageFor(model => model.Beskrivelseavandrevedlegg, "", new { @class = "text-danger" })
                     </div>
                 </div>
