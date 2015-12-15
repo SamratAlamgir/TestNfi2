@@ -42,7 +42,7 @@ namespace NFI.Controllers
 
                 // Send mail to applicant
                 mailSubject = "Tilskudd til videodistribusjon søknad sendt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
+                mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
                 CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
 
