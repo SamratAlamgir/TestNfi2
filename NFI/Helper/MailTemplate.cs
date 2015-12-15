@@ -49,10 +49,10 @@ namespace NFI.Helper
                     mailBody = @"Hei<br/>
 Vi bekrefter med dette å ha mottatt din søknad.<br/> 
 Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/> 
-For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
+                                For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
 
 Med vennlig hilsen<br/>  
-Norsk filminstitutt";
+                                Norsk filminstitutt";
                     break;
 
                 case ApplicationType.Lansering:
@@ -62,7 +62,7 @@ Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/>
 For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
 
 Med vennlig hilsen<br/>  
-Norsk filminstitutt";
+                                Norsk filminstitutt";
                     break;
 
                 case ApplicationType.Ordninger:
@@ -84,13 +84,18 @@ For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<
 Med vennlig hilsen<br/>  
 Norsk filminstitutt";
                     break;
+                case ApplicationType.Video:
+                    mailBody = @"Hei<br/>
+                                Vi bekrefter med dette å ha mottatt din søknad.<br/> 
+                                Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/>
+                                For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
 
-
+                                Med vennlig hilsen<br/>
+                                Norsk filminstitutt";
+                    break;
             }
 
-
             return mailBody;
-
         }
     }
 }

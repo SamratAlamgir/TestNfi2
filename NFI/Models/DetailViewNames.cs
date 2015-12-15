@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using NFI.Enums;
 
 namespace NFI.Models
@@ -34,6 +31,9 @@ namespace NFI.Models
                     break;
                 case ApplicationType.Film:
                     viewName = "../Admin/FilmDetail";
+                    break;
+                case ApplicationType.Video:
+                    viewName = "../Admin/VideoDetail";
                     break;
                 default:
                     throw new Exception("No application detail view created for the application " + applicationType);

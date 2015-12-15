@@ -11,7 +11,6 @@
         Ordninger = 6,
         Video = 7,
         Film = 8,
-        DenKulturelleSkolesekken = 9,
-        Ark2 = 10
+        DenKulturelleSkolesekken = 9
     }
 }

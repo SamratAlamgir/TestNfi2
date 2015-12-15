@@ -187,6 +187,15 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App7/")]
+        public string ApplicationDir7 {
+            get {
+                return ((string)(this["ApplicationDir7"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("App8/")]
         public string ApplicationDir8 {
             get {

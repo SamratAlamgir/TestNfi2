@@ -56,6 +56,9 @@
     <Setting Name="ApplicationDir6" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App6/</Value>
     </Setting>
+    <Setting Name="ApplicationDir7" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App7/</Value>
+    </Setting>
     <Setting Name="ApplicationDir8" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App8/</Value>
     </Setting>
