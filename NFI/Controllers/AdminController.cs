@@ -185,7 +185,7 @@ namespace NFI.Controllers
                     AppId = x.AppId,
                     AppType = "Lansering",
                     AppTypeId = ApplicationType.Lansering,
-                    ApplicantName = "Need to be added", //TODO: Need to be added
+                    ApplicantName = x.EpostadresseKontaktperson, //TODO: Need to be added
                     Email = x.EpostadresseKontaktperson,
                     CreateTime = x.CreateTime,
                     IsArchived = x.IsArchived
