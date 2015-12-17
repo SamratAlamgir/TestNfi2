@@ -59,5 +59,8 @@
     <Setting Name="ApplicationDir8" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App8/</Value>
     </Setting>
+    <Setting Name="ApplicationServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Dev</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
