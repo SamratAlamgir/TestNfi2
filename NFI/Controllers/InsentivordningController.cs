@@ -10,7 +10,7 @@ namespace NFI.Controllers
 {
     public class InsentivordningController : BaseController
     {
-        //[CaptchaAuthorize]
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();

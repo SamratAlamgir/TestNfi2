@@ -12,7 +12,7 @@ namespace NFI.Controllers
     public class OrdningerController : BaseController
     {
         // GET: Ordninger
-        //[CaptchaAuthorize]
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();

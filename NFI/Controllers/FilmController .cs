@@ -11,7 +11,7 @@ namespace NFI.Controllers
     public class FilmController : BaseController
     {
         // GET: Ordninger
-        //[CaptchaAuthorize]
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();

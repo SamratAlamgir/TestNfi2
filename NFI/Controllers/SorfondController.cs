@@ -11,7 +11,7 @@ namespace NFI.Controllers
     public class SorfondController : BaseController
     {
         // GET: Sorfond
-        //[CaptchaAuthorize]
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             var model = new SorfondDto();
