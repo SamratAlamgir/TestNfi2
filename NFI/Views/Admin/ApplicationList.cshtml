@@ -18,10 +18,16 @@
 
                     <div class="col-sm-3">
                         <select id="appType" class="form-control">
+                            <option value="0">All</option>
+                            <option value="1" selected="selected">Sørfond</option>
                             <option value="2">Insentivordning</option>
-                            @*<option value="1" selected="selected">Application1</option>
-                            <option value="2" selected="selected"></option>*@
-                            
+                            <option value="3">Incentive Scheme </option>
+                            <option value="4">UDs reisestøtte</option>
+                            <option value="5">Lansering</option>
+                            <option value="6">3 Ordninger</option>
+                            <option value="7">Video</option>
+                            <option value="8">Film</option>
+                            <option value="9">Den Kulturelle Skolesekken</option>
                         </select>
                     </div>
 
@@ -40,10 +46,10 @@
                 <table id="applicationListTable" class="display" width="100%">
                     <thead>
                         <tr>
-                            <th>ProduksjonsforetaketsNavn</th>
-                            <th>OrganisasjonsNummer</th>
-                            <th>Date</th>
-                            <th>OrganisasjonsPostnummer</th>
+                            <th>Application Type</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Create Time</th>
                             <th>Download</th>
                             <th>Archive</th>
                         </tr>

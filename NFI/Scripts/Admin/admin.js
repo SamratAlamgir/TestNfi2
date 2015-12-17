@@ -6,24 +6,25 @@
             "iDisplayLength": 25,
             "aaData": data,
             //"aaSorting": [],
-            "order": [[ 2, "desc" ]],
+            "order": [[ 3, "desc" ]],
             "bDestroy": true,
             "aoColumns": [
-                { "mDataProp": "ProduksjonsforetaketsNavn" },
-                { "mDataProp": "OrganisasjonsNummer" },
+                { "mDataProp": "AppType" },
+                { "mDataProp": "ApplicantName" },
+                { "mDataProp": "Email" },
                 {
                     "mDataProp": "CreateTime",
                     "fnCreatedCell": function (nTd, sData, oData) {
                         var date = new Date(parseInt(sData.substr(6)));
-                        $(nTd).html((date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear());
+                        $(nTd).html(date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
                     }
                 },
-
-                { "mDataProp": "OrganisasjonsPostnummer" },
+                
                 {
-                    "mDataProp": "ZipFilePath",
+                    "mDataProp": "AppId",
                     "fnCreatedCell": function (nTd, sData, oData) {
-                        $(nTd).html("<a href='/" + oData.ZipFilePath + "'>Download</a>");
+                        //$(nTd).html("<a href='/" + oData.ZipFilePath + "'>Download</a>");
+                        $(nTd).html("<Button data-action='download' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Download</Button>");
                     }
                 },
                 {
@@ -31,7 +32,7 @@
                     "fnCreatedCell": function (nTd, sData, oData) {
 
                         if (!oData.IsArchived) {
-                            $(nTd).html("<Button data-appId='" + oData.AppId + "'>Archive</Button>");
+                            $(nTd).html("<Button data-action='archive' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Archive</Button>");
                         } else {
                             $(nTd).html("<h4><span class='label label-warning'>Archived</span></h4>");
                         }
@@ -43,8 +44,18 @@
 
         if (!eventSubscribed) {
             $('#applicationListTable tbody').on('click', 'button', function () {
-                var appId = this.getAttribute("data-appid");
-                markAsArchive(appId);
+                var actionType = this.getAttribute("data-action");
+                var appType = this.getAttribute("data-appType");
+                var appId = this.getAttribute("data-appId");
+                //markAsArchive(appId);
+
+                if (actionType === 'download') {
+                    downloadZipFile(appType, appId);
+                }
+                else if (actionType === 'archive') {
+                    markAsArchive(appType, appId);
+                }
+
             });
 
             eventSubscribed = true;
@@ -64,7 +75,12 @@
             });
     }
 
-    var markAsArchive = function (appId) {
+    var downloadZipFile = function(appType, appId) {
+        //$.get("/admin/DownloadZipFile/" + appType + "/" + appId);
+        document.location = "/admin/DownloadZipFile/" + appType + "/" + appId;
+    }
+
+    var markAsArchive = function (appType, appId) {
 
         bootbox.confirm("Are you sure you want to move this application to Archive?", function (result) {
             if (!result) return; // do nothing
