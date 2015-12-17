@@ -35,7 +35,7 @@ namespace NFI.Controllers
             }
             try
             {
-                var appType = ApplicationType.Sørfond;
+                var appType = ApplicationType.Sorfond;
                 var mailSubject = "SØRFOND " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
 
                 SaveApplication(sorfondDto, appType, sorfondDto.Prosjektinformasjon.TittelPåProsjektet, mailSubject);
@@ -51,7 +51,7 @@ namespace NFI.Controllers
 
                 // Send mail to applicant
                 mailSubject = "Søfond søknad sendt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sørfond);
+                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sorfond);
 
                 CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
 

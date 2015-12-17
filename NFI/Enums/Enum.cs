@@ -3,7 +3,7 @@
     public enum ApplicationType
     {
         All = 0,
-        Sørfond = 1,
+        Sorfond = 1,
         Insentivordning = 2,
         IncentiveScheme = 3,
         UdsReisestotte = 4,

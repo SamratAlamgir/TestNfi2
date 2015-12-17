@@ -58,7 +58,7 @@ namespace NFI.Controllers
 
             switch (appType)
             {
-                case ApplicationType.Sørfond:
+                case ApplicationType.Sorfond:
                     result = GetSorfondDtoList();
                     break;
 
@@ -97,14 +97,14 @@ namespace NFI.Controllers
         // Get Sorfond data
         private List<AdminListDto> GetSorfondDtoList()
         {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sørfond);
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sorfond);
 
             var result = JsonHelper.GetCollections<SorfondDto>(dataFilePath)
                 .Select(x => new AdminListDto()
                 {
                     AppId = x.AppId,
                     AppType = "Sørfond",
-                    AppTypeId = ApplicationType.Sørfond,
+                    AppTypeId = ApplicationType.Sorfond,
                     ApplicantName = x.NorskMinoritetsprodusent.MinoritetsprodusentensNavn,
                     Email = x.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse,
                     CreateTime = x.CreateTime,
@@ -271,7 +271,7 @@ namespace NFI.Controllers
 
             switch (appType)
             {
-                case ApplicationType.Sørfond:
+                case ApplicationType.Sorfond:
                     resultSet = JsonHelper.GetCollections<SorfondDto>(dataFilePath);
                     MarkAsArchiveAndSave<SorfondDto>(resultSet, appId, dataFilePath);
                     break;
@@ -365,7 +365,7 @@ namespace NFI.Controllers
                 case ApplicationType.IncentiveScheme:
                     selectedApp = GetApplicationDto<IncentiveSchemeDto>(appId, appType);
                     break;
-                case ApplicationType.Sørfond:
+                case ApplicationType.Sorfond:
                     selectedApp = GetApplicationDto<SorfondDto>(appId, appType);
                     break;
                 case ApplicationType.UdsReisestotte:

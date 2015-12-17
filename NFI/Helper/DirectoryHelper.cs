@@ -20,7 +20,7 @@ namespace NFI.Helper
             var dirPath = "";
             switch (appType)
             {
-                case ApplicationType.Sørfond:
+                case ApplicationType.Sorfond:
                     dirPath = Settings.Default.ApplicationDir1;
                     break;
                 case ApplicationType.Insentivordning:

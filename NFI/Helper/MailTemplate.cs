@@ -9,7 +9,7 @@ namespace NFI.Helper
             var mailBody = "";
             switch (appType)
             {
-                case ApplicationType.Sørfond:
+                case ApplicationType.Sorfond:
 
                     mailBody = @"Vi bekrefter med dette å ha mottatt din søknad.<br/> 
                                 Normalt kan du forvente et svar på søknaden innen 5 til 7 uker.<br/> 

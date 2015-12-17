@@ -10,7 +10,7 @@ namespace NFI.Models
             string viewName;
             switch (applicationType)
             {
-                case ApplicationType.Sørfond:
+                case ApplicationType.Sorfond:
                     viewName = "../Admin/Sorfond/Details";
                     break;
                 case ApplicationType.Insentivordning:
