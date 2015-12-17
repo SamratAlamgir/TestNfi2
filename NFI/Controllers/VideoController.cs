@@ -9,7 +9,7 @@ namespace NFI.Controllers
 {
     public class VideoController : BaseController
     {
-        //[CaptchaAuthorize]
+        [CaptchaAuthorize]
         public ActionResult Index()
         {
             return View();
