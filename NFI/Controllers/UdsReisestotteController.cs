@@ -37,7 +37,7 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, "post@nfi.com", appDto.Søkersepost, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Søkersepost, appDto.Søkersepost, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "UDs Reisestøtte søknad sendt";
