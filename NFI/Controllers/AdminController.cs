@@ -41,42 +41,8 @@ namespace NFI.Controllers
             }
             else
             {
-                switch (appType)
-                {
-                    case ApplicationType.Sørfond:
-                        result = GetSorfondDtoList();
-                        break;
-
-                    case ApplicationType.Insentivordning:
-                        result = GetInsentivordningDtoList();
-                        break;
-
-                    case ApplicationType.IncentiveScheme:
-                        result = GetIncentiveSchemeDtoList();
-                        break;
-
-                    case ApplicationType.UdsReisestotte:
-                        result = GetUdsReisestotteDtoList();
-                        break;
-
-                    case ApplicationType.Lansering:
-                        result = GetLanseringDtoList();
-                        break;
-
-                    case ApplicationType.Ordninger:
-                        result = GetOrdningerDtoList();
-                        break;
-
-                    case ApplicationType.Video:
-                        result = GetVideoDtoList();
-                        break;
-
-                    case ApplicationType.Film:
-                        result = GetFilmDtoList();
-                        break;
-                }
+                result = GetApplicationList(appType);
             }
-
 
             if (!includeArchive)
             {
@@ -84,6 +50,48 @@ namespace NFI.Controllers
             }
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<AdminListDto> GetApplicationList(ApplicationType appType)
+        {
+            var result = new List<AdminListDto>();
+
+            switch (appType)
+            {
+                case ApplicationType.Sørfond:
+                    result = GetSorfondDtoList();
+                    break;
+
+                case ApplicationType.Insentivordning:
+                    result = GetInsentivordningDtoList();
+                    break;
+
+                case ApplicationType.IncentiveScheme:
+                    result = GetIncentiveSchemeDtoList();
+                    break;
+
+                case ApplicationType.UdsReisestotte:
+                    result = GetUdsReisestotteDtoList();
+                    break;
+
+                case ApplicationType.Lansering:
+                    result = GetLanseringDtoList();
+                    break;
+
+                case ApplicationType.Ordninger:
+                    result = GetOrdningerDtoList();
+                    break;
+
+                case ApplicationType.Video:
+                    result = GetVideoDtoList();
+                    break;
+
+                case ApplicationType.Film:
+                    result = GetFilmDtoList();
+                    break;
+            }
+
+            return result;
         }
 
         // Get Sorfond data
@@ -252,30 +260,59 @@ namespace NFI.Controllers
         // Get Den Kulturelle Skolesekken data
         private List<AdminListDto> GetFilmDtoList(string dataFilePath)
         {
-            var result = JsonHelper.GetCollections<Den Kulturelle Skolesekken> (dataFilePath)
-                .Select(x => new AdminListDto()
-                {
-                    AppId = x.AppId,
-                    ApplicationType = "Den Kulturelle Skolesekken",
-                    ApplicantName = x.Navnpåkontaktperson,
-                    Email = x.Epostadressekontaktperson,
-                    CreateDate = x.CreateDate,
-                    IsArchived = x.IsArchived
-                });
-
             return result.ToList();
         }
-
-    */
+        */
 
         public bool MarkAsArchive(ApplicationType appType, string appId)
         {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Sørfond);
-            var resultSet = JsonHelper.GetCollections<Application1Dto>(dataFilePath);
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(appType);
+            dynamic resultSet;
 
-            var selectedApp = resultSet.Single(x => x.AppId == appId);
+            switch (appType)
+            {
+                case ApplicationType.Sørfond:
+                    resultSet = JsonHelper.GetCollections<SorfondDto>(dataFilePath);
+                    MarkAsArchiveAndSave<SorfondDto>(resultSet, appId, dataFilePath);
+                    break;
+                case ApplicationType.Insentivordning:
+                    resultSet = JsonHelper.GetCollections<InsentivordningDto>(dataFilePath);
+                    MarkAsArchiveAndSave<InsentivordningDto>(resultSet, appId, dataFilePath);
+                    break;
+
+                case ApplicationType.IncentiveScheme:
+                    resultSet = JsonHelper.GetCollections<IncentiveSchemeDto>(dataFilePath);
+                    MarkAsArchiveAndSave<IncentiveSchemeDto>(resultSet, appId, dataFilePath);
+                    break;
+                case ApplicationType.UdsReisestotte:
+                    resultSet = JsonHelper.GetCollections<UdsReisestotteDto>(dataFilePath);
+                    MarkAsArchiveAndSave<UdsReisestotteDto>(resultSet, appId, dataFilePath);
+                    break;
+                case ApplicationType.Lansering:
+                    resultSet = JsonHelper.GetCollections<LanseringDto>(dataFilePath);
+                    MarkAsArchiveAndSave<LanseringDto>(resultSet, appId, dataFilePath);
+                    break;
+                case ApplicationType.Ordninger:
+                    resultSet = JsonHelper.GetCollections<OrdningerDto>(dataFilePath);
+                    MarkAsArchiveAndSave<OrdningerDto>(resultSet, appId, dataFilePath);
+                    break;
+                case ApplicationType.Video:
+                    resultSet = JsonHelper.GetCollections<VideoDto>(dataFilePath);
+                    MarkAsArchiveAndSave<VideoDto>(resultSet, appId, dataFilePath);
+                    break;
+                case ApplicationType.Film:
+                    resultSet = JsonHelper.GetCollections<FilmDto>(dataFilePath);
+                    MarkAsArchiveAndSave<FilmDto>(resultSet, appId, dataFilePath);
+                    break;
+            }
+
+            return true;
+        }
+
+        private bool MarkAsArchiveAndSave<T>(List<T> resultSet, string appId, string dataFilePath) where T : BaseAppDto
+        {
+            var selectedApp = resultSet.Single(x => x.AppId.ToString() == appId);
             selectedApp.IsArchived = true;
-
 
             JsonHelper.Save(resultSet, dataFilePath);
 

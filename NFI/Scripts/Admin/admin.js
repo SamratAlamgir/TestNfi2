@@ -85,7 +85,7 @@
         bootbox.confirm("Are you sure you want to move this application to Archive?", function (result) {
             if (!result) return; // do nothing
 
-            $.post("/admin/MarkAsArchive", { "appId": appId })
+            $.post("/admin/MarkAsArchive/" + appType + "/" + appId)
                 .done(function () {
                     loadGridData();
                 })
