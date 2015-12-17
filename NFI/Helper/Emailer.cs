@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using NFI.Helper;
@@ -9,19 +10,30 @@ using NFI.Properties;
 
 namespace NFI.Utility
 {
-    public sealed class Emailer
+    public static class Emailer
     {
-        private Emailer()
-        {
-        }
-
         public static bool SendMail(string to, string subject, string body, string fromEmail, string fromName, List<string> attachmentFilePath = null)
         {
             try
             {
                 var message = new MailMessage();
-
                 var smtpClient = new SmtpClient(Settings.Default.EmailHost, Convert.ToInt32(Settings.Default.EmailPort));
+
+                if (Settings.Default.ApplicationServer == "Dev")
+                {
+                    fromEmail = "systemnfi@gmail.com";
+                    smtpClient = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Timeout = 3600000, // 1 hour
+                        Credentials = new NetworkCredential(fromEmail, "SystemNfi987")
+                    };
+                }
+                
                 var fromAddress = new MailAddress(fromEmail, fromName);
 
                 //From address will be given as a MailAddress Object
@@ -60,6 +72,8 @@ namespace NFI.Utility
                         message.Attachments.Add(data);
                     }
                 }
+
+              
                 LogWriter.Write("Email sending to...: " + message.To.First().Address, "Info");
                 //Send SMTP mail
                 smtpClient.Send(message);
