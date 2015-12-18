@@ -22,7 +22,7 @@
                 {
                     "mDataProp": "AppId", "sTitle": "View",
                     "fnCreatedCell": function (nTd, sData, oData) {
-                        $(nTd).html("<a data-action='view' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>View</a>");
+                        $(nTd).html("<a href='#' data-action='view' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>View</a>");
                     }
                 },
                 {

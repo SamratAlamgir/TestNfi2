@@ -11,7 +11,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Insentivordning</h2>
+<h2>The incentive scheme</h2>
 
 <form id="MainForm" class="form-horizontal" action="@Html.GetHostServerUrl()/IncentiveScheme/Save" enctype="multipart/form-data" method="post">
 
@@ -614,14 +614,14 @@
             </div>
 
             <div class="row col-sm-10" id="ajaxLoader" style="display: none">
-                <label class="alert-danger">@Html.GetWaitMessageForApplication()</label>
+                <label class="alert-danger">@Html.GetWaitMessageForApplicationEnglish()</label>
                 <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
             </div>
             <div id="wizardBtn" class="row col-sm-10">
                 <ul class="pager wizard">
-                    <li class="previous pull-left"><a href="javascript:;">Forrige</a></li>
-                    <li class="next pull-right"><a href="javascript:;">Neste</a></li>
-                    <li><button id="btnSubmit" type="submit" class="btn btn-success pull-right" style="display: none">Send inn</button></li>
+                    <li class="previous pull-left"><a href="javascript:;">Previous</a></li>
+                    <li class="next pull-right"><a href="javascript:;">Next</a></li>
+                    <li><button id="btnSubmit" type="submit" class="btn btn-success pull-right" style="display: none">Submit</button></li>
                 </ul>
 
             </div>

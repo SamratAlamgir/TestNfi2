@@ -19,7 +19,12 @@ namespace NFI.Helper
 
         public static string GetWaitMessageForApplication(this System.Web.Mvc.HtmlHelper htmlHelper)
         {
-            return "Din søknad er i gang. Det kan ta flere minutter å fullføre, avhengig av dine filstørrelser. Vennligst vent...";
+            return "Din søknad er opplasting. Vennligst vent...";
+        }
+
+        public static string GetWaitMessageForApplicationEnglish(this System.Web.Mvc.HtmlHelper htmlHelper)
+        {
+            return "Your application is uploading. Please wait...";
         }
 
         /// <summary>
