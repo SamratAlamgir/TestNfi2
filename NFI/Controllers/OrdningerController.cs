@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -46,12 +45,12 @@ namespace NFI.Controllers
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
                 mailBody += responseText;
                 var mailTo = Settings.Default.ToEmailAddress;
-                Task.Run(() => CommunicationHelper.SendEmailToAdminAsync(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.Epostadressekontaktperson, FilePathList));
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.Epostadressekontaktperson, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "3 Ordninger søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Ordninger);
-                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, appDto.Epostadressekontaktperson));
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
 
                 return View("Success");
             }

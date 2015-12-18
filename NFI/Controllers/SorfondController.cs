@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -48,14 +47,14 @@ namespace NFI.Controllers
                 var responseText = GetApplicationDetailsStringHtml(this, "../Admin/Sorfond/Details", sorfondDto);
                 mailBody += responseText;
 
-                Task.Run(() => CommunicationHelper.SendEmailToAdminAsync(mailSubject, mailBody, "sorfond@nfi.no", 
-                    sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList));
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, "sorfond@nfi.no", 
+                    sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Søfond søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sorfond);
 
-                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse));
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
 
                 return View("Success");
             }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -40,13 +39,13 @@ namespace NFI.Controllers
 
                 // Mail to admin
                 var mailTo = Settings.Default.ToEmailAddress;
-                Task.Run(() => CommunicationHelper.SendEmailToAdminAsync(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.NavnKontaktpersonDenneSøknaden, FilePathList));
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.NavnKontaktpersonDenneSøknaden, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Tilskudd til videodistribusjon søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, appDto.Epostadressekontaktperson));
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
 
                 return View("Success");
             }
