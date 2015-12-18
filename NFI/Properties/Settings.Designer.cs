@@ -202,5 +202,14 @@ namespace NFI.Properties {
                 return ((string)(this["ApplicationDir9"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev")]
+        public string ApplicationServer {
+            get {
+                return ((string)(this["ApplicationServer"]));
+            }
+        }
     }
 }
