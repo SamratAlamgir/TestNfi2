@@ -257,7 +257,7 @@ namespace NFI.Models
         [DisplayName("Other relevant attachments")]
         public List<HttpPostedFileBase> OtherRelevantAttachments { get; set; }
         [DisplayName("Other relevant attachments")]
-        public List<string> OtherRelevantAttachmentPaths { get; set; }
+        public List<string> OtherRelevantAttachmentsPaths { get; set; }
 
         [DisplayName("Description of other attachments")]
         public string DescriptionOfOtherAttachments { get; set; }

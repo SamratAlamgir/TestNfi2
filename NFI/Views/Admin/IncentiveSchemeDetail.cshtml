@@ -643,15 +643,21 @@
                     <table class="table">
                         <tbody>
 
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.DescriptionOfOtherAttachments)
-                                </td>
+                            @if (Model.OtherRelevantAttachmentsPaths != null)
+                            {
+                                <tr>
+                                    <td />
+                                    @Html.DisplayNameFor(model => model.OtherRelevantAttachmentsPaths)
 
-                                <td>
-                                    @Html.DisplayFor(model => model.DescriptionOfOtherAttachments)
-                                </td>
-                            </tr>
+                                    <td>
+                                        @for (var i = 0; i < Model.OtherRelevantAttachmentsPaths.Count; i++)
+                                        {
+                                             @Model.OtherRelevantAttachmentsPaths[i];
+                                            <br />
+                                        }
+                                    </td>
+                                </tr>
+                            }
                             <tr>
                                 <td>
                                     <strong>@Html.DisplayNameFor(model => model.CreateTime) </strong>

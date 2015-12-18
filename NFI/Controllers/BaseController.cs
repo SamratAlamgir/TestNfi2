@@ -16,7 +16,7 @@ namespace NFI.Controllers
     {
         private const string TimestampPattern = "yyyyMMddHHmm";
         protected List<string> FilePathList = new List<string>();
-        
+
         public string CreateUserDataFile<T>(T appDto, ApplicationType appType, string fileNamePart)
         {
             var viewName = DetailViewNames.ViewName(appType);
@@ -69,6 +69,8 @@ namespace NFI.Controllers
 
         protected void TrimPathAndOnlyFileName(Object obj)
         {
+            if (obj == null) return;
+
             var type = obj.GetType();
             var fieldInfos =
                 type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
@@ -82,6 +84,9 @@ namespace NFI.Controllers
                 if (propertyInfo.Name.Contains("Paths"))
                 {
                     var filePaths = (List<string>)propertyInfo.GetValue(obj);
+
+                    if(filePaths == null) continue;
+
                     filePaths = filePaths.Where(f => !string.IsNullOrEmpty(f)).ToList();
                     var fileNames = filePaths.Select(Path.GetFileName).ToList();
                     propertyInfo.SetValue(obj, fileNames);
