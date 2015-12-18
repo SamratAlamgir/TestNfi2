@@ -59,5 +59,8 @@
     <Setting Name="ApplicationDir8" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App8/</Value>
     </Setting>
+    <Setting Name="ApplicationDir9" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App9/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

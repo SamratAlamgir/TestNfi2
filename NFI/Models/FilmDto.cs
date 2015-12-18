@@ -64,10 +64,10 @@ namespace NFI.Models
         [Required, DisplayName("Beskriv kort prosjektet, max 200 tegn")]
         public string Beskrivkortprosjektet { get; set; }
 
-        [Required, JsonIgnore, FileSize, DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til. Last ned og benytt denne malen til å lage oversikt (word)?")]
+        [Required, JsonIgnore, FileSize, DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskudd til. Last ned og benytt denne malen til å lage oversikt (word)?")]
         public HttpPostedFileBase Lastoppdokument { get; set; }
 
-        [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til. Last ned og benytt denne malen til å lage oversikt (word)?")]
+        [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til.")]
         public string LastoppdokumentPath { get; set; }
 
         //3. Distribusjonsplan
@@ -105,7 +105,7 @@ namespace NFI.Models
         //5. Økonomi
         public Økonomi Økonomi { get; } = new Økonomi();
 
-        //7. Eventuelle andre vedlegg
+        //6. Eventuelle andre vedlegg
         public EventuelleAndreVedlegg EventuelleAndreVedlegg { get; set; }
 
     }

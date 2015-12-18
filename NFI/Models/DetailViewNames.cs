@@ -35,6 +35,9 @@ namespace NFI.Models
                 case ApplicationType.Video:
                     viewName = "../Admin/VideoDetail";
                     break;
+                case ApplicationType.DenKulturelleSkolesekken:
+                    viewName = "../Admin/DenKulturelleSkolesekkenDetail";
+                    break;
                 default:
                     throw new Exception("No application detail view created for the application " + applicationType);
 

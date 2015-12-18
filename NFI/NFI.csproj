@@ -184,6 +184,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
+    <Compile Include="Controllers\DenKulturelleSkolesekkenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\IncentiveSchemeController.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Models\DetailViewNames.cs" />
     <Compile Include="Models\EventuelleAndreVedlegg.cs" />
     <Compile Include="Models\FileSizeAttribute.cs" />
+    <Compile Include="Models\DenKulturelleSkolesekken.cs" />
     <Compile Include="Models\FinansieringsInformasjon.cs" />
     <Compile Include="Models\HovedProdusent.cs" />
     <Compile Include="Models\HyperLinkAttribute.cs" />
@@ -259,6 +261,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\email_template\registrationEmailToAdmin.txt" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\print-app.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -476,6 +479,8 @@
     <Content Include="Views\Admin\FilmDetail.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
     <Content Include="Views\Admin\VideoDetail.cshtml" />
+    <Content Include="Views\DenKulturelleSkolesekken\Index.cshtml" />
+    <Content Include="Views\Admin\DenKulturelleSkolesekkenDetail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
