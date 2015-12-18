@@ -28,7 +28,8 @@
                 {
                     "mDataProp": "AppId", "sTitle": "Download",
                     "fnCreatedCell": function (nTd, sData, oData) {
-                        $(nTd).html("<Button data-action='download' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Download</Button>");
+                        $(nTd).html("<a class='btn btn-success' data-action='download' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>" +
+                            "<span class='glyphicon glyphicon-download' ></span> Download</a>");
                     }
                 },
                 {
@@ -36,7 +37,7 @@
                     "fnCreatedCell": function (nTd, sData, oData) {
 
                         if (!oData.IsArchived) {
-                            $(nTd).html("<Button data-action='archive' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Archive</Button>");
+                            $(nTd).html("<Button class='btn btn-danger' data-action='archive' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Archive</Button>");
                         } else {
                             $(nTd).html("<h4><span class='label label-warning'>Archived</span></h4>");
                         }
