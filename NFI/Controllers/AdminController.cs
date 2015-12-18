@@ -38,6 +38,7 @@ namespace NFI.Controllers
                 result.AddRange(GetOrdningerDtoList());
                 result.AddRange(GetVideoDtoList());
                 result.AddRange(GetFilmDtoList());
+                result.AddRange(GetDenKulturelleSkolesekkenDtoList());
             }
             else
             {
@@ -88,6 +89,10 @@ namespace NFI.Controllers
 
                 case ApplicationType.Film:
                     result = GetFilmDtoList();
+                    break;
+
+                case ApplicationType.DenKulturelleSkolesekken:
+                    result = GetDenKulturelleSkolesekkenDtoList();
                     break;
             }
 
@@ -185,7 +190,7 @@ namespace NFI.Controllers
                     AppId = x.AppId,
                     AppType = "Lansering",
                     AppTypeId = ApplicationType.Lansering,
-                    ApplicantName = x.EpostadresseKontaktperson, //TODO: Need to be added
+                    ApplicantName = x.Navnpåkontaktperson,
                     Email = x.EpostadresseKontaktperson,
                     CreateTime = x.CreateTime,
                     IsArchived = x.IsArchived
@@ -256,13 +261,26 @@ namespace NFI.Controllers
             return result.ToList();
         }
 
-        /*
+        
         // Get Den Kulturelle Skolesekken data
-        private List<AdminListDto> GetFilmDtoList(string dataFilePath)
+        private List<AdminListDto> GetDenKulturelleSkolesekkenDtoList()
         {
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Film);
+
+            var result = JsonHelper.GetCollections<DenKulturelleSkolesekkenDto>(dataFilePath)
+                .Select(x => new AdminListDto()
+                {
+                    AppId = x.AppId,
+                    AppType = "Den kulturelle skolesekken",
+                    AppTypeId = ApplicationType.Film,
+                    ApplicantName = x.Navnpåkontaktperson,
+                    Email = x.Epostadressekontaktperson,
+                    CreateTime = x.CreateTime,
+                    IsArchived = x.IsArchived
+                });
+
             return result.ToList();
         }
-        */
 
         public bool MarkAsArchive(ApplicationType appType, string appId)
         {
@@ -303,6 +321,10 @@ namespace NFI.Controllers
                 case ApplicationType.Film:
                     resultSet = JsonHelper.GetCollections<FilmDto>(dataFilePath);
                     MarkAsArchiveAndSave<FilmDto>(resultSet, appId, dataFilePath);
+                    break;
+                case ApplicationType.DenKulturelleSkolesekken:
+                    resultSet = JsonHelper.GetCollections<DenKulturelleSkolesekkenDto>(dataFilePath);
+                    MarkAsArchiveAndSave<DenKulturelleSkolesekkenDto>(resultSet, appId, dataFilePath);
                     break;
             }
 
