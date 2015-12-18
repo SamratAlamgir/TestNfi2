@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -46,14 +47,15 @@ namespace NFI.Controllers
                                "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
                 var responseText = GetApplicationDetailsStringHtml(this, "../Admin/Sorfond/Details", sorfondDto);
                 mailBody += responseText;
-                
-                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, "sorfond@nfi.no", sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList);
+
+                Task.Run(() => CommunicationHelper.SendEmailToAdminAsync(mailSubject, mailBody, "sorfond@nfi.no", 
+                    sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList));
 
                 // Send mail to applicant
                 mailSubject = "Søfond søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sorfond);
 
-                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
+                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse));
 
                 return View("Success");
             }

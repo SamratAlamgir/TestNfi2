@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -38,15 +39,14 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.HovedprodusentensEpostadresse, appDto.ProduksjonsforetaketsNavn, FilePathList);
+                Task.Run(() => CommunicationHelper.SendEmailToAdminAsync(mailSubject, mailBody, mailTo, appDto.HovedprodusentensEpostadresse, appDto.ProduksjonsforetaketsNavn, FilePathList));
 
                 // Send mail to applicant
                 mailSubject = "Insentivordning søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
 
-                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse);
-                //CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.SøkersEpostAdresse);
-
+                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse));
+                
                 return View("Success");
             }
             catch (Exception ex)
