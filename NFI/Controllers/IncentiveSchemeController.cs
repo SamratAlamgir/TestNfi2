@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NFI.App_Start;
@@ -41,14 +42,14 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Email, appDto.NameApplicant, FilePathList);
+                Task.Run(() => CommunicationHelper.SendEmailToAdminAsync(mailSubject, mailBody, mailTo, appDto.Email, appDto.NameApplicant, FilePathList));
 
                 // Send mail to applicant
                 mailSubject = "Insentivordning submitted successfully";
                 mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Email);
-                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.EmailContactInfo);
+                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, appDto.Email));
+                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, appDto.EmailContactInfo));
 
                 return View("Success");
             }

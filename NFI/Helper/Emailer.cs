@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Threading.Tasks;
 using NFI.Helper;
 using NFI.Properties;
 
@@ -12,7 +14,7 @@ namespace NFI.Utility
 {
     public static class Emailer
     {
-        public static bool SendMail(string to, string subject, string body, string fromEmail, string fromName, List<string> attachmentFilePath = null)
+        public static async void SendMailAsync(string to, string subject, string body, string fromEmail, string fromName, List<string> attachmentFilePath = null)
         {
             try
             {
@@ -33,7 +35,7 @@ namespace NFI.Utility
                         Credentials = new NetworkCredential(fromEmail, "SystemNfi987")
                     };
                 }
-                
+
                 var fromAddress = new MailAddress(fromEmail, fromName);
 
                 //From address will be given as a MailAddress Object
@@ -73,27 +75,44 @@ namespace NFI.Utility
                     }
                 }
 
-              
-                LogWriter.Write("Email sending to...: " + message.To.First().Address, "Info");
                 //Send SMTP mail
-                smtpClient.Send(message);
+                string userState = "##Email sending to...: " + message.To.First().Address;
+                LogWriter.Write(userState);
+
+                smtpClient.SendCompleted += SendCompletedCallback;
+                smtpClient.SendAsync(message, userState);
             }
             catch (SmtpException smtpEx)
             {
                 LogWriter.Write(smtpEx.ToString(), "Error");
                 LogWriter.Write("Stack trace:" + smtpEx.StackTrace);
-
-                return false;
             }
             catch (Exception ex)
             {
                 LogWriter.Write(ex.ToString(), "Error");
                 LogWriter.Write("Stack trace:" + ex.StackTrace);
-                return false;
             }
-
-            return true;
+           
         }
 
+        private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
+        {
+            // Get the unique identifier for this asynchronous operation.
+            String token = (string)e.UserState;
+
+            if (e.Cancelled)
+            {
+                LogWriter.Write($"[{token}] Send canceled.");
+            }
+
+            if (e.Error != null)
+            {
+                LogWriter.Write($"Email Sent: {Environment.NewLine} [{token}] {e.Error}");
+            }
+            else
+            {
+                LogWriter.Write("##Mail sent.");
+            }
+        }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
+using NFI.Properties;
 
 namespace NFI.Controllers
 {
@@ -37,14 +39,14 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 // Mail to admin
-                //var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, "post@nfi.no", appDto.Epostadressekontaktperson, appDto.NavnKontaktpersonDenneSøknaden, FilePathList);
+                var mailTo = Settings.Default.ToEmailAddress;
+                Task.Run(() => CommunicationHelper.SendEmailToAdminAsync(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.NavnKontaktpersonDenneSøknaden, FilePathList));
 
                 // Send mail to applicant
                 mailSubject = "Tilskudd til videodistribusjon søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
+                Task.Run(() => CommunicationHelper.SendConfirmationEmailToUserAsync(mailSubject, mailBody, appDto.Epostadressekontaktperson));
 
                 return View("Success");
             }
