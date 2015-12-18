@@ -383,6 +383,9 @@ namespace NFI.Controllers
                 case ApplicationType.Video:
                     selectedApp = GetApplicationDto<VideoDto>(appId, appType);
                     break;
+                case ApplicationType.DenKulturelleSkolesekken:
+                    selectedApp = GetApplicationDto<DenKulturelleSkolesekkenDto>(appId, appType);
+                    break;
             }
             return selectedApp;
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace NFI.Models
 {
@@ -8,6 +9,7 @@ namespace NFI.Models
         public string ZipFilePath { get; set; }
         public string PdfFilePath { get; set; }
         public bool IsArchived { get; set; }
+        [DisplayName("Create Time")]
         public DateTime CreateTime { get; set; }
     }
 }
