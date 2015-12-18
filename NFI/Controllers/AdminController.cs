@@ -265,14 +265,14 @@ namespace NFI.Controllers
         // Get Den Kulturelle Skolesekken data
         private List<AdminListDto> GetDenKulturelleSkolesekkenDtoList()
         {
-            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.Film);
+            var dataFilePath = DirectoryHelper.GetApplicationDataFilePath(ApplicationType.DenKulturelleSkolesekken);
 
             var result = JsonHelper.GetCollections<DenKulturelleSkolesekkenDto>(dataFilePath)
                 .Select(x => new AdminListDto()
                 {
                     AppId = x.AppId,
                     AppType = "Den kulturelle skolesekken",
-                    AppTypeId = ApplicationType.Film,
+                    AppTypeId = ApplicationType.DenKulturelleSkolesekken,
                     ApplicantName = x.Navnpåkontaktperson,
                     Email = x.Epostadressekontaktperson,
                     CreateTime = x.CreateTime,
