@@ -6,28 +6,33 @@
             "iDisplayLength": 25,
             "aaData": data,
             //"aaSorting": [],
-            "order": [[ 3, "desc" ]],
+            "order": [[3, "desc"]],
             "bDestroy": true,
             "aoColumns": [
-                { "mDataProp": "AppType" },
-                { "mDataProp": "ApplicantName" },
-                { "mDataProp": "Email" },
+                { "mDataProp": "AppType", "sTitle": "Application Type" },
+                { "mDataProp": "ApplicantName", "sTitle": "Name" },
+                { "mDataProp": "Email", "sTitle": "Email" },
                 {
-                    "mDataProp": "CreateTime",
+                    "mDataProp": "CreateTime", "sTitle": "Create Date",
                     "fnCreatedCell": function (nTd, sData, oData) {
                         var date = new Date(parseInt(sData.substr(6)));
                         $(nTd).html(date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
                     }
                 },
-                
                 {
-                    "mDataProp": "AppId",
+                    "mDataProp": "AppId", "sTitle": "View",
+                    "fnCreatedCell": function (nTd, sData, oData) {
+                        $(nTd).html("<a data-action='view' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>View</a>");
+                    }
+                },
+                {
+                    "mDataProp": "AppId", "sTitle": "Download",
                     "fnCreatedCell": function (nTd, sData, oData) {
                         $(nTd).html("<Button data-action='download' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Download</Button>");
                     }
                 },
                 {
-                    "mDataProp": "IsArchived",
+                    "mDataProp": "IsArchived", "sTitle": "Archive",
                     "fnCreatedCell": function (nTd, sData, oData) {
 
                         if (!oData.IsArchived) {
@@ -38,11 +43,11 @@
                     }
                 }
             ],
-            "columnDefs": [{ "targets": 4, "orderable": false, "searchable": false }]
+            "columnDefs": [{ "targets": [4, 5], "orderable": false, "searchable": false }]
         });
 
         if (!eventSubscribed) {
-            $('#applicationListTable tbody').on('click', 'button', function () {
+            $('#applicationListTable tbody').on('click', 'button,a', function () {
                 var actionType = this.getAttribute("data-action");
                 var appType = this.getAttribute("data-appType");
                 var appId = this.getAttribute("data-appId");
@@ -53,6 +58,10 @@
                 else if (actionType === 'archive') {
                     markAsArchive(appType, appId);
                 }
+                else if (actionType === 'view') {
+                    showDetailView(appType, appId);
+                }
+
 
             });
 
@@ -73,10 +82,12 @@
             });
     }
 
-    var downloadZipFile = function(appType, appId) {
+    var downloadZipFile = function (appType, appId) {
         document.location = "DownloadZipFile/" + appType + "/" + appId;
     }
-
+    var showDetailView = function (appType, appId) {
+        window.open("ShowDetail/" + appType + "/" + appId, "_blank");
+    }
     var markAsArchive = function (appType, appId) {
 
         bootbox.confirm("Are you sure you want to move this application to Archive?", function (result) {
