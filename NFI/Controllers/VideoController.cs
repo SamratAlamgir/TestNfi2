@@ -8,7 +8,7 @@ using NFI.Properties;
 
 namespace NFI.Controllers
 {
-    public class InsentivordningController : BaseController
+    public class VideoController : BaseController
     {
         [CaptchaAuthorize]
         public ActionResult Index()
@@ -17,35 +17,36 @@ namespace NFI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(InsentivordningDto appDto)
+        public ActionResult Save(VideoDto appDto)
         {
             try
             {
-                var appType = ApplicationType.Insentivordning;
-                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+                var appType = ApplicationType.Video;
+                var mailSubject = "TILSKUDD TIL VIDEODISTRIBUSJON " + appDto.ProsjektetsTittel;
 
-                SaveApplication(appDto, appType, appDto.ProduksjonsforetaketsNavn, mailSubject);
+                SaveApplication(appDto, appType, appDto.NavnKontaktpersonDenneSøknaden, mailSubject);
 
                 // Send mail to archivist
-                
+
                 var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
                     "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
 
-                var responseText = GetApplicationDetailsStringHtml(this, "../Admin/InsentivordningDetail", appDto);
+                var responseText = GetApplicationDetailsStringHtml(this, "../Admin/VideoDetail", appDto);
 
                 mailBody += responseText;
 
+                // Mail to admin
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.HovedprodusentensEpostadresse, appDto.ProduksjonsforetaketsNavn, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.NavnKontaktpersonDenneSøknaden, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "Insentivordning søknad sendt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
+                mailSubject = "Tilskudd til videodistribusjon søknad sendt";
+                mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse);
-                
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Epostadressekontaktperson);
+
                 return View("Success");
             }
             catch (Exception ex)
@@ -54,6 +55,7 @@ namespace NFI.Controllers
                 ViewBag.error = ex;
                 return View("Error");
             }
+
         }
     }
 }

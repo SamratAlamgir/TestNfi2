@@ -46,8 +46,9 @@ namespace NFI.Controllers
                                "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
                 var responseText = GetApplicationDetailsStringHtml(this, "../Admin/Sorfond/Details", sorfondDto);
                 mailBody += responseText;
-                
-                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, "sorfond@nfi.no", sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList);
+
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, "sorfond@nfi.no", 
+                    sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Søfond søknad sendt";

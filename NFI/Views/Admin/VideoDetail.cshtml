@@ -1,0 +1,284 @@
+﻿@model NFI.Models.VideoDto
+
+@{
+    ViewBag.Title = "VideoDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Tilskudd til videodistribusjon</h3>
+
+<div>
+    <h4>1. Om søker </h4>
+    <dl class="well">
+        <dt>
+            @Html.DisplayNameFor(model => model.NavnAnsvarligOrganisasjon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NavnAnsvarligOrganisasjon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Organisasjonsnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Organisasjonsnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisasjonensVirkeområde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisasjonensVirkeområde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postadresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postadresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Poststed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poststed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisasjonensTelefonnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisasjonensTelefonnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NavnKontaktpersonDenneSøknaden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NavnKontaktpersonDenneSøknaden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Epostadressekontaktperson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epostadressekontaktperson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobiltelefonkontaktperson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobiltelefonkontaktperson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KvalifikasjonersomDistributørCvPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KvalifikasjonersomDistributørCvPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EvtAnnenInformasjonOrganisasjonen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EvtAnnenInformasjonOrganisasjonen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HarsøkerTidligereMottattVideodistribusjon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HarsøkerTidligereMottattVideodistribusjon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HvisJaLeggVedRapportTiltakher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HvisJaLeggVedRapportTiltakher)
+        </dd>
+
+    </dl>
+
+    <h4>2. Om prosjektet</h4>
+    <dl class="well">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProsjektetsTittel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProsjektetsTittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeskrivkortProsjektet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeskrivkortProsjektet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastoppDokumentMedOversiktPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastoppDokumentMedOversiktPath)
+        </dd>
+    </dl>
+
+    <h4>3. Distribusjonsplan</h4>
+    <dl class="well">
+        <dt>
+            @Html.DisplayNameFor(model => model.LastoppDistribusjonsplanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastoppDistribusjonsplanPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastoppMarkedsplanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastoppMarkedsplanPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TidsrammeForProsjektetFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TidsrammeForProsjektetFrom) - @Html.DisplayFor(model => model.TidsrammeForProsjektetTo)
+        </dd>
+    </dl>
+
+    <h4>4. Målgruppe(r)</h4>
+
+    <dl class="well">
+
+        @for (int i = 0; i < Model.MalgruppeDtoList.Count; i++)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.MalgruppeDtoList[i].Voksne)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MalgruppeDtoList[i].Voksne)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MalgruppeDtoList[i].BarnogFamiliefilm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MalgruppeDtoList[i].BarnogFamiliefilm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MalgruppeDtoList[i].AnnetSpesifiser)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MalgruppeDtoList[i].AnnetSpesifiser) &nbsp; &nbsp;
+                @Html.DisplayFor(model => model.MalgruppeDtoList[i].AnnetText)
+            </dd>
+        }
+
+    </dl>
+
+    <h4>5. Økonomi</h4>
+    <dl class="well">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SøknadssumNok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SøknadssumNok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalbudsjettNok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalbudsjettNok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NevneventueltAndreFinansieringskilder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NevneventueltAndreFinansieringskilder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeggvedBudsjettFinansieringsplanPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeggvedBudsjettFinansieringsplanPath)
+        </dd>
+    </dl>
+
+    <h4>6. Eventuelle andre vedlegg</h4>
+<dl class="well">
+
+    @if (Model.HarduVedleggSomRelevantePaths != null)
+    {
+        <dt>
+            @Html.DisplayNameFor(model => model.HarduVedleggSomRelevantePaths)
+        </dt>
+
+        for (var i = 0; i < Model.HarduVedleggSomRelevantePaths.Count; i++)
+        {
+            <dd>
+                File @(i + 1): @Html.DisplayFor(model => model.HarduVedleggSomRelevantePaths[i])
+            </dd>
+        }
+    }
+
+    <dt>
+        @Html.DisplayNameFor(model => model.BeskrivelseavAndreVedlegg)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.BeskrivelseavAndreVedlegg)
+    </dd>
+
+</dl>
+
+    <div class="form-group">
+        <label class="col-sm-2">Create Time:</label>
+        <div class="col-sm-10">
+            <span>@Html.DisplayTextFor(model => model.CreateTime) </span>
+        </div>
+    </div>
+</div>

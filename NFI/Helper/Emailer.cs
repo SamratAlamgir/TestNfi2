@@ -1,26 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Threading.Tasks;
 using NFI.Helper;
 using NFI.Properties;
 
 namespace NFI.Utility
 {
-    public sealed class Emailer
+    public static class Emailer
     {
-        private Emailer()
-        {
-        }
-
-        public static bool SendMail(string to, string subject, string body, string fromEmail, string fromName, List<string> attachmentFilePath = null)
+        public static async void SendMailAsync(string to, string subject, string body, string fromEmail, string fromName, List<string> attachmentFilePath = null)
         {
             try
             {
                 var message = new MailMessage();
-             
                 var smtpClient = new SmtpClient(Settings.Default.EmailHost, Convert.ToInt32(Settings.Default.EmailPort));
+
+                if (Settings.Default.ApplicationServer == "Dev")
+                {
+                    fromEmail = "systemnfi@gmail.com";
+                    smtpClient = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Timeout = 3600000, // 1 hour
+                        Credentials = new NetworkCredential(fromEmail, "SystemNfi987")
+                    };
+                }
+
                 var fromAddress = new MailAddress(fromEmail, fromName);
 
                 //From address will be given as a MailAddress Object
@@ -42,7 +57,10 @@ namespace NFI.Utility
                 {
                     foreach (var filePath in attachmentFilePath)
                     {
-                        if (!File.Exists(filePath)) { continue; }
+                        if (!File.Exists(filePath))
+                        {
+                            continue;
+                        }
 
                         // Create  the file attachment for this e-mail message.
                         Attachment data = new Attachment(filePath, MediaTypeNames.Application.Octet);
@@ -58,21 +76,43 @@ namespace NFI.Utility
                 }
 
                 //Send SMTP mail
-                smtpClient.Send(message);
+                string userState = "##Email sending to...: " + message.To.First().Address;
+                LogWriter.Write(userState);
+
+                smtpClient.SendCompleted += SendCompletedCallback;
+                smtpClient.SendAsync(message, userState);
             }
             catch (SmtpException smtpEx)
             {
                 LogWriter.Write(smtpEx.ToString(), "Error");
-                return false;
+                LogWriter.Write("Stack trace:" + smtpEx.StackTrace);
             }
             catch (Exception ex)
             {
                 LogWriter.Write(ex.ToString(), "Error");
-                return false;
+                LogWriter.Write("Stack trace:" + ex.StackTrace);
             }
-
-            return true;
+           
         }
 
+        private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
+        {
+            // Get the unique identifier for this asynchronous operation.
+            String token = (string)e.UserState;
+
+            if (e.Cancelled)
+            {
+                LogWriter.Write($"[{token}] Send canceled.");
+            }
+
+            if (e.Error != null)
+            {
+                LogWriter.Write($"Email Sent: {Environment.NewLine} [{token}] {e.Error}");
+            }
+            else
+            {
+                LogWriter.Write("##Mail sent.");
+            }
+        }
     }
 }

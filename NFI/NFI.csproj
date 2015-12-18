@@ -184,6 +184,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
+    <Compile Include="Controllers\DenKulturelleSkolesekkenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\IncentiveSchemeController.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Controllers\OrdningerController.cs" />
     <Compile Include="Controllers\SorfondController.cs" />
     <Compile Include="Controllers\UdsReisestotteController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -205,6 +207,7 @@
     <Compile Include="Helper\MailTemplate.cs" />
     <Compile Include="Helper\PdfUtility.cs" />
     <Compile Include="Helper\ZipHelper.cs" />
+    <Compile Include="Models\AdminListDto.cs" />
     <Compile Include="Models\Application1Dto.cs" />
     <Compile Include="Models\BaseAppDto.cs" />
     <Compile Include="Models\CaptachaModel.cs" />
@@ -212,6 +215,7 @@
     <Compile Include="Models\DetailViewNames.cs" />
     <Compile Include="Models\EventuelleAndreVedlegg.cs" />
     <Compile Include="Models\FileSizeAttribute.cs" />
+    <Compile Include="Models\DenKulturelleSkolesekken.cs" />
     <Compile Include="Models\FinansieringsInformasjon.cs" />
     <Compile Include="Models\HovedProdusent.cs" />
     <Compile Include="Models\HyperLinkAttribute.cs" />
@@ -230,6 +234,7 @@
     <Compile Include="Models\IncentiveSchemeDto.cs" />
     <Compile Include="Models\InsentivordningDto.cs" />
     <Compile Include="Models\UdsReisestotteDto.cs" />
+    <Compile Include="Models\VideoDto.cs" />
     <Compile Include="Models\ViewModelForm1Data.cs" />
     <Compile Include="Models\NotVisibleAttribute.cs" />
     <Compile Include="Models\VisueltMateriale.cs" />
@@ -258,6 +263,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\email_template\registrationEmailToAdmin.txt" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\print-app.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -427,6 +433,7 @@
     <Content Include="Scripts\Ordninger\ordninger.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\Sorfond\sorfond.js" />
+    <Content Include="Scripts\Video\Video.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -472,6 +479,10 @@
     <Content Include="Views\Admin\UdsReisestotteDetail.cshtml" />
     <Content Include="Views\Film\Index.cshtml" />
     <Content Include="Views\Admin\FilmDetail.cshtml" />
+    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Admin\VideoDetail.cshtml" />
+    <Content Include="Views\DenKulturelleSkolesekken\Index.cshtml" />
+    <Content Include="Views\Admin\DenKulturelleSkolesekkenDetail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

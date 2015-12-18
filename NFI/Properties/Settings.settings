@@ -18,19 +18,16 @@
       <Value Profile="(Default)">Attachment/</Value>
     </Setting>
     <Setting Name="FromEmailAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">systemnfi@gmail.com</Value>
+      <Value Profile="(Default)">post@nfi.no</Value>
     </Setting>
     <Setting Name="EmailHost" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">smtp.gmail.com</Value>
+      <Value Profile="(Default)">smtp.nfi.no</Value>
     </Setting>
     <Setting Name="EmailPort" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">587</Value>
+      <Value Profile="(Default)">25</Value>
     </Setting>
     <Setting Name="FromName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">NFI</Value>
-    </Setting>
-    <Setting Name="FromPassword" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SystemNfi987</Value>
+      <Value Profile="(Default)">NFI Service</Value>
     </Setting>
     <Setting Name="ToEmailAddress" Type="System.String" Scope="Application">
       <Value Profile="(Default)">systemnfi@gmail.com</Value>
@@ -56,8 +53,17 @@
     <Setting Name="ApplicationDir6" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App6/</Value>
     </Setting>
+    <Setting Name="ApplicationDir7" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App7/</Value>
+    </Setting>
     <Setting Name="ApplicationDir8" Type="System.String" Scope="Application">
       <Value Profile="(Default)">App8/</Value>
+    </Setting>
+    <Setting Name="ApplicationDir9" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App9/</Value>
+    </Setting>
+    <Setting Name="ApplicationServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Dev</Value>
     </Setting>
   </Settings>
 </SettingsFile>

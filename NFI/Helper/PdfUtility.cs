@@ -28,8 +28,7 @@ namespace NFI.Helper
                         htmlContext.SetTagFactory(Tags.GetHtmlTagProcessorFactory());
                         var cssResolver = XMLWorkerHelper.GetInstance().GetDefaultCssResolver(false);
                         cssResolver.AddCssFile(Path.Combine(rootpath,@"Content/bootstrap.css"), true);
-                        cssResolver.AddCss(".table th, .table td { border-top: none !important;}", true);
-                        cssResolver.AddCss("body {height: 842px;width: 595px;margin - left: auto;margin - right: auto;}", true);
+                        cssResolver.AddCssFile(Path.Combine(rootpath, @"Content/print-app.css"), true);
                         IPipeline pipeline = new CssResolverPipeline(cssResolver, new HtmlPipeline(htmlContext, new PdfWriterPipeline(document, writer)));
                         writer.CloseStream = false;
                         document.Open();
