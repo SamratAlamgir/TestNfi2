@@ -23,7 +23,6 @@
                 {
                     "mDataProp": "AppId",
                     "fnCreatedCell": function (nTd, sData, oData) {
-                        //$(nTd).html("<a href='/" + oData.ZipFilePath + "'>Download</a>");
                         $(nTd).html("<Button data-action='download' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Download</Button>");
                     }
                 },
@@ -47,7 +46,6 @@
                 var actionType = this.getAttribute("data-action");
                 var appType = this.getAttribute("data-appType");
                 var appId = this.getAttribute("data-appId");
-                //markAsArchive(appId);
 
                 if (actionType === 'download') {
                     downloadZipFile(appType, appId);
@@ -66,7 +64,7 @@
         var appType = $("#appType").val();
         var includeArchive = $("#includeArchive").prop("checked");
 
-        $.getJSON("/admin/GetApplications", { "appType": appType, "includeArchive": includeArchive })
+        $.getJSON("GetApplications", { "appType": appType, "includeArchive": includeArchive })
             .done(function (data) {
                 setGridData(data);
             })
@@ -76,8 +74,7 @@
     }
 
     var downloadZipFile = function(appType, appId) {
-        //$.get("/admin/DownloadZipFile/" + appType + "/" + appId);
-        document.location = "/admin/DownloadZipFile/" + appType + "/" + appId;
+        document.location = "DownloadZipFile/" + appType + "/" + appId;
     }
 
     var markAsArchive = function (appType, appId) {
@@ -85,7 +82,7 @@
         bootbox.confirm("Are you sure you want to move this application to Archive?", function (result) {
             if (!result) return; // do nothing
 
-            $.post("/admin/MarkAsArchive/" + appType + "/" + appId)
+            $.post("MarkAsArchive/" + appType + "/" + appId)
                 .done(function () {
                     loadGridData();
                 })
