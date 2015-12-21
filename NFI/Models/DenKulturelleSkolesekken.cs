@@ -142,7 +142,17 @@ namespace NFI.Models
         [DisplayName("Legg ved prosjektes budsjett")]
         public string ProsjektesBudsjettPath { get; set; }
 
-        //3. Eventuelle andre vedlegg
+        [Required, DisplayName("Søknadssum i NOK")]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Antall")]
+        public string Søknadssum { get; set; }
+
+        [Required, DisplayName("Totalbudsjett i NOK")]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Antall")]
+        public string Totalbudsjett { get; set; }
+
+        [Required, DisplayName("Nevn eventuelt andre finansieringskilder.Skriv Navn, Beløp NOK")]
+        public string NevnEventueltAndre { get; set; }
+
         public EventuelleAndreVedlegg EventuelleAndreVedlegg { get; set; }
 
     }

@@ -225,141 +225,184 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-8">
-                    <table class="table ">
-                        <tbody>
+        <tr>
+            <td class="col-md-8">
+                <table class="table ">
+                    <tbody>
 
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Prosjektetstittel)
-                                </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Prosjektetstittel)
+                        </td>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.Prosjektetstittel)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Beskrivkortprosjektet)
-                                </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Prosjektetstittel)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Beskrivkortprosjektet)
+                        </td>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.Beskrivkortprosjektet)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.ProsjektbeskrivelsePath)
-                                </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Beskrivkortprosjektet)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ProsjektbeskrivelsePath)
+                        </td>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.ProsjektbeskrivelsePath)
-                                </td>
-                            </tr>
+                        <td>
+                            @Html.DisplayFor(model => model.ProsjektbeskrivelsePath)
+                        </td>
+                    </tr>
 
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Hvaslagsprosjekt)
-                                </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Hvaslagsprosjekt)
+                        </td>
 
-                                <td>
-                                   @Model.Hvaslagsprosjekt.Aggregate((current, har) => current + " ," + har)
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Prosjektetmålgruppe)
-                                </td>
-
-                                <td>
-                                    @Model.Prosjektetmålgruppe.Aggregate((current, har) => current + " ," + har)
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Eromfangavklart)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Eromfangavklart)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Hvisjaoppgi)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Hvisjaoppgi)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Varighet)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Varighet)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Beskrivkortelevenes)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(model => model.Beskrivkortelevenes)
-                                </td>
-                            </tr>
+                        <td>
+                            @Model.Hvaslagsprosjekt.Aggregate((current, har) => current + " ," + har)
+                        </td>
+                    </tr>
 
 
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.NårskalprosjektetFromDate)
-                                </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Prosjektetmålgruppe)
+                        </td>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.NårskalprosjektetFromDate)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.NårskalprosjektetToDate)
-                                </td>
+                        <td>
+                            @Model.Prosjektetmålgruppe.Aggregate((current, har) => current + " ," + har)
+                        </td>
+                    </tr>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.NårskalprosjektetToDate)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.TidsplanProsjektetPath)
-                                </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Eromfangavklart)
+                        </td>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.TidsplanProsjektetPath)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.ProsjektesBudsjettPath)
-                                </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Eromfangavklart)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Hvisjaoppgi)
+                        </td>
 
-                                <td>
-                                    @Html.DisplayFor(model => model.ProsjektesBudsjettPath)
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Hvisjaoppgi)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Varighet)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.Varighet)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Beskrivkortelevenes)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.Beskrivkortelevenes)
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.NårskalprosjektetFromDate)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.NårskalprosjektetFromDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.NårskalprosjektetToDate)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.NårskalprosjektetToDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.TidsplanProsjektetPath)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.TidsplanProsjektetPath)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ProsjektesBudsjettPath)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.ProsjektesBudsjettPath)
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <h4>3. Økonomi</h4>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-md-8">
+                <table class="table ">
+                    <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Søknadssum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Søknadssum)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Totalbudsjett)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.Totalbudsjett)
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.NevnEventueltAndre)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.NevnEventueltAndre)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+
+
+        <tr>
                 <td>
-                    <h4>3. Eventuelle andre vedlegg</h4>
+                    <h4>4. Eventuelle andre vedlegg</h4>
                 </td>
             </tr>
             <tr>
