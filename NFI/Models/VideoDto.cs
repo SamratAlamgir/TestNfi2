@@ -134,7 +134,7 @@ namespace NFI.Models
         public string LeggvedBudsjettFinansieringsplanPath { get; set; }
 
         // 6. Eventuelle andre vedlegg
-        [JsonIgnore]
+        [JsonIgnore, FileSize]
         [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her")]
         public List<HttpPostedFileBase> HarduVedleggSomRelevante { get; set; }
 
