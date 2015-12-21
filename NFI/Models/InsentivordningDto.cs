@@ -63,10 +63,10 @@ namespace NFI.Models
         public string HovedproduksjonsforetaketsHjemmeside { get; set; }
         
         [JsonIgnore, Required, FileSize]
-        [DisplayName("Legg ved Certificate of origin for hovedproduksjonsselskap")]
-        public HttpPostedFileBase LeggCertificateOriginForHovedproduksjonsselskap { get; set; }
-        [DisplayName("Legg ved Certificate of origin for hovedproduksjonsselskap")]
-        public string LeggCertificateOriginForHovedproduksjonsselskapPath { get; set; }
+        [DisplayName("Legg ved firmaattest/registerutskrift fra enhetsregisteret")]
+        public HttpPostedFileBase LeggvedFirmaattest { get; set; }
+        [DisplayName("Legg ved firmaattest/registerutskrift fra enhetsregisteret")]
+        public string LeggvedFirmaattestPath { get; set; }
 
         [JsonIgnore, Required,  FileSize]
         [DisplayName("Legg ved hovedprodusentens CV")]
@@ -90,9 +90,8 @@ namespace NFI.Models
         [DisplayName("Søkers mobiltelefon")]
         public string SøkersMobiltelefon { get; set; }
 
-        [Required]
         [EmailAddress(ErrorMessage = "Ugyldig e-postadresse")]
-        [DisplayName("Søkers epost-adresse")]
+        [DisplayName("Søkers e-postadresse")]
         public string SøkersEpostAdresse { get; set; }
 
         [DisplayName("Produksjonsforetakets navn")]
@@ -151,9 +150,9 @@ namespace NFI.Models
         public DateTime AntattSisteOpptaksdagNorge { get; set; }
 
         [JsonIgnore, Required, FileSize]
-        [DisplayName("Legg ved utfylt kultur-og produksjonstest")]
+        [DisplayName("Legg ved utfylt kvalifiseringstest")]
         public HttpPostedFileBase LeggvedUtfyltkulturProduksjonstest { get; set; }
-        [DisplayName("Legg ved utfylt kultur-og produksjonstest.")]
+        [DisplayName("Legg ved utfylt kvalifiseringstest")]
         public string LeggvedUtfyltkulturProduksjonstestPath { get; set; }
 
         [Required]
@@ -167,9 +166,9 @@ namespace NFI.Models
         public string LeggvedManuskriptPath { get; set; }
 
         [JsonIgnore, Required, FileSize]
-        [DisplayName("Legg ved treatment")]
+        [DisplayName("Legg ved treatment/sesongbue")]
         public HttpPostedFileBase LeggvedTreatment { get; set; }
-        [DisplayName("Legg ved treatment")]
+        [DisplayName("Legg ved treatment/sesongbue")]
         public string LeggvedTreatmentPath { get; set; }
 
         [JsonIgnore, Required, FileSize]
@@ -209,7 +208,7 @@ namespace NFI.Models
         [DisplayName("Legg ved distribusjonsplan")]
         public string LeggvedDistribusjonsPlanPath { get; set; }
 
-        [JsonIgnore, FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Legg internasjonal distribusjonsavtale")]
         public HttpPostedFileBase LegginternasjonalDistribusjonsavtale { get; set; }
         [DisplayName("Legg internasjonal distribusjonsavtale")]
@@ -221,9 +220,9 @@ namespace NFI.Models
         public string TotalbudsjettForProsjektet { get; set; }
 
         [JsonIgnore, Required, FileSize]
-        [DisplayName("Legg ved totalbudsjettet for prosjekte")]
+        [DisplayName("Legg ved totalbudsjett for prosjektet")]
         public HttpPostedFileBase LeggvedTotalbudsjettet { get; set; }
-        [DisplayName("Legg ved totalbudsjettet for prosjekte")]
+        [DisplayName("Legg ved totalbudsjett for prosjektet")]
         public string LeggvedTotalbudsjettetPath { get; set; }
 
         [Required]

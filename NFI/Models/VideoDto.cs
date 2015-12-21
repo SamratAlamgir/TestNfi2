@@ -83,10 +83,10 @@ namespace NFI.Models
         public string BeskrivkortProsjektet { get; set; }
 
         [JsonIgnore, FileSize]
-        [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til?")]
+        [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til.")]
         public HttpPostedFileBase LastoppDokumentMedOversikt { get; set; }
 
-        [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til?")]
+        [DisplayName("Last opp dokument med oversikt over hvilke titler det søkes tilskuddd til.")]
         public string LastoppDokumentMedOversiktPath { get; set; }
 
         // 3. Distribusjonsplan
@@ -104,7 +104,7 @@ namespace NFI.Models
         [DisplayName("Last opp markedsplan")]
         public string LastoppMarkedsplanPath { get; set; }
 
-        [DisplayName("Tidsramme for prosjektet?")]
+        [DisplayName("Tidsramme for prosjektet? Fra - til")]
         public string TidsrammeForProsjektetFrom { get; set; }
         public string TidsrammeForProsjektetTo { get; set; }
 
