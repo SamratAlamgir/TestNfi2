@@ -32,7 +32,7 @@ namespace NFI.Models
         public string DateForOpptaksstart { get; set; }
 
         [Required]
-        [DisplayName("Antatt ferdigstillelse- eller premiereDate")]
+        [DisplayName("Antatt ferdigstillelse- eller premieredato")]
         public string AntattFerdigstillelseEllerPremiereDate { get; set; }
 
         [Required]

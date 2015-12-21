@@ -40,13 +40,13 @@ namespace NFI.Models
         public string Navnpåkontaktperson { get; set; }
         [Required, EmailAddress(ErrorMessage = "Ugyldig e-postadresse"), DisplayName("E-postadresse kontaktperson")]
         public string EpostadresseKontaktperson { get; set; }
-        [DisplayName("Mobiltelefon kontaktperson")]
+        [Required,DisplayName("Mobiltelefon kontaktperson")]
         public string Mobiltelefon { get; set; }
         [DisplayName("Evt. annen informasjon om organisasjonen")]
         public string EvtannenInformasjonOmOrganisasjonen { get; set; }
-        [Required, DisplayName("Har søker tidligere mottatt tilskudd fra disse midlene??")]
+        [Required, DisplayName("Har søker tidligere mottatt tilskudd fra disse midlene?")]
         public string Harsøkertidligere { get; set; }
-        [DisplayName("Hvis JA, har Norsk filminstitutt mottatt rapport i etterkant")]
+        [DisplayName("Hvis JA, har Norsk filminstitutt mottatt rapport i etterkant?")]
         public string HvisJAharNorsk { get; set; }
 
         [Required, DisplayName("Har søker gjennomført dette eller tilsvarende prosjekter tidligere?")]
@@ -77,7 +77,7 @@ namespace NFI.Models
 
         [Required, DisplayName("På hvilken arena skal prosjektet gjennomføres? Oppgi sted")]
         public string PåhvilkenArena { get; set; }
-        [Required, DisplayName(" Når skal prosjektet gjennomføres")]
+        [Required, DisplayName("Når skal prosjektet gjennomføres?")]
         public string NårskalProsjektetGjennomføres { get; set; }
 
         [Required, DisplayName("Hva er hovedmålsetningen til prosjektet? Kort beskrivelse.")]
@@ -88,7 +88,7 @@ namespace NFI.Models
         [DisplayName(" Oppgi prosjektets samarbeidspartnere, deltakere eller andre som omfattes av prosjektet.")]
         public string OppgiProsjektets { get; set; }
 
-        [DisplayName(" Hva er den forventede samløede effekten av tiltaket for samarbeidspartnerne?")]
+        [DisplayName("Hva er den forventede samlede effekten av tiltaket for samarbeidspartnerne?")]
         public string HvaerdenForventede { get; set; }
         // 3. Økonomi
 
@@ -115,7 +115,7 @@ namespace NFI.Models
 
         //4. Eventuelle andre vedlegg
 
-        [FileSize, JsonIgnore, DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]
+        [FileSize, JsonIgnore, DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg ved her:")]
         public List<HttpPostedFileBase> Harduvedleggsom { get; set; }
 
         [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]

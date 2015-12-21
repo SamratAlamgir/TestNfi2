@@ -33,7 +33,7 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Ordninger;
-                var mailSubject = $"{appDto.Prosjektetstittel}  {appDto.Prosjektetstittel}";
+                var mailSubject = $"{appDto.Hvilkenordningsøkes}  {appDto.Prosjektetstittel}";
 
                 SaveApplication(appDto, appType, appDto.Prosjektetstittel, mailSubject);
 
