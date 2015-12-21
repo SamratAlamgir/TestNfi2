@@ -48,5 +48,12 @@ namespace NFI.Models
         public HttpPostedFileBase Dokumentasjon { get; set; }
         [DisplayName("Dokumentasjon / invitasjon til deltakelse på festival eller annen filmpresentasjon")]
         public string DokumentasjonPath { get; set; }
+
+        [DisplayName("Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)")]
+        public string EventueltVisueltMateriale { get; set; }
+
+        [DisplayName("Oppgi evt passord til nettadresse med visuelt materiale")]
+        public string MedVisueltMateriale { get; set; }
+
     }
 }
