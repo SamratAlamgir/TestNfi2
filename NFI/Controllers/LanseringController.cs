@@ -32,7 +32,7 @@ namespace NFI.Controllers
 
                 //TODO: Send the mails
                 // Send mail to archivist 
-                var mailBody = MailTemplate.GetMailBodyForAdmin();
+                var mailBody = MailTemplate.GetMailBodyForAdmin(appDto.AppId, appType);
 
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
                 mailBody += responseText;

@@ -32,7 +32,7 @@ namespace NFI.Controllers
                 var mailSubject = $"TILSKUDD TIL FILMDISTRIBUSJON {appDto.Hvasøkesdet}  {appDto.Prosjektetstittel}";
                 SaveApplication(appDto, appType, appDto.Prosjektetstittel, mailSubject);
                 // Send mail to archivist 
-                var mailBody = MailTemplate.GetMailBodyForAdmin();
+                var mailBody = MailTemplate.GetMailBodyForAdmin(appDto.AppId, appType);
 
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
 

@@ -7,19 +7,21 @@ namespace NFI.Helper
     public static class MailTemplate
     {
 
-        public static string GetMailBodyForAdmin(bool inEnglish = false)
+        public static string GetMailBodyForAdmin(Guid appId, ApplicationType appType, bool inEnglish = false)
         {
             string body = "";
 
             if (!inEnglish)
             {
                 body = @"Det har blitt lagret en ny søknad på server. <br/>
-                        Klikk her for å logge inn å se: <a href = '" + GetApplicationListViewLink() + @"'> Klikk her </a><br/>";
+                        Klikk her for å logge inn å se: <a href = '" + GetApplicationListViewLink() + @"'> Klikk her </a><br/>
+                        Last ned zip-fil: <a href = '" + GetDownloadLinkForFile(appId, appType) + @"'> Klikk her </a><br/>";
             }
             else
             {
                 body = @"There is a new application saved on the server. <br/>
-                        Log in here to see: <a href = '" + GetApplicationListViewLink() + @"'> Click here </a><br/>";
+                        Log in here to see: <a href = '" + GetApplicationListViewLink() + @"'> Click here </a><br/>
+                        Download zip file: <a href = '" + GetDownloadLinkForFile(appId, appType) + @"'> Click here </a><br/> ";
             }
 
             return body;
@@ -30,9 +32,15 @@ namespace NFI.Helper
             return Settings.Default.HostServerUrl + "/" + "Admin/ApplicationList";
         }
 
-        private static string GetDetailViewLink(string appId, ApplicationType appType)
+        private static string GetDetailViewLink(Guid appId, ApplicationType appType)
         {
             var fileLink = "Admin/ShowDetail/" + (int)appType + "/" + appId;
+            return Settings.Default.HostServerUrl + "/" + fileLink;
+        }
+
+        private static string GetDownloadLinkForFile(Guid appId, ApplicationType appType)
+        {
+            var fileLink = "Admin/DownloadZipFile/" + (int)appType + "/" + appId;
             return Settings.Default.HostServerUrl + "/" + fileLink;
         }
 

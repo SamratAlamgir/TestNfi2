@@ -41,7 +41,7 @@ namespace NFI.Controllers
                 SaveApplication(sorfondDto, appType, sorfondDto.Prosjektinformasjon.TittelPåProsjektet, mailSubject);
                 
                 // Send the mails
-                var mailBody = MailTemplate.GetMailBodyForAdmin();
+                var mailBody = MailTemplate.GetMailBodyForAdmin(sorfondDto.AppId, appType);
 
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), sorfondDto);
                 mailBody += responseText;
