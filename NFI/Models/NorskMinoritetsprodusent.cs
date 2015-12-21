@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace NFI.Models
 {
     [DisplayName("Kontaktinformasjon norsk minoritetsprodusent:")]
-    public class NorskMinoritetsprodusent:IMember
+    public class NorskMinoritetsprodusent : IMember
     {
         [Required]
         [DisplayName("Produksjonsforetakets navn")]
@@ -33,23 +33,23 @@ namespace NFI.Models
         [DisplayName("Produksjonsforetakets hjemmeside")]
         public string ProduksjonsforetaketsHjemmeside { get; set; }
 
-        [Required,DisplayName("Minoritetsprodusentens navn")]
+        [Required, DisplayName("Minoritetsprodusentens navn")]
         public string MinoritetsprodusentensNavn { get; set; }
 
-        [Required,DisplayName("Minoritetsprodusentens tittel")]
+        [Required, DisplayName("Minoritetsprodusentens tittel")]
         public string MinoritetsprodusentensTittel { get; set; }
 
-        [Required,DisplayName("Minoritetsprodusentenss telefon ")]
+        [Required, DisplayName("Minoritetsprodusentenss telefon ")]
         public string MinoritetsprodusentenssTelefon { get; set; }
 
-        [Required,DisplayName("Minoritetsprodusentens mobiltelefon ")]
+        [Required, DisplayName("Minoritetsprodusentens mobiltelefon ")]
         public string MinoritetsprodusentensMobiltelefon { get; set; }
 
         [DisplayName("Minoritetsprodusentens fulle adresse ")]
         public string MinoritetsprodusentensFulleAdresse { get; set; }
 
         [Required]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [EmailAddress(ErrorMessage = "Ugyldig e-postadresse")]
         [DisplayName("Minoritetsprodusentens e-postadresse")]
         public string MinoritetsprodusentensEpostadresse { get; set; }
 

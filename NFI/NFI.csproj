@@ -229,6 +229,7 @@
     <Compile Include="Models\OrdningerDto.cs" />
     <Compile Include="Models\Prosjektinformasjon.cs" />
     <Compile Include="Models\Regissoren.cs" />
+    <Compile Include="Models\RequiredAttribute.cs" />
     <Compile Include="Models\Sorfond.cs" />
     <Compile Include="Models\IncentiveSchemeDto.cs" />
     <Compile Include="Models\InsentivordningDto.cs" />
@@ -262,7 +263,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\email_template\registrationEmailToAdmin.txt" />
     <Content Include="Content\jquery-ui.css" />
-    <Content Include="Content\print-app.css" />
+    <Content Include="Content\pdfreport.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -347,6 +348,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\images\Sorting icons.psd" />
+    <Content Include="fonts\GOTHIC.TTF" />
     <None Include="Properties\PublishProfiles\NFI.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

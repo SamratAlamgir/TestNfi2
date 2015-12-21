@@ -11,48 +11,48 @@ namespace NFI.Models
     public class VideoDto : BaseAppDto
     {
         // 1. Om søker
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Navn på ansvarlig organisasjon")]
         public string NavnAnsvarligOrganisasjon { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
-        [Range(0, 999999999, ErrorMessage = "Please enter valid Organisasjonsnummer")]
+        [Required]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Organisasjonsnummer")]
         [DisplayName("Organisasjonsnummer")]
         public string Organisasjonsnummer { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Organisasjonens virkeområde/fagfelt (eks. kultur/kunst/utdanning etc)")]
         public string OrganisasjonensVirkeområde { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Postadresse")]
         public string Postadresse { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Postnummer")]
         public string Postnummer { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Poststed")]
         public string Poststed { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Organisasjonens telefonnummer")]
         public string OrganisasjonensTelefonnummer { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Navn på kontaktperson for denne søknaden")]
         public string NavnKontaktpersonDenneSøknaden { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [Required]
+        [EmailAddress(ErrorMessage = "Ugyldig e-postadresse")]
         [DisplayName("E-postadresse kontaktperson")]
         public string Epostadressekontaktperson { get; set; }
 
         [DisplayName("Mobiltelefon kontaktperson")]
         public string Mobiltelefonkontaktperson { get; set; }
 
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Kvalifikasjoner som distributør i form av CV")]
         public HttpPostedFileBase KvalifikasjonersomDistributørCv { get; set; }
 
@@ -62,7 +62,7 @@ namespace NFI.Models
         [DisplayName("Evt. annen informasjon om organisasjonen")]
         public string EvtAnnenInformasjonOrganisasjonen { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Har søker tidligere mottatt tilskudd til videodistribusjon?")]
         public string HarsøkerTidligereMottattVideodistribusjon { get; set; }
 
@@ -74,11 +74,11 @@ namespace NFI.Models
         public string HvisJaLeggVedRapportTiltakherPath { get; set; }
 
         // 2. Om prosjektet
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Prosjektets tittel")]
         public string ProsjektetsTittel { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Beskriv kort prosjektet, max 200 tegn")]
         public string BeskrivkortProsjektet { get; set; }
 
@@ -90,20 +90,20 @@ namespace NFI.Models
         public string LastoppDokumentMedOversiktPath { get; set; }
 
         // 3. Distribusjonsplan
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Last opp distribusjonsplan")]
         public HttpPostedFileBase LastoppDistribusjonsplan { get; set; }
 
         [DisplayName("Last opp distribusjonsplan")]
         public string LastoppDistribusjonsplanPath { get; set; }
 
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Last opp markedsplan")]
         public HttpPostedFileBase LastoppMarkedsplan { get; set; }
 
         [DisplayName("Last opp markedsplan")]
         public string LastoppMarkedsplanPath { get; set; }
-        
+
         [DisplayName("Tidsramme for prosjektet?")]
         public string TidsrammeForProsjektetFrom { get; set; }
         public string TidsrammeForProsjektetTo { get; set; }
@@ -114,19 +114,19 @@ namespace NFI.Models
         public List<MalgruppeDto> MalgruppeDtoList { get; set; }
 
         // 5. Økonomi
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Søknadssum i NOK")]
         public string SøknadssumNok { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Totalbudsjett i NOK")]
         public string TotalbudsjettNok { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Nevn eventuelt andre finansieringskilder. Skriv Navn, Beløp NOK")]
         public string NevneventueltAndreFinansieringskilder { get; set; }
 
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Legg ved budsjett og finansieringsplan")]
         public HttpPostedFileBase LeggvedBudsjettFinansieringsplan { get; set; }
 
@@ -154,7 +154,7 @@ namespace NFI.Models
         public string BarnogFamiliefilm { get; set; }
 
         [DisplayName("3. Annet, spesifiser [Single line text]")]
-        public string AnnetSpesifiser  { get; set; }
+        public string AnnetSpesifiser { get; set; }
 
         public string AnnetText { get; set; }
     }
