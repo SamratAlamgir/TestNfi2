@@ -143,11 +143,11 @@ namespace NFI.Models
         public string ProsjektesBudsjettPath { get; set; }
 
         [Required, DisplayName("Søknadssum i NOK")]
-        [Range(0, 999999999, ErrorMessage = "Ugyldig Organisasjonsnummer")]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Antall")]
         public string Søknadssum { get; set; }
 
         [Required, DisplayName("Totalbudsjett i NOK")]
-        [Range(0, 999999999, ErrorMessage = "Ugyldig Organisasjonsnummer")]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Antall")]
         public string Totalbudsjett { get; set; }
 
         [Required, DisplayName("Nevn eventuelt andre finansieringskilder.Skriv Navn, Beløp NOK")]
