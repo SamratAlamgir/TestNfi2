@@ -36,16 +36,40 @@
             </tr>
 
             <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.NettadresseVisueltMateriale)
-                </td>
-                <td>
-                    @foreach (NettadresseVisueltMateriale t in Model.NettadresseVisueltMateriale)
-                    {
-                        @Html.Partial("../Admin/Sorfond/NettadresseVisueltMaterialeDetails", t)
-                    }
+                <td colspan="2">
+                    <h4>@Html.DisplayNameFor(model => model.NettadresseVisueltMateriale)</h4>
                 </td>
             </tr>
+            @if (Model.NettadresseVisueltMateriale.Count > 0)
+            {
+                for (var i = 0; i < Model.NettadresseVisueltMateriale.Count; ++i)
+                {
+                    <tr>
+                        <td colspan="2">
+                            <h4>
+                               @(i+1). Nett adresse Visuelt Materiale
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => Model.NettadresseVisueltMateriale[i].Nettadressetil)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => Model.NettadresseVisueltMateriale[i].Nettadressetil)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => Model.NettadresseVisueltMateriale[i].Eventueltpassord)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => Model.NettadresseVisueltMateriale[i].Eventueltpassord)
+                        </td>
+                    </tr>
+                }
+
+            }
         </tbody>
     </table>
 </div>

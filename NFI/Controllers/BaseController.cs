@@ -25,9 +25,13 @@ namespace NFI.Controllers
             var fullPath = Path.Combine(path, fileName);
             var htmlString = GetApplicationDetailsStringHtml(this, viewName, appDto);
             var startIndex = htmlString.IndexOf("<head>", StringComparison.Ordinal) + 6;
+
             var length = htmlString.IndexOf("</head>", StringComparison.Ordinal) - startIndex;
-            var replace = htmlString.Substring(startIndex, length);
-            htmlString = htmlString.Replace(replace, "");
+            if (length > 0)
+            {
+                var replace = htmlString.Substring(startIndex, length);
+                htmlString = htmlString.Replace(replace, "");
+            }
             PdfUtility.SavePdfFile(htmlString, fullPath, Server.MapPath("~"));
             return fullPath;
         }

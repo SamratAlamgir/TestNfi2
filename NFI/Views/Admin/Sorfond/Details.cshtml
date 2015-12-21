@@ -2,61 +2,67 @@
 
 @{
     ViewBag.Title = "SorfondDetails";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
-<div class="col-md-8">
-    <h2>Søknadsskjema detaljer SØRFOND</h2>
-    <table class="table ">
-        <tbody>
-            <tr>
-                <td>
-                    @{ Html.RenderPartial("../Admin/Sorfond/NorskMinoritetsprodusentDetails", Model.NorskMinoritetsprodusent);}
-                </td>
-            </tr>
+<head>
+    @Styles.Render("~/Content/pdfreport.css")
+</head>
+
+<body>
+    <div>
+        <h2>Søknadsskjema detaljer SØRFOND</h2>
+        <table id="tableContainer">
+            <tbody>
+                <tr>
+                    <td>
+                        @{ Html.RenderPartial("../Admin/Sorfond/NorskMinoritetsprodusentDetails", Model.NorskMinoritetsprodusent);}
+                    </td>
+                </tr>
 
 
-            <tr><td>@Html.Partial("../Admin/Sorfond/HovedProdusentDetails", Model.HovedProdusent)</td></tr>
+                <tr><td>@Html.Partial("../Admin/Sorfond/HovedProdusentDetails", Model.HovedProdusent)</td></tr>
 
-            <tr>
-                <td>
-                    @Html.Partial("../Admin/Sorfond/ProsjektinformasjonDetails", Model.Prosjektinformasjon)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.Partial("../Admin/Sorfond/ProsjektinformasjonDetails", Model.Prosjektinformasjon)
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    @Html.Partial("../Admin/Sorfond/InformasjonOmPersonerRollerDetails", Model.InformasjonOmPersonerRoller)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.Partial("../Admin/Sorfond/InformasjonOmPersonerRollerDetails", Model.InformasjonOmPersonerRoller)
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    @Html.Partial("../Admin/Sorfond/FinansieringsInformasjonDetails", Model.FinansieringsInformasjon)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.Partial("../Admin/Sorfond/FinansieringsInformasjonDetails", Model.FinansieringsInformasjon)
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    @Html.Partial("../Admin/Sorfond/DacListen", Model.DacListen)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.Partial("../Admin/Sorfond/DacListen", Model.DacListen)
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    @Html.Partial("../Admin/Sorfond/VisueltMateriale", Model.VisueltMateriale)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.Partial("../Admin/Sorfond/EventuelleAndreVedleggDetails", Model.EventuelleAndreVedlegg)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h4>      @Html.DisplayNameFor(model => model.CreateTime): @Html.DisplayFor(model => model.CreateTime)</h4>
-                </td>
+                <tr>
+                    <td>
+                        @Html.Partial("../Admin/Sorfond/VisueltMateriale", Model.VisueltMateriale)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Partial("../Admin/Sorfond/EventuelleAndreVedleggDetails", Model.EventuelleAndreVedlegg)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4> @Html.DisplayNameFor(model => model.CreateTime): @Html.DisplayFor(model => model.CreateTime)</h4>
+                    </td>
 
-            </tr>
-        </tbody>
-    </table>
-</div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
