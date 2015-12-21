@@ -39,11 +39,8 @@ namespace NFI.Models
 
         [Required, DisplayName("Hovedprodusentens tittel")]
         public string HovedprodusentensTittel { get; set; }
-
-        [DisplayName("Hovedprodusentens adresse")]
-        public string HovedprodusentensAdresse { get; set; }
-
-        [Required, DisplayName("Hovedprodusentens mobiltelefon ")]
+        
+        [Required, DisplayName("Hovedprodusentens mobiltelefon")]
         public string HovedprodusentensMobiltelefon { get; set; }
 
         [Required, EmailAddress(ErrorMessage = "Ugyldig e-postadresse"), DisplayName("Hovedprodusentens e-postadresse ")]

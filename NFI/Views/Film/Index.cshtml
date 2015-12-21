@@ -251,7 +251,11 @@
                             @Html.LabelFor(model => model.Voksne, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                             <div class="col-md-6">
                                 <div class="col-md-5">
-                                    @Html.TextBoxFor(model => model.Voksne, new { type = "number", min = 1, max = 3,  @class = "form-control" } )
+                                    <select name="Voksne" class="form-control">
+                                        <option value="1" selected="selected">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
                                 </div>
                                 @Html.ValidationMessageFor(model => model.Voksne, "", new { @class = "text-danger" })
                             </div>
@@ -260,7 +264,11 @@
                             @Html.LabelFor(model => model.Barnogfamiliefilm, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                             <div class="col-md-6">
                                 <div class="col-md-5">
-                                    @Html.TextBoxFor(model => model.Barnogfamiliefilm, new { type = "number", min = 1, max = 3, @class = "form-control" } )
+                                    <select name="Barnogfamiliefilm" class="form-control">
+                                        <option value="1" selected="selected">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
                                 </div>
                                 @Html.ValidationMessageFor(model => model.Barnogfamiliefilm, "", new { @class = "text-danger" })
                             </div>
@@ -273,7 +281,11 @@
                                   @Html.ValidationMessageFor(model => model.AndrespesiferitesktfeltName, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-md-5 ">
-                                  @Html.TextBoxFor(model => model.Andrespesiferitesktfelt, new { type = "number", min = 1, max = 3, @class = "form-control"  })
+                                    <select name="Andrespesiferitesktfelt" class="form-control">
+                                        <option value="1" selected="selected">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
                                   @Html.ValidationMessageFor(model => model.Andrespesiferitesktfelt, "", new { @class = "text-danger" })
                                 </div>
                             </div>

@@ -39,14 +39,11 @@ namespace NFI.Models
         [Required, DisplayName("Minoritetsprodusentens tittel")]
         public string MinoritetsprodusentensTittel { get; set; }
 
-        [Required, DisplayName("Minoritetsprodusentenss telefon ")]
+        [Required, DisplayName("Minoritetsprodusentens telefon")]
         public string MinoritetsprodusentenssTelefon { get; set; }
 
         [Required, DisplayName("Minoritetsprodusentens mobiltelefon ")]
         public string MinoritetsprodusentensMobiltelefon { get; set; }
-
-        [DisplayName("Minoritetsprodusentens fulle adresse ")]
-        public string MinoritetsprodusentensFulleAdresse { get; set; }
 
         [Required]
         [EmailAddress(ErrorMessage = "Ugyldig e-postadresse")]

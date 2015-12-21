@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -21,6 +22,7 @@ namespace NFI.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var erros = ModelState.Values.SelectMany(v => v.Errors).ToList();
                 TempData["Status"] = "Error";
                 return View("Index");
             }

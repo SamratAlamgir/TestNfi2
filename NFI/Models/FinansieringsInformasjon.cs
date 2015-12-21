@@ -32,7 +32,7 @@ namespace NFI.Models
         public string BekreftetFinansiering { get; set; }
 
         [FileSize, Required, JsonIgnore]
-        [DisplayName("Samtlig dokumentasjon på prosjektets bekreftede finansiering oppgitt i punktet over(LOI er ikke godkjent)")]
+        [DisplayName("Samtlig dokumentasjon på prosjektets bekreftede finansiering oppgitt i punktet over (LOI er ikke godkjent)")]
         public List<HttpPostedFileBase> SamtligDokumentasjonPåProsjektetsBekreftede { get; set; }
         [DisplayName("Samtlig dokumentasjon på prosjektets bekreftede finansiering oppgitt i punktet over(LOI er ikke godkjent)")]
         public List<string> SamtligDokumentasjonPåProsjektetsBekreftedePaths { get; set; }

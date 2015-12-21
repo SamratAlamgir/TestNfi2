@@ -36,7 +36,7 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Sorfond;
-                var mailSubject = "SØRFOND " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
+                var mailSubject = "Sørfond " + sorfondDto.Prosjektinformasjon.TittelPåProsjektet;
 
                 SaveApplication(sorfondDto, appType, sorfondDto.Prosjektinformasjon.TittelPåProsjektet, mailSubject);
                 

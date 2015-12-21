@@ -76,7 +76,7 @@ namespace NFI.Models
         [Required, DisplayName("Hvilken ordning søkes det tilskudd til?")]
         public string Hvilkenordningsøkes { get; set; }
 
-        [Required, DisplayName("Ved valg av filmkulturelle tiltak på forrige spørsmål, presiser nærmere her")]
+        [DisplayName("Ved valg av filmkulturelle tiltak på forrige spørsmål, presiser nærmere her")]
         public string Vedvalgavfilmkulturelletiltak { get; set; }
 
         [Required, DisplayName("Har ansvarlig organisasjon gjennomført dette eller tilsvarende prosjekt tidligere")]
