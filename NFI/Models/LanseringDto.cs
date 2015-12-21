@@ -13,6 +13,7 @@ namespace NFI.Models
         [Required, DisplayName("Navn på ansvarlig organisasjon")]
         public string NavnpåAnsvarligOrganisasjon { get; set; }
         [Required, DisplayName("Organisasjonsnummer")]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Organisasjonsnummer")]
         public string Organisasjonsnummer { get; set; }
 
         [Required, DisplayName("Navn på daglig leder")]
@@ -37,7 +38,7 @@ namespace NFI.Models
 
         [Required, DisplayName("Navn på kontaktperson for denne søknaden")]
         public string Navnpåkontaktperson { get; set; }
-        [Required, EmailAddress, DisplayName("E-postadresse kontaktperson")]
+        [Required, EmailAddress(ErrorMessage = "Ugyldig e-postadresse"), DisplayName("E-postadresse kontaktperson")]
         public string EpostadresseKontaktperson { get; set; }
         [DisplayName("Mobiltelefon kontaktperson")]
         public string Mobiltelefon { get; set; }

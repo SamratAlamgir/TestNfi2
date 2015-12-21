@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NFI.Models
 {
-    public class HovedProdusent:IMember
+    public class HovedProdusent : IMember
     {
         [Required]
         [Header("Kontaktinformasjon hovedprodusent:")]
@@ -37,7 +37,7 @@ namespace NFI.Models
         [DisplayName("Hovedprodusentens navn")]
         public string HovedprodusentensNavn { get; set; }
 
-        [Required,DisplayName("Hovedprodusentens tittel")]
+        [Required, DisplayName("Hovedprodusentens tittel")]
         public string HovedprodusentensTittel { get; set; }
 
         [DisplayName("Hovedprodusentens adresse")]
@@ -46,7 +46,7 @@ namespace NFI.Models
         [Required, DisplayName("Hovedprodusentens mobiltelefon ")]
         public string HovedprodusentensMobiltelefon { get; set; }
 
-        [Required,DisplayName("Hovedprodusentens e-post adresse ")]
+        [Required, EmailAddress(ErrorMessage = "Ugyldig e-postadresse"), DisplayName("Hovedprodusentens e-postadresse ")]
         public string HovedprodusentensEPostAdresse { get; set; }
 
         [Required, DisplayName("Hovedprodusentens kjønn")]
