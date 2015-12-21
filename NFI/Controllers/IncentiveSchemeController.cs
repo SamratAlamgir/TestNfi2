@@ -27,11 +27,8 @@ namespace NFI.Controllers
                 SaveApplication(appDto, appType, appDto.NameProducer, mailSubject);
 
                 // Send mail to archivist
-                
-                var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
-                    "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
-                    "<br/>" +
-                    "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
+
+                var mailBody = MailTemplate.GetMailBodyForAdmin(true);
 
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
 

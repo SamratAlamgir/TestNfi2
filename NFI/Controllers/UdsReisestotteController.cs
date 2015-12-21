@@ -26,23 +26,17 @@ namespace NFI.Controllers
                 SaveApplication(appDto, appType, appDto.Søkersnavn, mailSubject);
 
                 // Send mail to archivist
-
-                var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
-                    "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
-                    "<br/>" +
-                    "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
+                var mailBody = MailTemplate.GetMailBodyForAdmin();
 
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
-
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Søkersepost, appDto.Søkersepost, FilePathList);
-                
 
                 // Send mail to applicant
                 mailSubject = "UDs Reisestøtte søknad sendt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.UdsReisestotte);
+                mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
                 CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Søkersepost);
 

@@ -41,18 +41,17 @@ namespace NFI.Controllers
                 SaveApplication(sorfondDto, appType, sorfondDto.Prosjektinformasjon.TittelPåProsjektet, mailSubject);
                 
                 // Send the mails
-                var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a> ";
-                mailBody += "<br/>" +
-                               "Download Zip File: <a href='" + GetDownloadLinkForFile(sorfondDto.AppId.ToString(), appType) + "'> Click Here </a>";
-                var responseText = GetApplicationDetailsStringHtml(this, "../Admin/Sorfond/Details", sorfondDto);
+                var mailBody = MailTemplate.GetMailBodyForAdmin();
+
+                var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), sorfondDto);
                 mailBody += responseText;
 
                 CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, "sorfond@nfi.no", 
                     sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "Søfond søknad sendt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Sorfond);
+                mailSubject = "Sørfond søknad sendt";
+                mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
                 CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, sorfondDto.NorskMinoritetsprodusent.MinoritetsprodusentensEpostadresse);
 
