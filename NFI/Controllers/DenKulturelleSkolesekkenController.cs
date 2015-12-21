@@ -32,10 +32,10 @@ namespace NFI.Controllers
                 var mailSubject = "DEN KULTURELLE SKOLESEKKEN " + appDto.Harprosjektet.Aggregate((i, j) => i + ", " + j) + appDto.Prosjektetstittel;
                 SaveApplication(appDto, appType, appDto.Prosjektetstittel, mailSubject);
                 // Send mail to archivist 
-                var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a> ";
-                mailBody += "<br/>" +
-                               "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
+                var mailBody = MailTemplate.GetMailBodyForAdmin();
+
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
+
                 mailBody += responseText;
                 var mailTo = Settings.Default.ToEmailAddress;
                 CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Epostadressekontaktperson, appDto.Epostadressekontaktperson, FilePathList);
