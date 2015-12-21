@@ -3,24 +3,33 @@
 <div>
     <h4>Eventuelle andre vedlegg</h4>
     <hr />
-    <dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HarduvedleggPaths)
-        </dt>
-        @foreach (var v in Model.HarduvedleggPaths)
-        {
-            <dd>
-                @v
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.Beskrivelseav)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Beskrivelseav)
-        </dd>
-
-    </dl>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.HarduvedleggPaths)
+                </td>
+                <td>
+                    @if (Model.HarduvedleggPaths.Count > 0)
+                    {
+                        <ol type="1">
+                            @foreach (var v in Model.HarduvedleggPaths)
+                            {
+                                <li>@v</li>
+                            }
+                        </ol>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Beskrivelseav)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Beskrivelseav)
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

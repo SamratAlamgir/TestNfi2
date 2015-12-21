@@ -4,65 +4,150 @@
 <div>
     <h4>Informasjon om personer/roller</h4>
     <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.CVtilMinoritetprodusentensProduksjonsforetakPath)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CVtilMinoritetprodusentensProduksjonsforetakPath)
-        </dd>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.CVtilMinoritetprodusentensProduksjonsforetakPath)
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CVTilAnsvarligMinoritetsprodusentforetakPath)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.CVtilMinoritetprodusentensProduksjonsforetakPath)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.CVTilAnsvarligMinoritetsprodusentforetakPath)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CVtilHovedprodusentensProduksjonsforetakPath)
-        </dt>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.CVTilAnsvarligMinoritetsprodusentforetakPath)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.CVtilHovedprodusentensProduksjonsforetakPath)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.CVTilAnsvarligMinoritetsprodusentforetakPath)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CVtilAnsvarligHovedprodusentPath)
-        </dt>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.CVtilHovedprodusentensProduksjonsforetakPath)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.CVtilAnsvarligHovedprodusentPath)
-        </dd>
-        <dt>
-            Regissoren
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.CVtilHovedprodusentensProduksjonsforetakPath)
+                </td>
+            </tr>
 
-        @foreach (Regissoren t in Model.Regissoren)
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.CVtilAnsvarligHovedprodusentPath)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.CVtilAnsvarligHovedprodusentPath)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h2>Regissørens</h2>
+                </td>
+            </tr>
+            @if (Model.Regissoren.Count > 0)
             {
-            <dd>
-                @Html.Partial("../Admin/Sorfond/RegissorenDetails", t)
-            </dd>
-        }
-        <dt>
-            Manusforfatterens
-        </dt>
+                for (var i = 0; i < Model.Regissoren.Count; ++i)
+                {
+                    <tr>
+                        <td colspan="2">
 
-        @foreach (Manusforfatterens t in Model.Manusforfatterens)
+                            <h4>@(i + 1). Regissøren </h4>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Regissoren[i].RegissørensNavnt)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.Regissoren[i].RegissørensNavnt)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Regissoren[i].RegissørensKjønn)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.Regissoren[i].RegissørensKjønn)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Regissoren[i].RegissørensCVPath)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Regissoren[i].RegissørensCVPath)
+                        </td>
+                    </tr>
+                }
+            }
+            <tr>
+                <td colspan="2">
+                    <h2>Manusforfatterens</h2>
+                </td>
+            </tr>
+            @if (Model.Manusforfatterens.Count > 0)
             {
-            <dd>
-                @Html.Partial("../Admin/Sorfond/ManusforfatterensDetails", t)
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.EventuellKommentarPåPersoner)
-        </dt>
+                for (var i = 0; i < Model.Manusforfatterens.Count; ++i)
+                {
+                    <tr>
+                        <td colspan="2">
+                            <h4>@(i + 1). Manusforfatteren</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Manusforfatterens[i].ManusforfatterensNavn)
+                        </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.EventuellKommentarPåPersoner)
-        </dd>
+                        <td>
+                            @Html.DisplayFor(model => model.Manusforfatterens[i].ManusforfatterensNavn)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Manusforfatterens[i].ManusforfatterensKjønn)
+                        </td>
 
-    </dl>
+                        <td>
+                            @Html.DisplayFor(model => model.Manusforfatterens[i].ManusforfatterensKjønn)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Manusforfatterens[i].ManusforfatterensCVPath)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.Manusforfatterens[i].ManusforfatterensCVPath)
+                        </td>
+                    </tr>
+                }
+
+            }
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.EventuellKommentarPåPersoner)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.EventuellKommentarPåPersoner)
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
 </div>

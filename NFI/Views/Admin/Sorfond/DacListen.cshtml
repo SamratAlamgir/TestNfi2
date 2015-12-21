@@ -3,62 +3,67 @@
 <div>
     <h4>DAC-listen</h4>
     <hr />
-    <dl >
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentensForetak)
-        </dt>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.HovedprodusentensForetak)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.HovedprodusentensForetak)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Hvilket)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Hvilket)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.RegissørenErStatsborger)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.RegissørenErStatsborger)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Hvilketland)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Hvilketland)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.FilmenSka)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.FilmenSka)
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentensForetak)
-        </dd>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.HvilkethvilkeLand)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.HvilkethvilkeLand)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Hvilket)
-        </dt>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.EventuellKommentar)
 
-        <dd>
-            @Html.DisplayFor(model => model.Hvilket)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RegissørenErStatsborger)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RegissørenErStatsborger)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hvilketland)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hvilketland)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FilmenSka)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FilmenSka)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HvilkethvilkeLand)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HvilkethvilkeLand)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EventuellKommentar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EventuellKommentar)
-        </dd>
-
-    </dl>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.EventuellKommentar)
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

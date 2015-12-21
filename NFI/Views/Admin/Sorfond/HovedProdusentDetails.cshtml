@@ -1,111 +1,135 @@
 ﻿@model NFI.Models.HovedProdusent
 <div>
     <h4>Kontaktinformasjon hovedprodusent:</h4>
-    <hr />
-    <dl >
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentProduksjonsforetaketsNavn)
-        </dt>
+    <hr/>
+    <table class="table ">
+        <tbody>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentProduksjonsforetaketsNavn)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentProduksjonsforetaketsNavn)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentProduksjonsforetaketsNavn)
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentOrganisasjonsnummer)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentOrganisasjonsnummer)
-        </dd>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentOrganisasjonsnummer)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentPostadresse)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentOrganisasjonsnummer)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentPostadresse)
-        </dd>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentPostnummer)
-        </dt>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentPostadresse)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentPostnummer)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentPostadresse)
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentPoststed)
-        </dt>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentPostnummer)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentPoststed)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentPostnummer)
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentLand)
-        </dt>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentPoststed)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentLand)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentPoststed)
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentProduksjonsforetaketsHjemmeside)
-        </dt>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentLand)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentProduksjonsforetaketsHjemmeside)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentLand)
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentensNavn)
-        </dt>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentProduksjonsforetaketsHjemmeside)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentensNavn)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentProduksjonsforetaketsHjemmeside)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentensNavn)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentensTittel)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentensNavn)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentensTittel)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentensTittel)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentensTittel)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentensAdresse)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentensAdresse)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentensAdresse)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentensMobiltelefon)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentensAdresse)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentensMobiltelefon)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HovedprodusentensEPostAdresse)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentensMobiltelefon)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.HovedprodusentensEPostAdresse)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Hovedprodusentenskjonn)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentensMobiltelefon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HovedprodusentensEPostAdresse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HovedprodusentensEPostAdresse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hovedprodusentenskjonn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hovedprodusentenskjonn)
-        </dd>
-
-    </dl>
+            <td>
+                @Html.DisplayFor(model => model.Hovedprodusentenskjonn)
+            </td>
+        </tr>
+       
+        </tbody>
+    </table>
 </div>
