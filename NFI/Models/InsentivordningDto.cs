@@ -208,7 +208,7 @@ namespace NFI.Models
         [DisplayName("Legg ved distribusjonsplan")]
         public string LeggvedDistribusjonsPlanPath { get; set; }
 
-        [JsonIgnore, FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Legg internasjonal distribusjonsavtale")]
         public HttpPostedFileBase LegginternasjonalDistribusjonsavtale { get; set; }
         [DisplayName("Legg internasjonal distribusjonsavtale")]

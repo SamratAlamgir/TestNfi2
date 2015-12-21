@@ -11,7 +11,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>The incentive scheme</h2>
+<h2>The Incentive Scheme</h2>
 
 <form id="MainForm" class="form-horizontal" action="@Html.GetHostServerUrl()/IncentiveScheme/Save" enctype="multipart/form-data" method="post">
 
@@ -307,8 +307,8 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.IsTheProjectOriginalWork, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
                     <div class="col-md-7">
-                        @Html.RadioButtonFor(model => model.IsTheProjectOriginalWork, "Ja") Ja
-                        @Html.RadioButtonFor(model => model.IsTheProjectOriginalWork, "Nei") Nei
+                        @Html.RadioButtonFor(model => model.IsTheProjectOriginalWork, "Yes") Yes
+                        @Html.RadioButtonFor(model => model.IsTheProjectOriginalWork, "No") No
 
                         @Html.ValidationMessageFor(model => model.IsTheProjectOriginalWork, "", new { @class = "text-danger" })
                     </div>
@@ -387,7 +387,7 @@
                 <div class="form-group">
                     <div class="col-md-5 label-required">
                         @Html.LabelFor(model => model.QualificationTest, htmlAttributes: new { @class = "control-label label-required" })
-                        <a href="http://www.nfi.no/_attachment/144524" class="pull-right">Find template here</a>
+                        <a href="http://www.nfi.no/_attachment/144524" class="pull-right"> (Please fill out points and comments) </a>
                     </div>
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">
@@ -505,7 +505,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.InternationalDistributionAgreement, htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.InternationalDistributionAgreement, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
                     <div class="col-md-7">
                         <span class="btn btn-default btn-file">

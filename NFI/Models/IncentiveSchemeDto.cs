@@ -64,9 +64,9 @@ namespace NFI.Models
         public string ProductionCompanyWebpage { get; set; }
 
         [JsonIgnore, Required("en"), FileSize("en")]
-        [DisplayName("Certificate of origin - production company")]
+        [DisplayName("Certificate of Origin/Registration")]
         public HttpPostedFileBase CertificateOriginProductionCompany { get; set; }
-        [DisplayName("Certificate of origin - production company")]
+        [DisplayName("Certificate of Origin/Registration")]
         public string CertificateOriginProductionCompanyPath { get; set; }
 
         [JsonIgnore, Required("en"), FileSize("en")]
@@ -93,7 +93,7 @@ namespace NFI.Models
 
         [Required("en")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        [DisplayName("E-mail: (E-postadressen som skal motta bekreftelse på at søknaden er sendt inn)")]
+        [DisplayName("E-mail: (This address will receive a confirmation mail)")]
         public string EmailContactInfo { get; set; }
 
         [DisplayName("Name of company")]
@@ -215,7 +215,7 @@ namespace NFI.Models
         [DisplayName("Distribution strategy")]
         public string DistributionStrategyPath { get; set; }
 
-        [JsonIgnore, FileSize("en")]
+        [JsonIgnore, Required("en"), FileSize("en")]
         [DisplayName("International distribution agreement")]
         public HttpPostedFileBase InternationalDistributionAgreement { get; set; }
         [DisplayName("International distribution agreement")]
@@ -237,9 +237,9 @@ namespace NFI.Models
         public string EstimatedCostsSpentInNorway { get; set; }
 
         [JsonIgnore, Required("en"), FileSize("en")]
-        [DisplayName("Budget for production in Norway in NOK (If more than 80 % of the total approved production costs for the production will arise in Norway, the grant amount will be calculated based on the total production costs in the EEA. The grant will under such circumstances be")]
+        [DisplayName("Budget for production in Norway in NOK (If more than 80 % of the total approved production costs for the production will arise in Norway, the grant amount will be calculated based on the total production costs in the EEA. The grant will under such circumstances be calculated based on the total approved production costs in Norway and the EEA.)")]
         public HttpPostedFileBase BudgetForProductionInNorway { get; set; }
-        [DisplayName("Budget for production in Norway in NOK (If more than 80 % of the total approved production costs for the production will arise in Norway, the grant amount will be calculated based on the total production costs in the EEA. The grant will under such circumstances be")]
+        [DisplayName("Budget for production in Norway in NOK (If more than 80 % of the total approved production costs for the production will arise in Norway, the grant amount will be calculated based on the total production costs in the EEA. The grant will under such circumstances be calculated based on the total approved production costs in Norway and the EEA.)")]
         public string BudgetForProductionInNorwayPath { get; set; }
 
         [JsonIgnore, Required("en"), FileSize("en")]
