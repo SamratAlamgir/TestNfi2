@@ -44,14 +44,14 @@ namespace NFI.Controllers
                 CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Email);
                 CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.EmailContactInfo);
 
-                return View("Success");
+                return View("SuccessEng");
             }
             catch (Exception ex)
             {
                 LogWriter.Write(ex.ToString(), "Error");
 
                 ViewBag.error = ex;
-                return View("Error");
+                return View("ErrorEng");
             }
         }
     }

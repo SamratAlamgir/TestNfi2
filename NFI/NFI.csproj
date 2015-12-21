@@ -484,6 +484,8 @@
     <Content Include="Views\Admin\VideoDetail.cshtml" />
     <Content Include="Views\DenKulturelleSkolesekken\Index.cshtml" />
     <Content Include="Views\Admin\DenKulturelleSkolesekkenDetail.cshtml" />
+    <Content Include="Views\Shared\SuccessEng.cshtml" />
+    <Content Include="Views\Shared\ErrorEng.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
