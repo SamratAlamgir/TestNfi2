@@ -1084,7 +1084,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   /*font-size: 14px;*/
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -1272,7 +1272,7 @@ h1,
 h2,
 .h2 {
   /*font-size: 30px;*/
-    font-size: 18px;
+    font-size: 16px;
 }
 h3,
 .h3 {
@@ -2514,7 +2514,8 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
-  font-weight: bold;
+  /*font-weight: bold;*/
+  font-weight: normal;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
