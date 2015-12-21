@@ -31,7 +31,7 @@ namespace NFI.Models
         [DisplayName("Bekreftet finansiering i % (må være minumum 50%, LOI ikke godkjent)")]
         public string BekreftetFinansiering { get; set; }
 
-        [FileSize, NotVisible, JsonIgnore]
+        [FileSize, Required, JsonIgnore]
         [DisplayName("Samtlig dokumentasjon på prosjektets bekreftede finansiering oppgitt i punktet over(LOI er ikke godkjent)")]
         public List<HttpPostedFileBase> SamtligDokumentasjonPåProsjektetsBekreftede { get; set; }
         [DisplayName("Samtlig dokumentasjon på prosjektets bekreftede finansiering oppgitt i punktet over(LOI er ikke godkjent)")]

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using NFI.Enums;
 using NFI.Properties;
 
@@ -31,6 +28,21 @@ namespace NFI.Helper
                     break;
                 case ApplicationType.Lansering:
                     dirPath = Settings.Default.ApplicationDir5;
+                    break;
+                case ApplicationType.UdsReisestotte:
+                    dirPath = Settings.Default.ApplicationDir4;
+                    break;
+                case ApplicationType.Video:
+                    dirPath = Settings.Default.ApplicationDir7;
+                    break;
+                case ApplicationType.Ordninger:
+                    dirPath = Settings.Default.ApplicationDir6;
+                    break;
+                case ApplicationType.Film:
+                    dirPath = Settings.Default.ApplicationDir8;
+                    break;
+                case ApplicationType.DenKulturelleSkolesekken:
+                    dirPath = Settings.Default.ApplicationDir9;
                     break;
             }
 

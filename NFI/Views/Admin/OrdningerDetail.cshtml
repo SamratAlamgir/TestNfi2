@@ -336,12 +336,7 @@
                                 <td>
                                     @Html.DisplayFor(model => model.NårskalprosjektetFromDate)
                                 </td>
-
-
-
                             </tr>
-
-
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.NårskalprosjektetToDate)
@@ -416,11 +411,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Andrespesiferitekstfelt)
+                                    @Html.DisplayNameFor(model => model.AndrespesiferitekstfeltName)- @Html.DisplayFor(model => model.AndrespesiferitekstfeltName)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Andrespesiferitekstfelt)
+                                     @Html.DisplayFor(model => model.Andrespesiferitekstfelt)
                                 </td>
                             </tr>
                             <tr>
@@ -446,11 +441,11 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.SøknadssumiNOK)
+                                    @Html.DisplayNameFor(model => model.Økonomi.SøknadssumiNOK)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.SøknadssumiNOK)
+                                    @Html.DisplayFor(model => model.Økonomi.SøknadssumiNOK)
                                 </td>
 
 
@@ -459,11 +454,11 @@
 
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.TotalbudsjettiNOK)
+                                    @Html.DisplayNameFor(model => model.Økonomi.TotalbudsjettiNOK)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.TotalbudsjettiNOK)
+                                    @Html.DisplayFor(model => model.Økonomi.TotalbudsjettiNOK)
                                 </td>
 
 
@@ -471,22 +466,22 @@
 
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Nevndeviktigste)
+                                    @Html.DisplayNameFor(model => model.Økonomi.Nevndeviktigste)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.Nevndeviktigste)
+                                    @Html.DisplayFor(model => model.Økonomi.Nevndeviktigste)
                                 </td>
                             </tr>
 
                             <tr>
 
                                 <td>
-                                    @Html.DisplayNameFor(model => model.LeggvedbudsjettPath)
+                                    @Html.DisplayNameFor(model => model.Økonomi.LeggvedbudsjettPath)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.LeggvedbudsjettPath)
+                                    @Html.DisplayFor(model => model.Økonomi.LeggvedbudsjettPath)
                                 </td>
                             </tr>
                         </tbody>
@@ -504,11 +499,19 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.HarduvedleggsomPath)
+                                    @Html.DisplayNameFor(model => model.HarduvedleggsomPaths)
                                 </td>
 
                                 <td>
-                                    @Html.DisplayFor(model => model.HarduvedleggsomPath)
+                                    @if (Model.HarduvedleggsomPaths.Count > 0)
+                                    {
+                                        <ol type="1">
+                                            @foreach (var t in Model.HarduvedleggsomPaths)
+                                            {
+                                                <li>@t</li>
+                                            }
+                                        </ol>
+                                    }
                                 </td>
                             </tr>
                             <tr>

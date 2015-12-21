@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensNavn, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensNavn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensNavn, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensNavn, "", new { @class = "text-danger" })
@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensTittel, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensTittel, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensTittel, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensTittel, "", new { @class = "text-danger" })
@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentenssTelefon, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentenssTelefon, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentenssTelefon, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentenssTelefon, "", new { @class = "text-danger" })
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensMobiltelefon, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensMobiltelefon, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensMobiltelefon, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NorskMinoritetsprodusent.MinoritetsprodusentensMobiltelefon, "", new { @class = "text-danger" })
@@ -218,7 +218,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensTittel, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensTittel, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentensTittel, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentensTittel, "", new { @class = "text-danger" })
@@ -226,7 +226,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensAdresse, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensAdresse, htmlAttributes: new { @class = "control-label col-md-4 " })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentensAdresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentensAdresse, "", new { @class = "text-danger" })
@@ -234,7 +234,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensMobiltelefon, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensMobiltelefon, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentensMobiltelefon, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentensMobiltelefon, "", new { @class = "text-danger" })
@@ -242,7 +242,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensEPostAdresse, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.HovedProdusent.HovedprodusentensEPostAdresse, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.EditorFor(model => model.HovedProdusent.HovedprodusentensEPostAdresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HovedProdusent.HovedprodusentensEPostAdresse, "", new { @class = "text-danger" })
@@ -250,7 +250,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HovedProdusent.Hovedprodusentenskjonn, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.HovedProdusent.Hovedprodusentenskjonn, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
                         @Html.RadioButtonFor(m => m.HovedProdusent.Hovedprodusentenskjonn, "Mann") Mann
                         @Html.RadioButtonFor(m => m.HovedProdusent.Hovedprodusentenskjonn, "Kvinne")Kvinne
@@ -283,7 +283,7 @@
                     <label class="control-label col-md-4 label-required" for="">Dokumentasjon på at hovedprodusenten har opsjon/filmrett</label>
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.DokumentasjonPåHovedprodusentenHarOpsjonFilmrett, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.DokumentasjonPåHovedprodusentenHarOpsjonFilmrett, new { type = "file", multiple = "", @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.DokumentasjonPåHovedprodusentenHarOpsjonFilmrett, "", new { @class = "text-danger" })
                     </div>
@@ -300,8 +300,8 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Prosjektinformasjon.DateForOpptaksstart, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.DateForOpptaksstart, new { @readonly = "", htmlAttributes = new { @class = "form-control text-box single-line" } })
+                        <div class="input-group date col-md-8" data-provide="datepicker" data-date-format="dd.mm.yyyy">
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.DateForOpptaksstart, new { @readonly = "", @class = "form-control" })
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -312,8 +312,8 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Prosjektinformasjon.AntattFerdigstillelseEllerPremiereDate, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        <div class="input-group date col-md-5" data-provide="datepicker" data-date-format="dd.mm.yyyy">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.AntattFerdigstillelseEllerPremiereDate, new { @readonly = "", htmlAttributes = new { @class = "form-control text-box single-line" } })
+                        <div class="input-group date col-md-8" data-provide="datepicker" data-date-format="dd.mm.yyyy">
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.AntattFerdigstillelseEllerPremiereDate, new { @readonly = "",  @class = "form-control" } )
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -324,7 +324,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet,  new { @class = "form-control", @rows = 5, @maxlength = 250 })
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.KortBeskrivelseAvProsjektet, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -350,7 +350,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Reginotat, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Reginotat, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.Reginotat, "", new { @class = "text-danger" })
                     </div>
@@ -361,7 +361,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.HandlingsbeskrivelseSynopsis, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.HandlingsbeskrivelseSynopsis, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.HandlingsbeskrivelseSynopsis, "", new { @class = "text-danger" })
                     </div>
@@ -372,7 +372,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Manuskript, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Manuskript, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.Manuskript, "", new { @class = "text-danger" })
                     </div>
@@ -383,7 +383,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Fremdriftsplan, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Fremdriftsplan, new { type = "file", @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.Fremdriftsplan, "", new { @class = "text-danger" })
                     </div>
@@ -394,7 +394,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Opptaksplan, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.Opptaksplan, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.Opptaksplan, "", new { @class = "text-danger" })
                     </div>
@@ -405,7 +405,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjon, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjon, new { type = "file", multiple = "",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.SamproduksjonsavtaleEllerIntensjonsavtaleOmSamproduksjon, "", new { @class = "text-danger" })
                     </div>
@@ -416,7 +416,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.Prosjektinformasjon.EventuelleAvtalerMedDistributører, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.Prosjektinformasjon.EventuelleAvtalerMedDistributører, new { type = "file", multiple = "",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.EventuelleAvtalerMedDistributører, "", new { @class = "text-danger" })
                     </div>
@@ -425,7 +425,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Prosjektinformasjon.EventuellKommentarTilProsjektinformasjon, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.Prosjektinformasjon.EventuellKommentarTilProsjektinformasjon, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.Prosjektinformasjon.EventuellKommentarTilProsjektinformasjon, new { @class = "form-control", @rows = 5, @maxlength = 250 } )
                         @Html.ValidationMessageFor(model => model.Prosjektinformasjon.EventuellKommentarTilProsjektinformasjon, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -439,7 +439,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.CVtilMinoritetprodusentensProduksjonsforetak, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.CVtilMinoritetprodusentensProduksjonsforetak, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.CVtilMinoritetprodusentensProduksjonsforetak, "", new { @class = "text-danger" })
                     </div>
@@ -450,7 +450,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.CVTilAnsvarligMinoritetsprodusentforetak, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.CVTilAnsvarligMinoritetsprodusentforetak, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.CVTilAnsvarligMinoritetsprodusentforetak, "", new { @class = "text-danger" })
                     </div>
@@ -472,7 +472,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.CVtilAnsvarligHovedprodusent, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.CVtilAnsvarligHovedprodusent, new { type = "file", @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.CVtilAnsvarligHovedprodusent, "", new { @class = "text-danger" })
                     </div>
@@ -511,7 +511,7 @@
 
                                         <div class="col-md-6">
                                             <span class="btn btn-default btn-file">
-                                                @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensCV, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                                                @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensCV, new { type = "file",  @class = "btn-file" } )
                                             </span>
                                             @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.Regissoren[i].RegissørensCV, "", new { @class = "text-danger" })
                                         </div>
@@ -554,7 +554,7 @@
 
                                         <div class="col-md-6">
                                             <span class="btn btn-default btn-file">
-                                                @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensCV, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                                                @Html.TextBoxFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensCV, new { type = "file", @class = "btn-file" } )
                                             </span>
                                             @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.Manusforfatterens[i].ManusforfatterensCV, "", new { @class = "text-danger" })
                                         </div>
@@ -569,7 +569,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.InformasjonOmPersonerRoller.EventuellKommentarPåPersoner, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.InformasjonOmPersonerRoller.EventuellKommentarPåPersoner, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.InformasjonOmPersonerRoller.EventuellKommentarPåPersoner,  new { @class = "form-control", @rows = 5, @maxlength = 250 } )
                         @Html.ValidationMessageFor(model => model.InformasjonOmPersonerRoller.EventuellKommentarPåPersoner, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -599,7 +599,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.FinansieringsInformasjon.Kalkyle, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.FinansieringsInformasjon.Kalkyle, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.FinansieringsInformasjon.Kalkyle, "", new { @class = "text-danger" })
                     </div>
@@ -610,7 +610,7 @@
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.FinansieringsInformasjon.FinansieringsplanMedSpesifikasjon, new { type = "file", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.FinansieringsInformasjon.FinansieringsplanMedSpesifikasjon, new { type = "file",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.FinansieringsInformasjon.FinansieringsplanMedSpesifikasjon, "", new { @class = "text-danger" })
                     </div>
@@ -624,11 +624,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FinansieringsInformasjon.SamtligDokumentasjonPåProsjektetsBekreftede, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.FinansieringsInformasjon.SamtligDokumentasjonPåProsjektetsBekreftede, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
 
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.FinansieringsInformasjon.SamtligDokumentasjonPåProsjektetsBekreftede, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.FinansieringsInformasjon.SamtligDokumentasjonPåProsjektetsBekreftede, new { type = "file", multiple = "", @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.FinansieringsInformasjon.SamtligDokumentasjonPåProsjektetsBekreftede, "", new { @class = "text-danger" })
                     </div>
@@ -636,7 +636,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.FinansieringsInformasjon.EventuellKommentarTilFinansiering, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.FinansieringsInformasjon.EventuellKommentarTilFinansiering, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.FinansieringsInformasjon.EventuellKommentarTilFinansiering,  new { @class = "form-control", @rows = 5, @maxlength = 250 } )
                         @Html.ValidationMessageFor(model => model.FinansieringsInformasjon.EventuellKommentarTilFinansiering, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -690,7 +690,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.DacListen.HvilkethvilkeLand, htmlAttributes: new { @class = "control-label col-md-4 label-required" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.DacListen.HvilkethvilkeLand, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.DacListen.HvilkethvilkeLand,  new { @class = "form-control", @rows = 5, @maxlength = 250 } )
                         @Html.ValidationMessageFor(model => model.DacListen.HvilkethvilkeLand, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -698,7 +698,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.DacListen.EventuellKommentar, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.DacListen.EventuellKommentar, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.DacListen.EventuellKommentar, new { @class = "form-control", @rows = 5, @maxlength = 250 } )
                         @Html.ValidationMessageFor(model => model.DacListen.EventuellKommentar, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -718,7 +718,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.VisueltMateriale.HvilkeSkrivTittelÅr, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.VisueltMateriale.HvilkeSkrivTittelÅr, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.VisueltMateriale.HvilkeSkrivTittelÅr,  new { @class = "form-control", @rows = 5, @maxlength = 250 } )
                         @Html.ValidationMessageFor(model => model.VisueltMateriale.HvilkeSkrivTittelÅr, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -773,7 +773,7 @@
                     @Html.LabelFor(model => model.EventuelleAndreVedlegg.Harduvedlegg, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
                         <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.EventuelleAndreVedlegg.Harduvedlegg, new { type = "file", multiple = "", htmlAttributes = new { @class = "btn-file" } })
+                            @Html.TextBoxFor(model => model.EventuelleAndreVedlegg.Harduvedlegg, new { type = "file", multiple = "",  @class = "btn-file" } )
                         </span>
                         @Html.ValidationMessageFor(model => model.EventuelleAndreVedlegg.Harduvedlegg, "", new { @class = "text-danger" })
                     </div>
@@ -782,7 +782,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.EventuelleAndreVedlegg.Beskrivelseav, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-6">
-                        @Html.TextAreaFor(model => model.EventuelleAndreVedlegg.Beskrivelseav, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(model => model.EventuelleAndreVedlegg.Beskrivelseav,  new { @class = "form-control", @rows = 5, @maxlength = 250 } )
                         @Html.ValidationMessageFor(model => model.EventuelleAndreVedlegg.Beskrivelseav, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -790,14 +790,14 @@
             </div>
 
             <div class="row col-sm-10" id="ajaxLoader" style="display: none">
-                <label class="alert-danger">Your application is in-progress. Please wait...</label>
+                <label class="alert-danger">@Html.GetWaitMessageForApplication()</label>
                 <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
             </div>
             <div id="wizardBtn" class="row col-sm-10">
                 <ul class="pager wizard">
-                    <li class="previous pull-left"><a href="javascript:;">Previous</a></li>
-                    <li class="next pull-right"><a href="javascript:;">Next</a></li>
-                    <li><button id="btnSubmit" type="submit" class="btn btn-success pull-right" style="display: none">Submit</button></li>
+                    <li class="previous pull-left"><a href="javascript:;">Forrige</a></li>
+                    <li class="next pull-right"><a href="javascript:;">Neste</a></li>
+                    <li><button id="btnSubmit" type="submit" class="btn btn-success pull-right" style="display: none">Send inn</button></li>
                 </ul>
 
             </div>

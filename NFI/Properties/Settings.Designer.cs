@@ -70,7 +70,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("systemnfi@gmail.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("post@nfi.no")]
         public string FromEmailAddress {
             get {
                 return ((string)(this["FromEmailAddress"]));
@@ -79,16 +79,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rezaul.sajib@cefalo.com")]
-        public string ToEmailAddress {
-            get {
-                return ((string)(this["ToEmailAddress"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.nfi.no")]
         public string EmailHost {
             get {
                 return ((string)(this["EmailHost"]));
@@ -97,7 +88,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("587")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public string EmailPort {
             get {
                 return ((string)(this["EmailPort"]));
@@ -106,7 +97,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("NFI")]
+        [global::System.Configuration.DefaultSettingValueAttribute("NFI Service")]
         public string FromName {
             get {
                 return ((string)(this["FromName"]));
@@ -115,10 +106,10 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SystemNfi987")]
-        public string FromPassword {
+        [global::System.Configuration.DefaultSettingValueAttribute("systemnfi@gmail.com")]
+        public string ToEmailAddress {
             get {
-                return ((string)(this["FromPassword"]));
+                return ((string)(this["ToEmailAddress"]));
             }
         }
         
@@ -142,7 +133,7 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:58873/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:58873")]
         public string HostServerUrl {
             get {
                 return ((string)(this["HostServerUrl"]));
@@ -169,10 +160,55 @@ namespace NFI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App4/")]
+        public string ApplicationDir4 {
+            get {
+                return ((string)(this["ApplicationDir4"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("App6/")]
         public string ApplicationDir6 {
             get {
                 return ((string)(this["ApplicationDir6"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App7/")]
+        public string ApplicationDir7 {
+            get {
+                return ((string)(this["ApplicationDir7"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App8/")]
+        public string ApplicationDir8 {
+            get {
+                return ((string)(this["ApplicationDir8"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("App9/")]
+        public string ApplicationDir9 {
+            get {
+                return ((string)(this["ApplicationDir9"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev")]
+        public string ApplicationServer {
+            get {
+                return ((string)(this["ApplicationServer"]));
             }
         }
     }

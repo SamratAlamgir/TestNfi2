@@ -11,19 +11,20 @@ namespace NFI.Models
     {
         public int? MaxBytes { get; set; }
 
-        public FileSizeAttribute() : base("Please Upload a file")
+        public FileSizeAttribute(string language = "nok") : base("Last opp en fil")
         {
             MaxBytes = 10 * 1024 * 1024;
-            ErrorMessage = "Please upload a file of less than " + MaxBytes.Value / (1024 * 1024) + " MB.";
+
+            ErrorMessage = (language == "nok" ? "Last opp en fil på mindre enn " : "Please upload a file less than ") + MaxBytes.Value / (1024 * 1024) + " MB.";
         }
 
         public FileSizeAttribute(int maxBytes)
-            : base("Please upload a supported file.")
+            : base("Last opp en fil som støttes.")
         {
             MaxBytes = maxBytes;
             if (MaxBytes.HasValue)
             {
-                ErrorMessage = "Please upload a file of less than " + MaxBytes.Value / (1024 * 1024) + " MB.";
+                ErrorMessage = "Last opp en fil på mindre enn " + MaxBytes.Value / (1024 * 1024) + " MB.";
             }
         }
 

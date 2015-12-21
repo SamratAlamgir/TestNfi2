@@ -22,10 +22,12 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.Insentivordning;
-                SaveApplication(appDto, appType, appDto.ProduksjonsforetaketsNavn);
+                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+
+                SaveApplication(appDto, appType, appDto.ProduksjonsforetaketsNavn, mailSubject);
 
                 // Send mail to archivist
-                var mailSubject = "INSENTIVORDNING " + appDto.TittelpåProsjektet;
+                
                 var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
@@ -36,18 +38,19 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.HovedprodusentensEpostadresse, appDto.ProduksjonsforetaketsNavn, FilePathList);
 
                 // Send mail to applicant
-                mailSubject = "Insentivordning søknad sendtt";
+                mailSubject = "Insentivordning søknad sendt";
                 mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Insentivordning);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.SøkersEpostAdresse);
-
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.HovedprodusentensEpostadresse);
+                
                 return View("Success");
             }
             catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
                 ViewBag.error = ex;
                 return View("Error");
             }

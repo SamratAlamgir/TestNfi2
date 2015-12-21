@@ -9,8 +9,6 @@ using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
-using NFI.Properties;
-using NFI.Utility;
 
 namespace NFI.Controllers
 {
@@ -19,22 +17,10 @@ namespace NFI.Controllers
         private const string TimestampPattern = "yyyyMMddHHmm";
         protected List<string> FilePathList = new List<string>();
 
-
-        public void SendEmailToPredefinedAdressee(Application1Dto application1Dto, ApplicationType appType)
+        public string CreateUserDataFile<T>(T appDto, ApplicationType appType, string fileNamePart)
         {
-            var to = Settings.Default.ToEmailAddress;
-            var body = $"User Name: {application1Dto.Name}<br/>" +
-                       $"Email: {application1Dto.Email}<br/>" +
-                       $"Sex: {application1Dto.Sex}<br/>" +
-                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId, appType)}";
-            var subject = "File Send";
-            Emailer.SendMail(to, subject, body);
-        }
-
-        public string CreateUserDataFile<T>(T appDto, ApplicationType appType)
-        {
-            var viewName=DetailViewNames.ViewName(appType);
-            var fileName = GetFilenameWithTimeStamp("user_data.pdf");
+            var viewName = DetailViewNames.ViewName(appType);
+            var fileName = GetUpdatedFileName("Application data.pdf", fileNamePart);
             var path = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var fullPath = Path.Combine(path, fileName);
             var htmlString = GetApplicationDetailsStringHtml(this, viewName, appDto);
@@ -43,27 +29,6 @@ namespace NFI.Controllers
             var replace = htmlString.Substring(startIndex, length);
             htmlString = htmlString.Replace(replace, "");
             PdfUtility.SavePdfFile(htmlString, fullPath, Server.MapPath("~"));
-            return fullPath;
-        }
-
-        public string CreateTextFile<T>(T appDto, ApplicationType appType)
-        {
-            var type = appDto.GetType();
-            var appId = type.GetProperty("AppId").GetValue(appDto);
-
-            var fileName = GetFilenameWithTimeStamp("user_data.txt");
-            var path = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
-            var fullPath = Path.Combine(path, fileName);
-            var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
-            if (!System.IO.File.Exists(fullPath))
-            {
-                // Create a file to write to.
-                using (StreamWriter sw = System.IO.File.CreateText(fullPath))
-                {
-                    sw.WriteLine(appDto.ToString());
-                }
-            }
-
             return fullPath;
         }
 
@@ -104,6 +69,8 @@ namespace NFI.Controllers
 
         protected void TrimPathAndOnlyFileName(Object obj)
         {
+            if (obj == null) return;
+
             var type = obj.GetType();
             var fieldInfos =
                 type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
@@ -117,7 +84,11 @@ namespace NFI.Controllers
                 if (propertyInfo.Name.Contains("Paths"))
                 {
                     var filePaths = (List<string>)propertyInfo.GetValue(obj);
-                    var fileNames = filePaths?.Select(Path.GetFileName).ToList();
+
+                    if(filePaths == null) continue;
+
+                    filePaths = filePaths.Where(f => !string.IsNullOrEmpty(f)).ToList();
+                    var fileNames = filePaths.Select(Path.GetFileName).ToList();
                     propertyInfo.SetValue(obj, fileNames);
                 }
                 else if (propertyInfo.Name.Contains("Path"))
@@ -157,16 +128,18 @@ namespace NFI.Controllers
             }
         }
 
-        protected void SaveApplication<T>(T application, ApplicationType applicationType, string userName) where T : BaseAppDto
+        protected void SaveApplication<T>(T application, ApplicationType applicationType, string userName, string fileNamePart) where T : BaseAppDto
         {
+            LogWriter.Write("Save called for " + applicationType);
+
             application.AppId = Guid.NewGuid();
             application.CreateTime = DateTime.Now;
 
             FilePathList = new List<string>();
-            SaveFilesAndSetFilePath(application, applicationType);
+            SaveFilesAndSetFilePath(application, applicationType, fileNamePart);
             FilePathList = FilePathList.Where(f => !string.IsNullOrEmpty(f)).ToList();
 
-            FilePathList.Add(CreateUserDataFile(application, applicationType)); // User data file
+            FilePathList.Add(CreateUserDataFile(application, applicationType, fileNamePart)); // User data file
 
             var zipFilePath = DirectoryHelper.GetZipFilePath(applicationType, application.AppId, userName);
             application.ZipFilePath = zipFilePath;
@@ -181,7 +154,7 @@ namespace NFI.Controllers
         #region File Helper Methods
 
 
-        private void SaveFilesAndSetFilePath(Object obj, ApplicationType applicationType)
+        private void SaveFilesAndSetFilePath(Object obj, ApplicationType applicationType, string fileNamePart)
         {
             var type = obj.GetType();
             var fieldInfos =
@@ -196,7 +169,7 @@ namespace NFI.Controllers
                 if (fieldInfo.PropertyType == typeof(HttpPostedFileBase))
                 {
                     var filePath = SaveUploadedFile((HttpPostedFileBase)fieldInfo.GetValue(obj),
-                        applicationType);
+                        applicationType, fileNamePart);
                     FilePathList.Add(filePath);
                     var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Path");
                     fieldPath?.SetValue(obj, filePath);
@@ -210,7 +183,7 @@ namespace NFI.Controllers
                     {
                         var filePaths =
                             files.Select(
-                                httpPostedFileBase => SaveUploadedFile(httpPostedFileBase, applicationType))
+                                httpPostedFileBase => SaveUploadedFile(httpPostedFileBase, applicationType, fileNamePart))
                                 .ToList();
                         FilePathList.AddRange(filePaths);
                         var fieldPath = allFieldPaths.FirstOrDefault(c => c.Name == fieldInfo.Name + "Paths");
@@ -227,7 +200,7 @@ namespace NFI.Controllers
                     {
                         foreach (var member in objs)
                         {
-                            SaveFilesAndSetFilePath(member, applicationType);
+                            SaveFilesAndSetFilePath(member, applicationType, fileNamePart);
                         }
                     }
                 }
@@ -236,9 +209,8 @@ namespace NFI.Controllers
                 {
                     var o = fieldInfo.GetValue(obj);
                     if (o != null)
-                        SaveFilesAndSetFilePath(o, applicationType);
+                        SaveFilesAndSetFilePath(o, applicationType, fileNamePart);
                 }
-
             }
         }
 
@@ -247,15 +219,14 @@ namespace NFI.Controllers
             return !(type.IsPrimitive || type == typeof(Guid)
                      || type == typeof(string));
         }
-        private string GetFilenameWithTimeStamp(string file1Name)
+        private string GetUpdatedFileName(string fileName, string partToAppend)
         {
-            var extension = Path.GetExtension(file1Name);
-            var timeStamp = DateTime.Now.ToString(TimestampPattern);
+            var extension = Path.GetExtension(fileName);
             var g = Guid.NewGuid().ToString().Split('-')[0];
-            return $"{Path.GetFileNameWithoutExtension(file1Name)}_{timeStamp}_{g}{extension}";
+            return $"{Path.GetFileNameWithoutExtension(fileName)}_{partToAppend}_{g}{extension}";
         }
 
-        private string SaveUploadedFile(HttpPostedFileBase file, ApplicationType appType)
+        private string SaveUploadedFile(HttpPostedFileBase file, ApplicationType appType, string fileNamePart)
         {
             if (file == null)
                 return "";
@@ -266,8 +237,8 @@ namespace NFI.Controllers
             {
                 Directory.CreateDirectory(physicalPath);
             }
-            var file1Name = GetFilenameWithTimeStamp(file.FileName);
-            var fullPath = Path.Combine(physicalPath, file1Name);
+            var fileName = GetUpdatedFileName(file.FileName, fileNamePart);
+            var fullPath = Path.Combine(physicalPath, fileName);
             if (System.IO.File.Exists(fullPath))
             {
                 throw new Exception($"File {fullPath} already exists. File not saved.");

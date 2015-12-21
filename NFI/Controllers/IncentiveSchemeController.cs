@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -25,10 +22,12 @@ namespace NFI.Controllers
             try
             {
                 var appType = ApplicationType.IncentiveScheme;
-                SaveApplication(appDto, appType, appDto.NameProducer);
+                var mailSubject = "INSENTIVORDNING " + appDto.ProjectTitle;
+
+                SaveApplication(appDto, appType, appDto.NameProducer, mailSubject);
 
                 // Send mail to archivist
-                var mailSubject = "INSENTIVORDNING " + appDto.ProjectTitle;
+                
                 var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
                     "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
                     "<br/>" +
@@ -39,18 +38,21 @@ namespace NFI.Controllers
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Email, appDto.NameApplicant, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Insentivordning submitted successfully";
                 mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.EmailContactInfo);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Email);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.EmailContactInfo);
 
                 return View("Success");
             }
             catch (Exception ex)
             {
+                LogWriter.Write(ex.ToString(), "Error");
+
                 ViewBag.error = ex;
                 return View("Error");
             }

@@ -11,7 +11,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Insentivordning</h2>
+<h2>The incentive scheme</h2>
 
 <form id="MainForm" class="form-horizontal" action="@Html.GetHostServerUrl()/IncentiveScheme/Save" enctype="multipart/form-data" method="post">
 
@@ -22,7 +22,6 @@
             <li><a href="#tab3" data-toggle="tab"></a></li>
             <li><a href="#tab4" data-toggle="tab"></a></li>
             <li><a href="#tab5" data-toggle="tab"></a></li>
-            <li><a href="#tab6" data-toggle="tab"></a></li>
         </ul>
         <br />
 
@@ -86,6 +85,16 @@
                     <div class="col-md-7">
                         @Html.EditorFor(model => model.NameProducer, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NameProducer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GenderMainProducer, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+                    <div class="col-md-7">
+                        @Html.RadioButtonFor(model => model.GenderMainProducer, "Male") Male
+                        @Html.RadioButtonFor(model => model.GenderMainProducer, "Female") Female
+
+                        @Html.ValidationMessageFor(model => model.GenderMainProducer, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -466,16 +475,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DistributionStrategy, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
 
-                    <div class="col-md-7">
-                        <span class="btn btn-default btn-file">
-                            @Html.TextBoxFor(model => model.DistributionStrategy, new { type = "file" })
-                        </span>
-                        @Html.ValidationMessageFor(model => model.DistributionStrategy, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.DescribeHowTheProductionIsSuited, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
@@ -492,42 +492,35 @@
                         @Html.ValidationMessageFor(model => model.DescribeTheProductionStrategy, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DistributionStrategy, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
+
+                    <div class="col-md-7">
+                        <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.DistributionStrategy, new { type = "file" })
+                        </span>
+                        @Html.ValidationMessageFor(model => model.DistributionStrategy, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InternationalDistributionAgreement, htmlAttributes: new { @class = "control-label col-md-5" })
+
+                    <div class="col-md-7">
+                        <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.InternationalDistributionAgreement, new { type = "file" })
+                        </span>
+                        @Html.ValidationMessageFor(model => model.InternationalDistributionAgreement, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
 
             <!-- Tab 4 -->
             <div class="tab-pane" id="tab4">
 
                 <div class="form-group">
-                    <h3> 4. Visual materials</h3>
-                </div>
-
-                <div class="form-group ">
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-default glyphicon glyphicon-plus" id="addVisualItemButton"> </button>
-                        <button type="button" class="btn btn-default glyphicon glyphicon-minus" id="removeVisualItemButton"> </button>
-                    </div>
-                </div>
-
-                <div id="visualDiv">
-                    <div class="well" name="VisualMaterialList">
-                        <div class="form-group">
-                            <label class="control-label col-md-5">Visual materials (website, Vimeo, etc)</label>
-                            <input type="text" name="VisualMaterialList[0].VisualMaterials" class="form-control" />
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-5">Password for website with visual materials</label>
-                            <input type="text" name="VisualMaterialList[0].PasswordForWebsite" class="form-control" />
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- Tab 5 -->
-            <div class="tab-pane" id="tab5">
-
-                <div class="form-group">
-                    <h3> 5. Financial information:</h3>
+                    <h3> 4. Financial information:</h3>
                 </div>
                 <div class="form-group">
 
@@ -593,12 +586,12 @@
                 </div>
             </div>
 
-            <!-- Tab 6 -->
+            <!-- Tab 5 -->
 
-            <div class="tab-pane" id="tab6">
+            <div class="tab-pane" id="tab5">
 
                 <div class="form-group">
-                    <h3> 6. Other attachments</h3>
+                    <h3> 5. Other attachments</h3>
                 </div>
 
                 <div class="form-group">
@@ -621,7 +614,7 @@
             </div>
 
             <div class="row col-sm-10" id="ajaxLoader" style="display: none">
-                <label class="alert-danger">Your application is in-progress. Please wait...</label>
+                <label class="alert-danger">@Html.GetWaitMessageForApplicationEnglish()</label>
                 <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
             </div>
             <div id="wizardBtn" class="row col-sm-10">

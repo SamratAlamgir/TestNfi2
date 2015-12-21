@@ -1,0 +1,11 @@
+﻿body {
+    height: 842px;
+    width: 595px;
+    margin-left: auto;
+    margin-right: auto;
+}
+strong b {font-weight:bold;font-family:Century Gothic;}
+em i {font-style:italic;font-family:Century Gothic;}
+p,ol,ul,li,dl,a,td,tr{font-family:Century Gothic;font-size:10pt;color:#191919;}
+a{color:Blue;}
+td,tr,table{border-width:0.5px;}

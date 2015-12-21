@@ -1,30 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using NFI.Properties;
 using NFI.Utility;
 
 namespace NFI.Helper
 {
     public static class CommunicationHelper
     {
-        public static bool SendMailToExecutive(Dictionary<string, string> values, string mailTo)
+        public static void SendConfirmationEmailToUser(string subject, string body, string mailTo)
         {
-            var subject = "Application submitted by <UserName>";
-            var body = "A new application of type <ApplicationType> has been submitted." + Environment.NewLine +
-                       "Download zip file: <ZipFileLink>" + Environment.NewLine +
-                       "View detail: <DetailViewLink>";
+            var fromEmail = Settings.Default.FromEmailAddress;
+            var fromName = Settings.Default.FromName;
 
-            foreach (var key in values.Keys)
-            {
-                subject = subject.Replace(key, values[key]);
-                body = body.Replace(key, values[key]);
-            }
-
-            return Emailer.SendMail(mailTo, subject, body);
+            Task.Run(() => Emailer.SendMailAsync(mailTo, subject, body,fromEmail, fromName));
         }
 
-        public static bool SendEmail(string subject, string body, string mailTo, List<string> attachmentFilePaths = null)
+        // Admin receipent mail address may vary with application
+        public static void SendEmailToAdmin(string subject, string body, string mailTo, string fromEmail, string fromName, List<string> attachmentFilePaths)
         {
-            return Emailer.SendMail(mailTo, subject, body, attachmentFilePaths);
+            Task.Run(() => Emailer.SendMailAsync(mailTo, subject, body, fromEmail, fromName, attachmentFilePaths));
         }
     }
 }
