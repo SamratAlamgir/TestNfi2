@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 using Newtonsoft.Json;
@@ -11,6 +12,7 @@ namespace NFI.Models
         [Required, DisplayName("Navn på ansvarlig organisasjon")]
         public string Navnpåansvarligorganisasjon { get; set; }
         [Required, DisplayName("Organisasjonsnummer")]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Organisasjonsnummer")]
         public string Organisasjonsnummer { get; set; }
 
         [Required, DisplayName("Organisasjonens virkeområde/fagfelt (eks.kultur/kunst/utdanning etc)")]
@@ -31,7 +33,7 @@ namespace NFI.Models
         [Required, DisplayName("Navn på kontaktperson for denne søknaden")]
         public string Navnpåkontaktperson { get; set; }
 
-        [Required, EmailAddress, DisplayName("E-postadresse kontaktperson")]
+        [Required, EmailAddress(ErrorMessage = "Ugyldig e-postadresse"), DisplayName("E-postadresse kontaktperson")]
         public string Epostadressekontaktperson { get; set; }
 
         [DisplayName("Mobiltelefon kontaktperson")]
@@ -52,7 +54,7 @@ namespace NFI.Models
         [DisplayName("Hvis JA, hvilken av ordningene?")]
         public string HvisJAhvilkenavordningene { get; set; }
 
-        [Required, JsonIgnore, FileSize, DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her.")]
+        [JsonIgnore, FileSize, DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her.")]
         public HttpPostedFileBase HvisJalegg { get; set; }
 
         [DisplayName("Hvis Ja, legg ved rapport på gjennomført tiltak her.")]
@@ -74,7 +76,7 @@ namespace NFI.Models
         [Required, DisplayName("Hvilken ordning søkes det tilskudd til?")]
         public string Hvilkenordningsøkes { get; set; }
 
-        [Required, DisplayName("Ved valg av filmkulturelle tiltak på forrige spørsmål, presiser nærmere her")]
+        [DisplayName("Ved valg av filmkulturelle tiltak på forrige spørsmål, presiser nærmere her")]
         public string Vedvalgavfilmkulturelletiltak { get; set; }
 
         [Required, DisplayName("Har ansvarlig organisasjon gjennomført dette eller tilsvarende prosjekt tidligere")]
@@ -117,36 +119,26 @@ namespace NFI.Models
         public int Barnogunge { get; set; }
         //6. Andre, spesifer i tekstfelt
         [Required, Range(1, 6), DisplayName("Andre, spesifer i tekstfelt")]
+       
         public int Andrespesiferitekstfelt { get; set; }
+        [Required, DisplayName("Andre")]
+        public string AndrespesiferitekstfeltName { get; set; }
         [Required, DisplayName("Beskriv kort målet for prosjektet med tanke på prioritert målgruppe")]
         public string Beskrivkortmålet { get; set; }
 
 
         //5. Økonomi
-        [Required, DisplayName("Søknadssum i NOK")]
-        public string SøknadssumiNOK { get; set; }
-
-        [Required, DisplayName("Totalbudsjett i NOK")]
-        public string TotalbudsjettiNOK { get; set; }
-
-        [Required, DisplayName("Nevn de viktigste andre bidragsytere / tilskuddsorganisasjonene.Skriv Navn, Beløp NOK")]
-        public string Nevndeviktigste { get; set; }
-
-        [Required, JsonIgnore, FileSize, DisplayName("Legg ved budsjett og finansieringsplan")]
-        public HttpPostedFileBase Leggvedbudsjett { get; set; }
-
-        [DisplayName("Legg ved budsjett og finansieringsplan")]
-        public string LeggvedbudsjettPath { get; set; }
+        public Økonomi Økonomi { get; } = new Økonomi();
 
         //7. Eventuelle andre vedlegg
         [JsonIgnore, FileSize, DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]
-        public HttpPostedFileBase Harduvedleggsom { get; set; }
+        public List<HttpPostedFileBase> Harduvedleggsom { get; set; }
         [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]
-        public string HarduvedleggsomPath { get; set; }
+        public List<string> HarduvedleggsomPaths { get; set; }
 
         [DisplayName("Beskrivelse av andre vedlegg: Beskriv innholdet i vedleggene lastet opp under Eventuelle andre vedlegg.")]
         public string Beskrivelseavandrevedlegg { get; set; }
 
-
+        
     }
 }

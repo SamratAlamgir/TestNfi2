@@ -11,6 +11,7 @@ namespace NFI.Controllers
 
     public class CaptchaController : Controller
     {
+        //[OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult CaptchaImage(string prefix, bool noisy = false)
         {
             var rand = new Random((int)DateTime.Now.Ticks);
@@ -57,7 +58,7 @@ namespace NFI.Controllers
 
                 //render as Jpeg 
                 bmp.Save(mem, System.Drawing.Imaging.ImageFormat.Jpeg);
-                img = this.File(mem.GetBuffer(), "image/Jpeg");
+                img = File(mem.GetBuffer(), "image/Jpeg");
             }
 
             return img;
@@ -65,26 +66,32 @@ namespace NFI.Controllers
 
 
         [HttpPost]
-        public ActionResult Index(CaptachaModel model,string returnUrl)
+        public ActionResult Index(CaptachaModel model, string returnUrl)
         {
             //validate captcha 
-            if (Session["Captcha"] != null && Session["Captcha"].ToString() == model.Captcha)
+            var captchaResult = "Captcha" + model.Prefix;
+            if (Session[captchaResult] != null && Session[captchaResult].ToString() == model.Captcha)
             {
                 Session["IsCaptchaVerfied"] = true;
                 if (string.IsNullOrEmpty(returnUrl))
-                    return Redirect("/Home/InputWizard");
+                    throw new Exception("returnUrl must have a value to redirect");
                 return Redirect(returnUrl);
-
             }
-            ModelState.AddModelError("Captcha", "Wrong value of sum, please try again.");
-            //dispay error and generate a new captcha 
-            //Session["IsCaptchaVerfied"] = false;
+            ModelState.Remove("Prefix");
+            model.Prefix = Guid.NewGuid().ToString();
+            ModelState.AddModelError("Captcha", "Søknaden er sendt inn. Du vil motta en bekreftelse pr epost om kort tid.");
             return View(model);
         }
 
         public ActionResult Index()
         {
-            return View();
+            var captchaModel = new CaptachaModel
+            {
+                Prefix = Guid.NewGuid().ToString(),
+                Captcha = ""
+            };
+
+            return View(captchaModel);
         }
     }
 }

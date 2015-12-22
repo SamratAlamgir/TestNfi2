@@ -7,46 +7,53 @@ namespace NFI.Models
 {
     public class UdsReisestotteDto : BaseAppDto
     {
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Søkers navn")]
         public string Søkersnavn { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Søkers postadresse")]
         public string Søkerspostadresse { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Søkers poststed")]
         public string Søkerspoststed { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Søkers land")]
         public string Søkersland { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [Required]
+        [EmailAddress(ErrorMessage = "Ugyldig e-postadresse")]
         [DisplayName("Søkers e-post")]
         public string Søkersepost { get; set; }
         
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Mål for reisen? Oppgi festivalnavn / sted for filmpresentasjon")]
         public string Målforreisen { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
         [DisplayName("Beskrivelse av tiltak som det søkes tilskudd til")]
         public string Beskrivelse{ get; set; }
 
 
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Budsjett for tiltak")]
         public HttpPostedFileBase Budsjettfortiltak { get; set; }
         [DisplayName("Budsjett for tiltak")]
         public string BudsjettfortiltakPath { get; set; }
 
-        [JsonIgnore, Required(ErrorMessage = "This field is required"), FileSize]
+        [JsonIgnore, Required, FileSize]
         [DisplayName("Dokumentasjon / invitasjon til deltakelse på festival eller annen filmpresentasjon")]
         public HttpPostedFileBase Dokumentasjon { get; set; }
         [DisplayName("Dokumentasjon / invitasjon til deltakelse på festival eller annen filmpresentasjon")]
         public string DokumentasjonPath { get; set; }
+
+        [DisplayName("Nettadresse til eventuelt visuelt materiale (webside, Vimeo, etc)")]
+        public string EventueltVisueltMateriale { get; set; }
+
+        [DisplayName("Oppgi evt passord til nettadresse med visuelt materiale")]
+        public string MedVisueltMateriale { get; set; }
+
     }
 }

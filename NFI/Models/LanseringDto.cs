@@ -13,6 +13,7 @@ namespace NFI.Models
         [Required, DisplayName("Navn på ansvarlig organisasjon")]
         public string NavnpåAnsvarligOrganisasjon { get; set; }
         [Required, DisplayName("Organisasjonsnummer")]
+        [Range(0, 999999999, ErrorMessage = "Ugyldig Organisasjonsnummer")]
         public string Organisasjonsnummer { get; set; }
 
         [Required, DisplayName("Navn på daglig leder")]
@@ -21,7 +22,7 @@ namespace NFI.Models
         [Required, DisplayName("Organisasjonens virkeområde/fagfelt (eks. kultur/kunst/utdanning etc)")]
         public string OrganisasjonensVirkeområde { get; set; }
 
-        [Required,JsonIgnore,FileSize, DisplayName("Legg ved organisasjonens / prosjektleders CV")]
+        [Required, JsonIgnore, FileSize, DisplayName("Legg ved organisasjonens / prosjektleders CV")]
         public HttpPostedFileBase LeggvedOrganisasjonensProsjektledersCV { get; set; }
         [DisplayName("Legg ved organisasjonens / prosjektleders CV")]
         public string LeggvedOrganisasjonensProsjektledersCVPath { get; set; }
@@ -34,15 +35,18 @@ namespace NFI.Models
         public string Poststed { get; set; }
         [Required, DisplayName("Organisasjonens telefonnummer")]
         public string OrganisasjonensTelefonnummer { get; set; }
-        [Required,EmailAddress, DisplayName("E-postadresse kontaktperson")]
+
+        [Required, DisplayName("Navn på kontaktperson for denne søknaden")]
+        public string Navnpåkontaktperson { get; set; }
+        [Required, EmailAddress(ErrorMessage = "Ugyldig e-postadresse"), DisplayName("E-postadresse kontaktperson")]
         public string EpostadresseKontaktperson { get; set; }
-        [ DisplayName("Mobiltelefon kontaktperson")]
+        [Required,DisplayName("Mobiltelefon kontaktperson")]
         public string Mobiltelefon { get; set; }
         [DisplayName("Evt. annen informasjon om organisasjonen")]
         public string EvtannenInformasjonOmOrganisasjonen { get; set; }
-        [Required, DisplayName("Har søker tidligere mottatt tilskudd fra disse midlene??")]
+        [Required, DisplayName("Har søker tidligere mottatt tilskudd fra disse midlene?")]
         public string Harsøkertidligere { get; set; }
-        [DisplayName("Hvis JA, har Norsk filminstitutt mottatt rapport i etterkant")]
+        [DisplayName("Hvis JA, har Norsk filminstitutt mottatt rapport i etterkant?")]
         public string HvisJAharNorsk { get; set; }
 
         [Required, DisplayName("Har søker gjennomført dette eller tilsvarende prosjekter tidligere?")]
@@ -52,7 +56,7 @@ namespace NFI.Models
         [DisplayName("Hvis JA, eksemplifiser her")]
         public string HvisJAEksemplifiserher { get; set; }
 
-        [JsonIgnore,FileSize,DisplayName("Legg ved eventuelle referanser på gjennomføringsevne fra tidligere oppdragsgivere.")]
+        [JsonIgnore, FileSize, DisplayName("Legg ved eventuelle referanser på gjennomføringsevne fra tidligere oppdragsgivere.")]
         public HttpPostedFileBase LeggvedEventuelle { get; set; }
 
         [DisplayName("Legg ved eventuelle referanser på gjennomføringsevne fra tidligere oppdragsgivere.")]
@@ -65,7 +69,7 @@ namespace NFI.Models
         [Required, DisplayName("Hvilke(t) tiltak skal gjennomføres? Kort beskrivelse.")]
         public string HvilkeTiltak { get; set; }
 
-        [JsonIgnore,Required,FileSize, DisplayName("Legg ved prosjektbeskrivelse")]
+        [JsonIgnore, Required, FileSize, DisplayName("Legg ved prosjektbeskrivelse")]
         public HttpPostedFileBase LeggvedProsjektbeskrivelse { get; set; }
 
         [DisplayName("Legg ved prosjektbeskrivelse")]
@@ -73,7 +77,7 @@ namespace NFI.Models
 
         [Required, DisplayName("På hvilken arena skal prosjektet gjennomføres? Oppgi sted")]
         public string PåhvilkenArena { get; set; }
-        [Required, DisplayName(" Når skal prosjektet gjennomføres")]
+        [Required, DisplayName("Når skal prosjektet gjennomføres?")]
         public string NårskalProsjektetGjennomføres { get; set; }
 
         [Required, DisplayName("Hva er hovedmålsetningen til prosjektet? Kort beskrivelse.")]
@@ -84,7 +88,7 @@ namespace NFI.Models
         [DisplayName(" Oppgi prosjektets samarbeidspartnere, deltakere eller andre som omfattes av prosjektet.")]
         public string OppgiProsjektets { get; set; }
 
-        [DisplayName(" Hva er den forventede samløede effekten av tiltaket for samarbeidspartnerne?")]
+        [DisplayName("Hva er den forventede samlede effekten av tiltaket for samarbeidspartnerne?")]
         public string HvaerdenForventede { get; set; }
         // 3. Økonomi
 
@@ -97,13 +101,13 @@ namespace NFI.Models
         [Required, DisplayName("Oppgi fordelingen for andre bidragsytere / søknadsinstitusjoner.Skriv navn, beløp.")]
         public string Oppgifordelingen { get; set; }
 
-        [Required,JsonIgnore,FileSize, DisplayName("Legg ved budsjett for prosjektet.")]
+        [Required, JsonIgnore, FileSize, DisplayName("Legg ved budsjett for prosjektet.")]
         public HttpPostedFileBase LeggedBudsjettProsjektet { get; set; }
 
         [DisplayName("Legg ved budsjett for prosjektet.")]
         public string LeggedBudsjettProsjektetPath { get; set; }
 
-        [JsonIgnore,Required, DisplayName("Legg ved finansieringsplan.")]
+        [JsonIgnore, Required, DisplayName("Legg ved finansieringsplan.")]
         public HttpPostedFileBase LeggvedFinansieringsplan { get; set; }
 
         [DisplayName("Legg ved finansieringsplan.")]
@@ -111,7 +115,7 @@ namespace NFI.Models
 
         //4. Eventuelle andre vedlegg
 
-        [FileSize,JsonIgnore,DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]
+        [FileSize, JsonIgnore, DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg ved her:")]
         public List<HttpPostedFileBase> Harduvedleggsom { get; set; }
 
         [DisplayName("Har du vedlegg som er relevante til søknad som du ikke har fått lastet opp? Legg de ved her:")]

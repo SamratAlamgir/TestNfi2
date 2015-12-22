@@ -32,20 +32,19 @@ namespace NFI.Controllers
 
                 //TODO: Send the mails
                 // Send mail to archivist 
-                var mailBody = "A new application has been submitted.<br/>Application Details: <a href='" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a> ";
-                mailBody += "<br/>" +
-                               "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a>";
-                var responseText = GetApplicationDetailsStringHtml(this, "../Admin/LanseringDetail", appDto);
+                var mailBody = MailTemplate.GetMailBodyForAdmin(appDto.AppId, appType);
+
+                var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
                 mailBody += responseText;
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.EpostadresseKontaktperson, appDto.EpostadresseKontaktperson, FilePathList);
               
 
                 // Send mail to applicant
-                mailSubject = "Lansering søknad sendtt";
-                mailBody = MailTemplate.GetMailBodyForApplicant(ApplicationType.Lansering);
+                mailSubject = "Lansering søknad sendt";
+                mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.EpostadresseKontaktperson);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.EpostadresseKontaktperson);
                 return View("Success");
             }
             catch (Exception ex)

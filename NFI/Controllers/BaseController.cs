@@ -9,8 +9,6 @@ using System.Web.Mvc;
 using NFI.Enums;
 using NFI.Helper;
 using NFI.Models;
-using NFI.Properties;
-using NFI.Utility;
 
 namespace NFI.Controllers
 {
@@ -19,53 +17,24 @@ namespace NFI.Controllers
         private const string TimestampPattern = "yyyyMMddHHmm";
         protected List<string> FilePathList = new List<string>();
 
-
-        public void SendEmailToPredefinedAdressee(Application1Dto application1Dto, ApplicationType appType)
-        {
-            var to = Settings.Default.ToEmailAddress;
-            var body = $"User Name: {application1Dto.Name}<br/>" +
-                       $"Email: {application1Dto.Email}<br/>" +
-                       $"Sex: {application1Dto.Sex}<br/>" +
-                       $"Attachment Link: {GetDownloadLinkForFile(application1Dto.AppId, appType)}";
-            var subject = "File Send";
-            Emailer.SendMail(to, subject, body);
-        }
-
         public string CreateUserDataFile<T>(T appDto, ApplicationType appType, string fileNamePart)
         {
-            var viewName=DetailViewNames.ViewName(appType);
+            var viewName = DetailViewNames.ViewName(appType);
             var fileName = GetUpdatedFileName("Application data.pdf", fileNamePart);
             var path = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
             var fullPath = Path.Combine(path, fileName);
             var htmlString = GetApplicationDetailsStringHtml(this, viewName, appDto);
             var startIndex = htmlString.IndexOf("<head>", StringComparison.Ordinal) + 6;
+
             var length = htmlString.IndexOf("</head>", StringComparison.Ordinal) - startIndex;
-            var replace = htmlString.Substring(startIndex, length);
-            htmlString = htmlString.Replace(replace, "");
+            if (length > 0)
+            {
+                var replace = htmlString.Substring(startIndex, length);
+                htmlString = htmlString.Replace(replace, "");
+            }
             PdfUtility.SavePdfFile(htmlString, fullPath, Server.MapPath("~"));
             return fullPath;
         }
-
-        //public string CreateTextFile<T>(T appDto, ApplicationType appType)
-        //{
-        //    var type = appDto.GetType();
-        //    var appId = type.GetProperty("AppId").GetValue(appDto);
-
-        //    var fileName = GetUpdatedFileName("user_data.txt");
-        //    var path = DirectoryHelper.GetApplicationAttachmentDirPath(appType);
-        //    var fullPath = Path.Combine(path, fileName);
-        //    var downloadLink = GetDownloadLinkForFile(appId.ToString(), appType);
-        //    if (!System.IO.File.Exists(fullPath))
-        //    {
-        //        // Create a file to write to.
-        //        using (StreamWriter sw = System.IO.File.CreateText(fullPath))
-        //        {
-        //            sw.WriteLine(appDto.ToString());
-        //        }
-        //    }
-
-        //    return fullPath;
-        //}
 
         protected string GetDownloadLinkForFile(string appId, ApplicationType appType)
         {
@@ -104,6 +73,8 @@ namespace NFI.Controllers
 
         protected void TrimPathAndOnlyFileName(Object obj)
         {
+            if (obj == null) return;
+
             var type = obj.GetType();
             var fieldInfos =
                 type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
@@ -117,7 +88,11 @@ namespace NFI.Controllers
                 if (propertyInfo.Name.Contains("Paths"))
                 {
                     var filePaths = (List<string>)propertyInfo.GetValue(obj);
-                    var fileNames = filePaths?.Select(Path.GetFileName).ToList();
+
+                    if(filePaths == null) continue;
+
+                    filePaths = filePaths.Where(f => !string.IsNullOrEmpty(f)).ToList();
+                    var fileNames = filePaths.Select(Path.GetFileName).ToList();
                     propertyInfo.SetValue(obj, fileNames);
                 }
                 else if (propertyInfo.Name.Contains("Path"))

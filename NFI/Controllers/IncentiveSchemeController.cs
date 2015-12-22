@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NFI.App_Start;
 using NFI.Enums;
@@ -30,34 +27,31 @@ namespace NFI.Controllers
                 SaveApplication(appDto, appType, appDto.NameProducer, mailSubject);
 
                 // Send mail to archivist
-                
-                var mailBody = "Hi,<br/>A new application has been submitted.<br/><br/>" +
-                    "Application Details: <a href = '" + GetDetailViewLink(appDto.AppId.ToString(), appType) + "'> Click Here </a>" +
-                    "<br/>" +
-                    "Download Zip File: <a href='" + GetDownloadLinkForFile(appDto.AppId.ToString(), appType) + "'> Click Here </a> <br/>";
+
+                var mailBody = MailTemplate.GetMailBodyForAdmin(appDto.AppId, appType, true);
 
                 var responseText = GetApplicationDetailsStringHtml(this, DetailViewNames.ViewName(appType), appDto);
 
                 mailBody += responseText;
 
                 var mailTo = Settings.Default.ToEmailAddress;
-                CommunicationHelper.SendEmail(mailSubject, mailBody, mailTo, FilePathList);
+                CommunicationHelper.SendEmailToAdmin(mailSubject, mailBody, mailTo, appDto.Email, appDto.NameApplicant, FilePathList);
 
                 // Send mail to applicant
                 mailSubject = "Insentivordning submitted successfully";
                 mailBody = MailTemplate.GetMailBodyForApplicant(appType);
 
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.Email);
-                CommunicationHelper.SendEmail(mailSubject, mailBody, appDto.EmailContactInfo);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.Email);
+                CommunicationHelper.SendConfirmationEmailToUser(mailSubject, mailBody, appDto.EmailContactInfo);
 
-                return View("Success");
+                return View("SuccessEng");
             }
             catch (Exception ex)
             {
                 LogWriter.Write(ex.ToString(), "Error");
 
                 ViewBag.error = ex;
-                return View("Error");
+                return View("ErrorEng");
             }
         }
     }

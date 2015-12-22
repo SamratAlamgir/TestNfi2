@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using NFI.Enums;
 
 namespace NFI.Models
@@ -26,12 +23,20 @@ namespace NFI.Models
                 case ApplicationType.UdsReisestotte:
                     viewName = "../Admin/UdsReisestotteDetail";
                     break;
-
                 case ApplicationType.Lansering:
                     viewName = "../Admin/LanseringDetail";
                     break;
                 case ApplicationType.Ordninger:
                     viewName = "../Admin/OrdningerDetail";
+                    break;
+                case ApplicationType.Film:
+                    viewName = "../Admin/FilmDetail";
+                    break;
+                case ApplicationType.Video:
+                    viewName = "../Admin/VideoDetail";
+                    break;
+                case ApplicationType.DenKulturelleSkolesekken:
+                    viewName = "../Admin/DenKulturelleSkolesekkenDetail";
                     break;
                 default:
                     throw new Exception("No application detail view created for the application " + applicationType);

@@ -1,9 +1,49 @@
-﻿using NFI.Enums;
+﻿using System;
+using NFI.Enums;
+using NFI.Properties;
 
 namespace NFI.Helper
 {
     public static class MailTemplate
     {
+
+        public static string GetMailBodyForAdmin(Guid appId, ApplicationType appType, bool inEnglish = false)
+        {
+            string body = "";
+
+            if (!inEnglish)
+            {
+                body = @"Det har blitt lagret en ny søknad på server. <br/>
+                        Klikk her for å logge inn å se: <a href = '" + GetApplicationListViewLink() + @"'> Klikk her </a><br/>
+                        Last ned zip-fil: <a href = '" + GetDownloadLinkForFile(appId, appType) + @"'> Klikk her </a><br/>";
+            }
+            else
+            {
+                body = @"There is a new application saved on the server. <br/>
+                        Log in here to see: <a href = '" + GetApplicationListViewLink() + @"'> Click here </a><br/>
+                        Download zip file: <a href = '" + GetDownloadLinkForFile(appId, appType) + @"'> Click here </a><br/> ";
+            }
+
+            return body;
+        }
+
+        private static string GetApplicationListViewLink()
+        {
+            return Settings.Default.HostServerUrl + "/" + "Admin/ApplicationList";
+        }
+
+        private static string GetDetailViewLink(Guid appId, ApplicationType appType)
+        {
+            var fileLink = "Admin/ShowDetail/" + (int)appType + "/" + appId;
+            return Settings.Default.HostServerUrl + "/" + fileLink;
+        }
+
+        private static string GetDownloadLinkForFile(Guid appId, ApplicationType appType)
+        {
+            var fileLink = "Admin/DownloadZipFile/" + (int)appType + "/" + appId;
+            return Settings.Default.HostServerUrl + "/" + fileLink;
+        }
+
         public static string GetMailBodyForApplicant(ApplicationType appType)
         {
             var mailBody = "";
@@ -46,54 +86,65 @@ namespace NFI.Helper
                     break;
 
                 case ApplicationType.UdsReisestotte:
-                    mailBody = @"Hei<br/><br/>
-                                Vi bekrefter med dette å ha mottatt din søknad. <br/>
-                                Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker. <br/>
+                    mailBody = @"Hei<br/>
+Vi bekrefter med dette å ha mottatt din søknad.<br/> 
+Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/> 
                                 For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
 
-                                Med vennlig hilsen <br/>
-                                Norsk filminstitutt<br/><br/>
-
-                                Etter at tilsagn om tilskudd foreligger, plikter tilskuddsmottakeren av eget tiltak å gi melding om eventuelle endringer i forutsetningene for tilskuddet. <br/>
-                                Tilskuddsmottakeren kan ikke foreta vesentlige endringer i den aktuelle produksjonen uten at dette er skriftlig forelagt for og skriftlig godkjent av Norsk filminstitutt.<br/><br/>
-
-                                Spørsmål kan rettes til: insentiv@nfi.no<br/>
-                                Med vennelig hilsen<br/>
+Med vennlig hilsen<br/>  
                                 Norsk filminstitutt";
                     break;
 
                 case ApplicationType.Lansering:
-                    mailBody = @"Hei,<br/> <br/> 
-                                Vi bekrefter med dette å ha mottatt din søknad. <br/> 
-                                Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker. <br/> 
-                                For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/> <br/> 
+                    mailBody = @"Hei<br/>
+Vi bekrefter med dette å ha mottatt din søknad.<br/> 
+Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/> 
+For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
 
-                                Med vennlig hilsen <br/> 
+Med vennlig hilsen<br/>  
                                 Norsk filminstitutt";
                     break;
 
                 case ApplicationType.Ordninger:
-                    mailBody = @"Hei,<br/><br/>
+                    mailBody = @"Hei<br/>
 Vi bekrefter med dette å ha mottatt din søknad.<br/> 
-Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker. <br/>
+Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/> 
 For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
 
-Med vennlig hilsen <br/>
-Norsk filminstitutt<br/><br/>
-
-Etter at tilsagn om tilskudd foreligger, plikter tilskuddsmottakeren av eget tiltak å gi melding om eventuelle endringer i forutsetningene for tilskuddet. <br/>
-Tilskuddsmottakeren kan ikke foreta vesentlige endringer i den aktuelle produksjonen uten at dette er skriftlig forelagt for og skriftlig godkjent av Norsk filminstitutt.<br/><br/>
-
-Spørsmål kan rettes til: insentiv@nfi.no<br/>
-Med vennelig hilsen<br/>
+Med vennlig hilsen<br/>  
 Norsk filminstitutt";
                     break;
 
+                case ApplicationType.Film:
+                    mailBody = @"Hei<br/>
+Vi bekrefter med dette å ha mottatt din søknad.<br/>  
+Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/>  
+For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/> 
+
+Med vennlig hilsen<br/>  
+Norsk filminstitutt";
+                    break;
+                case ApplicationType.Video:
+                    mailBody = @"Hei<br/>
+                                Vi bekrefter med dette å ha mottatt din søknad.<br/> 
+                                Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/>
+                                For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
+
+                                Med vennlig hilsen<br/>
+                                Norsk filminstitutt";
+                    break;
+                case ApplicationType.DenKulturelleSkolesekken:
+                    mailBody = @"Hei<br/>
+Vi bekrefter med dette å ha mottatt din søknad.<br/> 
+Normalt kan du forvente en tilbakemelding på søknaden innen 5 uker.<br/> 
+For tilskuddsordninger med søknadsfrister, gjelder behandlingstiden fra frist.<br/><br/>
+
+Med vennlig hilsen<br/> 
+Norsk filminstitutt";
+                    break;
             }
 
-
             return mailBody;
-
         }
     }
 }

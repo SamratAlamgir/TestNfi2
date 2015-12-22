@@ -5,7 +5,10 @@ namespace NFI.Models
     public class CaptachaModel
     {
         //[Required]
-        [Display(Name = "What is the sum?")]
+        [Display(Name = "Skriv svaret her?")]
         public string Captcha { get; set; }
+
+        public string Prefix { get; set; }
+
     }
 }

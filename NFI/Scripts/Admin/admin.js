@@ -6,45 +6,64 @@
             "iDisplayLength": 25,
             "aaData": data,
             //"aaSorting": [],
-            "order": [[ 2, "desc" ]],
+            "order": [[3, "desc"]],
             "bDestroy": true,
             "aoColumns": [
-                { "mDataProp": "ProduksjonsforetaketsNavn" },
-                { "mDataProp": "OrganisasjonsNummer" },
+                { "mDataProp": "AppType", "sTitle": "Application Type" },
+                { "mDataProp": "ApplicantName", "sTitle": "Name" },
+                { "mDataProp": "Email", "sTitle": "Email" },
                 {
-                    "mDataProp": "CreateTime",
+                    "mDataProp": "CreateTime", "sTitle": "Create Date",
                     "fnCreatedCell": function (nTd, sData, oData) {
                         var date = new Date(parseInt(sData.substr(6)));
-                        $(nTd).html((date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear());
+                        $(nTd).html(date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
                     }
                 },
-
-                { "mDataProp": "OrganisasjonsPostnummer" },
                 {
-                    "mDataProp": "ZipFilePath",
+                    "mDataProp": "AppId", "sTitle": "View",
                     "fnCreatedCell": function (nTd, sData, oData) {
-                        $(nTd).html("<a href='/" + oData.ZipFilePath + "'>Download</a>");
+                        $(nTd).html("<a href='#' data-action='view' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>View</a>");
                     }
                 },
                 {
-                    "mDataProp": "IsArchived",
+                    "mDataProp": "AppId", "sTitle": "Download",
+                    "fnCreatedCell": function (nTd, sData, oData) {
+                        $(nTd).html("<a class='btn btn-success' data-action='download' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>" +
+                            "<span class='glyphicon glyphicon-download' ></span> Download</a>");
+                    }
+                },
+                {
+                    "mDataProp": "IsArchived", "sTitle": "Archive",
                     "fnCreatedCell": function (nTd, sData, oData) {
 
                         if (!oData.IsArchived) {
-                            $(nTd).html("<Button data-appId='" + oData.AppId + "'>Archive</Button>");
+                            $(nTd).html("<Button class='btn btn-danger' data-action='archive' data-appType='" + oData.AppTypeId + "' data-appId='" + oData.AppId + "'>Archive</Button>");
                         } else {
                             $(nTd).html("<h4><span class='label label-warning'>Archived</span></h4>");
                         }
                     }
                 }
             ],
-            "columnDefs": [{ "targets": 4, "orderable": false, "searchable": false }]
+            "columnDefs": [{ "targets": [4, 5], "orderable": false, "searchable": false }]
         });
 
         if (!eventSubscribed) {
-            $('#applicationListTable tbody').on('click', 'button', function () {
-                var appId = this.getAttribute("data-appid");
-                markAsArchive(appId);
+            $('#applicationListTable tbody').on('click', 'button,a', function () {
+                var actionType = this.getAttribute("data-action");
+                var appType = this.getAttribute("data-appType");
+                var appId = this.getAttribute("data-appId");
+
+                if (actionType === 'download') {
+                    downloadZipFile(appType, appId);
+                }
+                else if (actionType === 'archive') {
+                    markAsArchive(appType, appId);
+                }
+                else if (actionType === 'view') {
+                    showDetailView(appType, appId);
+                }
+
+
             });
 
             eventSubscribed = true;
@@ -55,7 +74,7 @@
         var appType = $("#appType").val();
         var includeArchive = $("#includeArchive").prop("checked");
 
-        $.getJSON("/admin/GetApplications", { "appType": appType, "includeArchive": includeArchive })
+        $.getJSON("GetApplications", { "appType": appType, "includeArchive": includeArchive })
             .done(function (data) {
                 setGridData(data);
             })
@@ -64,12 +83,18 @@
             });
     }
 
-    var markAsArchive = function (appId) {
+    var downloadZipFile = function (appType, appId) {
+        document.location = "DownloadZipFile/" + appType + "/" + appId;
+    }
+    var showDetailView = function (appType, appId) {
+        window.open("ShowDetail/" + appType + "/" + appId, "_blank");
+    }
+    var markAsArchive = function (appType, appId) {
 
         bootbox.confirm("Are you sure you want to move this application to Archive?", function (result) {
             if (!result) return; // do nothing
 
-            $.post("/admin/MarkAsArchive", { "appId": appId })
+            $.post("MarkAsArchive/" + appType + "/" + appId)
                 .done(function () {
                     loadGridData();
                 })

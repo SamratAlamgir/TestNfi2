@@ -1,99 +1,145 @@
 ﻿@using NFI.Helper
 @model NFI.Models.UdsReisestotteDto
 
+@section scripts
+{
+    <script src="~/Scripts/UdsReisestotte/UdsReisestotte.js"></script>
+}
+
 @{
     ViewBag.Title = "UDs reisestøtte";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Uds reisestipend</h2>
+<h2>UDs reisestøtte</h2>
 <form id="MainForm" class="form-horizontal" action="@Html.GetHostServerUrl()/UdsReisestotte/Save" enctype="multipart/form-data" method="post">
-    <div class="container well panel col-md-8">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Søkersnavn, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Søkersnavn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Søkersnavn, "", new { @class = "text-danger" })
+
+    <div id="rootwizard" class="container well panel col-sm-8">
+        <ul style="display: none">
+            <li><a href="#tab1" data-toggle="tab"></a></li>
+            <li><a href="#tab2" data-toggle="tab"></a></li>
+        </ul>
+        <br/>
+
+        <div class="tab-content">
+            <div class="tab-pane" id="tab1">
+               
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Søkersnavn, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Søkersnavn, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Søkersnavn, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Søkerspostadresse, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Søkerspostadresse, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Søkerspostadresse, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Søkerspoststed, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Søkerspoststed, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Søkerspoststed, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Søkersland, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Søkersland, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Søkersland, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Søkersepost, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Søkersepost, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Søkersepost, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Målforreisen, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Målforreisen, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Målforreisen, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Beskrivelse, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Beskrivelse, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Beskrivelse, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Budsjettfortiltak, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+
+                        <div class="col-md-7">
+                            <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.Budsjettfortiltak, new {type = "file"})
+                        </span>
+                            @Html.ValidationMessageFor(model => model.Budsjettfortiltak, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dokumentasjon, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
+
+                        <div class="col-md-7">
+                            <span class="btn btn-default btn-file">
+                            @Html.TextBoxFor(model => model.Dokumentasjon, new {type = "file"})
+                        </span>
+                            @Html.ValidationMessageFor(model => model.Dokumentasjon, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+              
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <div class="form-group">
+                        <h3> Visuelt materiale</h3>
+                        <hr/>
+                        @Html.LabelFor(model => model.EventueltVisueltMateriale, htmlAttributes: new {@class = "control-label col-md-5"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.EventueltVisueltMateriale, new {htmlAttributes = new {@class = "form-control"}})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MedVisueltMateriale, htmlAttributes: new {@class = "control-label col-md-5"})
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.MedVisueltMateriale, new {htmlAttributes = new {@class = "form-control"}})
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row col-sm-10" id="ajaxLoader" style="display: none">
+                    <label class="alert-danger">@Html.GetWaitMessageForApplication()</label>
+                    <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif"/>
+                </div>
+                @*<div class="form-group">
+                    <div class="col-md-10">
+                        <input id="btnSubmit" type="submit" value="Send inn" class="btn btn-success pull-right"/>
+                    </div>
+                </div>*@
+                <div id="wizardBtn" class="row col-sm-10">
+                    <ul class="pager wizard">
+                        <li class="previous pull-left"><a href="javascript:;">Forrige</a></li>
+                        <li class="next pull-right"><a href="javascript:;">Neste</a></li>
+                        <li><button id="btnSubmit" type="submit" class="btn btn-success pull-right" style="display: none">Send inn</button></li>
+                    </ul>
+                </div>
             </div>
         </div>
+    
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Søkerspostadresse, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Søkerspostadresse, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Søkerspostadresse, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Søkerspoststed, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Søkerspoststed, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Søkerspoststed, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Søkersland, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Søkersland, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Søkersland, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Søkersepost, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Søkersepost, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Søkersepost, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Målforreisen, htmlAttributes: new { @class = "control-label col-md-5 label-required" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Målforreisen, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Målforreisen, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Beskrivelse, htmlAttributes: new {@class = "control-label col-md-5 label-required" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Beskrivelse, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Beskrivelse, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Budsjettfortiltak, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
-
-            <div class="col-md-7">
-                <span class="btn btn-default btn-file">
-                    @Html.TextBoxFor(model => model.Budsjettfortiltak, new {type = "file"})
-                </span>
-                @Html.ValidationMessageFor(model => model.Budsjettfortiltak, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Dokumentasjon, htmlAttributes: new {@class = "control-label col-md-5 label-required"})
-
-            <div class="col-md-7">
-                <span class="btn btn-default btn-file">
-                    @Html.TextBoxFor(model => model.Dokumentasjon, new {type = "file"})
-                </span>
-                @Html.ValidationMessageFor(model => model.Dokumentasjon, "", new {@class = "text-danger"})
-            </div>
-        </div>
-        <div class="row col-sm-10" id="ajaxLoader" style="display: none">
-            <label class="alert-danger">@Html.GetWaitMessageForApplication()</label>
-            <img style="display: block; margin: 0 auto;" alt="*" src="~/Images/ajax-loader.gif" />
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" value="Submit" class="btn btn-success pull-right" />
-            </div>
-        </div>
-    </div>
 </form>

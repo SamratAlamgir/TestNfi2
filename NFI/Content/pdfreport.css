@@ -1,0 +1,31 @@
+﻿body {
+    height: 842px;
+    width: 595px;
+    display: block;
+    margin: 0 auto;
+}
+
+#tableContainer .table {
+    margin-left: 20px;
+}
+
+    #tableContainer .table tr {
+        padding: 2px 0;
+    }
+
+        #tableContainer .table tr td:first-child {
+            font-weight: bold;
+            text-align: left;
+            padding-right: 10px;
+        }
+
+    #tableContainer .table, #tableContainer .table tr {
+        width: 100%;
+    }
+
+        #tableContainer .table tr td {
+            width: 50%;
+            word-wrap: break-word;
+            word-break: break-all;
+            padding: 2px 0;
+        }

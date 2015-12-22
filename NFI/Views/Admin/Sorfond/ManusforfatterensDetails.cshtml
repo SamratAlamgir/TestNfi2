@@ -2,31 +2,39 @@
 
 <div>
     <h4>Manusforfatteren</h4>
-    <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.ManusforfatterensNavn)
-        </dt>
+    <hr/>
 
-        <dd>
-            @Html.DisplayFor(model => model.ManusforfatterensNavn)
-        </dd>
+    <table class="table ">
+        <tbody>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ManusforfatterensNavn)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ManusforfatterensKjønn)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.ManusforfatterensNavn)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ManusforfatterensKjønn)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.ManusforfatterensKjønn)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.ManusforfatterensKjønn)
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ManusforfatterensCVPath)
-        </dt>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ManusforfatterensCVPath)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.ManusforfatterensCVPath)
-        </dd>
-
-    </dl>
+            <td>
+                @Html.DisplayFor(model => model.ManusforfatterensCVPath)
+            </td>
+        </tr>
+        </tbody>
+    </table>
+   
 </div>
